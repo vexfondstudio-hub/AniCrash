@@ -13,6 +13,7 @@ export interface Episode {
   hls_720?: string;
   hls_480?: string;
   thumbnail: string;
+  voiceoverUrls?: Record<string, string>; // Maps voiceover studio name to video URL
   introStart?: number;
   introEnd?: number;
   outroStart?: number;

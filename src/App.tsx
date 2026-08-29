@@ -70,7 +70,17 @@ export default function App() {
   const [favorites, setFavorites] = useState<FavoriteEntry[]>(() => {
     try {
       const saved = localStorage.getItem(STORAGE_FAVORITES);
-      if (saved) return JSON.parse(saved);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed)) {
+          // Deduplicate by animeId
+          const unique = new Map();
+          parsed.forEach(f => {
+            if (f && f.animeId) unique.set(f.animeId, f);
+          });
+          return Array.from(unique.values());
+        }
+      }
     } catch (e) {
       console.error(e);
     }
@@ -80,7 +90,17 @@ export default function App() {
   const [watchHistory, setWatchHistory] = useState<WatchProgress[]>(() => {
     try {
       const saved = localStorage.getItem(STORAGE_HISTORY);
-      if (saved) return JSON.parse(saved);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed)) {
+          // Deduplicate by animeId
+          const unique = new Map();
+          parsed.forEach(h => {
+            if (h && h.animeId) unique.set(h.animeId, h);
+          });
+          return Array.from(unique.values());
+        }
+      }
     } catch (e) {
       console.error(e);
     }

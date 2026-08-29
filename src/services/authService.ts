@@ -1,5 +1,6 @@
 import { UserAccount, UserProfile, AuthResponse, FavoriteEntry, WatchProgress } from '../types';
 import { AVATAR_PRESETS, BANNER_PRESETS } from '../data/profilePresets';
+import { supabase } from '../lib/supabase';
 
 const USERS_STORAGE_KEY = 'anicrash_users_accounts_v2';
 const SESSION_STORAGE_KEY = 'anicrash_current_session_v2';
@@ -78,7 +79,6 @@ export function getCurrentSession(): UserAccount | null {
     if (raw) {
       const user = JSON.parse(raw);
       if (user && user.id) {
-        // Refresh with latest data from user table if not guest
         if (!user.isGuest) {
           const users = getRegisteredUsers();
           const found = users.find((u) => u.id === user.id);
@@ -105,13 +105,13 @@ export function setSession(user: UserAccount | null): void {
   }
 }
 
-export function registerAccount(
+export async function registerAccount(
   username: string,
   email: string,
   password: string,
   avatarUrl?: string,
   title?: string
-): AuthResponse {
+): Promise<AuthResponse> {
   const cleanUsername = username.trim();
   const cleanEmail = email.trim().toLowerCase();
   const cleanPassword = password.trim();
@@ -122,30 +122,45 @@ export function registerAccount(
   if (!cleanEmail || !cleanEmail.includes('@') || !cleanEmail.includes('.')) {
     return { success: false, error: 'Введите корректный адрес эл. почты (например, user@gmail.com)' };
   }
-  if (!cleanPassword || cleanPassword.length < 4) {
-    return { success: false, error: 'Пароль должен содержать минимум 4 символа' };
+  if (!cleanPassword || cleanPassword.length < 6) {
+    return { success: false, error: 'Пароль должен содержать минимум 6 символов' };
   }
 
-  const users = getRegisteredUsers();
-
-  // Check if username or email already exists (case-insensitive)
-  if (users.some((u) => u.username.toLowerCase() === cleanUsername.toLowerCase())) {
-    return { success: false, error: 'Пользователь с таким никнеймом уже зарегистрирован' };
-  }
-  if (users.some((u) => u.email.toLowerCase() === cleanEmail.toLowerCase())) {
-    return { success: false, error: 'Аккаунт с такой почтой уже существует' };
+  // 1. SignUp in Supabase Auth
+  if (!supabase) {
+    return { success: false, error: 'Сервис авторизации временно недоступен' };
   }
 
+  const { data: authData, error: authError } = await supabase.auth.signUp({
+    email: cleanEmail,
+    password: cleanPassword,
+    options: {
+      data: {
+        username: cleanUsername,
+        avatarUrl: avatarUrl
+      }
+    }
+  });
+
+  if (authError) {
+    if (authError.message.includes('User already registered')) {
+       return { success: false, error: 'Пользователь с такой почтой уже существует' };
+    }
+    return { success: false, error: authError.message };
+  }
+
+  const userId = authData.user?.id || `user_${Date.now()}`;
+
+  // 2. Setup local user info
   const profile = createDefaultProfile(cleanUsername, avatarUrl);
   if (title) {
     profile.title = title;
   }
 
   const newUser: UserAccount = {
-    id: `user_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`,
+    id: userId,
     username: cleanUsername,
     email: cleanEmail,
-    password: cleanPassword, // In client storage
     createdAt: Date.now(),
     isGuest: false,
     profile,
@@ -153,42 +168,77 @@ export function registerAccount(
     watchHistory: [],
   };
 
-  users.push(newUser);
-  saveRegisteredUsers(users);
+  const users = getRegisteredUsers();
+  // Filter out any older entry with same ID just in case
+  const filteredUsers = users.filter(u => u.id !== userId);
+  filteredUsers.push(newUser);
+  saveRegisteredUsers(filteredUsers);
+  
   setSession(newUser);
-
   return { success: true, user: newUser };
 }
 
-export function loginAccount(identifier: string, password: string): AuthResponse {
-  const cleanId = identifier.trim().toLowerCase();
+export async function loginAccount(email: string, password: string): Promise<AuthResponse> {
+  const cleanEmail = email.trim().toLowerCase();
   const cleanPassword = password.trim();
 
-  if (!cleanId) {
-    return { success: false, error: 'Введите никнейм или адрес эл. почты' };
+  if (!cleanEmail) {
+    return { success: false, error: 'Введите адрес эл. почты' };
   }
   if (!cleanPassword) {
     return { success: false, error: 'Введите пароль' };
   }
 
-  const users = getRegisteredUsers();
-  const user = users.find(
-    (u) => u.username.toLowerCase() === cleanId || u.email.toLowerCase() === cleanId
-  );
-
-  if (!user) {
-    return { success: false, error: 'Пользователь не найден. Проверьте никнейм или зарегистрируйтесь' };
+  // 1. SignIn with Supabase Auth
+  if (!supabase) {
+    return { success: false, error: 'Сервис авторизации временно недоступен' };
   }
 
-  if (user.password !== password && user.password !== cleanPassword) {
-    return { success: false, error: 'Неверный пароль. Пожалуйста, проверьте введённые данные' };
+  const { data: authData, error: authError } = await supabase.auth.signInWithPassword({
+    email: cleanEmail,
+    password: cleanPassword,
+  });
+
+  if (authError) {
+    return { success: false, error: 'Неверная почта или пароль' };
+  }
+
+  const userId = authData.user?.id;
+  if (!userId) {
+     return { success: false, error: 'Ошибка получения данных пользователя' };
+  }
+
+  // 2. Load user from local storage (or create if this is a first-time login on this device)
+  const users = getRegisteredUsers();
+  let user = users.find((u) => u.id === userId);
+
+  if (!user) {
+    // If not found locally, we create a fresh local representation for this Supabase user
+    const username = authData.user?.user_metadata?.username || cleanEmail.split('@')[0];
+    const avatar = authData.user?.user_metadata?.avatarUrl || undefined;
+    
+    user = {
+      id: userId,
+      username: username,
+      email: cleanEmail,
+      createdAt: Date.now(),
+      isGuest: false,
+      profile: createDefaultProfile(username, avatar),
+      favorites: [],
+      watchHistory: [],
+    };
+    users.push(user);
+    saveRegisteredUsers(users);
   }
 
   setSession(user);
   return { success: true, user };
 }
 
-export function logoutAccount(): void {
+export async function logoutAccount(): Promise<void> {
+  if (supabase) {
+    await supabase.auth.signOut();
+  }
   setSession(null);
 }
 

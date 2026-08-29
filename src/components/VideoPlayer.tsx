@@ -121,17 +121,19 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
 
   // Sync anime prop
   useEffect(() => {
-    let active = true;
-    setCurrentAnime(anime);
-    ensureAnimeEpisodes(anime).then((resolved) => {
-      if (active && resolved) {
-        setCurrentAnime(resolved);
-      }
-    });
-    return () => {
-      active = false;
-    };
-  }, [anime]);
+    if (anime.id !== currentAnime.id || (anime.episodes && !currentAnime.episodes)) {
+      let active = true;
+      setCurrentAnime(anime);
+      ensureAnimeEpisodes(anime).then((resolved) => {
+        if (active && resolved) {
+          setCurrentAnime(resolved);
+        }
+      });
+      return () => {
+        active = false;
+      };
+    }
+  }, [anime.id, anime.episodes?.length]);
 
   // Auto-fullscreen and landscape orientation on mobile mount
   useEffect(() => {
@@ -267,6 +269,13 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
 
   const getActiveStreamUrl = useCallback(() => {
     if (!currentEpisode) return '';
+
+    // Priority 1: Specifically matched voiceover from episode-specific data
+    if (currentEpisode.voiceoverUrls && currentEpisode.voiceoverUrls[selectedVoiceover]) {
+      return currentEpisode.voiceoverUrls[selectedVoiceover];
+    }
+
+    // Priority 2: Quality-based selection from HLS streams
     if (selectedQuality.startsWith('1080')) {
       return currentEpisode.hls_1080 || currentEpisode.hls_720 || currentEpisode.videoUrl;
     }
@@ -276,6 +285,8 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
     if (selectedQuality.startsWith('480')) {
       return currentEpisode.hls_480 || currentEpisode.hls_720 || currentEpisode.videoUrl;
     }
+
+    // Fallback
     return currentEpisode.videoUrl;
   }, [currentEpisode, selectedQuality, selectedVoiceover]);
 

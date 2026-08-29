@@ -43,62 +43,14 @@ export const VOICE_STUDIOS = [
 
 const BASE_ANIME_DATABASE: Anime[] = [
   {
-    "id": "frieren",
-    "title": "Провожающая в последний путь Фрирен",
-    "englishTitle": "Frieren: Beyond Journey's End",
-    "originalTitle": "葬送のフリーレン",
-    "slug": "sousou-no-frieren",
-    "description": "Десятилетнее приключение героев Химмеля, священника Гайтера, гнома Айзена и эльфийки-мага Фрирен подошло к концу. Король Демонов побеждён, мир восстановлен. Для людей десять лет — это значительный срок, но для эльфийки, чья жизнь исчисляется тысячелетиями, это лишь миг. Фрирен прощается с друзьями, обещая навестить их через пятьдесят лет, когда пройдёт метеоритный дождь Эра. Но вернувшись, она обнаруживает, что время безжалостно к её спутникам. Смерть Химмеля заставляет Фрирен осознать, как мало она знала о людях и как сильно сожалеет о том, что не провела с ними больше времени. Теперь она отправляется в новое путешествие, чтобы понять человеческие чувства и найти ответы на вопросы, которые терзали её десятилетиями.",
-    "poster": "https://shikimori.one/system/animes/original/52991.jpg",
-    "banner": "https://images.alphacoders.com/133/1335552.png",
-    "rating": 9.8,
-    "votesCount": 25000,
-    "year": 2023,
-    "season": "Осень",
-    "type": "ТВ",
-    "status": "Завершён",
-    "genres": [
-      "Приключения",
-      "Драма",
-      "Фэнтези"
-    ],
-    "episodesCount": 28,
-    "currentEpisodes": 28,
-    "durationPerEp": "24 мин.",
-    "studio": "Madhouse",
-    "ageRating": "16+",
-    "tags": ["Магия", "Эльфы", "Путешествие", "Шедевр"],
-    "characters": [],
-    "voiceovers": [
-      "AniLibria",
-      "Deep",
-      "DreamCast",
-      "Studio Band",
-      "Оригинал (JP)"
-    ],
-    "episodes": [
-      {
-        "id": "frieren-ep-1",
-        "number": 1,
-        "title": "Конец приключения",
-        "duration": 1440,
-        "videoUrl": "https://cache.libria.fun/videos/media/ts/9600/1/720/70c1078491b5d9ada9d72f4b558d36ef.m3u8",
-        "thumbnail": "https://shikimori.one/system/animes/original/52991.jpg",
-        "introStart": 0,
-        "introEnd": 0,
-        "outroStart": 1330
-      }
-    ]
-  },
-  {
     "id": "gurren-lagann",
     "title": "Гуррен-Лаганн, пронзающий небеса",
     "englishTitle": "Tengen Toppa Gurren Lagann",
     "originalTitle": "天元突破グレンラガン",
     "slug": "tengen-toppa-gurren-lagann",
     "description": "Сотни лет люди живут в глубоких пещерах, в постоянном страхе перед землетрясениями и обвалами. В одной из таких подземных деревень живет мальчик Симон и его духовный наставник — бунтарь Камина. Камина верит, что наверху есть другой мир, без стен и потолков, и мечтает выбраться туда.\r\nЖизнь в деревне меняется навсегда, когда Симон находит странный сверлящий ключ и маленького робота. В этот же момент потолок пещеры рушится, и на деревню падает гигантский робот — Ганмен. Вместе с появившейся с поверхности девушкой Йоко, Камина и Симон дают отпор захватчику и выбираются на поверхность, где их ждут бескрайние просторы и бесконечные сражения за свободу человечества.",
-    "poster": "https://shikimori.one/system/animes/original/2001.jpg",
-    "banner": "https://images.alphacoders.com/492/49216.jpg",
+    "poster": "https://shikimori.io/system/animes/original/2001.jpg",
+    "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/2001-q53Gk20J3t8A.jpg",
     "rating": 9.9,
     "votesCount": 45000,
     "year": 2007,
@@ -122,6 +74,7 @@ const BASE_ANIME_DATABASE: Anime[] = [
       "Reanimedia (Легендарная)",
       "AniLibria",
       "Studio Band",
+      "DreamCast",
       "Оригинал (JP)"
     ],
     "episodes": [
@@ -130,58 +83,89 @@ const BASE_ANIME_DATABASE: Anime[] = [
         "number": 1,
         "title": "Твоим буром пронзи небеса!",
         "duration": 1440,
-        "videoUrl": "https://cache.libria.fun/videos/media/ts/9600/1/720/70c1078491b5d9ada9d72f4b558d36ef.m3u8",
+        "videoUrl": "https://cache.libria.fun/videos/media/ts/2001/1/720/19f3967208f4be19910f319fdcf1a2f0.m3u8",
+        "voiceoverUrls": {
+          "Reanimedia (Легендарная)": "https://cache.libria.fun/videos/media/ts/2001/1/720/19f3967208f4be19910f319fdcf1a2f0.m3u8",
+          "AniLibria": "https://cache.libria.fun/videos/media/ts/2001/1/720/19f3967208f4be19910f319fdcf1a2f0.m3u8",
+          "Studio Band": "https://cache.libria.fun/videos/media/ts/2001/1/720/19f3967208f4be19910f319fdcf1a2f0.m3u8",
+          "DreamCast": "https://cache.libria.fun/videos/media/ts/2001/1/720/19f3967208f4be19910f319fdcf1a2f0.m3u8"
+        },
         "thumbnail": "https://shikimori.one/system/animes/original/2001.jpg",
         "introStart": 100,
         "introEnd": 190,
+        "outroStart": 1350
+      },
+      {
+        "id": "gl-ep-2",
+        "number": 2,
+        "title": "Я сказал, что поеду на этом!",
+        "duration": 1440,
+        "videoUrl": "https://cache.libria.fun/videos/media/ts/2001/2/720/386687445422896f60032c5780a846c9.m3u8",
+        "voiceoverUrls": {
+          "Reanimedia (Легендарная)": "https://cache.libria.fun/videos/media/ts/2001/2/720/386687445422896f60032c5780a846c9.m3u8",
+          "AniLibria": "https://cache.libria.fun/videos/media/ts/2001/2/720/386687445422896f60032c5780a846c9.m3u8",
+          "Studio Band": "https://cache.libria.fun/videos/media/ts/2001/2/720/386687445422896f60032c5780a846c9.m3u8",
+          "DreamCast": "https://cache.libria.fun/videos/media/ts/2001/2/720/386687445422896f60032c5780a846c9.m3u8"
+        },
+        "thumbnail": "https://shikimori.one/system/animes/original/2001.jpg",
+        "introStart": 120,
+        "introEnd": 210,
         "outroStart": 1350
       }
     ]
   },
   {
-    "id": "9542",
-    "title": "Провожающая в последний путь Фрирен",
-    "englishTitle": "Sousou no Frieren",
-    "originalTitle": "葬送のフリーレン",
-    "slug": "sousou-no-frieren",
-    "description": "Эльфийка Фрирен и её отважные товарищи победили Короля Демонов и вернули мир на землю. Но для эльфов время течёт иначе. Спустя десятилетия Фрирен видит, как её друзья стареют и уходят в мир иной. Осознав хрупкость человеческой жизни, она отправляется в новое путешествие, чтобы лучше понять людей и почтить память тех, кого она любила. Это история о жизни, смерти, памяти и о том, что даже после конца великого приключения жизнь продолжается.",
-    "poster": "https://shikimori.one/system/animes/original/52991.jpg",
-    "banner": "https://images.alphacoders.com/133/1331006.png",
-    "rating": 9.9,
-    "votesCount": 85000,
-    "year": 2023,
-    "season": "Осень",
-    "type": "ТВ",
+    "id": "gurren-lagann-movie-2",
+    "title": "Гуррен-Лаганн, Фильм 2: Огненные лучи",
+    "englishTitle": "Tengen Toppa Gurren Lagann Movie 2: Lagann-hen",
+    "originalTitle": "劇場版 天元突破グレンラガン 螺巌篇",
+    "slug": "gurren-lagann-movie-2",
+    "description": "Второй полнометражный анимационный фильм, завершающий эпическую сагу «Гуррен-Лаганн». Человечество вышло на поверхность и дало бой силам Антиспиральщиков. Симон и выжившие товарищи ведут отчаянную борьбу за судьбу всей Вселенной. Фильм включает полностью перерисованные ключевые сражения, расширенный финал и грандиозную финальную битву в масштабах галактик с появлением Супер Тенген Топпа Гуррен-Лаганна.",
+    "poster": "https://shikimori.io/system/animes/original/4565.jpg",
+    "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/4565-xLhB8Lh0808J.jpg",
+    "rating": 9.8,
+    "votesCount": 28000,
+    "year": 2009,
+    "season": "Весна",
+    "type": "Фильм",
     "status": "Завершён",
     "genres": [
+      "Экшен",
+      "Меха",
       "Приключения",
-      "Фэнтези",
-      "Драма"
+      "Фантастика"
     ],
-    "episodesCount": 28,
-    "currentEpisodes": 28,
-    "durationPerEp": "24 мин.",
-    "studio": "Madhouse",
+    "episodesCount": 1,
+    "currentEpisodes": 1,
+    "durationPerEp": "115 мин.",
+    "studio": "Gainax",
     "ageRating": "16+",
-    "tags": ["Шедевр", "Эльфы", "Магия", "Путешествие", "AniLibria"],
+    "tags": ["Фильм", "Меха", "Шедевр", "Эпик", "Космос"],
     "characters": [],
     "voiceovers": [
+      "Reanimedia (Легендарная)",
       "AniLibria",
-      "DreamCast",
       "Studio Band",
+      "DreamCast",
       "Оригинал (JP)"
     ],
     "episodes": [
       {
-        "id": "frieren-ep-1",
+        "id": "gl-movie-2-ep-1",
         "number": 1,
-        "title": "Конец приключения",
-        "duration": 1440,
-        "videoUrl": "https://cache.libria.fun/videos/media/ts/9542/1/720/38e4a9403daeef201de9b0a9a096820c.m3u8",
-        "thumbnail": "https://shikimori.one/system/animes/original/52991.jpg",
-        "introStart": 0,
-        "introEnd": 0,
-        "outroStart": 1330
+        "title": "Фильм 2: Огненные лучи (Lagann-hen)",
+        "duration": 6900,
+        "videoUrl": "https://cache.libria.fun/videos/media/ts/2001/27/720/5a58d36874c1d918ee35369d244dadb9.m3u8",
+        "voiceoverUrls": {
+          "Reanimedia (Легендарная)": "https://cache.libria.fun/videos/media/ts/2001/27/720/5a58d36874c1d918ee35369d244dadb9.m3u8",
+          "AniLibria": "https://cache.libria.fun/videos/media/ts/2001/27/720/5a58d36874c1d918ee35369d244dadb9.m3u8",
+          "Studio Band": "https://cache.libria.fun/videos/media/ts/2001/27/720/5a58d36874c1d918ee35369d244dadb9.m3u8",
+          "DreamCast": "https://cache.libria.fun/videos/media/ts/2001/27/720/5a58d36874c1d918ee35369d244dadb9.m3u8"
+        },
+        "thumbnail": "https://shikimori.io/system/animes/original/4565.jpg",
+        "introStart": 300,
+        "introEnd": 450,
+        "outroStart": 6700
       }
     ]
   },
@@ -3245,7 +3229,7 @@ const BASE_ANIME_DATABASE: Anime[] = [
     "slug": "chainsaw-man",
     "description": "Дэндзи — простой подросток, который живёт с демоном-бензопилой по имени Почита. Из-за долгов, оставшихся после смерти отца, он вынужден влачить нищенское существование, подрабатывая охотником на демонов. В один прекрасный день Дэндзи предают и убивают. Умирая, он заключает контракт с Почитой и возрождается как «Человек-бензопила» — обладатель дьявольского сердца.",
     "poster": "https://shikimori.io/system/animes/original/44511.jpg",
-    "banner": "https://images.alphacoders.com/128/1283311.jpg",
+    "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/127230-h2xwgeF716Qn.jpg",
     "rating": 8.7,
     "votesCount": 45123,
     "year": 2022,

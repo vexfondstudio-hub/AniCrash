@@ -32,7 +32,7 @@ export function getOptimizedAnimeImageUrl(url: string | undefined | null): strin
 
 // Fallback anime poster pool if a URL completely fails to load (all genuine ultra-HD anime posters)
 export const ANIME_FALLBACK_IMAGES: Record<string, string> = {
-  default: 'https://shikimori.io/system/animes/original/52991.jpg', // Frieren (Ultra HD)
+  default: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1920' height='1080' viewBox='0 0 1920 1080'%3E%3Crect width='1920' height='1080' fill='%231a1a1a'/%3E%3C/svg%3E", // Neutral generic fallback
   sololeveling: 'https://anilibria.top/storage/releases/posters/9600/1RwzksvrU3kCWOcWELGVuMYINrwtM6pA.jpg',
   jujutsu: 'https://shikimori.io/system/animes/original/40748.jpg',
   cyberpunk: 'https://shikimori.io/system/animes/original/42310.jpg',
