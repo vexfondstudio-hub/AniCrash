@@ -119,6 +119,33 @@ export const AnimeDetailModal: React.FC<AnimeDetailModalProps> = ({
   const [newCommentText, setNewCommentText] = useState('');
   const [newCommentRating, setNewCommentRating] = useState(10);
   const [newCommentAuthor, setNewCommentAuthor] = useState(currentUser?.username || '');
+  const [visibleCount, setVisibleCount] = useState(50);
+
+  // Logic to show ALL episodes if it's a long series like One Piece
+  const allEpisodes = useMemo(() => {
+    const eps = [...anime.episodes];
+    if (eps.length < anime.episodesCount) {
+      const existingNumbers = new Set(eps.map((e) => e.number));
+      for (let i = 1; i <= anime.episodesCount; i++) {
+        if (!existingNumbers.has(i)) {
+          eps.push({
+            id: `${anime.id}-ep-${i}`,
+            number: i,
+            title: `Серия ${i}`,
+            duration: 1440,
+            videoUrl: anime.episodes[0]?.videoUrl || '',
+            thumbnail: anime.episodes[0]?.thumbnail || anime.poster,
+            hls_1080: anime.episodes[0]?.hls_1080,
+            hls_720: anime.episodes[0]?.hls_720,
+            hls_480: anime.episodes[0]?.hls_480,
+          });
+        }
+      }
+    }
+    return eps.sort((a, b) => a.number - b.number);
+  }, [anime]);
+
+  const visibleEpisodes = allEpisodes.slice(0, visibleCount);
 
   useEffect(() => {
     setComments(getCommentsForAnime(anime.id));
@@ -406,94 +433,60 @@ export const AnimeDetailModal: React.FC<AnimeDetailModalProps> = ({
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-96 overflow-y-auto pr-1 scrollbar-none">
-                {(() => {
-                  const [visibleCount, setVisibleCount] = useState(50);
-                  
-                  // Logic to show ALL episodes if it's a long series like One Piece
-                  const allEpisodes = useMemo(() => {
-                    const eps = [...anime.episodes];
-                    if (eps.length < anime.episodesCount) {
-                      const existingNumbers = new Set(eps.map(e => e.number));
-                      for (let i = 1; i <= anime.episodesCount; i++) {
-                        if (!existingNumbers.has(i)) {
-                          eps.push({
-                            id: `${anime.id}-ep-${i}`,
-                            number: i,
-                            title: `Серия ${i}`,
-                            duration: 1440,
-                            videoUrl: anime.episodes[0]?.videoUrl || '',
-                            thumbnail: anime.episodes[0]?.thumbnail || anime.poster,
-                            hls_1080: anime.episodes[0]?.hls_1080,
-                            hls_720: anime.episodes[0]?.hls_720,
-                            hls_480: anime.episodes[0]?.hls_480,
-                          });
-                        }
-                      }
-                    }
-                    return eps.sort((a, b) => b.number - a.number);
-                  }, [anime]);
-
-                  const visibleEpisodes = allEpisodes.slice(0, visibleCount);
-
+                {visibleEpisodes.map((ep) => {
+                  const isCurrent = progress?.episodeNumber === ep.number;
                   return (
-                    <>
-                      {visibleEpisodes.map((ep) => {
-                        const isCurrent = progress?.episodeNumber === ep.number;
-                        return (
-                          <div
-                            key={ep.id}
-                            onClick={() => onPlayEpisode(anime, ep.number)}
-                            className={`p-3 rounded-2xl border transition-all cursor-pointer flex items-center gap-3 group ${
-                              isCurrent
-                                ? 'bg-rose-500/10 border-rose-500/50 hover:bg-rose-500/20'
-                                : 'bg-zinc-900/60 border-zinc-800/80 hover:bg-zinc-800/80 hover:border-zinc-700'
+                    <div
+                      key={ep.id}
+                      onClick={() => onPlayEpisode(anime, ep.number)}
+                      className={`p-3 rounded-2xl border transition-all cursor-pointer flex items-center gap-3 group ${
+                        isCurrent
+                          ? 'bg-rose-500/10 border-rose-500/50 hover:bg-rose-500/20'
+                          : 'bg-zinc-900/60 border-zinc-800/80 hover:bg-zinc-800/80 hover:border-zinc-700'
+                      }`}
+                    >
+                      <div className="relative w-16 h-12 rounded-xl overflow-hidden bg-zinc-800 shrink-0">
+                        <EnhancedImage
+                          src={ep.thumbnail}
+                          alt={ep.title}
+                          containerClassName="w-full h-full"
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                        />
+                        <div className="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-rose-600/70 transition-colors">
+                          <Play className="w-4 h-4 fill-white text-white" />
+                        </div>
+                      </div>
+
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-center justify-between">
+                          <span
+                            className={`text-xs font-bold ${
+                              isCurrent ? 'text-rose-400' : 'text-zinc-300'
                             }`}
                           >
-                            <div className="relative w-16 h-12 rounded-xl overflow-hidden bg-zinc-800 shrink-0">
-                              <EnhancedImage
-                                src={ep.thumbnail}
-                                alt={ep.title}
-                                containerClassName="w-full h-full"
-                                className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                              />
-                              <div className="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-rose-600/70 transition-colors">
-                                <Play className="w-4 h-4 fill-white text-white" />
-                              </div>
-                            </div>
-
-                            <div className="min-w-0 flex-1">
-                              <div className="flex items-center justify-between">
-                                <span
-                                  className={`text-xs font-bold ${
-                                    isCurrent ? 'text-rose-400' : 'text-zinc-300'
-                                  }`}
-                                >
-                                  Серия {ep.number}
-                                </span>
-                                <span className="text-[11px] text-zinc-500">24 мин.</span>
-                              </div>
-                              <p className="text-sm font-semibold text-white truncate mt-0.5">
-                                {ep.title}
-                              </p>
-                              <p className="text-[11px] text-emerald-400/80">Без рекламы</p>
-                            </div>
-                          </div>
-                        );
-                      })}
-                      {visibleCount < allEpisodes.length && (
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setVisibleCount(prev => prev + 100);
-                          }}
-                          className="col-span-full py-4 text-xs font-bold text-zinc-500 hover:text-white transition-colors uppercase tracking-widest"
-                        >
-                          Показать ещё эпизоды (+100)
-                        </button>
-                      )}
-                    </>
+                            Серия {ep.number}
+                          </span>
+                          <span className="text-[11px] text-zinc-500">24 мин.</span>
+                        </div>
+                        <p className="text-sm font-semibold text-white truncate mt-0.5">
+                          {ep.title}
+                        </p>
+                        <p className="text-[11px] text-emerald-400/80">Без рекламы</p>
+                      </div>
+                    </div>
                   );
-                })()}
+                })}
+                {visibleCount < allEpisodes.length && (
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setVisibleCount((prev) => prev + 100);
+                    }}
+                    className="col-span-full py-4 text-xs font-bold text-zinc-500 hover:text-white transition-colors uppercase tracking-widest"
+                  >
+                    Показать ещё эпизоды (+100)
+                  </button>
+                )}
               </div>
             </div>
           )}

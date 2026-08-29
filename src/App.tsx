@@ -344,22 +344,22 @@ export default function App() {
   // Watch & Play
   const handlePlayAnime = useCallback(async (anime: Anime, episodeNum?: number, resumeTime?: number) => {
     const resolvedAnime = await ensureAnimeEpisodes(anime);
-    setWatchHistory((prev) => {
-      const existingProgress = prev.find((w) => w.animeId === resolvedAnime.id);
-      const targetEpisode = episodeNum || existingProgress?.episodeNumber || 1;
-      const targetTime =
-        resumeTime !== undefined
-          ? resumeTime
-          : existingProgress?.episodeNumber === targetEpisode
-          ? existingProgress.currentTime
-          : 0;
+    
+    // Calculate target episode and time
+    const existingProgress = watchHistory.find((w) => w.animeId === resolvedAnime.id);
+    const targetEpisode = episodeNum || existingProgress?.episodeNumber || 1;
+    const targetTime =
+      resumeTime !== undefined
+        ? resumeTime
+        : existingProgress?.episodeNumber === targetEpisode
+        ? existingProgress.currentTime
+        : 0;
 
-      setActivePlayingAnime(resolvedAnime);
-      setActiveEpisodeNumber(targetEpisode);
-      setActiveResumeTime(targetTime);
-      return prev;
-    });
-  }, []);
+    // Set player state
+    setActivePlayingAnime(resolvedAnime);
+    setActiveEpisodeNumber(targetEpisode);
+    setActiveResumeTime(targetTime);
+  }, [watchHistory]);
 
   const handleProgressUpdate = useCallback((progress: WatchProgress) => {
     setWatchHistory((prev) => {
