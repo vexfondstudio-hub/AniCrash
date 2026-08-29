@@ -32,6 +32,7 @@ import {
   WatchProgress,
 } from '../types';
 import { QUICK_REACTIONS, AURA_PRESETS } from '../data/profilePresets';
+import { supabase } from '../lib/supabase';
 import { Icons8Icon } from './Icons8Icon';
 import { EnhancedImage } from './EnhancedImage';
 
@@ -91,7 +92,11 @@ export const WatchPartyView: React.FC<WatchPartyViewProps> = ({
   const [syncStatusNotice, setSyncStatusNotice] = useState<string>('');
 
   // Cross-tab synchronization via BroadcastChannel
-  const channelRef = useRef<BroadcastChannel | null>(null);
+  const channelRef = useRef<any | null>(null);
+  const latestRoomRef = useRef<WatchPartyRoom | null>(null);
+  useEffect(() => {
+    latestRoomRef.current = currentRoom;
+  }, [currentRoom]);
   const chatBottomRef = useRef<HTMLDivElement | null>(null);
 
   // Current anime & episode in room
@@ -109,22 +114,21 @@ export const WatchPartyView: React.FC<WatchPartyViewProps> = ({
     );
   }, [activeAnime, currentRoom]);
 
-  // Setup BroadcastChannel for real multi-tab room synchronization
+  // Setup Supabase Realtime channel for global sync
   useEffect(() => {
     if (!currentRoom) {
       if (channelRef.current) {
-        channelRef.current.close();
+        supabase.removeChannel(channelRef.current);
         channelRef.current = null;
       }
       return;
     }
 
     try {
-      const channel = new BroadcastChannel(`anicrash_watchparty_${currentRoom.id}`);
+      const channel = supabase.channel(`watchparty_${currentRoom.id}`);
       channelRef.current = channel;
 
-      channel.onmessage = (event) => {
-        const data = event.data;
+      channel.on('broadcast', { event: 'room_event' }, ({ payload: data }) => {
         if (!data || !data.type) return;
 
         switch (data.type) {
@@ -151,20 +155,16 @@ export const WatchPartyView: React.FC<WatchPartyViewProps> = ({
           case 'SEEK':
             if (videoRef.current) {
               videoRef.current.currentTime = data.time;
-              setCurrentTime(data.time);
             }
-            setSyncStatusNotice(`${data.senderName} перемотал на ${formatTime(data.time)}`);
-            break;
-
-          case 'EPISODE_CHANGE':
-            setCurrentRoom((prev) =>
-              prev ? { ...prev, episodeNumber: data.episodeNumber, currentTime: 0 } : null
-            );
-            setSyncStatusNotice(`Переключено на серию ${data.episodeNumber}`);
+            setSyncStatusNotice(`${data.senderName} перемотал видео`);
             break;
 
           case 'CHAT':
-            setMessages((prev) => [...prev, data.message]);
+            setMessages((prev) => {
+              const exists = prev.find((m) => m.id === data.message.id);
+              if (exists) return prev;
+              return [...prev, data.message];
+            });
             break;
 
           case 'REACTION':
@@ -172,136 +172,71 @@ export const WatchPartyView: React.FC<WatchPartyViewProps> = ({
             break;
 
           case 'JOIN':
-            if (data.member && data.member.id !== currentUser.username) {
-              setCurrentRoom((prev) => {
-                if (!prev) return null;
-                const exists = prev.members.some((m) => m.id === data.member.id);
-                if (exists) return prev;
-                return {
-                  ...prev,
-                  members: [
-                    ...prev.members,
-                    {
-                      id: data.member.id,
-                      name: data.member.name,
-                      avatar: data.member.avatar,
-                      aura: data.member.aura || 'none',
-                      isHost: false,
-                      isPlaying: false,
-                      currentTime: 0,
-                      lastPing: Date.now(),
-                      status: 'ready',
-                    },
-                  ],
-                };
-              });
-
-              setMessages((prev) => [
-                ...prev,
-                {
-                  id: `sys-${Date.now()}`,
-                  senderId: 'system',
-                  senderName: 'Система',
-                  senderAvatar: '',
-                  text: `${data.member.name} подключился к просмотру!`,
-                  timestamp: Date.now(),
-                  isSystem: true,
-                },
-              ]);
-
-              // Respond with our presence
-              channel.postMessage({
-                type: 'PRESENCE_SYNC',
-                member: {
-                  id: currentUser.username,
-                  name: currentUser.username,
-                  avatar: currentUser.avatar,
-                  aura: currentUser.aura,
-                  isHost: currentRoom.hostId === currentUser.username,
-                },
-              });
+            setSyncStatusNotice(`${data.senderName} присоединился к просмотру`);
+            
+            // Auto-sync for the new user if we are the host
+            if (latestRoomRef.current && latestRoomRef.current.hostId === currentUser.username) {
+               const r = latestRoomRef.current;
+               setTimeout(() => {
+                 channelRef.current?.send({
+                   type: 'broadcast',
+                   event: 'room_event',
+                   payload: {
+                     type: 'EPISODE_CHANGE',
+                     animeId: r.animeId,
+                     episodeNum: r.episodeNumber,
+                     senderName: 'Авто-синхронизация'
+                   }
+                 });
+                 
+                 setTimeout(() => {
+                   if (videoRef.current) {
+                     channelRef.current?.send({
+                       type: 'broadcast',
+                       event: 'room_event',
+                       payload: {
+                         type: videoRef.current.paused ? 'PAUSE' : 'PLAY',
+                         time: videoRef.current.currentTime,
+                         senderName: 'Авто-синхронизация'
+                       }
+                     });
+                   }
+                 }, 500);
+               }, 1000);
             }
             break;
-
-          case 'PRESENCE_SYNC':
-            if (data.member && data.member.id !== currentUser.username) {
-              setCurrentRoom((prev) => {
-                if (!prev) return null;
-                const exists = prev.members.some((m) => m.id === data.member.id);
-                if (exists) return prev;
-                return {
-                  ...prev,
-                  members: [
-                    ...prev.members,
-                    {
-                      id: data.member.id,
-                      name: data.member.name,
-                      avatar: data.member.avatar,
-                      aura: data.member.aura || 'none',
-                      isHost: !!data.member.isHost,
-                      isPlaying: false,
-                      currentTime: 0,
-                      lastPing: Date.now(),
-                      status: 'ready',
-                    },
-                  ],
-                };
-              });
-            }
-            break;
-
-          case 'LEAVE':
-            if (data.memberId) {
-              setCurrentRoom((prev) => {
-                if (!prev) return null;
-                return {
-                  ...prev,
-                  members: prev.members.filter((m) => m.id !== data.memberId),
-                };
-              });
-              setMessages((prev) => [
-                ...prev,
-                {
-                  id: `sys-leave-${Date.now()}`,
-                  senderId: 'system',
-                  senderName: 'Система',
-                  senderAvatar: '',
-                  text: `${data.memberName || 'Участник'} покинул комнату`,
-                  timestamp: Date.now(),
-                  isSystem: true,
-                },
-              ]);
-            }
+            
+          case 'EPISODE_CHANGE':
+            setCurrentRoom(prev => prev ? {
+               ...prev,
+               animeId: data.animeId,
+               episodeNumber: data.episodeNum
+            } : null);
+            setSyncStatusNotice(`${data.senderName} переключил серию`);
             break;
         }
-      };
-
-      // Notify others in this room that we joined
-      channel.postMessage({
-        type: 'JOIN',
-        member: {
-          id: currentUser.username,
-          name: currentUser.username,
-          avatar: currentUser.avatar,
-          aura: currentUser.aura,
-        },
+      }).subscribe((status) => {
+         if (status === 'SUBSCRIBED') {
+            // Send join event
+            channel.send({
+              type: 'broadcast',
+              event: 'room_event',
+              payload: {
+                type: 'JOIN',
+                senderName: currentUser.username,
+                senderAvatar: currentUser.avatar,
+                senderAura: currentUser.aura
+              }
+            });
+         }
       });
 
       return () => {
-        try {
-          channel.postMessage({
-            type: 'LEAVE',
-            memberId: currentUser.username,
-            memberName: currentUser.username,
-          });
-          channel.close();
-        } catch (e) {
-          console.error(e);
-        }
+        supabase.removeChannel(channel);
         channelRef.current = null;
       };
     } catch (e) {
-      console.warn('BroadcastChannel not supported in this environment', e);
+      console.warn('Realtime channel error', e);
     }
   }, [currentRoom?.id, currentUser.username, currentUser.avatar, currentUser.aura]);
 
@@ -346,11 +281,15 @@ export const WatchPartyView: React.FC<WatchPartyViewProps> = ({
   const handleSendReaction = (emoji: string) => {
     triggerReaction(emoji, currentUser.username);
     if (channelRef.current) {
-      channelRef.current.postMessage({
+      channelRef.current.send({
+      type: 'broadcast',
+      event: 'room_event',
+      payload: {
         type: 'REACTION',
         emoji,
         senderName: currentUser.username,
-      });
+      }
+    });
     }
   };
 
@@ -373,10 +312,14 @@ export const WatchPartyView: React.FC<WatchPartyViewProps> = ({
     setChatInput('');
 
     if (channelRef.current) {
-      channelRef.current.postMessage({
+      channelRef.current.send({
+      type: 'broadcast',
+      event: 'room_event',
+      payload: {
         type: 'CHAT',
         message: newMsg,
-      });
+      }
+    });
     }
   };
 
@@ -477,21 +420,29 @@ export const WatchPartyView: React.FC<WatchPartyViewProps> = ({
       videoRef.current.pause();
       setIsPlaying(false);
       if (channelRef.current) {
-        channelRef.current.postMessage({
-          type: 'PAUSE',
-          time: videoRef.current.currentTime,
-          senderName: currentUser.username,
-        });
+        channelRef.current.send({
+      type: 'broadcast',
+      event: 'room_event',
+      payload: {
+        type: 'PAUSE',
+        time: videoRef.current.currentTime,
+        senderName: currentUser.username,
+      }
+    });
       }
     } else {
       videoRef.current.play().catch(() => {});
       setIsPlaying(true);
       if (channelRef.current) {
-        channelRef.current.postMessage({
-          type: 'PLAY',
-          time: videoRef.current.currentTime,
-          senderName: currentUser.username,
-        });
+        channelRef.current.send({
+      type: 'broadcast',
+      event: 'room_event',
+      payload: {
+        type: 'PLAY',
+        time: videoRef.current.currentTime,
+        senderName: currentUser.username,
+      }
+    });
       }
     }
   };
@@ -503,11 +454,15 @@ export const WatchPartyView: React.FC<WatchPartyViewProps> = ({
       videoRef.current.currentTime = target;
       setCurrentTime(target);
       if (channelRef.current) {
-        channelRef.current.postMessage({
+        channelRef.current.send({
+      type: 'broadcast',
+      event: 'room_event',
+      payload: {
           type: 'SEEK',
           time: target,
           senderName: currentUser.username,
-        });
+        }
+      });
       }
     }
   };
@@ -517,11 +472,16 @@ export const WatchPartyView: React.FC<WatchPartyViewProps> = ({
     if (!currentRoom) return;
     setCurrentRoom((prev) => (prev ? { ...prev, episodeNumber: epNum, currentTime: 0 } : null));
     if (channelRef.current) {
-      channelRef.current.postMessage({
+      channelRef.current.send({
+      type: 'broadcast',
+      event: 'room_event',
+      payload: {
         type: 'EPISODE_CHANGE',
-        episodeNumber: epNum,
+        animeId: currentRoom.animeId,
+        episodeNum: epNum,
         senderName: currentUser.username,
-      });
+      }
+    });
     }
   };
 
@@ -535,11 +495,29 @@ export const WatchPartyView: React.FC<WatchPartyViewProps> = ({
 
   // Force sync everyone (Host action)
   const handleForceSync = () => {
-    if (!videoRef.current || !channelRef.current) return;
-    channelRef.current.postMessage({
-      type: 'SEEK',
-      time: videoRef.current.currentTime,
-      senderName: `${currentUser.username} (Хост)`,
+    if (!videoRef.current || !channelRef.current || !currentRoom) return;
+    
+    // Send episode state first
+    channelRef.current.send({
+      type: 'broadcast',
+      event: 'room_event',
+      payload: {
+        type: 'EPISODE_CHANGE',
+        animeId: currentRoom.animeId,
+        episodeNum: currentRoom.episodeNumber,
+        senderName: `${currentUser.username} (Хост)`,
+      }
+    });
+    
+    // Then time state
+    channelRef.current.send({
+      type: 'broadcast',
+      event: 'room_event',
+      payload: {
+        type: 'SEEK',
+        time: videoRef.current.currentTime,
+        senderName: `${currentUser.username} (Хост)`,
+      }
     });
     setSyncStatusNotice('Синхронизация отправлена всем участникам!');
   };
