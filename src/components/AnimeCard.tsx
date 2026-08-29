@@ -1,6 +1,7 @@
 import React from 'react';
 import { Play, Star, Bookmark, Check, Clock } from 'lucide-react';
 import { Anime, WatchProgress } from '../types';
+import { EnhancedImage } from './EnhancedImage';
 
 interface AnimeCardProps {
   anime: Anime;
@@ -38,10 +39,12 @@ export const AnimeCard: React.FC<AnimeCardProps> = React.memo(({
     >
       {/* Poster Image Container */}
       <div className="relative aspect-[3/4] w-full overflow-hidden bg-zinc-950">
-        <img
+        <EnhancedImage
           src={anime.poster}
           alt={anime.title}
           loading="lazy"
+          enhanceLevel="ultra"
+          containerClassName="h-full w-full"
           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
 

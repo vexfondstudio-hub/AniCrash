@@ -1,0 +1,8 @@
+{
+  "name": "AniCrash - Аниме Онлайн Без Рекламы",
+  "description": "Онлайн просмотр аниме в высоком разрешении без рекламы с автоматическим улучшением качества фото и постеров, совместным просмотром и профилями.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

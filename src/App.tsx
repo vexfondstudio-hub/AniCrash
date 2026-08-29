@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import {
   Play,
   BadgeCheck,
@@ -12,6 +12,11 @@ import {
   Cpu,
   Eye,
   Coffee,
+  Compass,
+  Sparkles,
+  Smile,
+  Flame,
+  Film,
   History as HistoryIcon,
 } from 'lucide-react';
 import {
@@ -39,6 +44,7 @@ import { ProfileView } from './components/ProfileView';
 import { QuickSearchModal } from './components/QuickSearchModal';
 import { AuthModal } from './components/AuthModal';
 import { Footer } from './components/Footer';
+import { EnhancedImage } from './components/EnhancedImage';
 import {
   getCurrentUserAccount,
   logoutUserAccount,
@@ -93,16 +99,16 @@ export default function App() {
   });
 
   // Handle profile updates
-  const handleUpdateProfile = (updated: UserProfile) => {
+  const handleUpdateProfile = useCallback((updated: UserProfile) => {
     setUserProfile(updated);
     if (currentAccount) {
       saveAccountProfile(currentAccount.id, updated);
       const refreshed = getCurrentUserAccount();
       if (refreshed) setCurrentAccount(refreshed);
     }
-  };
+  }, [currentAccount]);
 
-  const handleLoginSuccess = (account: UserAccount) => {
+  const handleLoginSuccess = useCallback((account: UserAccount) => {
     setCurrentAccount(account);
     setUserProfile(account.profile);
 
@@ -121,18 +127,18 @@ export default function App() {
     }
 
     setAuthModalOpen(false);
-  };
+  }, [favorites, watchHistory]);
 
-  const handleLogout = () => {
+  const handleLogout = useCallback(() => {
     logoutUserAccount();
     setCurrentAccount(null);
     setUserProfile(DEFAULT_PROFILE);
-  };
+  }, []);
 
-  const handleOpenAuth = (mode: 'login' | 'register' = 'register') => {
+  const handleOpenAuth = useCallback((mode: 'login' | 'register' = 'register') => {
     setAuthModalInitialMode(mode);
     setAuthModalOpen(true);
-  };
+  }, []);
 
   // Save to localStorage and sync with logged-in user account
   useEffect(() => {
@@ -255,72 +261,122 @@ export default function App() {
     });
   }, [searchQuery, selectedGenre, selectedStatus, selectedType, selectedSort]);
 
+  // Real dynamic genre counts calculation from the anime database
+  const genreShowcaseItems = useMemo(() => {
+    const formatTitlesCount = (count: number): string => {
+      const mod10 = count % 10;
+      const mod100 = count % 100;
+      if (mod100 >= 11 && mod100 <= 19) {
+        return `${count} тайтлов`;
+      }
+      if (mod10 === 1) {
+        return `${count} тайтл`;
+      }
+      if (mod10 >= 2 && mod10 <= 4) {
+        return `${count} тайтла`;
+      }
+      return `${count} тайтлов`;
+    };
+
+    const genresConfig = [
+      { name: 'Экшен', icon: Swords },
+      { name: 'Сёнен', icon: Zap },
+      { name: 'Фэнтези', icon: Wand2 },
+      { name: 'Приключения', icon: Compass },
+      { name: 'Драма', icon: Sparkles },
+      { name: 'Комедия', icon: Smile },
+      { name: 'Фантастика', icon: Cpu },
+      { name: 'Сверхъестественное', icon: Flame },
+      { name: 'Киберпанк', icon: Film },
+      { name: 'Триллер', icon: Eye },
+      { name: 'Романтика', icon: Coffee },
+    ];
+
+    return genresConfig
+      .map((item) => {
+        const realCount = ANIME_DATABASE.filter((a) =>
+          a.genres?.some((g) => g.toLowerCase() === item.name.toLowerCase())
+        ).length;
+
+        return {
+          name: item.name,
+          count: formatTitlesCount(realCount),
+          realCount,
+          icon: item.icon,
+        };
+      })
+      .filter((item) => item.realCount > 0)
+      .slice(0, 6);
+  }, []);
+
   // Favorite helpers
-  const isFavorite = (animeId: string) => {
+  const isFavorite = useCallback((animeId: string) => {
     return favorites.some((f) => f.animeId === animeId);
-  };
+  }, [favorites]);
 
-  const getWatchlistStatus = (animeId: string) => {
+  const getWatchlistStatus = useCallback((animeId: string) => {
     return favorites.find((f) => f.animeId === animeId)?.status;
-  };
+  }, [favorites]);
 
-  const handleToggleFavorite = (anime: Anime, e?: React.MouseEvent) => {
+  const handleToggleFavorite = useCallback((anime: Anime, e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
-    if (isFavorite(anime.id)) {
-      setFavorites((prev) => prev.filter((f) => f.animeId !== anime.id));
-    } else {
-      setFavorites((prev) => [
-        ...prev,
-        { animeId: anime.id, status: 'favorites', addedAt: Date.now() },
-      ]);
-    }
-  };
+    setFavorites((prev) => {
+      const exists = prev.some((f) => f.animeId === anime.id);
+      if (exists) {
+        return prev.filter((f) => f.animeId !== anime.id);
+      }
+      return [...prev, { animeId: anime.id, status: 'favorites', addedAt: Date.now() }];
+    });
+  }, []);
 
-  const handleUpdateWatchlist = (animeId: string, status: WatchlistStatus) => {
+  const handleUpdateWatchlist = useCallback((animeId: string, status: WatchlistStatus) => {
     setFavorites((prev) => {
       const existing = prev.filter((f) => f.animeId !== animeId);
       return [...existing, { animeId, status, addedAt: Date.now() }];
     });
-  };
+  }, []);
 
-  const handleRemoveFavorite = (animeId: string) => {
+  const handleRemoveFavorite = useCallback((animeId: string) => {
     setFavorites((prev) => prev.filter((f) => f.animeId !== animeId));
-  };
+  }, []);
 
   // Watch & Play
-  const handlePlayAnime = (anime: Anime, episodeNum?: number, resumeTime?: number) => {
-    const existingProgress = watchHistory.find((w) => w.animeId === anime.id);
-    const targetEpisode = episodeNum || existingProgress?.episodeNumber || 1;
-    const targetTime =
-      resumeTime !== undefined
-        ? resumeTime
-        : existingProgress?.episodeNumber === targetEpisode
-        ? existingProgress.currentTime
-        : 0;
+  const handlePlayAnime = useCallback((anime: Anime, episodeNum?: number, resumeTime?: number) => {
+    setWatchHistory((prev) => {
+      const existingProgress = prev.find((w) => w.animeId === anime.id);
+      const targetEpisode = episodeNum || existingProgress?.episodeNumber || 1;
+      const targetTime =
+        resumeTime !== undefined
+          ? resumeTime
+          : existingProgress?.episodeNumber === targetEpisode
+          ? existingProgress.currentTime
+          : 0;
 
-    setActivePlayingAnime(anime);
-    setActiveEpisodeNumber(targetEpisode);
-    setActiveResumeTime(targetTime);
-  };
+      setActivePlayingAnime(anime);
+      setActiveEpisodeNumber(targetEpisode);
+      setActiveResumeTime(targetTime);
+      return prev;
+    });
+  }, []);
 
-  const handleProgressUpdate = (progress: WatchProgress) => {
+  const handleProgressUpdate = useCallback((progress: WatchProgress) => {
     setWatchHistory((prev) => {
       const filtered = prev.filter((w) => w.animeId !== progress.animeId);
       return [progress, ...filtered];
     });
-  };
+  }, []);
 
-  const handleClearHistory = () => {
+  const handleClearHistory = useCallback(() => {
     setWatchHistory([]);
-  };
+  }, []);
 
-  const handleStartWatchParty = (anime: Anime, episodeNum: number = 1) => {
+  const handleStartWatchParty = useCallback((anime: Anime, episodeNum: number = 1) => {
     setActivePlayingAnime(null);
     setSelectedAnimeModal(null);
     setWatchPartyTarget({ animeId: anime.id, episode: episodeNum });
     setCurrentView('watch-party');
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  }, []);
 
   // Hotkey for search (Ctrl+K)
   useEffect(() => {
@@ -447,9 +503,11 @@ export default function App() {
                         className="p-2.5 sm:p-3 rounded-2xl bg-zinc-900/60 border border-zinc-800/80 hover:border-rose-500/40 transition-all flex items-center gap-3 cursor-pointer group"
                       >
                         <div className="relative w-20 sm:w-24 h-14 sm:h-16 rounded-xl overflow-hidden bg-zinc-950 shrink-0">
-                          <img
+                          <EnhancedImage
                             src={anime.poster}
                             alt={anime.title}
+                            enhanceLevel="standard"
+                            containerClassName="w-full h-full"
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform"
                           />
                           <div className="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-rose-600/70 transition-colors">
@@ -553,14 +611,7 @@ export default function App() {
               </div>
 
               <div className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2.5 sm:gap-3">
-                {[
-                  { name: 'Экшен', count: '10+ тайтлов', icon: Swords },
-                  { name: 'Сёнен', count: '8 тайтлов', icon: Zap },
-                  { name: 'Фэнтези', count: '8 тайтлов', icon: Wand2 },
-                  { name: 'Киберпанк', count: '4 тайтла', icon: Cpu },
-                  { name: 'Триллер', count: '5 тайтлов', icon: Eye },
-                  { name: 'Романтика', count: '4 тайтла', icon: Coffee },
-                ].map((item) => {
+                {genreShowcaseItems.map((item) => {
                   const Icon = item.icon;
                   return (
                     <button
@@ -570,7 +621,7 @@ export default function App() {
                         setCurrentView('catalog');
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                       }}
-                      className="p-3 sm:p-4 rounded-2xl bg-zinc-900/60 hover:bg-zinc-800 border border-zinc-800/80 hover:border-rose-500/50 text-left transition-all group cursor-pointer"
+                      className="p-3 sm:p-4 rounded-2xl bg-zinc-900/60 hover:bg-zinc-800 border border-zinc-800/80 hover:border-rose-500/50 text-left transition-all group cursor-pointer active:scale-98 select-none"
                     >
                       <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-zinc-800/90 group-hover:bg-rose-500/20 border border-zinc-700/50 group-hover:border-rose-500/30 flex items-center justify-center mb-2.5 sm:mb-3 transition-colors">
                         <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-zinc-300 group-hover:text-rose-400 transition-colors" />

@@ -18,6 +18,7 @@ const CustomSelect: React.FC<CustomSelectProps> = React.memo(({ id, label, value
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const selectedOption = options.find((o) => o.value === value) || options[0];
+  const isCustomActive = value !== 'all' && value !== 'popular';
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -33,39 +34,49 @@ const CustomSelect: React.FC<CustomSelectProps> = React.memo(({ id, label, value
     <div className="relative" ref={dropdownRef}>
       <button
         id={id}
+        type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className={`flex items-center gap-2 px-3.5 py-2.5 rounded-xl sm:rounded-2xl bg-zinc-900/60 border transition-all cursor-pointer select-none whitespace-nowrap ${
-          isOpen ? 'border-rose-500 ring-4 ring-rose-500/10' : 'border-zinc-800/80 hover:border-zinc-700'
+        className={`flex items-center gap-2 px-3.5 py-2.5 rounded-xl sm:rounded-2xl border text-xs sm:text-sm font-semibold transition-all cursor-pointer select-none whitespace-nowrap ${
+          isOpen
+            ? 'bg-zinc-900 border-rose-500/60 text-white shadow-lg'
+            : isCustomActive
+            ? 'bg-rose-950/20 border-rose-500/40 text-rose-300 hover:border-rose-500/70'
+            : 'bg-zinc-900/60 border-zinc-800/80 hover:border-zinc-700 text-zinc-300 hover:text-white'
         }`}
       >
         {icon}
-        <span className="text-xs sm:text-sm font-semibold text-zinc-300 group-hover:text-white">
+        <span className={isCustomActive ? 'text-rose-300' : 'text-zinc-300'}>
           {selectedOption.label}
         </span>
-        <ChevronDown className={`w-3.5 h-3.5 text-zinc-500 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
+        <ChevronDown
+          className={`w-3.5 h-3.5 transition-transform duration-200 ${
+            isOpen ? 'rotate-180 text-rose-400' : isCustomActive ? 'text-rose-400' : 'text-zinc-500'
+          }`}
+        />
       </button>
 
       {isOpen && (
-        <div className="absolute left-0 top-full mt-2 w-48 sm:w-56 rounded-2xl bg-zinc-900 border border-zinc-800 shadow-2xl p-1.5 z-50 animate-in fade-in zoom-in duration-200">
-          <div className="px-2.5 py-1.5 mb-1 text-[10px] font-bold uppercase tracking-wider text-zinc-500 border-b border-zinc-800/50">
+        <div className="absolute left-0 top-full mt-2 w-48 sm:w-56 rounded-2xl bg-zinc-950/95 backdrop-blur-xl border border-zinc-800 shadow-2xl p-1.5 z-50 animate-in fade-in zoom-in-95 duration-150">
+          <div className="px-2.5 py-1.5 mb-1 text-[10px] font-bold uppercase tracking-wider text-zinc-500 border-b border-zinc-800/60">
             {label}
           </div>
-          <div className="max-h-64 overflow-y-auto scrollbar-none">
+          <div className="max-h-64 overflow-y-auto scrollbar-none space-y-0.5">
             {options.map((opt) => (
               <button
                 key={opt.value}
+                type="button"
                 onClick={() => {
                   onChange(opt.value);
                   setIsOpen(false);
                 }}
-                className={`w-full px-3 py-2.5 rounded-xl text-left text-xs sm:text-sm font-medium flex items-center justify-between transition-colors cursor-pointer ${
+                className={`w-full px-3 py-2 rounded-xl text-left text-xs sm:text-sm font-medium flex items-center justify-between transition-colors cursor-pointer ${
                   value === opt.value
-                    ? 'bg-rose-600 text-white shadow-lg shadow-rose-600/20'
-                    : 'text-zinc-400 hover:text-white hover:bg-zinc-800'
+                    ? 'bg-rose-600 text-white font-bold shadow-md shadow-rose-600/20'
+                    : 'text-zinc-400 hover:text-white hover:bg-zinc-900'
                 }`}
               >
                 <span>{opt.label}</span>
-                {value === opt.value && <Check className="w-3.5 h-3.5" />}
+                {value === opt.value && <Check className="w-3.5 h-3.5 text-white shrink-0" />}
               </button>
             ))}
           </div>

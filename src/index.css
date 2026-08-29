@@ -4,11 +4,30 @@
   html {
     -webkit-tap-highlight-color: transparent;
     scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   
   body {
     overflow-x: hidden;
     min-height: 100vh;
+  }
+
+  img {
+    content-visibility: auto;
+  }
+
+  .anime-auto-enhanced {
+    content-visibility: auto;
+  }
+
+  @media (min-width: 640px) {
+    .anime-poster-crisp {
+      content-visibility: auto;
+    }
+    .anime-banner-crisp {
+      content-visibility: auto;
+    }
   }
 }
 

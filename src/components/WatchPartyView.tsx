@@ -33,6 +33,7 @@ import {
 } from '../types';
 import { QUICK_REACTIONS, AURA_PRESETS } from '../data/profilePresets';
 import { Icons8Icon } from './Icons8Icon';
+import { EnhancedImage } from './EnhancedImage';
 
 interface WatchPartyViewProps {
   allAnime: Anime[];
@@ -79,6 +80,9 @@ export const WatchPartyView: React.FC<WatchPartyViewProps> = ({
 
   // Video playback
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const lastReportedTimeRef = useRef<number>(0);
+  const onProgressUpdateRef = useRef(onProgressUpdate);
+  onProgressUpdateRef.current = onProgressUpdate;
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [currentTime, setCurrentTime] = useState<number>(0);
   const [duration, setDuration] = useState<number>(0);
@@ -544,11 +548,13 @@ export const WatchPartyView: React.FC<WatchPartyViewProps> = ({
   const handleTimeUpdate = () => {
     if (videoRef.current) {
       setCurrentTime(videoRef.current.currentTime);
-      if (activeAnime && currentRoom) {
-        onProgressUpdate({
+      const cur = Math.floor(videoRef.current.currentTime);
+      if (activeAnime && currentRoom && Math.abs(cur - lastReportedTimeRef.current) >= 3) {
+        lastReportedTimeRef.current = cur;
+        onProgressUpdateRef.current({
           animeId: activeAnime.id,
           episodeNumber: currentRoom.episodeNumber,
-          currentTime: Math.floor(videoRef.current.currentTime),
+          currentTime: cur,
           duration: Math.floor(videoRef.current.duration || 1440),
           completed: videoRef.current.currentTime > (videoRef.current.duration || 1440) * 0.9,
           lastWatchedAt: Date.now(),
@@ -1036,11 +1042,12 @@ export const WatchPartyView: React.FC<WatchPartyViewProps> = ({
                           senderAura.id !== 'none' ? senderAura.className : 'border-zinc-700'
                         }`}
                       >
-                        <img
+                        <EnhancedImage
                           src={msg.senderAvatar || currentUser.avatar}
                           alt={msg.senderName}
+                          enhanceLevel="ultra"
+                          containerClassName="w-full h-full"
                           className="w-full h-full object-cover"
-                          referrerPolicy="no-referrer"
                         />
                       </div>
                       <div
@@ -1102,11 +1109,12 @@ export const WatchPartyView: React.FC<WatchPartyViewProps> = ({
                           aura.id !== 'none' ? aura.className : 'border-zinc-700'
                         }`}
                       >
-                        <img
+                        <EnhancedImage
                           src={member.avatar}
                           alt={member.name}
+                          enhanceLevel="ultra"
+                          containerClassName="w-full h-full"
                           className="w-full h-full object-cover"
-                          referrerPolicy="no-referrer"
                         />
                       </div>
                       <div>

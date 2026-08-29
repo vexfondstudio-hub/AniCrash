@@ -5,8 +5,8 @@ const USERS_STORAGE_KEY = 'anicrash_users_accounts_v2';
 const SESSION_STORAGE_KEY = 'anicrash_current_session_v2';
 
 export function createDefaultProfile(username: string, avatarUrl?: string): UserProfile {
-  const defaultAvatar = avatarUrl || AVATAR_PRESETS[0]?.url || 'https://images.unsplash.com/photo-1578632767115-351597cf2477?w=400&auto=format&fit=crop&q=80';
-  const defaultBanner = BANNER_PRESETS[0]?.url || 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1600&auto=format&fit=crop&q=80';
+  const defaultAvatar = avatarUrl || AVATAR_PRESETS[0]?.url || 'https://shikimori.io/system/animes/original/52991.jpg';
+  const defaultBanner = BANNER_PRESETS[0]?.url || 'https://anilibria.top/storage/releases/posters/9600/1RwzksvrU3kCWOcWELGVuMYINrwtM6pA.jpg';
 
   return {
     username: username.trim(),
@@ -27,11 +27,11 @@ export function createDefaultProfile(username: string, avatarUrl?: string): User
 export function createGuestAccount(): UserAccount {
   const guestProfile: UserProfile = {
     username: 'Гость',
-    avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200&auto=format&fit=crop&q=80',
+    avatar: AVATAR_PRESETS[0]?.url || 'https://shikimori.io/system/animes/original/52991.jpg',
     aura: 'none',
     title: 'Гостевой режим',
     statusQuote: 'Смотрите аниме или зарегистрируйтесь для синхронизации',
-    bannerUrl: BANNER_PRESETS[0]?.url || 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1600&auto=format&fit=crop&q=80',
+    bannerUrl: BANNER_PRESETS[0]?.url || 'https://anilibria.top/storage/releases/posters/9600/1RwzksvrU3kCWOcWELGVuMYINrwtM6pA.jpg',
     accentTheme: 'rose',
     pinnedAnimeId: undefined,
     pinnedAnimeReview: undefined,

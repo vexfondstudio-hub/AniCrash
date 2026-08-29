@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Play, Bookmark, Info, Star, BadgeCheck, ChevronRight, ChevronLeft } from 'lucide-react';
+import { Play, Bookmark, Info, Star, BadgeCheck, ChevronRight, ChevronLeft, Sparkles } from 'lucide-react';
 import { Anime } from '../types';
+import { EnhancedImage } from './EnhancedImage';
 
 interface HeroBannerProps {
   featuredAnime: Anime[];
@@ -37,16 +38,61 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
       id="hero-banner-container"
       className="relative w-full min-h-[420px] xs:min-h-[460px] sm:min-h-[500px] md:h-[560px] lg:h-[600px] rounded-2xl sm:rounded-3xl overflow-hidden mb-6 sm:mb-8 border border-zinc-800/80 bg-zinc-950 shadow-2xl flex flex-col justify-end"
     >
-      {/* Background Banner Image */}
-      <img
-        src={current.banner || current.poster}
-        alt={current.title}
-        className="absolute inset-0 w-full h-full object-cover object-center filter brightness-90 transition-all duration-700 scale-105"
-      />
+      {/* Background Layer with ambient atmosphere */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Soft background ambient glow */}
+        <EnhancedImage
+          key={`blur-${current.id}`}
+          src={current.banner || current.poster}
+          alt=""
+          aria-hidden="true"
+          enhance={false}
+          containerClassName="absolute inset-0 w-full h-full"
+          className="w-full h-full object-cover object-center filter blur-3xl opacity-35 scale-125 pointer-events-none"
+        />
 
-      {/* Cinematic Vignette Gradients */}
-      <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/70 sm:via-zinc-950/60 to-black/30" />
-      <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/80 sm:via-zinc-950/70 to-transparent" />
+        {/* Main Background Art */}
+        <EnhancedImage
+          key={`main-${current.id}`}
+          src={current.banner || current.poster}
+          alt={current.title}
+          enhanceLevel="standard"
+          loading="eager"
+          containerClassName="absolute inset-0 w-full h-full"
+          className="w-full h-full object-cover object-[center_20%] sm:object-[center_20%] lg:object-[right_25%] filter brightness-[0.85] contrast-[1.08] transition-all duration-700 select-none"
+        />
+      </div>
+
+      {/* Cinematic Vignette Gradients for maximum text readability and sharpness */}
+      <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/80 sm:via-zinc-950/65 to-black/30 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/90 sm:via-zinc-950/75 lg:via-zinc-950/60 to-transparent pointer-events-none" />
+
+      {/* PC Side Poster (High-resolution crisp showcase on large screens) */}
+      <div className="hidden lg:flex absolute right-14 top-1/2 -translate-y-1/2 z-10 items-center gap-6 pointer-events-none">
+        <div className="relative group/poster w-52 xl:w-60 aspect-[2/3] rounded-2xl overflow-hidden shadow-2xl border-2 border-white/10 bg-zinc-900 shadow-rose-950/40">
+          <EnhancedImage
+            src={current.poster}
+            alt={current.title}
+            enhanceLevel="ultra"
+            containerClassName="w-full h-full"
+            className="w-full h-full object-cover object-center transition-transform duration-500 group-hover/poster:scale-105 select-none"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+          <div className="absolute top-3 right-3 flex items-center gap-1 px-2 py-0.5 rounded-full bg-black/60 backdrop-blur border border-emerald-500/30 text-[10px] text-emerald-400 font-bold">
+            <Sparkles className="w-3 h-3 text-emerald-400" />
+            HD Auto
+          </div>
+          <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs text-white font-bold">
+            <span className="px-2 py-0.5 rounded bg-rose-600/90 backdrop-blur text-[11px]">
+              {current.episodesCount} эп.
+            </span>
+            <span className="flex items-center gap-1 text-amber-400 font-black">
+              <Star className="w-3.5 h-3.5 fill-amber-400" />
+              {current.rating.toFixed(1)}
+            </span>
+          </div>
+        </div>
+      </div>
 
       {/* Mobile Top Controls for Carousel */}
       {featuredAnime.length > 1 && (

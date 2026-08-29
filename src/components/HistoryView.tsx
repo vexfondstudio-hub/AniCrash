@@ -1,6 +1,7 @@
 import React from 'react';
 import { History, Play, Trash2, Clock, CheckCheck } from 'lucide-react';
 import { Anime, WatchProgress } from '../types';
+import { EnhancedImage } from './EnhancedImage';
 
 interface HistoryViewProps {
   watchHistory: WatchProgress[];
@@ -86,9 +87,11 @@ export const HistoryView: React.FC<HistoryViewProps> = ({
                   className="relative w-full sm:w-44 aspect-video rounded-xl overflow-hidden bg-zinc-950 shrink-0 cursor-pointer"
                   onClick={() => onPlayAnime(anime, progress.episodeNumber, progress.currentTime)}
                 >
-                  <img
+                  <EnhancedImage
                     src={episode?.thumbnail || anime.banner || anime.poster}
                     alt={anime.title}
+                    enhanceLevel="standard"
+                    containerClassName="w-full h-full"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform"
                   />
                   <div className="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-rose-600/70 transition-colors">

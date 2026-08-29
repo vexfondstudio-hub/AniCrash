@@ -18,6 +18,7 @@ import {
   Check,
 } from 'lucide-react';
 import { Anime, WatchProgress, WatchlistStatus, Comment, UserProfile } from '../types';
+import { EnhancedImage } from './EnhancedImage';
 
 const CustomWatchlistSelector: React.FC<{
   value: string;
@@ -185,63 +186,91 @@ export const AnimeDetailModal: React.FC<AnimeDetailModalProps> = ({
         {/* Scrollable Container */}
         <div className="overflow-y-auto flex-1 scrollbar-none">
           {/* Hero Header with Banner */}
-          <div className="relative h-[40vh] sm:h-[450px] w-full overflow-hidden bg-zinc-900 flex flex-col justify-end">
-            <img
-              src={anime.banner || anime.poster}
-              alt={anime.title}
-              className="absolute inset-0 w-full h-full object-cover object-center"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent" />
-            
-            {/* Play Button Overlay on Hero - Desktop only */}
-            <div className="absolute inset-0 hidden sm:flex items-center justify-center pointer-events-none">
-              <button
-                onClick={() => onPlayEpisode(anime, resumeEpisodeNumber)}
-                className="pointer-events-auto w-24 h-24 rounded-full bg-white text-black flex items-center justify-center shadow-2xl hover:scale-110 transition-transform group/hero-play"
-              >
-                <Play className="w-10 h-10 fill-current ml-1.5 group-hover/hero-play:scale-110 transition-transform" />
-              </button>
-            </div>
+          {(() => {
+            const hasDistinctBanner = Boolean(anime.banner && anime.banner !== anime.poster);
+            return (
+              <div className="relative h-[40vh] sm:h-[420px] w-full overflow-hidden bg-zinc-950 flex flex-col justify-end">
+                {hasDistinctBanner ? (
+                  <>
+                    <EnhancedImage
+                      src={anime.banner}
+                      alt={anime.title}
+                      enhanceLevel="standard"
+                      containerClassName="absolute inset-0 w-full h-full"
+                      className="w-full h-full object-cover object-center filter brightness-[0.88] contrast-[1.05]"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/50 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-zinc-950/70 via-transparent to-zinc-950/40" />
+                  </>
+                ) : (
+                  <>
+                    <EnhancedImage
+                      src={anime.poster}
+                      alt=""
+                      aria-hidden="true"
+                      enhance={false}
+                      containerClassName="absolute inset-0 w-full h-full pointer-events-none"
+                      className="w-full h-full object-cover object-center filter blur-3xl scale-125 opacity-35"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/85 to-zinc-950/40" />
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(244,63,94,0.12),_transparent_70%)]" />
+                  </>
+                )}
 
-            {/* Zero ads & quality tags in top corner */}
-            <div className="absolute top-4 left-4 z-20 flex flex-wrap items-center gap-2">
-              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-600 text-white text-[10px] font-black uppercase tracking-wider shadow-lg shadow-emerald-600/20 border border-emerald-500/50">
-                <BadgeCheck className="w-3.5 h-3.5" />
-                БЕЗ РЕКЛАМЫ
-              </div>
-              <div className="px-3 py-1.5 rounded-full bg-zinc-950/60 text-zinc-300 text-[10px] font-bold border border-white/5 backdrop-blur-md uppercase tracking-widest">
-                Full HD 1080p
-              </div>
-            </div>
+                {/* Play Button Overlay on Hero - Desktop only */}
+                <div className="absolute inset-0 hidden sm:flex items-center justify-center pointer-events-none">
+                  <button
+                    onClick={() => onPlayEpisode(anime, resumeEpisodeNumber)}
+                    className="pointer-events-auto w-20 h-20 rounded-full bg-white/95 hover:bg-white text-black flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all group/hero-play cursor-pointer border border-white/20"
+                    title="Смотреть серию"
+                  >
+                    <Play className="w-9 h-9 fill-current ml-1 group-hover/hero-play:scale-110 transition-transform" />
+                  </button>
+                </div>
 
-            {/* Title & Info Overlay on Hero - For Mobile readability */}
-            <div className="sm:hidden absolute bottom-0 left-0 right-0 p-6 pt-20 bg-gradient-to-t from-zinc-950 to-transparent">
-              <div className="flex flex-wrap items-center gap-2 mb-3">
-                <span className="px-2 py-0.5 rounded bg-rose-600 text-white text-[10px] font-black uppercase">
-                  {anime.type}
-                </span>
-                <span className="px-2 py-0.5 rounded bg-zinc-900 text-zinc-300 text-[10px] font-bold">
-                  {anime.year}
-                </span>
-                <span className="flex items-center gap-1 px-2 py-0.5 rounded bg-zinc-900 text-amber-400 text-[10px] font-black">
-                  <Star className="w-3 h-3 fill-amber-400" />
-                  {anime.rating.toFixed(1)}
-                </span>
+                {/* Zero ads & quality tags in top corner */}
+                <div className="absolute top-4 left-4 z-20 flex flex-wrap items-center gap-2">
+                  <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-600 text-white text-[10px] font-black uppercase tracking-wider shadow-lg shadow-emerald-600/20 border border-emerald-500/50">
+                    <BadgeCheck className="w-3.5 h-3.5" />
+                    БЕЗ РЕКЛАМЫ
+                  </div>
+                  <div className="px-3 py-1.5 rounded-full bg-zinc-950/70 text-zinc-300 text-[10px] font-bold border border-white/10 backdrop-blur-md uppercase tracking-widest">
+                    Full HD 1080p
+                  </div>
+                </div>
+
+                {/* Title & Info Overlay on Hero - For Mobile readability */}
+                <div className="sm:hidden absolute bottom-0 left-0 right-0 p-6 pt-20 bg-gradient-to-t from-zinc-950 to-transparent">
+                  <div className="flex wrap items-center gap-2 mb-3">
+                    <span className="px-2 py-0.5 rounded bg-rose-600 text-white text-[10px] font-black uppercase">
+                      {anime.type}
+                    </span>
+                    <span className="px-2 py-0.5 rounded bg-zinc-900 text-zinc-300 text-[10px] font-bold">
+                      {anime.year}
+                    </span>
+                    <span className="flex items-center gap-1 px-2 py-0.5 rounded bg-zinc-900 text-amber-400 text-[10px] font-black">
+                      <Star className="w-3 h-3 fill-amber-400" />
+                      {anime.rating.toFixed(1)}
+                    </span>
+                  </div>
+                  <h1 className="text-3xl font-black text-white tracking-tighter leading-none mb-1">
+                    {anime.title}
+                  </h1>
+                </div>
               </div>
-              <h1 className="text-3xl font-black text-white tracking-tighter leading-none mb-1">
-                {anime.title}
-              </h1>
-            </div>
-          </div>
+            );
+          })()}
 
           {/* Desktop/Tablet Info Overlay */}
           <div className="hidden sm:block relative z-20 px-10 -mt-32">
             <div className="flex gap-10">
               <div className="w-64 shrink-0">
                 <div className="aspect-[2/3] rounded-[32px] overflow-hidden shadow-2xl border-4 border-zinc-950 ring-1 ring-white/10">
-                  <img
+                  <EnhancedImage
                     src={anime.poster}
                     alt={anime.title}
+                    enhanceLevel="ultra"
+                    containerClassName="w-full h-full"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -421,10 +450,10 @@ export const AnimeDetailModal: React.FC<AnimeDetailModalProps> = ({
                             }`}
                           >
                             <div className="relative w-16 h-12 rounded-xl overflow-hidden bg-zinc-800 shrink-0">
-                              <img
+                              <EnhancedImage
                                 src={ep.thumbnail}
                                 alt={ep.title}
-                                loading="lazy"
+                                containerClassName="w-full h-full"
                                 className="w-full h-full object-cover group-hover:scale-105 transition-transform"
                               />
                               <div className="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-rose-600/70 transition-colors">
@@ -515,10 +544,11 @@ export const AnimeDetailModal: React.FC<AnimeDetailModalProps> = ({
                       key={char.name}
                       className="p-3 rounded-2xl bg-zinc-900/60 border border-zinc-800/80 flex items-center gap-3"
                     >
-                      <img
+                      <EnhancedImage
                         src={char.avatar}
                         alt={char.name}
-                        className="w-10 h-10 rounded-full object-cover shrink-0 border border-zinc-700"
+                        containerClassName="w-10 h-10 rounded-full overflow-hidden shrink-0 border border-zinc-700"
+                        className="w-full h-full object-cover"
                       />
                       <div className="min-w-0">
                         <p className="font-bold text-xs text-white truncate">{char.name}</p>
@@ -599,11 +629,11 @@ export const AnimeDetailModal: React.FC<AnimeDetailModalProps> = ({
                         key={comment.id}
                         className="p-3.5 rounded-2xl bg-zinc-900/50 border border-zinc-800/60 flex items-start gap-3"
                       >
-                        <img
+                        <EnhancedImage
                           src={comment.avatar}
                           alt={comment.userName}
-                          className="w-8 h-8 rounded-full object-cover shrink-0 mt-0.5 border border-zinc-700"
-                          referrerPolicy="no-referrer"
+                          containerClassName="w-8 h-8 rounded-full overflow-hidden shrink-0 mt-0.5 border border-zinc-700"
+                          className="w-full h-full object-cover"
                         />
                         <div className="flex-1 min-w-0 text-xs">
                           <div className="flex items-center justify-between mb-1">

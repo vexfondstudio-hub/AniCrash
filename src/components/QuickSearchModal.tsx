@@ -3,6 +3,7 @@ import { Search, X, Star, Play, ArrowRight, Loader2, Globe } from 'lucide-react'
 import { Anime } from '../types';
 import { ANIME_DATABASE } from '../data/animeData';
 import { searchOnlineAnime } from '../services/animeApi';
+import { EnhancedImage } from './EnhancedImage';
 
 interface QuickSearchModalProps {
   onClose: () => void;
@@ -152,10 +153,12 @@ export const QuickSearchModal: React.FC<QuickSearchModalProps> = ({
               className="p-2.5 rounded-2xl hover:bg-zinc-900/90 transition-all flex items-center justify-between gap-3 cursor-pointer group border border-transparent hover:border-zinc-800"
             >
               <div className="flex items-center gap-3 min-w-0">
-                <img
+                <EnhancedImage
                   src={anime.poster}
                   alt={anime.title}
-                  className="w-11 h-14 rounded-xl object-cover shrink-0 border border-zinc-800"
+                  enhanceLevel="standard"
+                  containerClassName="w-11 h-14 rounded-xl shrink-0 border border-zinc-800"
+                  className="w-full h-full object-cover"
                 />
                 <div className="min-w-0">
                   <div className="flex items-center gap-2">
@@ -221,10 +224,12 @@ export const QuickSearchModal: React.FC<QuickSearchModalProps> = ({
                   className="p-2.5 rounded-2xl hover:bg-zinc-900/90 transition-all flex items-center justify-between gap-3 cursor-pointer group border border-transparent hover:border-rose-900/40 bg-zinc-900/20"
                 >
                   <div className="flex items-center gap-3 min-w-0">
-                    <img
+                    <EnhancedImage
                       src={anime.poster}
                       alt={anime.title}
-                      className="w-11 h-14 rounded-xl object-cover shrink-0 border border-zinc-800"
+                      enhanceLevel="standard"
+                      containerClassName="w-11 h-14 rounded-xl shrink-0 border border-zinc-800"
+                      className="w-full h-full object-cover"
                     />
                     <div className="min-w-0">
                       <div className="flex items-center gap-2">

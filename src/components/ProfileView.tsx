@@ -42,6 +42,7 @@ import {
   TITLE_PRESETS,
   ANIME_QUOTE_PRESETS,
 } from '../data/profilePresets';
+import { EnhancedImage } from './EnhancedImage';
 
 interface ProfileViewProps {
   profile: UserProfile;
@@ -346,11 +347,12 @@ export const ProfileView: React.FC<ProfileViewProps> = ({
       <div className="relative rounded-3xl overflow-hidden border border-zinc-800/90 bg-zinc-950 shadow-2xl">
         {/* Banner Cover Image */}
         <div className="relative h-48 sm:h-64 w-full overflow-hidden bg-zinc-900">
-          <img
+          <EnhancedImage
             src={draftProfile.bannerUrl}
             alt="Profile Banner"
+            enhanceLevel="ultra"
+            containerClassName="w-full h-full"
             className="w-full h-full object-cover transition-all duration-700 brightness-75 hover:scale-105"
-            referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent" />
 
@@ -372,11 +374,12 @@ export const ProfileView: React.FC<ProfileViewProps> = ({
                 <div
                   className={`w-28 h-28 sm:w-32 sm:h-32 rounded-3xl overflow-hidden border-3 bg-zinc-900 transition-all duration-300 ${activeAura.className}`}
                 >
-                  <img
+                  <EnhancedImage
                     src={draftProfile.avatar}
                     alt={draftProfile.username}
+                    enhanceLevel="ultra"
+                    containerClassName="w-full h-full"
                     className="w-full h-full object-cover"
-                    referrerPolicy="no-referrer"
                   />
                 </div>
                 {/* Aura Icon Tag */}
@@ -459,11 +462,11 @@ export const ProfileView: React.FC<ProfileViewProps> = ({
 
               <div className="p-4 rounded-2xl bg-zinc-900/80 border border-zinc-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div className="flex items-center gap-3.5 min-w-0">
-                  <img
+                  <EnhancedImage
                     src={pinnedAnime.poster}
                     alt={pinnedAnime.title}
-                    className="w-14 h-20 rounded-xl object-cover border border-zinc-700 shrink-0 shadow-md"
-                    referrerPolicy="no-referrer"
+                    containerClassName="w-14 h-20 rounded-xl overflow-hidden border border-zinc-700 shrink-0 shadow-md"
+                    className="w-full h-full object-cover"
                   />
                   <div>
                     <div className="flex flex-wrap items-center gap-2">
@@ -612,11 +615,12 @@ export const ProfileView: React.FC<ProfileViewProps> = ({
                       <div
                         className={`w-12 h-12 rounded-2xl overflow-hidden border-2 bg-zinc-800 shrink-0 ${aura.className}`}
                       >
-                        <img
+                        <EnhancedImage
                           src={draftProfile.avatar}
                           alt="Aura Preview"
+                          enhanceLevel="ultra"
+                          containerClassName="w-full h-full"
                           className="w-full h-full object-cover"
-                          referrerPolicy="no-referrer"
                         />
                       </div>
                       <div className="min-w-0">
@@ -688,11 +692,12 @@ export const ProfileView: React.FC<ProfileViewProps> = ({
                     <div className="flex items-start gap-4">
                       {/* Real Poster Thumbnail */}
                       <div className="relative w-20 h-28 sm:w-24 sm:h-32 rounded-2xl overflow-hidden bg-zinc-800 shrink-0 border border-zinc-700/80 shadow-md">
-                        <img
+                        <EnhancedImage
                           src={item.url}
                           alt={item.name}
+                          enhanceLevel="ultra"
+                          containerClassName="w-full h-full"
                           className="w-full h-full object-cover transition-transform hover:scale-105"
-                          referrerPolicy="no-referrer"
                         />
                         <span className="absolute bottom-1 right-1 px-1.5 py-0.5 rounded-md bg-black/80 backdrop-blur-sm text-[10px] font-bold text-amber-300 flex items-center gap-0.5">
                           <Star className="w-2.5 h-2.5 fill-amber-400 text-amber-400" />
@@ -878,11 +883,12 @@ export const ProfileView: React.FC<ProfileViewProps> = ({
                     }`}
                   >
                     <div className="h-32 rounded-2xl overflow-hidden relative bg-zinc-800 border border-zinc-700/60">
-                      <img
+                      <EnhancedImage
                         src={banner.preview}
                         alt={banner.name}
+                        enhanceLevel="ultra"
+                        containerClassName="w-full h-full"
                         className="w-full h-full object-cover transition-transform hover:scale-105"
-                        referrerPolicy="no-referrer"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                       <div className="absolute bottom-2 left-2 right-2">
@@ -998,11 +1004,11 @@ export const ProfileView: React.FC<ProfileViewProps> = ({
                         : 'bg-zinc-900/50 border-zinc-800 hover:border-zinc-700'
                     }`}
                   >
-                    <img
+                    <EnhancedImage
                       src={anime.poster}
                       alt={anime.title}
-                      className="w-14 h-20 rounded-xl object-cover border border-zinc-700 shrink-0"
-                      referrerPolicy="no-referrer"
+                      containerClassName="w-14 h-20 rounded-xl overflow-hidden border border-zinc-700 shrink-0"
+                      className="w-full h-full object-cover"
                     />
                     <div className="min-w-0 flex-1">
                       <div className="font-bold text-xs text-white truncate">{anime.title}</div>
@@ -1282,11 +1288,11 @@ export const ProfileView: React.FC<ProfileViewProps> = ({
                       className="p-3 rounded-2xl bg-zinc-950 border border-zinc-800/80 flex items-center justify-between gap-3"
                     >
                       <div className="flex items-center gap-3 min-w-0">
-                        <img
+                        <EnhancedImage
                           src={anime.poster}
                           alt={anime.title}
-                          className="w-10 h-14 rounded-xl object-cover border border-zinc-800 shrink-0"
-                          referrerPolicy="no-referrer"
+                          containerClassName="w-10 h-14 rounded-xl overflow-hidden border border-zinc-800 shrink-0"
+                          className="w-full h-full object-cover"
                         />
                         <div className="min-w-0">
                           <h5 className="font-bold text-xs text-white truncate">{anime.title}</h5>

@@ -91,6 +91,9 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
   }, []);
   const controlsTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const savedTimeRef = useRef<number>(initialTime);
+  const lastReportedTimeRef = useRef<number>(initialTime);
+  const onProgressUpdateRef = useRef(onProgressUpdate);
+  onProgressUpdateRef.current = onProgressUpdate;
 
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -452,15 +455,19 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
         }
       }
 
-      // Save watch progress
-      onProgressUpdate({
-        animeId: anime.id,
-        episodeNumber: currentEpisode.number,
-        currentTime: video.currentTime,
-        duration: video.duration || currentEpisode.duration,
-        completed: video.currentTime > (video.duration || currentEpisode.duration) * 0.88,
-        lastWatchedAt: Date.now(),
-      });
+      // Save watch progress periodically (every 3+ seconds)
+      const cur = Math.floor(video.currentTime);
+      if (Math.abs(cur - lastReportedTimeRef.current) >= 3) {
+        lastReportedTimeRef.current = cur;
+        onProgressUpdateRef.current({
+          animeId: anime.id,
+          episodeNumber: currentEpisode.number,
+          currentTime: video.currentTime,
+          duration: video.duration || currentEpisode.duration,
+          completed: video.currentTime > (video.duration || currentEpisode.duration) * 0.88,
+          lastWatchedAt: Date.now(),
+        });
+      }
     };
 
     const onWaiting = () => setIsLoading(true);
@@ -468,10 +475,32 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
       setIsLoading(false);
       setIsPlaying(true);
     };
-    const onPause = () => setIsPlaying(false);
+    const onPause = () => {
+      setIsPlaying(false);
+      if (video) {
+        onProgressUpdateRef.current({
+          animeId: anime.id,
+          episodeNumber: currentEpisode.number,
+          currentTime: video.currentTime,
+          duration: video.duration || currentEpisode.duration,
+          completed: video.currentTime > (video.duration || currentEpisode.duration) * 0.88,
+          lastWatchedAt: Date.now(),
+        });
+      }
+    };
 
     const onEnded = () => {
       setIsPlaying(false);
+      if (video) {
+        onProgressUpdateRef.current({
+          animeId: anime.id,
+          episodeNumber: currentEpisode.number,
+          currentTime: video.duration || currentEpisode.duration,
+          duration: video.duration || currentEpisode.duration,
+          completed: true,
+          lastWatchedAt: Date.now(),
+        });
+      }
       if (autoNextEpisode && currentEpisodeIndex < allEpisodes.length - 1) {
         goToNextEpisode();
       }
@@ -492,7 +521,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
       video.removeEventListener('pause', onPause);
       video.removeEventListener('ended', onEnded);
     };
-  }, [currentEpisodeIndex, currentEpisode, autoNextEpisode, autoSkipIntro, anime.id, allEpisodes.length, goToNextEpisode, onProgressUpdate, volume, playbackSpeed]);
+  }, [currentEpisodeIndex, currentEpisode, autoNextEpisode, autoSkipIntro, anime.id, allEpisodes.length, goToNextEpisode, volume, playbackSpeed]);
 
   const handleScrub = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();

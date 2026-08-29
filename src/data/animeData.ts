@@ -1,4 +1,5 @@
 import { Anime, Comment } from '../types';
+import { EXTRA_ANIME_DATABASE } from './extraAnimeData';
 
 export const GENRES_LIST = [
   "Все жанры",
@@ -18,7 +19,14 @@ export const GENRES_LIST = [
   "Повседневность",
   "Демоны",
   "Исторический",
-  "Сейнен"
+  "Сейнен",
+  "Спорт",
+  "Исекай",
+  "Меха",
+  "Школа",
+  "Психологическое",
+  "Боевые искусства",
+  "Военное"
 ];
 
 export const VOICE_STUDIOS = [
@@ -31,7 +39,7 @@ export const VOICE_STUDIOS = [
   "Субтитры"
 ];
 
-export const ANIME_DATABASE: Anime[] = [
+const BASE_ANIME_DATABASE: Anime[] = [
   {
     "id": "9600",
     "title": "Поднятие уровня в одиночку",
@@ -39,8 +47,8 @@ export const ANIME_DATABASE: Anime[] = [
     "originalTitle": "Solo Leveling",
     "slug": "ore-dake-level-up-na-ken",
     "description": "С момента внезапного появления \"врат\" — путей в другие миры — прошло уже больше десяти лет. За это время очень важной стала профессия \"охотников\" — людей, получивших сверхъестественные способности и зарабатывающих зачисткой подземелий внутри врат.\r\nСон Джин Ву приобрёл печальную известность как \"слабейший охотник человечества\". Так что совсем не удивительно, что в одном из заказов он получает смертельное ранение. Вот только вместо проносящейся перед глазами жизни он видит таинственное окно, в котором говорится о каком-то задании. Джин Ву решает его выполнить и с удивлением обнаруживает, что его уровень повысился, хотя подобное считалось невозможным.\r\nИ так, вооружившись своей новой способностью, Джин Ву отправляется покорять вершины, оставляя позади тех, кто смотрел на него свысока.",
-    "poster": "https://shikimori.one/system/animes/original/55215.jpg",
-    "banner": "https://shikimori.one/system/animes/original/55215.jpg",
+    "poster": "https://anilibria.top/storage/releases/posters/9600/1RwzksvrU3kCWOcWELGVuMYINrwtM6pA.jpg",
+    "banner": "https://anilibria.top/storage/releases/posters/9600/1RwzksvrU3kCWOcWELGVuMYINrwtM6pA.jpg",
     "rating": 9.8,
     "votesCount": 37163,
     "year": 2024,
@@ -73,7 +81,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9600/1/1080/5dfc6533a7d9072b55429627aa3945c9.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9600/1/720/70c1078491b5d9ada9d72f4b558d36ef.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9600/1/480/fee3de6f86af9ed0c52a8604b39c5329.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/55215.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/55215.jpg",
         "introStart": 85,
         "introEnd": 175
       },
@@ -86,7 +94,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9600/2/1080/14a857c59df1aed6ce0fd6cac1d58262.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9600/2/720/f8fcc2e92a3e0ff985e05ba1f1dae152.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9600/2/480/af1d8a403daeef201de9b0a9a096820c.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/55215.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/55215.jpg",
         "introStart": 130,
         "introEnd": 214
       },
@@ -99,7 +107,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9600/3/1080/ecd61cee82cb2b9ee54b0b576fe836b6.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9600/3/720/a0f9b2bc0751e5d4cae6b89f2cfe680f.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9600/3/480/edbbf80b3a221f0479ea4a9407fff301.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/55215.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/55215.jpg",
         "introStart": 80,
         "introEnd": 169
       },
@@ -112,7 +120,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9600/4/1080/7652cded5a67d9972e3909a3da9e1e69.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9600/4/720/3c59d368d8d3713e40d478f94444dd55.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9600/4/480/e693f66211d1051b46f69009168f4838.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/55215.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/55215.jpg",
         "introStart": 63,
         "introEnd": 151
       },
@@ -125,7 +133,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9600/5/1080/a115d17874eade7e13d8c13c8848dae2.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9600/5/720/998351f536d5f9686058732cc634e28f.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9600/5/480/21d37c9b03402ce0790adf4617eafc25.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/55215.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/55215.jpg",
         "introStart": 93,
         "introEnd": 183
       },
@@ -138,7 +146,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9600/6/1080/695c684633e03a28076c8e8575fdbec5.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9600/6/720/9fc023dd1a4a84ed8cb999766cb23779.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9600/6/480/7261a632ad69b15aea28097be60c9659.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/55215.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/55215.jpg",
         "introStart": 169,
         "introEnd": 254
       },
@@ -151,7 +159,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9600/7/1080/7479a85457d03dda0e96d9fbcfe34cc0.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9600/7/720/89294c32e6e8d28e97473250a8e2aa06.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9600/7/480/7d5858fdbfe880056c9504f8f54a6fa6.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/55215.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/55215.jpg",
         "introStart": 1,
         "introEnd": 85
       },
@@ -164,7 +172,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9600/8/1080/15eb33d02551467c83f4dba1fb6475d1.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9600/8/720/3ed9ce14d24e0900047309bed3d132da.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9600/8/480/8a5e816b61be24fd9d58dc7080904fa0.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/55215.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/55215.jpg",
         "introStart": 47,
         "introEnd": 132
       },
@@ -177,7 +185,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9600/9/1080/6a770d7e261fa4799a70957923cb24b3.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9600/9/720/44f1bfbf6a61c5d1366621be6846726d.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9600/9/480/fd3ff447d9efb40d5917abec2b7a9225.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/55215.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/55215.jpg",
         "introStart": 62,
         "introEnd": 147
       },
@@ -190,7 +198,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9600/10/1080/5dff8620eaf77a126268532605e1d326.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9600/10/720/6b196cf4f5333964072fb24d16a9a8c7.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9600/10/480/7cb04a4efacf5d175a710214a4127dba.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/55215.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/55215.jpg",
         "introStart": 187,
         "introEnd": 277
       },
@@ -203,7 +211,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9600/11/1080/c68e0a4fab7fc6f2c3088eb44db37b91.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9600/11/720/b3285384687dbded3750b66ce2134029.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9600/11/480/f8efb09b6969dff70bd2dff9fdc82a2e.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/55215.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/55215.jpg",
         "introStart": 94,
         "introEnd": 183
       },
@@ -216,7 +224,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9600/12/1080/c0723e1ca0bcc5345bc05cdcc6d6e0e0.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9600/12/720/815dc8ac8a09431f349a02613a30cbe2.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9600/12/480/ec4ea649e3e69a5f70380aa1f5a9d6eb.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/55215.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/55215.jpg",
         "introStart": 120,
         "introEnd": 209
       }
@@ -239,8 +247,8 @@ export const ANIME_DATABASE: Anime[] = [
     "originalTitle": "jujutsu-kaisen",
     "slug": "jujutsu-kaisen",
     "description": "В мире, где человек перестал быть самым опасным хищником, правят демоны. И пусть большинство смертных и не подозревают об их существовании - даже легенды о великом Рёмэне Сукуне, что в давние времена был побеждён с величайшим трудом, помнят немногие. Остатки демона были разбросаны по всему свету, и если найдётся демон, что сможет найти и поглотить все из них - он обретёт мощь, способную стереть человечество с лица земли.\r\n\r\nЭта история повествует о Юдзи Итадори, ученике старшей школы, отличающимся выдающейся физической силой. Каждый уважающий себя глава спортивного клуба пытается заполучить в свои ряды такого участника, но для Юдзи на первом месте стоят учёба и уход за больным дедушкой. Устав от постоянных приглашений, он предпочитает вступить в клуб окультных наук, что бы избавиться от назойливого внимания. Но в один прекрасный день главе клуба попадается в руки древний проклятный артефакт. И лучше бы им было к нему даже не прикасаться. Ибо кто знает, что именно там запечатано...",
-    "poster": "https://shikimori.one/system/animes/original/40748.jpg",
-    "banner": "https://shikimori.one/system/animes/original/40748.jpg",
+    "poster": "https://shikimori.io/system/animes/original/40748.jpg",
+    "banner": "https://shikimori.io/system/animes/original/40748.jpg",
     "rating": 8.5,
     "votesCount": 31602,
     "year": 2020,
@@ -272,7 +280,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8789/1/1080/93729431f273cc2c1b7891965a3deda6.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8789/1/720/6673036bb2bf535a5e149abe4ed52af3.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8789/1/480/64c606451484062f918a81c46a56e534.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/40748.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/40748.jpg",
         "introStart": 56,
         "introEnd": 145
       },
@@ -285,7 +293,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8789/2/1080/a35c1b26b1ee8885558351f7d5838577.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8789/2/720/2580e1bc9a9b85aebcc3d1b388e998a9.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8789/2/480/8c830211ddb83bc340fce621ec5fa40a.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/40748.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/40748.jpg",
         "introStart": 345,
         "introEnd": 434
       },
@@ -298,7 +306,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8789/3/1080/bcf7ba52686bdea53d1ccdf96450b415.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8789/3/720/3fb53b7e8c96803d13ccc4b18ca8d748.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8789/3/480/f38d9477fa46e78a29f36cf0fe4e4f3f.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/40748.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/40748.jpg",
         "introStart": 192,
         "introEnd": 281
       },
@@ -311,7 +319,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8789/4/1080/25816726b0a507b86087ffbf3a2ee296.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8789/4/720/7a43b7781730a5d5ae47d5b1b6bdd3fb.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8789/4/480/0e8197cfcff1ebc369b32fa541aea86d.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/40748.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/40748.jpg",
         "introStart": 175,
         "introEnd": 264
       },
@@ -324,7 +332,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8789/5/1080/f93388aef053d39ba888a3aa7a40416d.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8789/5/720/fea53eece8f1dd9a43653eac0dc5784b.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8789/5/480/2befa83342f4572a17690d5a917116ba.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/40748.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/40748.jpg",
         "introStart": 143,
         "introEnd": 232
       },
@@ -337,7 +345,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8789/6/1080/e24ae24eb61a2d1d94da4f8709b93bb9.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8789/6/720/461931f046532de3589ea75b9a8c84a6.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8789/6/480/59cfda2abd6dd880fbbeab4a1bc6309e.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/40748.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/40748.jpg",
         "introStart": 35,
         "introEnd": 124
       },
@@ -350,7 +358,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8789/7/1080/ae2582a2c01f539bea7d88ddd6b69f9f.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8789/7/720/d6ba961d788304c02a363ba860513425.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8789/7/480/edce5707fa1770fc1e39f26c9d2cbe38.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/40748.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/40748.jpg",
         "introStart": 130,
         "introEnd": 219
       },
@@ -363,7 +371,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8789/8/1080/9004e5bd80ab9af353d1ca95ca6c8137.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8789/8/720/d7bc12466e72d3cab45eb74dd832fe7c.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8789/8/480/15b29d8bed2c46d7a4f166d087eeed29.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/40748.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/40748.jpg",
         "introStart": 200,
         "introEnd": 289
       },
@@ -376,7 +384,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8789/9/1080/236d88d06303ab0d3d2814252c2ab594.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8789/9/720/8ca986a4ec53ff06b6d5ce2091027541.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8789/9/480/9569338c168c87c59ea483dd7a5809c1.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/40748.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/40748.jpg",
         "introStart": 277,
         "introEnd": 366
       },
@@ -389,7 +397,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8789/10/1080/4d388402f2087b35ba14041980f7643d.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8789/10/720/854fbad3131334eed8f6e066d1b6c11b.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8789/10/480/83e84f9a79cc8d6abc5ce22ce8df66fe.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/40748.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/40748.jpg",
         "introStart": 171,
         "introEnd": 260
       },
@@ -402,7 +410,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8789/11/1080/0774c218e5bb1938b80ea9845e7fc99b.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8789/11/720/ca396ff76dffe38b375574d577073146.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8789/11/480/17158f92d2ff551c46713b4ccf273d6f.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/40748.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/40748.jpg",
         "introStart": 138,
         "introEnd": 227
       },
@@ -415,7 +423,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8789/12/1080/22201f042a0217cda3b1f2dd56020827.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8789/12/720/9378dd3bbe5fe4c4ba34aa1a3bec1853.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8789/12/480/facac70156ce04cd5584cf18f0d6b2e0.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/40748.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/40748.jpg",
         "introStart": 118,
         "introEnd": 207
       },
@@ -428,7 +436,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8789/13/1080/d69ed967effe1db2a6e31ce194268830.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8789/13/720/ac146ac1d90c039e53e7639a0fc97168.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8789/13/480/9d55d0a0533696d7699974eb34499865.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/40748.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/40748.jpg",
         "introStart": 291,
         "introEnd": 380
       },
@@ -441,7 +449,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8789/14/1080/7d8f93060fcc1f81ee38f48ead0369a4.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8789/14/720/f2c67c00e048e58bc937f5cc3ec2973b.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8789/14/480/08a9935c1457f98f529f836d62d44cbe.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/40748.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/40748.jpg",
         "introStart": 204,
         "introEnd": 293
       },
@@ -454,7 +462,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8789/15/1080/c4c2cee657c4c09749a592d09154461d.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8789/15/720/dcd1d08514d03f9b950b4ed2ce0a3ba9.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8789/15/480/4c6afdcf7e0d668dd9540a038a7c4c65.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/40748.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/40748.jpg",
         "introStart": 147,
         "introEnd": 236
       },
@@ -467,7 +475,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8789/16/1080/6043206d5b76bd0b7b863b4d1e6bcbf0.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8789/16/720/2a212329220491032eb6de4275a2c150.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8789/16/480/05155d12ffb443950c3962100632d2c4.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/40748.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/40748.jpg",
         "introStart": 233,
         "introEnd": 322
       },
@@ -480,7 +488,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8789/17/1080/b7e172f373aae8048b2171b3ba6290fe.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8789/17/720/9397a1ffa9ada74e67d07f72b5b44dfe.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8789/17/480/fbdabe58abf6d396f6773c03cc9b1876.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/40748.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/40748.jpg",
         "introStart": 1,
         "introEnd": 89
       },
@@ -493,7 +501,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8789/18/1080/a59b4d1d587491c3619e1ff29859b701.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8789/18/720/ce1bfd787e5be1e9115edab106661d11.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8789/18/480/c2ec21d5bfd187ea31e8738c4dcde8f0.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/40748.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/40748.jpg",
         "introStart": 158,
         "introEnd": 247
       },
@@ -506,7 +514,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8789/19/1080/29d3b0fba2f001dfc924298f4ef9d487.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8789/19/720/3ce6e00100060e1169874d2d799920ec.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8789/19/480/dabaf6a7395bc2cd04c3d13ea87adbbd.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/40748.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/40748.jpg",
         "introStart": 485,
         "introEnd": 574
       },
@@ -519,7 +527,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8789/20/1080/0df664dd6123abb66f61564543be7bc3.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8789/20/720/5889f1809d3e9fdcf4d7585db5ed10ab.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8789/20/480/b118c7e4a6fd7ccf4d5e0583f4a6b9fa.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/40748.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/40748.jpg",
         "introStart": 66,
         "introEnd": 155
       },
@@ -532,7 +540,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8789/21/1080/9fc3967208f4be19910f319fdcf1a2f0.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8789/21/720/1fa1944af34b3fe7af0a729421aaf7f2.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8789/21/480/dcb3afe49d94ca6009e45737d22e649a.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/40748.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/40748.jpg",
         "introStart": 314,
         "introEnd": 403
       },
@@ -545,7 +553,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8789/22/1080/eff12c3434269df86eb07367d69ebd29.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8789/22/720/010d86b54769b3b088d26983d5e1318a.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8789/22/480/23f3cf1805645828f1318488a3b91bc3.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/40748.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/40748.jpg",
         "introStart": 32,
         "introEnd": 121
       },
@@ -558,7 +566,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8789/23/1080/0268b599847f273339de25e23cb5951c.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8789/23/720/f48ef006ebce964bb2254aa4a9157569.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8789/23/480/6817c251cd613ad049a61d6059b2e832.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/40748.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/40748.jpg",
         "introStart": 347,
         "introEnd": 437
       },
@@ -571,7 +579,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8789/24/1080/b90f813607817993b2c2d3fdc597aac2.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8789/24/720/c72cbaaab636e8a22d0f9c3e271fea0c.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8789/24/480/69f78f0ee117e5ce378131c4ad03764a.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/40748.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/40748.jpg",
         "introStart": 133,
         "introEnd": 222
       }
@@ -596,8 +604,8 @@ export const ANIME_DATABASE: Anime[] = [
     "originalTitle": "sousou-no-frieren",
     "slug": "sousou-no-frieren",
     "description": "После десяти лет странствий группа искателей приключений вместе с волшебницей Фрирен одолели короля демонов, освободив мир от гнёта монстров. Имена героев увековечены в легендах и балладах, и теперь их ждёт спокойная размеренная жизнь до самой старости. Но у Фрирен другая судьба. Она эльф, и способна прожить больше тысячи лет. Человеческая жизнь для неё — лишь мгновение, поэтому, не успев опомниться, она остаётся совсем одна.\r\nЭто история о неизменной героине, путешествующей в постоянно меняющемся мире, и пытающейся скрыться от теней прошлого, которые её преследуют.",
-    "poster": "https://shikimori.one/system/animes/original/52991.jpg",
-    "banner": "https://shikimori.one/system/animes/original/52991.jpg",
+    "poster": "https://shikimori.io/system/animes/original/52991.jpg",
+    "banner": "https://shikimori.io/system/animes/original/52991.jpg",
     "rating": 9,
     "votesCount": 31550,
     "year": 2023,
@@ -628,7 +636,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9542/1/1080/aa675e5f3fe5b528517d812182344011.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9542/1/720/f2dc34029cefbeb93e9fbb4c5cfbfa5d.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9542/1/480/5db9e319abbbe3039f3c5985505f7854.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/52991.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/52991.jpg",
         "introStart": 85,
         "introEnd": 175
       },
@@ -641,7 +649,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9542/2/1080/3c9719dc3d3c9e1486d2a401552365da.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9542/2/720/1bfd5afe4e48424094ab222cb5a38621.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9542/2/480/5f0bef8fd3a477721cf948289ea87b41.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/52991.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/52991.jpg",
         "introStart": 1,
         "introEnd": 89
       },
@@ -654,7 +662,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9542/3/1080/5ccaa1beca67ec554711aec42f946e4d.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9542/3/720/dfcfabe9b8899261d74ebd650e0bd89b.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9542/3/480/f4b2833ff3077ce940615408cb0bb9fa.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/52991.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/52991.jpg",
         "introStart": 1,
         "introEnd": 89
       },
@@ -667,7 +675,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9542/4/1080/cd72b16962fc47c69864ac0cf662c85b.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9542/4/720/37f4294896442a738c91cc51be753dc5.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9542/4/480/4dbae9e1a4b1e68f11e925a5ee147933.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/52991.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/52991.jpg",
         "introStart": 1,
         "introEnd": 89
       },
@@ -680,7 +688,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9542/5/1080/e27e98b08eb425efcee2cf298c74d9f4.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9542/5/720/055a98bc2fe62738bf742e06af849425.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9542/5/480/c8d50406fb8b74e0e2e054eea11b4ef2.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/52991.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/52991.jpg",
         "introStart": 157,
         "introEnd": 242
       },
@@ -693,7 +701,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9542/6/1080/e23e78118faac963501209af16a19691.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9542/6/720/7d169cd79fa16537bc423283810eec7b.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9542/6/480/45b42305b0d3aed55e2096f06c14061d.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/52991.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/52991.jpg",
         "introStart": 13,
         "introEnd": 102
       },
@@ -706,7 +714,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9542/7/1080/bc36e23871673e622ee50298bbd4e024.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9542/7/720/84ed1e30758f3741d1271300990a0bcb.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9542/7/480/39924973a9e055dc45ed157868188575.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/52991.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/52991.jpg",
         "introStart": 90,
         "introEnd": 174
       },
@@ -719,7 +727,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9542/8/1080/d8773fafd1db332d73410a7dbfc4a5fe.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9542/8/720/cdfa30c01befd9b86d53ec6d29dea7ab.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9542/8/480/6cc695f70a3981062dfe35badc11fff2.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/52991.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/52991.jpg",
         "introStart": 153,
         "introEnd": 242
       },
@@ -732,7 +740,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9542/9/1080/618ce1b81c20d369cd767f0182f9b89f.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9542/9/720/2d200779a8a31456a8596e7120df669b.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9542/9/480/32d26bb6b750ce61f4d12c2049df142e.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/52991.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/52991.jpg",
         "introStart": 5,
         "introEnd": 87
       },
@@ -745,7 +753,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9542/10/1080/47d0029c531c17bfd492b24f6cc32796.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9542/10/720/b24bf4557fa8374ab3a6beda9962da48.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9542/10/480/f25d88f0c3afa4fd94e4dd7d3a318b2a.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/52991.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/52991.jpg",
         "introStart": 67,
         "introEnd": 156
       },
@@ -758,7 +766,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9542/11/1080/b42be70be24ccb4074d99ddb76bcd5a3.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9542/11/720/fee6cc8ffe4e32f2cef0b660a056fca8.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9542/11/480/1eb74560a32d66a3f8d7f891c97a575b.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/52991.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/52991.jpg",
         "introStart": 47,
         "introEnd": 136
       },
@@ -771,7 +779,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9542/12/1080/e923b908417d5a2cb0bb34fd0fa8a223.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9542/12/720/3c8011e0f64cdb44f54d9109db2a44a7.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9542/12/480/9cb14c68cc39ff8e290c8ecd08676203.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/52991.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/52991.jpg",
         "introStart": 1,
         "introEnd": 89
       },
@@ -784,7 +792,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9542/13/1080/2e17ba53df5c02cc58c6f5365714f892.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9542/13/720/a462f8fec2574c7906a91380a65a7ae0.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9542/13/480/12b61ae76e7216cb60afc5a1720d9a7d.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/52991.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/52991.jpg",
         "introStart": 25,
         "introEnd": 110
       },
@@ -797,7 +805,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9542/14/1080/dcc3a74a711de6429e2d301713fc00a0.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9542/14/720/a2f9d570db03dfa9c0405cea82b06933.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9542/14/480/4038b5cdc6f9b3a2bea20f2c49171f39.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/52991.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/52991.jpg",
         "introStart": 44,
         "introEnd": 133
       },
@@ -810,7 +818,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9542/15/1080/8f1dffd97b5fd5cc0327b410d115c872.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9542/15/720/d66accf4b7f04f87d3bded94ccd64b88.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9542/15/480/2c6ffcfdc41ee9537c5b4fcb76449443.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/52991.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/52991.jpg",
         "introStart": 5,
         "introEnd": 89
       },
@@ -823,7 +831,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9542/16/1080/7804d019fe41e7debedd38fe82bd5f57.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9542/16/720/67bd75cd3c9ae3d6d39c26c390eb9578.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9542/16/480/72a1980ee74fe13f20f450f69f54d811.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/52991.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/52991.jpg",
         "introStart": 85,
         "introEnd": 175
       },
@@ -836,7 +844,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9542/17/1080/754d9081e7939cb8c1978dd2e6859606.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9542/17/720/d5fe41e0a1a84ac424280f838d57cf03.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9542/17/480/87f834bc113d11654048284122e424bc.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/52991.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/52991.jpg",
         "introStart": 72,
         "introEnd": 155
       },
@@ -849,7 +857,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9542/18/1080/95cc721f4fd38562776faac51130cf60.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9542/18/720/aaa6b7d6ee481b55efe37d4c6ac89a9c.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9542/18/480/09063753cebcb50e9eab4a4d8a80330f.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/52991.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/52991.jpg",
         "introStart": 4,
         "introEnd": 89
       },
@@ -862,7 +870,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9542/19/1080/ab5b505049835d58a117e19d5b814535.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9542/19/720/e28923a0444eebf0403d255668b28b36.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9542/19/480/9cc06a02cbffc5910b6cb53d9447bd86.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/52991.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/52991.jpg",
         "introStart": 22,
         "introEnd": 106
       },
@@ -875,7 +883,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9542/20/1080/d951f224c0f36328bfe461008fb142b9.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9542/20/720/745565779a10e433b26e77bb317b30c0.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9542/20/480/2f6fd72322a25d9bb0b3c50d2c0848cb.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/52991.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/52991.jpg",
         "introStart": 104,
         "introEnd": 194
       },
@@ -888,7 +896,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9542/21/1080/eadcaf00ff91086a99a1e835c530df07.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9542/21/720/7bdf557ae943761f96a3820fe759c458.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9542/21/480/5b455b073af34b366c9045d491664fd4.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/52991.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/52991.jpg",
         "introStart": 49,
         "introEnd": 134
       },
@@ -901,7 +909,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9542/22/1080/b09a5586f63117bd1333bd9afd7bf322.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9542/22/720/a72c84b6baa93bb3f8fab7262d3018c2.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9542/22/480/64a135d374f6dc203407c8d5b0b18a6f.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/52991.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/52991.jpg",
         "introStart": 25,
         "introEnd": 115
       },
@@ -914,7 +922,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9542/23/1080/a9c46419590f8c3701ee806bc97bfc91.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9542/23/720/ce51171ac1f46e5259edb87848c53328.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9542/23/480/33e5dafb397235001211777d9adbca0c.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/52991.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/52991.jpg",
         "introStart": 50,
         "introEnd": 135
       },
@@ -927,7 +935,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9542/24/1080/9e7e19acd8b2bea18168d429f36b9c9f.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9542/24/720/70b2173eccb644e2968a0b767eb78e5e.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9542/24/480/0697950267ceb50a6d09feb520f53aed.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/52991.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/52991.jpg",
         "introStart": 55,
         "introEnd": 143
       },
@@ -940,7 +948,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9542/25/1080/ee301618d5dd76d18d7b71648d42890b.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9542/25/720/26a9a93accc05f5e9fafc71ab5cd68cf.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9542/25/480/aa5b97b4f8fdf3b52ca889161d7f6389.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/52991.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/52991.jpg",
         "introStart": 50,
         "introEnd": 134
       },
@@ -953,7 +961,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9542/26/1080/aeac95cf14d68ebab6bbe70654706253.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9542/26/720/5a58d36874c1d918ee35369d244dadb9.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9542/26/480/f4051d32c51f2d06b3cae6ba3a3f8405.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/52991.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/52991.jpg",
         "introStart": 13,
         "introEnd": 102
       },
@@ -966,7 +974,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9542/27/1080/c6e89a944586a966202a572682a673d9.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9542/27/720/1b76bb2a0f687aa3ef63c73fdd035bb0.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9542/27/480/eed5836c7b7eaba729084612ee449682.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/52991.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/52991.jpg",
         "introStart": 31,
         "introEnd": 115
       },
@@ -979,7 +987,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9542/28/1080/274f150db870d0bb1d24469bc14a38be.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9542/28/720/513b9ca66bb909f4db946c807d4a1fbe.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9542/28/480/bd3a0f57b2e7ff49e4851eaa00b690a4.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/52991.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/52991.jpg",
         "introStart": 19,
         "introEnd": 105
       }
@@ -1003,8 +1011,8 @@ export const ANIME_DATABASE: Anime[] = [
     "originalTitle": "Клинок рассекающий демонов Истребитель демонов",
     "slug": "kimetsu-no-yaiba-katanakaji-no-sato-hen",
     "description": "Битва, развернувшаяся в квартале Красных Фонарей, была очень тяжёлой. И, хотя победу одержали охотники, она досталась высокой ценой.\r\nВ ожесточённом сражении меч Танджиро изрядно пострадал, и таким оружием поразить демона уже не получится. Поэтому наш герой вместе с Незуко вынужден отправиться в тайную деревню кузнецов — единственное место в стране, где создаются клинки Ничирин, способные принести демону смерть.\r\nВот только лёгкой прогулки не предвидится, ведь как раз в это время сами демоны решают нанести удар по такому стратегически важному месту.\r\nТеперь охотникам предстоит жестокая битва, и ради победы стать сильнее придётся не только им, но и самим кузнецам.",
-    "poster": "https://shikimori.one/system/animes/original/51019.jpg",
-    "banner": "https://shikimori.one/system/animes/original/51019.jpg",
+    "poster": "https://shikimori.io/system/animes/original/51019.jpg",
+    "banner": "https://shikimori.io/system/animes/original/51019.jpg",
     "rating": 9.3,
     "votesCount": 15441,
     "year": 2023,
@@ -1035,7 +1043,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9406/1/1080/a45987df685bb8765f3c261e38655b64.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9406/1/720/ae83598c3fe481738e440a569644df82.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9406/1/480/df31b96abeeb585b1be0ac462f85da78.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/51019.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/51019.jpg",
         "introStart": 85,
         "introEnd": 175
       },
@@ -1048,7 +1056,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9406/2/1080/dcb7beb16eff5bd252d0d79058ca63a3.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9406/2/720/fac486990fafb1c925fbdebc0d1c756d.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9406/2/480/2fbcc3c624a01b9ddd6e84626362cc87.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/51019.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/51019.jpg",
         "introStart": 72,
         "introEnd": 160
       },
@@ -1061,7 +1069,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9406/3/1080/3513a18253073655be576b8734192b52.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9406/3/720/c4b84fc0b5f08972bfbeebb241be5fa0.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9406/3/480/fca5c9b78cddcac178587093b3af35bd.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/51019.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/51019.jpg",
         "introStart": 118,
         "introEnd": 207
       },
@@ -1074,7 +1082,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9406/4/1080/16c99dc42c66eb0dc981c84516e46058.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9406/4/720/673a9faae6c14721919e3cfa02ef2abe.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9406/4/480/90127acd1548f5abbb608ef8e6cd619a.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/51019.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/51019.jpg",
         "introStart": 81,
         "introEnd": 170
       },
@@ -1087,7 +1095,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9406/5/1080/8565124596d6cf7d4f99020533f985b8.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9406/5/720/a1d99929f57dcfc6cdd94c4c2120ed23.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9406/5/480/a701e691b0c0ec1d5234881114a5f43c.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/51019.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/51019.jpg",
         "introStart": 104,
         "introEnd": 193
       },
@@ -1100,7 +1108,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9406/6/1080/ca5f1ab8f989f2546efe386f5e1dca34.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9406/6/720/05e9d468f5a14ed99c4c65e40f482d0d.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9406/6/480/9b0bead426b469b9f3f2161b37aa7f6a.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/51019.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/51019.jpg",
         "introStart": 21,
         "introEnd": 111
       },
@@ -1113,7 +1121,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9406/7/1080/dcb5bdc53843c4c68080464ec82ae8ca.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9406/7/720/63ba0729d9f9b91c9b517ea2b7240728.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9406/7/480/d1fe68f9e2425f00e0136b06fd200dce.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/51019.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/51019.jpg",
         "introStart": 32,
         "introEnd": 120
       },
@@ -1126,7 +1134,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9406/8/1080/d3b0e6db0562699f2c2e7b015f35b654.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9406/8/720/3911f3e97d45c31258b1e2d7c2f0c4c3.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9406/8/480/9a53291c5b9ce57958ee8d352388f443.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/51019.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/51019.jpg",
         "introStart": 64,
         "introEnd": 152
       },
@@ -1139,7 +1147,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9406/9/1080/398180da28929b2fd4df1e6bc84cac05.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9406/9/720/6bf939544cdd263867a33eaba9415fd6.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9406/9/480/73398fca5fe0dc928f32eb16b6637636.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/51019.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/51019.jpg",
         "introStart": 24,
         "introEnd": 132
       },
@@ -1152,7 +1160,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9406/10/1080/4c5c702b41eb6b61ca22142360494b56.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9406/10/720/7cfc626dc50c18f66cee4cc202f3ec12.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9406/10/480/cf6222d7b0248f521cc0722a8b53fa40.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/51019.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/51019.jpg",
         "introStart": 42,
         "introEnd": 130
       },
@@ -1165,7 +1173,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9406/11/1080/2c1793941f9c3adbad16d767dd4db969.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9406/11/720/9dae908fc9247690f2fd0ab15c9f0052.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9406/11/480/bb70e7ca49a9edb0896c3964083d1f3f.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/51019.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/51019.jpg",
         "introStart": 85,
         "introEnd": 175
       }
@@ -1189,8 +1197,8 @@ export const ANIME_DATABASE: Anime[] = [
     "originalTitle": "cyberpunk-edgerunners",
     "slug": "cyberpunk-edgerunners",
     "description": "Найт-Сити — город будущего, оснащённый всевозможными новейшими технологиями. Город, где модификация тела не просто мечты безумных учёных, а реальность сродни обычной покупке. Именно там живёт наш юный герой, для которого этот город не является чем-то невообразимым, он знает всю его настоящую суть, где выживание не просто слово, а истинное лицо этого мира. В один миг, потеряв всё, что имел, парень не опускает рук и в борьбе за выживание становится наёмником по прозвищу Киберпанк.",
-    "poster": "https://shikimori.one/system/animes/original/42310.jpg",
-    "banner": "https://shikimori.one/system/animes/original/42310.jpg",
+    "poster": "https://shikimori.io/system/animes/original/42310.jpg",
+    "banner": "https://shikimori.io/system/animes/original/42310.jpg",
     "rating": 9.6,
     "votesCount": 16090,
     "year": 2022,
@@ -1219,7 +1227,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9307/1/1080/a169b32b69dc2a31ec0894ea99791c23.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9307/1/720/585351ecd1ab4afbef42db505154e407.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9307/1/480/37b4165c5b69a590931e607adc89c48c.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/42310.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/42310.jpg",
         "introStart": 85,
         "introEnd": 175
       },
@@ -1232,7 +1240,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9307/2/1080/6df2f97a92e6e327e2893988ad1545c1.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9307/2/720/80967bea66eafa4f14f9b2783c3cc7e8.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9307/2/480/cbdc9a113b22259ff259d25e34370581.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/42310.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/42310.jpg",
         "introStart": 76,
         "introEnd": 164
       },
@@ -1245,7 +1253,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9307/3/1080/b756cba4e9a2a92e50b545f2fcc13567.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9307/3/720/510148db904101c21153514e0d2b7ff3.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9307/3/480/5acd6ee42ba6b1df073405988c3c5dba.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/42310.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/42310.jpg",
         "introStart": 1,
         "introEnd": 100
       },
@@ -1258,7 +1266,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9307/4/1080/91f7ae18fada6538ba2a871e17aefa78.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9307/4/720/1910585f5a24b0a910f3738b40caefa1.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9307/4/480/c271fff9f90c0a7b026f91cc4387434b.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/42310.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/42310.jpg",
         "introStart": 31,
         "introEnd": 120
       },
@@ -1271,7 +1279,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9307/5/1080/8f9ab703ede93da446fc2b608793d7b9.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9307/5/720/ba6f83818599b2dc48d210f1126de549.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9307/5/480/5b4596baa9606847c3f5327d7feaddbb.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/42310.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/42310.jpg",
         "introStart": 1,
         "introEnd": 100
       },
@@ -1284,7 +1292,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9307/6/1080/96314e5f7d4ac37e6d17a32fea3aae80.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9307/6/720/88bb72a724b2a19e208a4fb0368032ba.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9307/6/480/fa76a86150c6094cb35a2c2e15901987.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/42310.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/42310.jpg",
         "introStart": 1,
         "introEnd": 98
       },
@@ -1297,7 +1305,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9307/7/1080/9cbf008fb1e5bd029524b7e0d4ef3944.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9307/7/720/7d7a1600ea51b4fa60520420223bd91a.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9307/7/480/86762a48ed7895d8e0767d6b6dc2b2ec.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/42310.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/42310.jpg",
         "introStart": 86,
         "introEnd": 170
       },
@@ -1310,7 +1318,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9307/8/1080/fa2ac99602efca878930181702020c42.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9307/8/720/2ce1189d822e9792672d595a0fb0c791.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9307/8/480/47e4a589c4577cb8e14450958e460da6.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/42310.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/42310.jpg",
         "introStart": 85,
         "introEnd": 175
       },
@@ -1323,7 +1331,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9307/9/1080/afb412f0dee9f5b4e5a09fc86acedf5b.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9307/9/720/c558f2ffb10a89fc04bd8aff6566c3e9.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9307/9/480/47b4f48faf669ae059264b82fb814ba0.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/42310.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/42310.jpg",
         "introStart": 1,
         "introEnd": 103
       },
@@ -1336,7 +1344,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9307/10/1080/feff60322f5846315a571c0012e70870.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9307/10/720/267b693e8bfa0419083d0a9e49d86d7f.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9307/10/480/07e03d1797b1c50e6a8de203c291ddfb.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/42310.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/42310.jpg",
         "introStart": 1,
         "introEnd": 100
       }
@@ -1358,8 +1366,8 @@ export const ANIME_DATABASE: Anime[] = [
     "originalTitle": "spy-x-family",
     "slug": "spy-x-family",
     "description": "Ллойд Форджер — профессиональный шпион под кодовым именем Сумрак получает особое задание от командования, целью которого является поддержание мира между двумя сверхдержавами. В качестве прикрытия он обязан обзавестись фиктивной семьёй. Роль условной жены досталась не кому-то, а известной наёмной убийце под псевдонимом Тернистая Принцесса, однако это показалось командованию недостаточным, и он удочеряет шестилетнюю девочку-эспера, которая может читать мысли других людей. Теперь новой семье предстоит не только выполнить секретное задание, не раскрыв себя, но и понять, что семья — это гораздо больше, чем просто кровные родственники.",
-    "poster": "https://shikimori.one/system/animes/original/50265.jpg",
-    "banner": "https://shikimori.one/system/animes/original/50265.jpg",
+    "poster": "https://shikimori.io/system/animes/original/50265.jpg",
+    "banner": "https://shikimori.io/system/animes/original/50265.jpg",
     "rating": 8.5,
     "votesCount": 19119,
     "year": 2022,
@@ -1389,7 +1397,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9161/1/1080/9871af8d628afd74029489482b1b09b8.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9161/1/720/035988346d1cc4626f7126516a92d59a.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9161/1/480/3b6ab3a751d76e39583856b6af67f1fa.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/50265.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/50265.jpg",
         "introStart": 85,
         "introEnd": 175
       },
@@ -1402,7 +1410,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9161/2/1080/aa1036b510add0b7074bf073f0b5357e.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9161/2/720/d3088b1ee0b6cb108cf269e1bc51f1bc.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9161/2/480/758f85de1e031bed4abbf84fcb71c003.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/50265.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/50265.jpg",
         "introStart": 1,
         "introEnd": 85
       },
@@ -1415,7 +1423,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9161/3/1080/155116e75d47f9e919a2dfff6913c2e1.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9161/3/720/cc439da357051e55f535d79cde9db8b8.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9161/3/480/108e8737122e464e56fd13bd68d0f026.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/50265.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/50265.jpg",
         "introStart": 80,
         "introEnd": 160
       },
@@ -1428,7 +1436,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9161/4/1080/e765b7144e9821e395ca832ed581c81c.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9161/4/720/b222070504cb5717cf01276362ba1ebf.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9161/4/480/f27655241051624d4ec493f395e7c6f7.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/50265.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/50265.jpg",
         "introStart": 1,
         "introEnd": 83
       },
@@ -1441,7 +1449,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9161/5/1080/53b594510ce6c41eb2904f41fd9f0260.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9161/5/720/ad6d189109340dc01c6955ffff7fae3c.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9161/5/480/f8a96fe4fd31a08e84e89998ae1b4230.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/50265.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/50265.jpg",
         "introStart": 77,
         "introEnd": 160
       },
@@ -1454,7 +1462,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9161/6/1080/5a85ece85487648a41e73c1c0a796142.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9161/6/720/c56e76df52f1c0407ec02c9a8338f602.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9161/6/480/103e85a3777ae316d84a27b646518971.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/50265.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/50265.jpg",
         "introStart": 1,
         "introEnd": 85
       },
@@ -1467,7 +1475,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9161/7/1080/ec4406feb29015be0aab359003f6e280.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9161/7/720/803bc7a842c985ec1d7bbddff5d29317.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9161/7/480/0c487e678db0f8c8a3a7c1db9a3eb9ce.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/50265.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/50265.jpg",
         "introStart": 67,
         "introEnd": 150
       },
@@ -1480,7 +1488,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9161/8/1080/f88906efda2475361d27e9b637fd243d.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9161/8/720/38c2ffead92ee4fbef4cc3fadfd58367.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9161/8/480/4041c13023f6fab898c1ec2287ba9a21.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/50265.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/50265.jpg",
         "introStart": 1,
         "introEnd": 83
       },
@@ -1493,7 +1501,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9161/9/1080/0a50eeeebf8e5ae8df99e5e85b0401d1.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9161/9/720/72e5e1013de0df68649f57e017f1d005.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9161/9/480/6957a3d71fa82fe98321b866d885d41e.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/50265.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/50265.jpg",
         "introStart": 80,
         "introEnd": 170
       },
@@ -1506,7 +1514,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9161/10/1080/469294281cb9f08341c70e580dc1abb9.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9161/10/720/c55d189df3479f35d9029ae8b99b66f9.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9161/10/480/d72faba699526b866becb319af355bc4.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/50265.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/50265.jpg",
         "introStart": 260,
         "introEnd": 350
       },
@@ -1519,7 +1527,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9161/11/1080/65fd3d96006f90a1686cd59098994366.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9161/11/720/14feecd9f5aca68360945077480d90d5.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9161/11/480/aa12cfd497d7f5a66a22950a562e2fda.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/50265.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/50265.jpg",
         "introStart": 1,
         "introEnd": 90
       },
@@ -1532,7 +1540,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9161/12/1080/5a2ae35a73b0d310bfcd23abc17faf3c.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9161/12/720/259a37788ebefb0e573366672c7a8fbd.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9161/12/480/0e07891cc30ef8ff64a25a28a2b085a7.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/50265.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/50265.jpg",
         "introStart": 75,
         "introEnd": 163
       }
@@ -1739,8 +1747,8 @@ export const ANIME_DATABASE: Anime[] = [
     "originalTitle": "vinland-saga",
     "slug": "vinland-saga",
     "description": "Время господства викингов. Людей, которые известны своими варварскими обычаями и жестокими убийствами. Торфинн - сын одного из величайших викингов. Вот только вырос мальчик без отца, ведь тот погиб на поле боя. Желая отомстить, Торфинн поклялся убить виновного. Однако юноше ещё только предстоит овладеть искусством битвы.",
-    "poster": "https://shikimori.one/system/animes/original/49387.jpg",
-    "banner": "https://shikimori.one/system/animes/original/49387.jpg",
+    "poster": "https://shikimori.io/system/animes/original/49387.jpg",
+    "banner": "https://shikimori.io/system/animes/original/49387.jpg",
     "rating": 9.8,
     "votesCount": 23711,
     "year": 2019,
@@ -1772,7 +1780,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8424/1/1080/cc0522241279fc5e582179e3c9135d1f.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8424/1/720/433eee92432a756a072ce3a99cdf7bd3.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8424/1/480/c4751c45a3848cb8c02c4863c59cde4c.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/49387.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/49387.jpg",
         "introStart": 250,
         "introEnd": 350
       },
@@ -1785,7 +1793,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8424/2/1080/fc93eb19f9c91bdfd888b40c011469d7.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8424/2/720/42c03d8bc5a75e052019c30c50d12874.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8424/2/480/cf39a973a64ce42f961c63f99921b557.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/49387.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/49387.jpg",
         "introStart": 1,
         "introEnd": 107
       },
@@ -1798,7 +1806,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8424/3/1080/ff12f1cc6d6c820ee816a328f5ff75b6.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8424/3/720/9543c5e0308a42d8d2e819318b0f0650.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8424/3/480/658b1400b54e04de3bd71d8e3719c6d3.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/49387.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/49387.jpg",
         "introStart": 218,
         "introEnd": 310
       },
@@ -1811,7 +1819,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8424/4/1080/e5f3399397b7377af22156f8df62ad7f.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8424/4/720/25cde351ddbd26361222f69d06e1a612.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8424/4/480/2b23d8ee8f0df7dfafa10e3d06cd7b63.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/49387.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/49387.jpg",
         "introStart": 268,
         "introEnd": 359
       },
@@ -1824,7 +1832,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8424/5/1080/18618a1996a337e14c2dbcbdc98506aa.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8424/5/720/8289f9e02a5fd462140db92edb0a6f0f.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8424/5/480/f635757f6cedc9e6d9edd068dd7a570d.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/49387.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/49387.jpg",
         "introStart": 1,
         "introEnd": 107
       },
@@ -1837,7 +1845,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8424/6/1080/ac97db1f6fb3d6f56bbdb15adfcd61ea.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8424/6/720/e3e8c20e5a93ee029e4d1dca1b280466.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8424/6/480/2b8aa78e3f64fd5c8fe044a0f7fcef94.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/49387.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/49387.jpg",
         "introStart": 124,
         "introEnd": 213
       },
@@ -1850,7 +1858,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8424/7/1080/9cd2e28ad6afae684aca80c9b40d3fa0.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8424/7/720/0d959b2d727f53826d2b755944084207.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8424/7/480/de8bfd0c265bc76cef92d3a34ecfd235.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/49387.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/49387.jpg",
         "introStart": 280,
         "introEnd": 372
       },
@@ -1863,7 +1871,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8424/8/1080/4b89134fd97cbd3472a3cd54207e7118.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8424/8/720/5c00715309fb9dd69bd6cd60e3edd9b5.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8424/8/480/a82cfd4af813d3e6ff8577fbc5d18871.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/49387.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/49387.jpg",
         "introStart": 90,
         "introEnd": 181
       },
@@ -1876,7 +1884,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8424/9/1080/2712efc7a00d5750a63f61380ee7852a.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8424/9/720/c13edc72bff7e865e2fa079b8f5d5c3d.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8424/9/480/bf27a80609d8544cc8cd5a8526a14f3c.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/49387.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/49387.jpg",
         "introStart": 215,
         "introEnd": 310
       },
@@ -1889,7 +1897,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8424/10/1080/86353135a643cf8ca2b7b25745949e21.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8424/10/720/f4f12e05d76d5d053d8f3a6ba0ee4408.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8424/10/480/9ac88df122d2ed6089c3a785368937c8.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/49387.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/49387.jpg",
         "introStart": 219,
         "introEnd": 313
       },
@@ -1902,7 +1910,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8424/11/1080/73487d5676f377ff47f8afb17b6998eb.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8424/11/720/e77ea0364a0050d317d0691ec210f8bf.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8424/11/480/53159fa0f36c6d4a5a8d6713661394f3.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/49387.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/49387.jpg",
         "introStart": 10,
         "introEnd": 108
       },
@@ -1915,7 +1923,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8424/12/1080/22ab4d16f070dbae21982ce076c43c48.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8424/12/720/57c56031e1e3f03eb14be148ee611b0b.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8424/12/480/b1b66d80a50b7b06197edbeae502d6e2.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/49387.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/49387.jpg",
         "introStart": 10,
         "introEnd": 108
       },
@@ -1928,7 +1936,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8424/13/1080/92863ec89516d0f1ea413794589dd6fd.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8424/13/720/1f64350a76bf91194d44dd9a5ee29e30.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8424/13/480/7e218216b76e90f062a3a93c35dc23b0.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/49387.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/49387.jpg",
         "introStart": 58,
         "introEnd": 146
       },
@@ -1941,7 +1949,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8424/14/1080/f24b01a6fbe98443fd7ebaf49836c837.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8424/14/720/b2dd9f1a6c207d7423e34333fe98ea12.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8424/14/480/ea805c8de5ec4fc3077f29c5f87c55c1.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/49387.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/49387.jpg",
         "introStart": 116,
         "introEnd": 204
       },
@@ -1954,7 +1962,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8424/15/1080/a64f123138203ea0f76ba43476e55764.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8424/15/720/a2c220dc44a656a3defef4450dc53a30.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8424/15/480/2564a3234953d345b1a73ad4cae9fb68.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/49387.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/49387.jpg",
         "introStart": 100,
         "introEnd": 188
       },
@@ -1967,7 +1975,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8424/16/1080/d405e59c04bdff6967641d33f6162d61.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8424/16/720/67931eee046c5421032e70a3ec59b97c.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8424/16/480/27882feed3478cb6bdca8d2730768590.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/49387.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/49387.jpg",
         "introStart": 107,
         "introEnd": 195
       },
@@ -1980,7 +1988,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8424/17/1080/94a8331d90aad3ddc54fe758388ed4e3.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8424/17/720/03ecae42d4c4494fb6d38a046997335d.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8424/17/480/85c6738cd245045c9709338c2f188feb.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/49387.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/49387.jpg",
         "introStart": 116,
         "introEnd": 204
       },
@@ -1993,7 +2001,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8424/18/1080/92e4ef07dfec76c626affb10c9af944a.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8424/18/720/e589d53402f3cf80ad30ded4cd9dff63.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8424/18/480/ea9fd24cfbe1f3e9ddd2bea307dc641d.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/49387.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/49387.jpg",
         "introStart": 173,
         "introEnd": 261
       },
@@ -2006,7 +2014,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8424/19/1080/7cb408d9cabf4cd3a82706d90b9d4ef4.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8424/19/720/a883955c3481753d70547ef34f1fa1a9.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8424/19/480/b8862a8285795dfa35e8194a96b527b9.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/49387.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/49387.jpg",
         "introStart": 109,
         "introEnd": 197
       },
@@ -2019,7 +2027,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8424/20/1080/d2a8e393f1dc6da7fe6cb0f6bb7280a5.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8424/20/720/f9ef5e95d689610967ee108cbba2916c.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8424/20/480/991c5798d0e8b8850b7bd8491a4782c0.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/49387.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/49387.jpg",
         "introStart": 136,
         "introEnd": 223
       },
@@ -2032,7 +2040,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8424/21/1080/bfc8a5af7e0a6e2787ae245da90c9fdd.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8424/21/720/039e65e389a1ea918d2ccbda3ff61541.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8424/21/480/8f764d3a78b2c7e652c50370ee03d1fc.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/49387.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/49387.jpg",
         "introStart": 20,
         "introEnd": 108
       },
@@ -2045,7 +2053,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8424/22/1080/b0104f380995f927935dff0fbac13e95.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8424/22/720/a222097f722cb1439fa42c3ceaa19b98.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8424/22/480/7ceed41ca775d43111a4d23e6b74d1dc.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/49387.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/49387.jpg",
         "introStart": 139,
         "introEnd": 227
       },
@@ -2058,7 +2066,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8424/23/1080/50de7ad2fffb4203c7a896602a9f93f5.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8424/23/720/aef4589ab39343f2a7eb484a6175216f.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8424/23/480/5fb71e8d793fe0a63105b8a666c6d6b9.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/49387.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/49387.jpg",
         "introStart": 20,
         "introEnd": 108
       },
@@ -2071,7 +2079,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8424/24/1080/a4e51ffed8839873a06fcc480a2a51ff.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8424/24/720/3984d3b5f2aaa1c0f4ff589cac887899.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8424/24/480/99264b1378215ab77414f0675189b3ac.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/49387.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/49387.jpg",
         "introStart": 94,
         "introEnd": 182
       }
@@ -2096,8 +2104,8 @@ export const ANIME_DATABASE: Anime[] = [
     "originalTitle": "steinsgate",
     "slug": "steinsgate",
     "description": "Действие сериала происходит летом 2010 года в Акихабаре. Группа друзей переделывает микроволновку в некое устройство, способное посылать текстовые сообщения в прошлое. Пока они проводят над устройством различные эксперименты, ими заинтересовывается таинственная организация SERN, которая также проводит исследования по путешествиям во времени. SERN начинает преследовать друзей, и теперь главным героям предстоит найти способ не быть захваченными ими.",
-    "poster": "https://shikimori.one/system/animes/original/30484.jpg",
-    "banner": "https://shikimori.one/system/animes/original/30484.jpg",
+    "poster": "https://shikimori.io/system/animes/original/30484.jpg",
+    "banner": "https://shikimori.io/system/animes/original/30484.jpg",
     "rating": 8.9,
     "votesCount": 9851,
     "year": 2011,
@@ -2126,7 +2134,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8674/1/1080/36903d35f45db3c8a97238f02d3eabc8.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8674/1/720/b38659a3590684d69d31dee92f803c59.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8674/1/480/4cb97151d59d673387afe72600dc8484.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/30484.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/30484.jpg",
         "introStart": 85,
         "introEnd": 175
       },
@@ -2139,7 +2147,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8674/2/1080/4423d9bbdbd0758b5fa831feb28697f9.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8674/2/720/99788ede6fe0555b2252259aa7e48438.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8674/2/480/49313866d907a2d9408396ee9ec5fa95.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/30484.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/30484.jpg",
         "introStart": 77,
         "introEnd": 163
       },
@@ -2152,7 +2160,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8674/3/1080/e4549698417cfa4ab3d9dca8837b4fcf.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8674/3/720/c5aabb0081ac725766b1e2404b43b3c9.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8674/3/480/66692a7ffc9fa00f40267177d687ee67.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/30484.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/30484.jpg",
         "introStart": 100,
         "introEnd": 187
       },
@@ -2165,7 +2173,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8674/4/1080/26e42083e8e6e57e0a76df4c125935c1.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8674/4/720/3e84ee7ca19b49fb922eab6182e599a9.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8674/4/480/4f637a721920f071d2192e1c750a59c3.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/30484.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/30484.jpg",
         "introStart": 96,
         "introEnd": 183
       },
@@ -2178,7 +2186,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8674/5/1080/202b1ee776de6e700edaae7e79cc5261.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8674/5/720/4460eca72aedd884c54b5c72ae74c2d0.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8674/5/480/f67e3426c2fe867b7455f99fca36f850.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/30484.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/30484.jpg",
         "introStart": 119,
         "introEnd": 206
       },
@@ -2191,7 +2199,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8674/6/1080/9067dbcae04b1c7f2e029a2444e119b0.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8674/6/720/5324b5dae14b0bf1d3b5b47e8f8deac7.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8674/6/480/6169ada5c1421175441061e21f5b4592.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/30484.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/30484.jpg",
         "introStart": 68,
         "introEnd": 154
       },
@@ -2204,7 +2212,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8674/7/1080/48b8aaed55f2ac8601fd8fe18c63ae67.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8674/7/720/0bee193860a3caae306ff1d74683292f.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8674/7/480/eab3815e4143dff2a0e7763ad2093c60.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/30484.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/30484.jpg",
         "introStart": 120,
         "introEnd": 205
       },
@@ -2217,7 +2225,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8674/8/1080/dc00c48dc8f32324e53887bc6b30bcd4.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8674/8/720/6a6aaf38d8f36ae5c47e9be69e7e6954.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8674/8/480/e0bc7648f13feb9c364b54a2210f6982.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/30484.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/30484.jpg",
         "introStart": 108,
         "introEnd": 195
       },
@@ -2230,7 +2238,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8674/9/1080/4819b30bef9161efb0399d46a334766d.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8674/9/720/1742b3dc6b390998cb9b53c1849b89ba.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8674/9/480/62d7018b87f76d32137737268828cd9a.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/30484.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/30484.jpg",
         "introStart": 59,
         "introEnd": 148
       },
@@ -2243,7 +2251,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8674/10/1080/97093115c9da8ab630f8ad264593df96.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8674/10/720/a00754c063e4d8b49895188f0f7c5d10.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8674/10/480/d186d4cfd024de1ea138455d2aa12695.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/30484.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/30484.jpg",
         "introStart": 54,
         "introEnd": 141
       },
@@ -2256,7 +2264,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8674/11/1080/62b91da6785bf46eb6e6e476b688b2e7.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8674/11/720/e8e744e3540c0acbe7ae38d2c25ae615.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8674/11/480/e37921b6d735a1931f679426ffea07d9.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/30484.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/30484.jpg",
         "introStart": 82,
         "introEnd": 171
       },
@@ -2269,7 +2277,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8674/12/1080/f510c4d224890356e0ad9593dd45f550.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8674/12/720/3e1ab03eed0520bafd351185d922e416.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8674/12/480/acd8bf811a4ba9a2a0b37f64bf73bc14.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/30484.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/30484.jpg",
         "introStart": 107,
         "introEnd": 196
       },
@@ -2282,7 +2290,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8674/13/1080/d9ab37ec37ece8d9ea45861f7cae1c4d.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8674/13/720/8ff0a32e49789ae8ea8324b885995011.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8674/13/480/f841eb83d7b1f2df93eaacd45816869c.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/30484.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/30484.jpg",
         "introStart": 177,
         "introEnd": 266
       },
@@ -2295,7 +2303,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8674/14/1080/5c04b7165b614251c02a631da00e043a.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8674/14/720/542d6809b6be6a2545ed9bf34470b75d.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8674/14/480/370d5f083fe6889bfa0a97f29aa67d50.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/30484.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/30484.jpg",
         "introStart": 139,
         "introEnd": 228
       },
@@ -2308,7 +2316,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8674/15/1080/a8e65f24d4a667d1aeec7fe77f691862.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8674/15/720/948539e26f34ed364ae3cdc12719fe00.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8674/15/480/e64393ee774d91d2e07e0e9524f07f8d.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/30484.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/30484.jpg",
         "introStart": 16,
         "introEnd": 105
       },
@@ -2321,7 +2329,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8674/16/1080/b07ce2072d72426e04334d43c7edb51b.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8674/16/720/4adac06607153e06f9cad3c3ebea78c3.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8674/16/480/7f364f9dc56efaf19903b61d90fb0b8c.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/30484.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/30484.jpg",
         "introStart": 84,
         "introEnd": 173
       },
@@ -2334,7 +2342,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8674/17/1080/63872c9c2a9fd42a90a0cf6fa5c240fb.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8674/17/720/1e552fcb0ec801116c3f59ffab5bc828.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8674/17/480/7b195bebe02092be4f91849e2121b9d1.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/30484.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/30484.jpg",
         "introStart": 49,
         "introEnd": 136
       },
@@ -2347,7 +2355,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8674/18/1080/66c622ffbbc9b5ed5f3162a5b5ffdbc9.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8674/18/720/f848158cacdba937c4cfd54c26fa3927.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8674/18/480/4a094cc1154292c875660188414cef35.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/30484.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/30484.jpg",
         "introStart": 35,
         "introEnd": 122
       },
@@ -2360,7 +2368,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8674/19/1080/7c0ebb4c120263fe94d346377e701c55.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8674/19/720/5b57392587c4891910bea4b69a85640f.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8674/19/480/3b307ab3bfac1c4545d35b3a53999816.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/30484.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/30484.jpg",
         "introStart": 35,
         "introEnd": 121
       },
@@ -2373,7 +2381,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8674/20/1080/abd5899b23766e4a4b1f876b5d144861.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8674/20/720/ccb772f363a01f543f70c9a5e89c0ef2.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8674/20/480/de0899553ea52d7fcc1da60dc4fba458.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/30484.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/30484.jpg",
         "introStart": 54,
         "introEnd": 140
       },
@@ -2386,7 +2394,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8674/21/1080/5cb55427639976fd7a07bc56853749e8.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8674/21/720/17abf6fd7c81f4ebea3edc1c240067f9.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8674/21/480/b02a58a96e68c9feac0e32805ccac896.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/30484.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/30484.jpg",
         "introStart": 20,
         "introEnd": 107
       },
@@ -2399,7 +2407,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8674/22/1080/a68137349d947b016087ee938bf42e6f.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8674/22/720/6c0f409fa865f76eb6097db65d6a8f84.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8674/22/480/54136c513ff633db231800324770a019.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/30484.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/30484.jpg",
         "introStart": 14,
         "introEnd": 101
       },
@@ -2412,7 +2420,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8674/23/1080/32afa152f0b52acf3973172a362e55f2.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8674/23/720/4f5fa0a9c3763c3053e7ff8c9902a87f.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8674/23/480/1ee1cc2e4fa350c218bee0c331189a7e.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/30484.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/30484.jpg",
         "introStart": 109,
         "introEnd": 196
       },
@@ -2425,7 +2433,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8674/24/1080/a396402d944a2c17ce002a9635e88913.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8674/24/720/f7c819daf0bd0fc87d450290fe19eb7b.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8674/24/480/af73c87a4eb3e60a6847652e0325f5bd.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/30484.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/30484.jpg",
         "introStart": 103,
         "introEnd": 191
       },
@@ -2438,7 +2446,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/8674/25/1080/14771156ca0395c0d0ca4d9c9cdf72a5.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/8674/25/720/415c54d821dc5643561c36196c3f4bba.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/8674/25/480/2b7aa05099ad8a8fa0b1bbc6893779d5.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/30484.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/30484.jpg",
         "introStart": 85,
         "introEnd": 175
       }
@@ -2460,8 +2468,8 @@ export const ANIME_DATABASE: Anime[] = [
     "originalTitle": "bocchi-the-rock",
     "slug": "bocchi-the-rock",
     "description": "Забавная история об одинокой и до ужаса стеснительной школьнице Хитори Гото, которая, взяв в руки гитару, загорелась желанием создать в старшей школе собственную рок-группу. Да вот незадача — девушка настолько робкая и зажатая, что даже не смогла завести себе друзей, чего уж говорить о собственном музыкальном коллективе!\r\nНо сама судьба решает помочь Хитори: по её душу приходит одна неугомонная барабанщица, которая как раз подыскивает новую гитаристку в свою группу. Именно встреча с ней и перевернет жизнь нашей недотроги с ног на голову!",
-    "poster": "https://shikimori.one/system/animes/original/47917.jpg",
-    "banner": "https://shikimori.one/system/animes/original/47917.jpg",
+    "poster": "https://shikimori.io/system/animes/original/47917.jpg",
+    "banner": "https://shikimori.io/system/animes/original/47917.jpg",
     "rating": 8,
     "votesCount": 9861,
     "year": 2022,
@@ -2491,7 +2499,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9293/1/1080/bdc8ac8d01a6915e465cd4250b071f44.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9293/1/720/22c6c333192895bd2ec3fe6cdb36dd57.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9293/1/480/8b0a345b56efddd718e87ba3a0ead81b.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/47917.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/47917.jpg",
         "introStart": 174,
         "introEnd": 263
       },
@@ -2504,7 +2512,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9293/2/1080/32cd6f753402762e8d9b2de45072fb31.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9293/2/720/cae377914abe8817c7f71060d32d0dc5.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9293/2/480/1b76dfa4ed0bd64dad206b39d90f1e55.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/47917.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/47917.jpg",
         "introStart": 34,
         "introEnd": 124
       },
@@ -2517,7 +2525,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9293/3/1080/2f7732b0ac13f36e7798179a484ae5ea.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9293/3/720/4e64d2a7364cb36223d8f5e46ecaa8fd.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9293/3/480/48b70f98cb734c3f4191afa526ea89db.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/47917.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/47917.jpg",
         "introStart": 221,
         "introEnd": 310
       },
@@ -2530,7 +2538,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9293/4/1080/71a2d521abc200560854616527355afd.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9293/4/720/4601ebb20b06ac7b8f4e9b8bda1cc87f.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9293/4/480/d48028d30f97ca6483120af9be6e96ee.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/47917.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/47917.jpg",
         "introStart": 105,
         "introEnd": 194
       },
@@ -2543,7 +2551,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9293/5/1080/8cd0ee515d1f392d28a564d3b0107199.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9293/5/720/3b812674644abc351f83b1bc9dcac32e.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9293/5/480/d65d8100707de85172b9022f94781690.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/47917.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/47917.jpg",
         "introStart": 167,
         "introEnd": 257
       },
@@ -2556,7 +2564,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9293/6/1080/70ef6886db0ad48e5ef2dae9b0e2190a.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9293/6/720/921ec55cf3f259e1c9ef52070e7d156e.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9293/6/480/4e094492338ad96d0b136c886219f912.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/47917.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/47917.jpg",
         "introStart": 303,
         "introEnd": 392
       },
@@ -2569,7 +2577,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9293/7/1080/0cd524ba4802b877707b0303b3920da8.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9293/7/720/658b15271e02613011dae54f53acc5e7.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9293/7/480/9b928a87a299e264683621d592d5d92d.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/47917.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/47917.jpg",
         "introStart": 165,
         "introEnd": 256
       },
@@ -2582,7 +2590,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9293/8/1080/cd0ef42e2198973a3823ba5e73d0fa00.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9293/8/720/ce968230f62edd20fb8794ce2c836f90.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9293/8/480/88f81e55fa5f5e735a14aa5e09b107e4.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/47917.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/47917.jpg",
         "introStart": 85,
         "introEnd": 175
       },
@@ -2595,7 +2603,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9293/9/1080/4ee3e79aa3eef8891cbd4f24b25cb4fe.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9293/9/720/b1da96f6994f96d9b6b86685d5dea50f.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9293/9/480/4e2f14498e4565968e520a33a4b57540.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/47917.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/47917.jpg",
         "introStart": 172,
         "introEnd": 264
       },
@@ -2608,7 +2616,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9293/10/1080/0b7ec10cc02427930586c8fe192705d3.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9293/10/720/f88d322c297b5d257226c61e968fc2cc.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9293/10/480/067b0bb6c566b9b9ffeadf01fe32523f.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/47917.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/47917.jpg",
         "introStart": 146,
         "introEnd": 237
       },
@@ -2621,7 +2629,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9293/11/1080/3e74315f5f429254133d0ad530b631cc.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9293/11/720/1339b733dcf987ec359c5cf88ae5d0cc.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9293/11/480/db8e336aec8d96617c97a779c8c78423.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/47917.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/47917.jpg",
         "introStart": 183,
         "introEnd": 276
       },
@@ -2634,7 +2642,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9293/12/1080/9bea0d7b0248cc787cd34fb4bdca3111.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9293/12/720/fef87cd34e38fc92092677f2da03b6af.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9293/12/480/55ab1a3250718265dd70ecc5c1b92d0c.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/47917.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/47917.jpg",
         "introStart": 85,
         "introEnd": 175
       }
@@ -2657,8 +2665,8 @@ export const ANIME_DATABASE: Anime[] = [
     "originalTitle": "Кайдзю 8 , Кайдзю номер 8",
     "slug": "kaijuu-8-gou",
     "description": "Япония уже долгие годы страдает от нескончаемых нападений страшных тварей — кайдзю.\r\n Главный герой истории, тридцатидвухлетний Кафка Хибино, работает в специальной бригаде по очистке городов от останков этих чудовищ. С детства он мечтал вступить в боевой отряд, чтобы сражаться с монстрами, но раз за разом получал отказ. В отличие от его подруги детства Мины Аширо, которая уже стала капитаном и теперь возглавляет третий взвод оборонительных сил.\r\n Но ещё не всё потеряно. Возраст для набора в боевые отряды повысили до тридцати трёх, и Кафка решается попытать удачу ещё раз. Но судьба, как известно дама коварная: в результате случайного стечения обстоятельств к нему в рот залезает мелкий летающий кайдзю и превращает его в мощный гибрид человека и монстра.\r\n Теперь Кафке предстоит защищать людей от вселяющих ужас тварей, самому будучи одной из них.",
-    "poster": "https://shikimori.one/system/animes/original/52588.jpg",
-    "banner": "https://shikimori.one/system/animes/original/52588.jpg",
+    "poster": "https://shikimori.io/system/animes/original/52588.jpg",
+    "banner": "https://shikimori.io/system/animes/original/52588.jpg",
     "rating": 8.6,
     "votesCount": 23832,
     "year": 2024,
@@ -2687,7 +2695,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9663/1/1080/e8c679a2d32fcbfcdbbde2181a96bb5b.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9663/1/720/659635fd76efd90216666d9df27614c1.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9663/1/480/2be53dcd684ba9bc2190d65477dd4a47.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/52588.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/52588.jpg",
         "introStart": 85,
         "introEnd": 175
       },
@@ -2700,7 +2708,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9663/2/1080/3d05f6596d330d09659c70f39b7aef60.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9663/2/720/64a27f2894acbaaef951abfff70c19f0.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9663/2/480/3db402debe3f65ab9d2808ccd4a5e196.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/52588.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/52588.jpg",
         "introStart": 46,
         "introEnd": 131
       },
@@ -2713,7 +2721,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9663/3/1080/3c5291e3559da93ee51597f677802554.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9663/3/720/09bb44d1d20478ca31a646b2d0e5b770.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9663/3/480/ad8cd716511af7f407e0bf99de553c9f.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/52588.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/52588.jpg",
         "introStart": 150,
         "introEnd": 240
       },
@@ -2726,7 +2734,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9663/4/1080/dcef36b31315dc1da5c3d13ea17a0597.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9663/4/720/34051967fcb6e39a946b1d309d5a2e0e.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9663/4/480/2996f256410a1d3a7c030ec81816ff6b.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/52588.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/52588.jpg",
         "introStart": 1,
         "introEnd": 90
       },
@@ -2739,7 +2747,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9663/5/1080/4e0b22c32e595ab3c6826d09e7afc411.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9663/5/720/66c7300a05382db5fc43dc3bb87dfef8.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9663/5/480/cc470d463957566b7a4b9d104706c09f.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/52588.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/52588.jpg",
         "introStart": 67,
         "introEnd": 156
       },
@@ -2752,7 +2760,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9663/6/1080/71d849d2c3ed07cd7f664f0b2bf57629.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9663/6/720/46cad061cdf0483c4e1cd8da412f2254.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9663/6/480/53b7b3784c3717cbe69b8d9f731143c5.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/52588.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/52588.jpg",
         "introStart": 154,
         "introEnd": 241
       },
@@ -2765,7 +2773,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9663/7/1080/1db12c4ad173d67129b82a4ee50ee3c3.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9663/7/720/11195c193f0595e19873e857dc71813b.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9663/7/480/7c5d40df5928bf3464af50f7003f2b77.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/52588.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/52588.jpg",
         "introStart": 75,
         "introEnd": 163
       },
@@ -2778,7 +2786,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9663/8/1080/d819071b246e8a1db43ba224c3820301.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9663/8/720/2da36d8a127b0f57d55d991ea3f28eb8.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9663/8/480/61d0d0d41440c9af13d584a8cb559cff.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/52588.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/52588.jpg",
         "introStart": 1,
         "introEnd": 90
       },
@@ -2791,7 +2799,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9663/9/1080/32a6ebfe52cead3ca5b4496ba64ef16d.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9663/9/720/c3b0d52fb43c90eff4a0292cc285194f.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9663/9/480/5da44f10646f80288742eefffe14341a.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/52588.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/52588.jpg",
         "introStart": 86,
         "introEnd": 176
       },
@@ -2804,7 +2812,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9663/10/1080/c87c34878b008eaec661933ce7945401.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9663/10/720/c26e4d94145d16aec977f58869dd9c89.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9663/10/480/bf47dfc1a9b06a88866cf53436c88a12.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/52588.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/52588.jpg",
         "introStart": 69,
         "introEnd": 157
       },
@@ -2817,7 +2825,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9663/11/1080/1df2c30385026fe136c100eb8e8bd448.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9663/11/720/900ebe4e1c318a82876edba1f9b4a325.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9663/11/480/00f1b26d90f02d476c152d3d7bd7d426.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/52588.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/52588.jpg",
         "introStart": 43,
         "introEnd": 127
       },
@@ -2830,7 +2838,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9663/12/1080/3071235468e5b8076261acbf40df7e5f.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9663/12/720/2b31c0e4ecff9b1aa4809917fd553a4d.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9663/12/480/2c5aeb092c109ccbe52f6c574c2e2c75.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/52588.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/52588.jpg",
         "introStart": 1,
         "introEnd": 89
       }
@@ -2852,8 +2860,8 @@ export const ANIME_DATABASE: Anime[] = [
     "originalTitle": "one-piece",
     "slug": "one-piece",
     "description": "Гол Д. Роджер — король пиратов, добившийся за свою жизнь богатства, славы и власти - спрятал где-то на просторах этого мира загадочное сокровище, которое все называют «Ван-Пис». После смерти Роджера множество смельчаков кинулись на поиски этого сокровища. Так наступила великая эпоха пиратов! \r\nПаренёк по имени Луффи из маленькой прибрежной деревушки тоже мечтает стать королём пиратом. Ещё в детстве он ненароком съел дьявольский плод «Резина-Резина» и приобрёл невероятные способности. Повзрослев, он покинул родные места в погоне за величайшим сокровищем!",
-    "poster": "https://shikimori.one/system/animes/original/21.jpg",
-    "banner": "https://shikimori.one/system/animes/original/21.jpg",
+    "poster": "https://shikimori.io/system/animes/original/21.jpg",
+    "banner": "https://shikimori.io/system/animes/original/21.jpg",
     "rating": 8.1,
     "votesCount": 2034,
     "year": 1999,
@@ -2888,7 +2896,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/10290/1/1080/6e7f45803b46cbc95dc61af79f55cb93.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/10290/1/720/69ebd857ac3003ccfdb30c195ae1640b.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/10290/1/480/6ad8b225309fc4bcb4fa2feba4ea8cf1.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/21.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/21.jpg",
         "introStart": 45,
         "introEnd": 125
       },
@@ -2901,7 +2909,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/10290/2/1080/35c4c8e5423208a9114cc5efa8ee4763.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/10290/2/720/f6511062324e9fee77dc442adfae41f8.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/10290/2/480/d6ad22eb1a470720ba2d1dd02c1127cc.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/21.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/21.jpg",
         "introStart": 45,
         "introEnd": 125
       },
@@ -2914,7 +2922,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/10290/3/1080/47811d9fa54d1aaefcec519a3b23438c.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/10290/3/720/ba172fd3134e0243089e8523fa3698ec.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/10290/3/480/ed7781f116f1aa1514370abe91cf2c55.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/21.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/21.jpg",
         "introStart": 45,
         "introEnd": 125
       },
@@ -2927,7 +2935,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/10290/4/1080/389d92ccf2bdb355f34b2d8d91e32854.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/10290/4/720/9a774c33b455d2ef52e21cb899bc06c1.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/10290/4/480/69f1754f863547c02163bf1d4f9db255.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/21.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/21.jpg",
         "introStart": 45,
         "introEnd": 125
       },
@@ -2940,7 +2948,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/10290/5/1080/4f34aa8abeea2cbaddd59e4b56c31a29.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/10290/5/720/13850c7e07e2a1a89a8916020296b777.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/10290/5/480/cbc0ee2cb5458b8c42e74e0294f3fb53.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/21.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/21.jpg",
         "introStart": 45,
         "introEnd": 125
       },
@@ -2953,7 +2961,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/10290/6/1080/9a046b0c44bf213a2cc8216ee4006695.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/10290/6/720/68e837c775c8e9dce71f6f7cfb1462aa.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/10290/6/480/b088eb4045d7404e43b8f592882ff250.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/21.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/21.jpg",
         "introStart": 45,
         "introEnd": 125
       },
@@ -2966,7 +2974,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/10290/7/1080/33f911c08bc783c34ca5fe83ae3895ed.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/10290/7/720/fb41420c541ee97853d6a81ca7af40d6.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/10290/7/480/ce9167a76781364ef3781c9272001813.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/21.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/21.jpg",
         "introStart": 45,
         "introEnd": 125
       },
@@ -2979,7 +2987,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/10290/8/1080/6457c755dc2002b9ff8b92b50d94486a.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/10290/8/720/52e7655b2f5303c5f81aec2baae3a005.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/10290/8/480/e4712de9bef87af662b322890907a920.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/21.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/21.jpg",
         "introStart": 45,
         "introEnd": 126
       },
@@ -2992,7 +3000,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/10290/1115/1080/6e7f45803b46cbc95dc61af79f55cb93.m3u8",
         "hls_720": "https://cache.libria.fun/videos/media/ts/10290/1115/720/69ebd857ac3003ccfdb30c195ae1640b.m3u8",
         "hls_480": "https://cache.libria.fun/videos/media/ts/10290/1115/480/6ad8b225309fc4bcb4fa2feba4ea8cf1.m3u8",
-        "thumbnail": "https://shikimori.one/system/animes/original/21.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/21.jpg",
         "introStart": 45,
         "introEnd": 125
       },
@@ -3005,7 +3013,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/10290/1116/1080/35c4c8e5423208a9114cc5efa8ee4763.m3u8",
         "hls_720": "https://cache.libria.fun/videos/media/ts/10290/1116/720/f6511062324e9fee77dc442adfae41f8.m3u8",
         "hls_480": "https://cache.libria.fun/videos/media/ts/10290/1116/480/d6ad22eb1a470720ba2d1dd02c1127cc.m3u8",
-        "thumbnail": "https://shikimori.one/system/animes/original/21.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/21.jpg",
         "introStart": 45,
         "introEnd": 125
       }
@@ -3033,8 +3041,8 @@ export const ANIME_DATABASE: Anime[] = [
     "originalTitle": "kimi-no-na-wa-tvoye-imya",
     "slug": "kimi-no-na-wa-tvoye-imya",
     "description": "Девушка из провинциальной деревушки \"Итомори\". Парень из Токио. Их судьбы никогда бы не пересеклись, если бы не вмешалась мистика. Однажды, Мицука, именно так зовут девушку, загадывает желание - \"стать симпатичным парнем из Токио\" и оно сбывается. Вот только в моменты, когда она становится этим симпатичным парнем, Таки, так зовут парня, становится ей. Они в буквальном смысле - меняются местами.",
-    "poster": "https://shikimori.one/system/animes/original/32281.jpg",
-    "banner": "https://shikimori.one/system/animes/original/32281.jpg",
+    "poster": "https://shikimori.io/system/animes/original/32281.jpg",
+    "banner": "https://shikimori.io/system/animes/original/32281.jpg",
     "rating": 9.2,
     "votesCount": 12970,
     "year": 2016,
@@ -3065,7 +3073,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "",
         "hls_720": "https://cache.libria.fun/videos/media/ts/6826/1/720/9254cf2f499a101d92e96cc8f333bcb9.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/6826/1/480/bcdb0ae363147046796ce35ea70109f1.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/32281.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/32281.jpg",
         "introStart": 85,
         "introEnd": 175
       }
@@ -3089,8 +3097,8 @@ export const ANIME_DATABASE: Anime[] = [
     "originalTitle": "Chainsaw Man",
     "slug": "chainsaw-man",
     "description": "Дэндзи — простой подросток, который живёт с демоном-бензопилой по имени Почита. Из-за долгов, оставшихся после смерти отца, он вынужден влачить нищенское существование, подрабатывая охотником на демонов. В один прекрасный день Дэндзи предают и убивают. Умирая, он заключает контракт с Почитой и возрождается как «Человек-бензопила» — обладатель дьявольского сердца.",
-    "poster": "https://shikimori.one/system/animes/original/44511.jpg",
-    "banner": "https://shikimori.one/system/animes/original/44511.jpg",
+    "poster": "https://shikimori.io/system/animes/original/44511.jpg",
+    "banner": "https://images.alphacoders.com/128/1283311.jpg",
     "rating": 8.7,
     "votesCount": 45123,
     "year": 2022,
@@ -3125,7 +3133,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9600/1/1080/5dfc6533a7d9072b55429627aa3945c9.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9600/1/720/70c1078491b5d9ada9d72f4b558d36ef.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9600/1/480/fee3de6f86af9ed0c52a8604b39c5329.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/44511.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/44511.jpg",
         "introStart": 85,
         "introEnd": 175
       }
@@ -3147,8 +3155,8 @@ export const ANIME_DATABASE: Anime[] = [
     "originalTitle": "Black Clover",
     "slug": "black-clover",
     "description": "Аста и Юно были брошены в одной церкви в один и тот же день. Выросшие вместе, они узнали о «Короле Магов» — титуле, который даётся сильнейшему магу в королевстве, и пообещали, что один из них станет им. Вот только Юно — гений магии, а Аста вообще не может ей пользоваться...",
-    "poster": "https://shikimori.one/system/animes/original/34572.jpg",
-    "banner": "https://shikimori.one/system/animes/original/34572.jpg",
+    "poster": "https://shikimori.io/system/animes/original/34572.jpg",
+    "banner": "https://shikimori.io/system/animes/original/34572.jpg",
     "rating": 8.3,
     "votesCount": 56000,
     "year": 2017,
@@ -3182,7 +3190,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9600/1/1080/5dfc6533a7d9072b55429627aa3945c9.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9600/1/720/70c1078491b5d9ada9d72f4b558d36ef.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9600/1/480/fee3de6f86af9ed0c52a8604b39c5329.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/34572.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/34572.jpg",
         "introStart": 85,
         "introEnd": 175
       }
@@ -3203,8 +3211,8 @@ export const ANIME_DATABASE: Anime[] = [
     "originalTitle": "Enen no Shouboutai",
     "slug": "fire-force",
     "description": "Токио, солнечная эра, 198 год. Люди в ужасе от загадочного явления: самовозгорания, при котором человек превращается в пылающего монстра — инфернала. Для борьбы с ними созданы специальные отряды пламенной бригады пожарных.",
-    "poster": "https://shikimori.one/system/animes/original/38671.jpg",
-    "banner": "https://shikimori.one/system/animes/original/38671.jpg",
+    "poster": "https://shikimori.io/system/animes/original/38671.jpg",
+    "banner": "https://shikimori.io/system/animes/original/38671.jpg",
     "rating": 8,
     "votesCount": 43210,
     "year": 2019,
@@ -3235,7 +3243,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9600/1/1080/5dfc6533a7d9072b55429627aa3945c9.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9600/1/720/70c1078491b5d9ada9d72f4b558d36ef.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9600/1/480/fee3de6f86af9ed0c52a8604b39c5329.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/38671.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/38671.jpg",
         "introStart": 85,
         "introEnd": 175
       }
@@ -3257,8 +3265,8 @@ export const ANIME_DATABASE: Anime[] = [
     "originalTitle": "Tensei shitara Slime Datta Ken",
     "slug": "that-time-i-got-reincarnated-as-a-slime",
     "description": "Тридцатисемилетний Сатору Миками был обычным офисным работником, пока его не пырнули ножом на улице. Очнувшись, он понимает, что переродился в фэнтезийном мире... в виде разумной слизи! Теперь под именем Римуру Темпест он начинает новую жизнь, собирая вокруг себя верных товарищей.",
-    "poster": "https://shikimori.one/system/animes/original/37430.jpg",
-    "banner": "https://shikimori.one/system/animes/original/37430.jpg",
+    "poster": "https://shikimori.io/system/animes/original/37430.jpg",
+    "banner": "https://shikimori.io/system/animes/original/37430.jpg",
     "rating": 8.7,
     "votesCount": 68000,
     "year": 2018,
@@ -3291,7 +3299,7 @@ export const ANIME_DATABASE: Anime[] = [
         "hls_1080": "https://cache.libria.fun/videos/media/ts/9600/1/1080/5dfc6533a7d9072b55429627aa3945c9.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_720": "https://cache.libria.fun/videos/media/ts/9600/1/720/70c1078491b5d9ada9d72f4b558d36ef.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "hls_480": "https://cache.libria.fun/videos/media/ts/9600/1/480/fee3de6f86af9ed0c52a8604b39c5329.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        "thumbnail": "https://shikimori.one/system/animes/original/37430.jpg",
+        "thumbnail": "https://shikimori.io/system/animes/original/37430.jpg",
         "introStart": 85,
         "introEnd": 175
       }
@@ -3306,6 +3314,11 @@ export const ANIME_DATABASE: Anime[] = [
     "featured": true,
     "trendingRank": 19
   }
+];
+
+export const ANIME_DATABASE: Anime[] = [
+  ...BASE_ANIME_DATABASE,
+  ...EXTRA_ANIME_DATABASE
 ];
 
 export const INITIAL_COMMENTS: Comment[] = [];

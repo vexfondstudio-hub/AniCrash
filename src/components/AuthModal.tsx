@@ -17,6 +17,7 @@ import {
 import { UserAccount } from '../types';
 import { AVATAR_PRESETS, TITLE_PRESETS } from '../data/profilePresets';
 import { registerAccount, loginAccount } from '../services/authService';
+import { EnhancedImage } from './EnhancedImage';
 
 interface AuthModalProps {
   isOpen?: boolean;
@@ -286,11 +287,12 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                       }`}
                       title={av.name}
                     >
-                      <img
+                      <EnhancedImage
                         src={av.url}
                         alt={av.name}
+                        enhanceLevel="ultra"
+                        containerClassName="w-full h-full"
                         className="w-full h-full object-cover"
-                        referrerPolicy="no-referrer"
                       />
                     </button>
                   ))}

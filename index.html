@@ -14,6 +14,31 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   </head>
   <body class="bg-zinc-950 text-zinc-100 font-['Plus_Jakarta_Sans',sans-serif] selection:bg-rose-500 selection:text-white antialiased">
+    <!-- Hardware-Accelerated Auto Image Enhancement Filters for Anime Line Art -->
+    <svg xmlns="http://www.w3.org/2000/svg" class="sr-only" aria-hidden="true" style="position: absolute; width: 0; height: 0; pointer-events: none;">
+      <defs>
+        <!-- Fine-tuned unsharp convolution matrix for crisp anime character outlines and zero blur on PC -->
+        <filter id="anime-hd-sharp" color-interpolation-filters="sRGB">
+          <feConvolveMatrix
+            order="3 3"
+            preserveAlpha="true"
+            kernelMatrix="
+              0  -0.12  0
+             -0.12 1.48 -0.12
+              0  -0.12  0"
+          />
+        </filter>
+        <!-- Subtle clarity boost for posters -->
+        <filter id="anime-hd-clarity" color-interpolation-filters="sRGB">
+          <feComponentTransfer>
+            <feFuncR type="linear" slope="1.04" intercept="-0.02" />
+            <feFuncG type="linear" slope="1.04" intercept="-0.02" />
+            <feFuncB type="linear" slope="1.04" intercept="-0.02" />
+          </feComponentTransfer>
+        </filter>
+      </defs>
+    </svg>
+
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
