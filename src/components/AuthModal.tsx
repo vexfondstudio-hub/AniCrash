@@ -57,40 +57,38 @@ export const AuthModal: React.FC<AuthModalProps> = ({
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMessage('');
     setSuccessMessage('');
     setLoading(true);
 
-    setTimeout(() => {
-      if (mode === 'register') {
-        const finalAvatar = customAvatarUrl.trim() || selectedAvatar;
-        const res = registerAccount(username, email, password, finalAvatar, selectedTitle);
-        setLoading(false);
-        if (res.success && res.user) {
-          setSuccessMessage('Аккаунт успешно создан!');
-          setTimeout(() => {
-            onSuccess(res.user!);
-            onClose();
-          }, 600);
-        } else {
-          setErrorMessage(res.error || 'Ошибка при регистрации');
-        }
+    if (mode === 'register') {
+      const finalAvatar = customAvatarUrl.trim() || selectedAvatar;
+      const res = await registerAccount(username, email, password, finalAvatar, selectedTitle);
+      setLoading(false);
+      if (res.success && res.user) {
+        setSuccessMessage('Аккаунт успешно создан!');
+        setTimeout(() => {
+          onSuccess(res.user!);
+          onClose();
+        }, 600);
       } else {
-        const res = loginAccount(username || email, password);
-        setLoading(false);
-        if (res.success && res.user) {
-          setSuccessMessage('Добро пожаловать в AniCrash!');
-          setTimeout(() => {
-            onSuccess(res.user!);
-            onClose();
-          }, 600);
-        } else {
-          setErrorMessage(res.error || 'Ошибка при авторизации');
-        }
+        setErrorMessage(res.error || 'Ошибка при регистрации');
       }
-    }, 250);
+    } else {
+      const res = await loginAccount(username || email, password);
+      setLoading(false);
+      if (res.success && res.user) {
+        setSuccessMessage('Добро пожаловать в AniCrash!');
+        setTimeout(() => {
+          onSuccess(res.user!);
+          onClose();
+        }, 600);
+      } else {
+        setErrorMessage(res.error || 'Ошибка при авторизации');
+      }
+    }
   };
 
   return (
