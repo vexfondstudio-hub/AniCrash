@@ -15,6 +15,7 @@ export interface Episode {
   thumbnail: string;
   introStart?: number;
   introEnd?: number;
+  outroStart?: number;
 }
 
 export interface Character {

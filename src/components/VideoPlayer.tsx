@@ -63,7 +63,8 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
   const [showSettingsMenu, setShowSettingsMenu] = useState<boolean>(false);
   const [showEpisodesDrawer, setShowEpisodesDrawer] = useState<boolean>(false);
   const [autoNextEpisode, setAutoNextEpisode] = useState<boolean>(true);
-  const [autoSkipIntro, setAutoSkipIntro] = useState<boolean>(false);
+  const [autoSkipIntro, setAutoSkipIntro] = useState<boolean>(true);
+  const [autoSkipOutro, setAutoSkipOutro] = useState<boolean>(true);
   const [hoverTime, setHoverTime] = useState<number | null>(null);
   const [hoverPosition, setHoverPosition] = useState<number>(0);
   const [feedbackNotice, setFeedbackNotice] = useState<string | null>(null);
@@ -501,6 +502,17 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
       ) {
         video.currentTime = currentEpisode.introEnd;
         showFeedback('Опенинг автоматически пропущен');
+      }
+
+      // Auto skip outro if enabled
+      if (
+        autoSkipOutro &&
+        currentEpisode.outroStart &&
+        video.currentTime >= currentEpisode.outroStart &&
+        currentEpisodeIndex < allEpisodes.length - 1
+      ) {
+        goToNextEpisode();
+        showFeedback('Титры автоматически пропущены');
       }
 
       // Countdown for auto next episode near end
@@ -1084,24 +1096,54 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
             </div>
           </div>
 
-          <div className="pt-2 border-t border-zinc-800 space-y-2">
-            <label className="flex items-center justify-between text-xs cursor-pointer">
-              <span>Авто-следующая серия</span>
-              <input
-                type="checkbox"
-                checked={autoNextEpisode}
-                onChange={(e) => setAutoNextEpisode(e.target.checked)}
-                className="accent-rose-600 rounded cursor-pointer"
-              />
+          <div className="pt-2 border-t border-zinc-800 space-y-2.5">
+            <span className="text-[11px] sm:text-xs font-semibold text-zinc-400 uppercase tracking-wider block">
+              Автоматизация
+            </span>
+            <label className="flex items-center justify-between text-xs cursor-pointer group hover:text-white transition-colors">
+              <div className="flex items-center gap-2">
+                <CheckCheck className="w-3.5 h-3.5 text-rose-500" />
+                <span>Авто-следующая серия</span>
+              </div>
+              <div className={`w-8 h-4 rounded-full transition-all relative ${autoNextEpisode ? 'bg-rose-600' : 'bg-zinc-700'}`}>
+                <input
+                  type="checkbox"
+                  checked={autoNextEpisode}
+                  onChange={(e) => setAutoNextEpisode(e.target.checked)}
+                  className="absolute inset-0 opacity-0 cursor-pointer z-10"
+                />
+                <div className={`absolute top-0.5 w-3 h-3 rounded-full bg-white transition-all ${autoNextEpisode ? 'left-[18px]' : 'left-0.5'}`} />
+              </div>
             </label>
-            <label className="flex items-center justify-between text-xs cursor-pointer">
-              <span>Пропускать опенинг авто</span>
-              <input
-                type="checkbox"
-                checked={autoSkipIntro}
-                onChange={(e) => setAutoSkipIntro(e.target.checked)}
-                className="accent-rose-600 rounded cursor-pointer"
-              />
+            <label className="flex items-center justify-between text-xs cursor-pointer group hover:text-white transition-colors">
+              <div className="flex items-center gap-2">
+                <FastForward className="w-3.5 h-3.5 text-rose-500" />
+                <span>Пропускать опенинг</span>
+              </div>
+              <div className={`w-8 h-4 rounded-full transition-all relative ${autoSkipIntro ? 'bg-rose-600' : 'bg-zinc-700'}`}>
+                <input
+                  type="checkbox"
+                  checked={autoSkipIntro}
+                  onChange={(e) => setAutoSkipIntro(e.target.checked)}
+                  className="absolute inset-0 opacity-0 cursor-pointer z-10"
+                />
+                <div className={`absolute top-0.5 w-3 h-3 rounded-full bg-white transition-all ${autoSkipIntro ? 'left-[18px]' : 'left-0.5'}`} />
+              </div>
+            </label>
+            <label className="flex items-center justify-between text-xs cursor-pointer group hover:text-white transition-colors">
+              <div className="flex items-center gap-2">
+                <SkipForward className="w-3.5 h-3.5 text-rose-500" />
+                <span>Пропускать титры</span>
+              </div>
+              <div className={`w-8 h-4 rounded-full transition-all relative ${autoSkipOutro ? 'bg-rose-600' : 'bg-zinc-700'}`}>
+                <input
+                  type="checkbox"
+                  checked={autoSkipOutro}
+                  onChange={(e) => setAutoSkipOutro(e.target.checked)}
+                  className="absolute inset-0 opacity-0 cursor-pointer z-10"
+                />
+                <div className={`absolute top-0.5 w-3 h-3 rounded-full bg-white transition-all ${autoSkipOutro ? 'left-[18px]' : 'left-0.5'}`} />
+              </div>
             </label>
           </div>
         </div>
@@ -1115,16 +1157,30 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
         style={{ paddingBottom: 'max(0.75rem, env(safe-area-inset-bottom, 0px))' }}
       >
         {/* Skip Intro & Quick Next floating buttons */}
-        <div className="flex justify-between items-center mb-2 sm:mb-3">
+        <div className="flex justify-between items-center mb-2 sm:mb-3 h-8">
           <div className="flex items-center gap-2">
-            <button
-              id="player-skip-intro-btn"
-              onClick={handleSkipIntro}
-              className="px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-rose-600/90 hover:bg-rose-500 text-white text-[10px] sm:text-xs font-semibold backdrop-blur shadow-lg shadow-rose-600/20 flex items-center gap-1.5 transition-all active:scale-95 border border-rose-400/30 cursor-pointer"
-            >
-              <FastForward className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
-              <span>Пропустить (+85с)</span>
-            </button>
+            {((currentEpisode.introStart && currentTime >= currentEpisode.introStart && currentTime <= (currentEpisode.introEnd || currentEpisode.introStart + 90)) || 
+              (!currentEpisode.introStart && currentTime > 5 && currentTime < 100)) && (
+              <button
+                id="player-skip-intro-btn"
+                onClick={handleSkipIntro}
+                className="px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-rose-600/90 hover:bg-rose-500 text-white text-[10px] sm:text-xs font-semibold backdrop-blur shadow-lg shadow-rose-600/20 flex items-center gap-1.5 transition-all animate-fade-in active:scale-95 border border-rose-400/30 cursor-pointer"
+              >
+                <FastForward className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                <span>Пропустить опенинг</span>
+              </button>
+            )}
+
+            {currentEpisode.outroStart && currentTime >= currentEpisode.outroStart && currentEpisodeIndex < allEpisodes.length - 1 && (
+              <button
+                id="player-skip-outro-btn"
+                onClick={goToNextEpisode}
+                className="px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-amber-600/90 hover:bg-amber-500 text-white text-[10px] sm:text-xs font-semibold backdrop-blur shadow-lg shadow-amber-600/20 flex items-center gap-1.5 transition-all animate-fade-in active:scale-95 border border-amber-400/30 cursor-pointer"
+              >
+                <SkipForward className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                <span>Пропустить титры</span>
+              </button>
+            )}
           </div>
 
           {currentEpisodeIndex < allEpisodes.length - 1 && (

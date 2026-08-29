@@ -96,7 +96,8 @@ const BASE_ANIME_DATABASE: Anime[] = [
         "hls_480": "https://cache.libria.fun/videos/media/ts/9600/2/480/af1d8a403daeef201de9b0a9a096820c.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "thumbnail": "https://shikimori.io/system/animes/original/55215.jpg",
         "introStart": 130,
-        "introEnd": 214
+        "introEnd": 214,
+        "outroStart": 1330
       },
       {
         "id": "9600-ep-3",
@@ -109,7 +110,8 @@ const BASE_ANIME_DATABASE: Anime[] = [
         "hls_480": "https://cache.libria.fun/videos/media/ts/9600/3/480/edbbf80b3a221f0479ea4a9407fff301.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
         "thumbnail": "https://shikimori.io/system/animes/original/55215.jpg",
         "introStart": 80,
-        "introEnd": 169
+        "introEnd": 169,
+        "outroStart": 1330
       },
       {
         "id": "9600-ep-4",

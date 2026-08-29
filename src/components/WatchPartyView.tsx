@@ -116,6 +116,13 @@ export const WatchPartyView: React.FC<WatchPartyViewProps> = ({
 
   // Setup Supabase Realtime channel for global sync
   useEffect(() => {
+    if (!supabase) {
+      if (currentRoom) {
+        setSyncStatusNotice('Внимание: Supabase не настроен. Синхронизация не будет работать.');
+      }
+      return;
+    }
+
     if (!currentRoom) {
       if (channelRef.current) {
         supabase.removeChannel(channelRef.current);
@@ -325,6 +332,10 @@ export const WatchPartyView: React.FC<WatchPartyViewProps> = ({
 
   // Create room
   const handleCreateRoom = () => {
+    if (!supabase) {
+      setSyncStatusNotice('Ошибка: Совместный просмотр требует настройки Supabase.');
+      return;
+    }
     const targetAnime = allAnime.find((a) => a.id === selectedAnimeId) || allAnime[0];
     const generatedId = `ANICRASH-${Math.floor(1000 + Math.random() * 9000)}`;
 
@@ -369,6 +380,10 @@ export const WatchPartyView: React.FC<WatchPartyViewProps> = ({
 
   // Join room by code
   const handleJoinRoom = () => {
+    if (!supabase) {
+      setSyncStatusNotice('Ошибка: Совместный просмотр требует настройки Supabase.');
+      return;
+    }
     const code = joinCodeInput.trim().toUpperCase();
     if (!code) return;
 
