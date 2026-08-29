@@ -17,6 +17,7 @@ import {
 import { ViewMode, UserProfile } from '../types';
 import { AURA_PRESETS } from '../data/profilePresets';
 import { EnhancedImage } from './EnhancedImage';
+import { Logo } from './Logo';
 
 interface NavbarProps {
   currentView: ViewMode;
@@ -94,20 +95,9 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div
             id="brand-logo-btn"
             onClick={() => onNavigate('home')}
-            className="flex items-center gap-1.5 sm:gap-2.5 cursor-pointer group select-none shrink-0 overflow-visible"
+            className="cursor-pointer group shrink-0"
           >
-            <div className="flex items-center">
-              <img 
-                src="https://i.postimg.cc/13Yj85TG/35725-removebg-preview.png" 
-                alt="AniCrash" 
-                className="w-32 sm:w-44 h-16 sm:h-20 object-contain brightness-0 invert opacity-95 group-hover:opacity-100 transition-opacity -my-6 -ml-1 sm:ml-0 mr-1 sm:mr-3 scale-x-[1.15] origin-left pointer-events-none select-none"
-                draggable={false}
-                onContextMenu={(e) => e.preventDefault()}
-              />
-              <span className="hidden min-[380px]:inline-block text-[8px] xs:text-[9px] sm:text-[10px] font-black uppercase px-1 sm:px-1.5 py-0.5 rounded bg-rose-500/20 text-rose-400 border border-rose-500/30">
-                0% ADS
-              </span>
-            </div>
+            <Logo size="md" />
           </div>
 
           {/* Center: Primary Navigation Links */}

@@ -2,6 +2,7 @@ import React from 'react';
 import { Clapperboard, BadgeCheck } from 'lucide-react';
 import { ViewMode } from '../types';
 import { Icons8Icon } from './Icons8Icon';
+import { Logo } from './Logo';
 
 interface FooterProps {
   onNavigate: (view: ViewMode) => void;
@@ -18,14 +19,8 @@ export const Footer: React.FC<FooterProps> = ({
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-10 sm:mb-12">
           {/* Brand Col */}
           <div className="space-y-3 md:col-span-1">
-            <div className="flex items-center gap-2">
-              <img 
-                src="https://i.postimg.cc/13Yj85TG/35725-removebg-preview.png" 
-                alt="AniCrash" 
-                className="w-48 h-48 object-contain brightness-0 invert opacity-90 -mt-17 -mb-15 -ml-2 mr-6 scale-x-[1.25] origin-left pointer-events-none select-none"
-                draggable={false}
-                onContextMenu={(e) => e.preventDefault()}
-              />
+            <div className="flex items-center gap-2 mb-2">
+              <Logo size="lg" />
             </div>
             <p className="text-zinc-400 text-xs leading-relaxed">
               Современная платформа для просмотра аниме онлайн в высоком качестве без рекламы,
