@@ -171,12 +171,13 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
       clearTimeout(controlsTimeoutRef.current);
     }
     controlsTimeoutRef.current = setTimeout(() => {
-      if (isPlaying) {
+      // In mirror mode we don't know the exact play state, so always auto-hide
+      if (isPlaying || playerMode === 'mirror') {
         setShowControls(false);
         setShowSettingsMenu(false);
       }
     }, 3500);
-  }, [isPlaying]);
+  }, [isPlaying, playerMode]);
 
   const togglePlay = useCallback(() => {
     const video = videoRef.current;
@@ -667,6 +668,15 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
             allowFullScreen
           />
 
+          {/* Mouse interceptor overlay for mirror mode when controls are hidden */}
+          {!showControls && (
+            <div 
+              className="absolute inset-0 z-30" 
+              onMouseMove={handleUserActivity}
+              onClick={handleUserActivity}
+            />
+          )}
+
           {/* Sandbox Warning Overlay */}
           {window !== window.parent && (
             <div className="absolute inset-0 z-20 flex flex-col items-center justify-center p-6 text-center bg-zinc-950/80 backdrop-blur-sm text-white space-y-4">
@@ -702,8 +712,9 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
               {[
                 { id: 'kodik.cc', name: 'Kodik CC' },
                 { id: 'kodik.biz', name: 'Kodik Biz' },
+                { id: 'kodik.info', name: 'Kodik Info' },
                 { id: 'aniqit.com', name: 'Aniqit CDN' },
-                { id: 'vidsrc.me', name: 'VidSrc (Резерв)' }
+                { id: 'vidsrc.me', name: 'VidSrc' }
               ].map(domain => (
                 <button
                   key={domain.id}
