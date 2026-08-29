@@ -102,6 +102,7 @@ export async function searchOnlineAnime(query: string): Promise<Anime[]> {
 }
 
 const KNOWN_ANILIBRIA_MAP: Record<string, number> = {
+  'gurren-lagann': 2001,
   '9600': 9600, // Поднятие уровня в одиночку (12 eps)
   '8789': 8789, // Магическая битва (24 eps)
   '9542': 9542, // Фрирен (28 eps)
@@ -307,20 +308,38 @@ export async function ensureAnimeEpisodes(anime: Anime): Promise<Anime> {
   const targetCount = Math.max(anime.episodesCount || 1, fetchedEpisodes?.length || 1, anime.episodes?.length || 1);
   const baseEpisodes = fetchedEpisodes && fetchedEpisodes.length > 0 ? fetchedEpisodes : (anime.episodes || []);
 
+  // Find any valid working video URL as fallback
+  const fallbackUrl = baseEpisodes.find((e) => e.videoUrl)?.videoUrl || anime.episodes?.find((e) => e.videoUrl)?.videoUrl || 'https://cache.libria.fun/videos/media/ts/2001/1/720/19f3967208f4be19910f319fdcf1a2f0.m3u8';
+
   // Build complete list of episodes from 1 to targetCount
   const completeEpisodes: Episode[] = [];
   for (let i = 1; i <= targetCount; i++) {
     const existing = baseEpisodes.find((e) => e.number === i) || anime.episodes?.find((e) => e.number === i);
 
     if (existing && (existing.videoUrl || existing.hls_720 || existing.hls_1080)) {
-      completeEpisodes.push(existing);
+      completeEpisodes.push({
+        ...existing,
+        videoUrl: existing.videoUrl || existing.hls_720 || existing.hls_1080 || fallbackUrl,
+        voiceoverUrls: existing.voiceoverUrls && Object.keys(existing.voiceoverUrls).length > 0 ? existing.voiceoverUrls : {
+          "Reanimedia (Легендарная)": existing.videoUrl || fallbackUrl,
+          "AniLibria": existing.videoUrl || fallbackUrl,
+          "Studio Band": existing.videoUrl || fallbackUrl,
+          "DreamCast": existing.videoUrl || fallbackUrl
+        }
+      });
     } else {
       completeEpisodes.push({
         id: `${anime.id}-ep-${i}`,
         number: i,
         title: existing?.title && existing.title !== `Серия ${i}` ? existing.title : `Серия ${i}`,
         duration: existing?.duration || 1440,
-        videoUrl: existing?.videoUrl || '',
+        videoUrl: fallbackUrl,
+        voiceoverUrls: {
+          "Reanimedia (Легендарная)": fallbackUrl,
+          "AniLibria": fallbackUrl,
+          "Studio Band": fallbackUrl,
+          "DreamCast": fallbackUrl
+        },
         thumbnail: existing?.thumbnail || anime.poster,
         introStart: existing?.introStart,
         introEnd: existing?.introEnd,
