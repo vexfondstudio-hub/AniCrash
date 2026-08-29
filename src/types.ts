@@ -140,6 +140,22 @@ export interface AuthResponse {
   error?: string;
 }
 
+export type AnimeSourceApi = 'anilibria' | 'shikimori' | 'jikan' | 'kodik' | 'aniqit' | 'vidsrc';
+
+export interface ApiSourceStatus {
+  id: AnimeSourceApi;
+  name: string;
+  status: 'online' | 'degraded' | 'offline';
+  description: string;
+  isPrimaryVideo?: boolean;
+}
+
+export interface MultiProviderStream {
+  provider: AnimeSourceApi;
+  url: string;
+  quality?: string;
+}
+
 export interface RoomMember {
   id: string;
   name: string;

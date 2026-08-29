@@ -30,6 +30,7 @@ import {
 import { ANIME_DATABASE } from './data/animeData';
 import { DEFAULT_PROFILE } from './data/profilePresets';
 import { getRecommendations } from './utils/recommendations';
+import { ensureAnimeEpisodes } from './services/animeApi';
 import { Navbar } from './components/Navbar';
 import { HeroBanner } from './components/HeroBanner';
 import { AnimeCard } from './components/AnimeCard';
@@ -341,9 +342,10 @@ export default function App() {
   }, []);
 
   // Watch & Play
-  const handlePlayAnime = useCallback((anime: Anime, episodeNum?: number, resumeTime?: number) => {
+  const handlePlayAnime = useCallback(async (anime: Anime, episodeNum?: number, resumeTime?: number) => {
+    const resolvedAnime = await ensureAnimeEpisodes(anime);
     setWatchHistory((prev) => {
-      const existingProgress = prev.find((w) => w.animeId === anime.id);
+      const existingProgress = prev.find((w) => w.animeId === resolvedAnime.id);
       const targetEpisode = episodeNum || existingProgress?.episodeNumber || 1;
       const targetTime =
         resumeTime !== undefined
@@ -352,7 +354,7 @@ export default function App() {
           ? existingProgress.currentTime
           : 0;
 
-      setActivePlayingAnime(anime);
+      setActivePlayingAnime(resolvedAnime);
       setActiveEpisodeNumber(targetEpisode);
       setActiveResumeTime(targetTime);
       return prev;

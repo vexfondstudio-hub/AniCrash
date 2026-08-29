@@ -29,10 +29,10 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
         number: 1,
         title: "К тебе, спустя 2000 лет: Падение Сигансины, часть 1",
         duration: 1440,
-        videoUrl: "https://cache.libria.fun/videos/media/ts/9600/1/720/70c1078491b5d9ada9d72f4b558d36ef.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        hls_1080: "https://cache.libria.fun/videos/media/ts/9600/1/1080/5dfc6533a7d9072b55429627aa3945c9.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        hls_720: "https://cache.libria.fun/videos/media/ts/9600/1/720/70c1078491b5d9ada9d72f4b558d36ef.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        hls_480: "https://cache.libria.fun/videos/media/ts/9600/1/480/fee3de6f86af9ed0c52a8604b39c5329.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
+        videoUrl: "",
+        hls_1080: "",
+        hls_720: "",
+        hls_480: "",
         thumbnail: "https://shikimori.io/system/animes/original/16498.jpg",
         introStart: 90,
         introEnd: 180
@@ -42,10 +42,10 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
         number: 2,
         title: "Тот день: Падение Сигансины, часть 2",
         duration: 1440,
-        videoUrl: "https://cache.libria.fun/videos/media/ts/9600/2/720/f8fcc2e92a3e0ff985e05ba1f1dae152.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        hls_1080: "https://cache.libria.fun/videos/media/ts/9600/2/1080/14a857c59df1aed6ce0fd6cac1d58262.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        hls_720: "https://cache.libria.fun/videos/media/ts/9600/2/720/f8fcc2e92a3e0ff985e05ba1f1dae152.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
-        hls_480: "https://cache.libria.fun/videos/media/ts/9600/2/480/af1d8a403daeef201de9b0a9a096820c.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
+        videoUrl: "",
+        hls_1080: "",
+        hls_720: "",
+        hls_480: "",
         thumbnail: "https://shikimori.io/system/animes/original/16498.jpg",
         introStart: 90,
         introEnd: 180
@@ -88,7 +88,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
         number: 1,
         title: "Возрождение",
         duration: 1400,
-        videoUrl: "https://cache.libria.fun/videos/media/ts/9600/1/720/70c1078491b5d9ada9d72f4b558d36ef.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
+        videoUrl: "",
         thumbnail: "https://shikimori.io/system/animes/original/1535.jpg",
         introStart: 70,
         introEnd: 155
@@ -130,7 +130,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
         number: 1,
         title: "Стальной алхимик",
         duration: 1440,
-        videoUrl: "https://cache.libria.fun/videos/media/ts/9600/1/720/70c1078491b5d9ada9d72f4b558d36ef.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
+        videoUrl: "",
         thumbnail: "https://shikimori.io/system/animes/original/5114.jpg",
         introStart: 80,
         introEnd: 170
@@ -173,7 +173,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
         number: 1,
         title: "Отплытие и друзья",
         duration: 1420,
-        videoUrl: "https://cache.libria.fun/videos/media/ts/9600/1/720/70c1078491b5d9ada9d72f4b558d36ef.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
+        videoUrl: "",
         thumbnail: "https://shikimori.io/system/animes/original/11061.jpg",
         introStart: 75,
         introEnd: 165
@@ -215,7 +215,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
         number: 1,
         title: "Возвращение домой",
         duration: 1420,
-        videoUrl: "https://cache.libria.fun/videos/media/ts/9600/1/720/70c1078491b5d9ada9d72f4b558d36ef.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
+        videoUrl: "",
         thumbnail: "https://shikimori.io/system/animes/original/1735.jpg",
         introStart: 90,
         introEnd: 180
@@ -258,7 +258,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
         number: 1,
         title: "День, когда родился демон",
         duration: 1440,
-        videoUrl: "https://cache.libria.fun/videos/media/ts/9600/1/720/70c1078491b5d9ada9d72f4b558d36ef.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
+        videoUrl: "",
         thumbnail: "https://shikimori.io/system/animes/original/1575.jpg",
         introStart: 85,
         introEnd: 175
@@ -300,7 +300,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
         number: 1,
         title: "Кровавая война",
         duration: 1440,
-        videoUrl: "https://cache.libria.fun/videos/media/ts/9600/1/720/70c1078491b5d9ada9d72f4b558d36ef.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
+        videoUrl: "",
         thumbnail: "https://shikimori.io/system/animes/original/41467.jpg",
         introStart: 70,
         introEnd: 160
@@ -341,7 +341,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
         number: 1,
         title: "Трагедия",
         duration: 1440,
-        videoUrl: "https://cache.libria.fun/videos/media/ts/9600/1/720/70c1078491b5d9ada9d72f4b558d36ef.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
+        videoUrl: "",
         thumbnail: "https://shikimori.io/system/animes/original/22319.jpg",
         introStart: 80,
         introEnd: 170
@@ -383,7 +383,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
         number: 1,
         title: "Сильнейший человек",
         duration: 1440,
-        videoUrl: "https://cache.libria.fun/videos/media/ts/9600/1/720/70c1078491b5d9ada9d72f4b558d36ef.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
+        videoUrl: "",
         thumbnail: "https://shikimori.io/system/animes/original/30276.jpg",
         introStart: 75,
         introEnd: 165
@@ -425,7 +425,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
         number: 1,
         title: "Золотой ветер",
         duration: 1420,
-        videoUrl: "https://cache.libria.fun/videos/media/ts/9600/1/720/70c1078491b5d9ada9d72f4b558d36ef.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
+        videoUrl: "",
         thumbnail: "https://shikimori.io/system/animes/original/37991.jpg",
         introStart: 90,
         introEnd: 180
@@ -467,7 +467,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
         number: 1,
         title: "Изуку Мидория: Происхождение",
         duration: 1440,
-        videoUrl: "https://cache.libria.fun/videos/media/ts/9600/1/720/70c1078491b5d9ada9d72f4b558d36ef.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
+        videoUrl: "",
         thumbnail: "https://shikimori.io/system/animes/original/31964.jpg",
         introStart: 80,
         introEnd: 170
@@ -510,7 +510,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
         number: 1,
         title: "Отечественный кот, бродячий бог и хвост",
         duration: 1440,
-        videoUrl: "https://cache.libria.fun/videos/media/ts/9600/1/720/70c1078491b5d9ada9d72f4b558d36ef.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
+        videoUrl: "",
         thumbnail: "https://shikimori.io/system/animes/original/20507.jpg",
         introStart: 75,
         introEnd: 165
@@ -553,7 +553,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
         number: 1,
         title: "Каменный мир",
         duration: 1440,
-        videoUrl: "https://cache.libria.fun/videos/media/ts/9600/1/720/70c1078491b5d9ada9d72f4b558d36ef.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
+        videoUrl: "",
         thumbnail: "https://shikimori.io/system/animes/original/38691.jpg",
         introStart: 85,
         introEnd: 175
@@ -594,7 +594,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
         number: 1,
         title: "Безработный перерождается",
         duration: 1440,
-        videoUrl: "https://cache.libria.fun/videos/media/ts/9600/1/720/70c1078491b5d9ada9d72f4b558d36ef.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
+        videoUrl: "",
         thumbnail: "https://shikimori.io/system/animes/original/39535.jpg",
         introStart: 70,
         introEnd: 160
@@ -637,7 +637,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
         number: 1,
         title: "Мир мечей",
         duration: 1440,
-        videoUrl: "https://cache.libria.fun/videos/media/ts/9600/1/720/70c1078491b5d9ada9d72f4b558d36ef.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
+        videoUrl: "",
         thumbnail: "https://shikimori.io/system/animes/original/11757.jpg",
         introStart: 85,
         introEnd: 175
@@ -679,7 +679,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
         number: 1,
         title: "Конец начала и начало конца",
         duration: 1500,
-        videoUrl: "https://cache.libria.fun/videos/media/ts/9600/1/720/70c1078491b5d9ada9d72f4b558d36ef.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
+        videoUrl: "",
         thumbnail: "https://shikimori.io/system/animes/original/31240.jpg",
         introStart: 90,
         introEnd: 180
@@ -722,7 +722,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
         number: 1,
         title: "Я хочу, чтобы ты признался мне",
         duration: 1440,
-        videoUrl: "https://cache.libria.fun/videos/media/ts/9600/1/720/70c1078491b5d9ada9d72f4b558d36ef.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
+        videoUrl: "",
         thumbnail: "https://shikimori.io/system/animes/original/37999.jpg",
         introStart: 70,
         introEnd: 160
@@ -765,7 +765,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
         number: 1,
         title: "История Хяккимару",
         duration: 1440,
-        videoUrl: "https://cache.libria.fun/videos/media/ts/9600/1/720/70c1078491b5d9ada9d72f4b558d36ef.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
+        videoUrl: "",
         thumbnail: "https://shikimori.io/system/animes/original/37520.jpg",
         introStart: 80,
         introEnd: 170
@@ -807,7 +807,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
         number: 1,
         title: "Город на краю Бездны",
         duration: 1500,
-        videoUrl: "https://cache.libria.fun/videos/media/ts/9600/1/720/70c1078491b5d9ada9d72f4b558d36ef.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
+        videoUrl: "",
         thumbnail: "https://shikimori.io/system/animes/original/34599.jpg",
         introStart: 70,
         introEnd: 160
@@ -850,7 +850,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
         number: 1,
         title: "Жестокость",
         duration: 1440,
-        videoUrl: "https://cache.libria.fun/videos/media/ts/9600/1/720/70c1078491b5d9ada9d72f4b558d36ef.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
+        videoUrl: "",
         thumbnail: "https://shikimori.io/system/animes/original/38000.jpg",
         introStart: 90,
         introEnd: 180
@@ -893,7 +893,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
         number: 1,
         title: "Экстрасенс-самозванец: Рейген Аратака",
         duration: 1440,
-        videoUrl: "https://cache.libria.fun/videos/media/ts/9600/1/720/70c1078491b5d9ada9d72f4b558d36ef.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
+        videoUrl: "",
         thumbnail: "https://shikimori.io/system/animes/original/32182.jpg",
         introStart: 70,
         introEnd: 160
@@ -935,7 +935,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
         number: 1,
         title: "Мечта",
         duration: 1440,
-        videoUrl: "https://cache.libria.fun/videos/media/ts/9600/1/720/70c1078491b5d9ada9d72f4b558d36ef.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
+        videoUrl: "",
         thumbnail: "https://shikimori.io/system/animes/original/49596.jpg",
         introStart: 85,
         introEnd: 175
@@ -977,7 +977,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
         number: 1,
         title: "Конец и начало",
         duration: 1440,
-        videoUrl: "https://cache.libria.fun/videos/media/ts/9600/1/720/70c1078491b5d9ada9d72f4b558d36ef.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
+        videoUrl: "",
         thumbnail: "https://shikimori.io/system/animes/original/20583.jpg",
         introStart: 75,
         introEnd: 165
@@ -1019,7 +1019,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
         number: 1,
         title: "Полнометражный фильм",
         duration: 7800,
-        videoUrl: "https://cache.libria.fun/videos/media/ts/9600/1/720/70c1078491b5d9ada9d72f4b558d36ef.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
+        videoUrl: "",
         thumbnail: "https://shikimori.io/system/animes/original/28851.jpg"
       }
     ],
@@ -1059,7 +1059,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
         number: 1,
         title: "Нападение Ангела",
         duration: 1440,
-        videoUrl: "https://cache.libria.fun/videos/media/ts/9600/1/720/70c1078491b5d9ada9d72f4b558d36ef.m3u8?countryIso=GB&isAuthorized=0&isWithVideoAds=0&isWithVideoAdsAlways=0",
+        videoUrl: "",
         thumbnail: "https://shikimori.io/system/animes/original/30.jpg",
         introStart: 70,
         introEnd: 155

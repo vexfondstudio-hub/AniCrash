@@ -23,6 +23,7 @@ import {
   Radio,
 } from 'lucide-react';
 import { Anime, Episode, WatchProgress } from '../types';
+import { ensureAnimeEpisodes } from '../services/animeApi';
 
 interface VideoPlayerProps {
   anime: Anime;
@@ -42,39 +43,94 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
   onProgressUpdate,
   onStartWatchParty,
 }) => {
+  // --- 1. ALL STATE HOOKS ---
+  const [currentAnime, setCurrentAnime] = useState<Anime>(anime);
+  const [currentEpisodeIndex, setCurrentEpisodeIndex] = useState<number>(0);
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [currentTime, setCurrentTime] = useState<number>(initialTime);
+  const [duration, setDuration] = useState<number>(1440);
+  const [volume, setVolume] = useState<number>(0.9);
+  const [isMuted, setIsMuted] = useState<boolean>(false);
+  const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
+  const [playbackSpeed, setPlaybackSpeed] = useState<number>(1);
+  const [selectedQuality, setSelectedQuality] = useState<string>('720p HD');
+  const [selectedVoiceover, setSelectedVoiceover] = useState<string>(anime.voiceovers[0] || 'AniLibria');
+  const [playerMode, setPlayerMode] = useState<'hls' | 'mirror'>('hls');
+  const [activeMirrorDomain, setActiveMirrorDomain] = useState<string>('kodik.biz');
+  const [streamError, setStreamError] = useState<boolean>(false);
+  const [showControls, setShowControls] = useState<boolean>(true);
+  const [showSettingsMenu, setShowSettingsMenu] = useState<boolean>(false);
+  const [showEpisodesDrawer, setShowEpisodesDrawer] = useState<boolean>(false);
+  const [autoNextEpisode, setAutoNextEpisode] = useState<boolean>(true);
+  const [autoSkipIntro, setAutoSkipIntro] = useState<boolean>(false);
+  const [hoverTime, setHoverTime] = useState<number | null>(null);
+  const [hoverPosition, setHoverPosition] = useState<number>(0);
+  const [feedbackNotice, setFeedbackNotice] = useState<string | null>(null);
+  const [showNextCountdown, setShowNextCountdown] = useState<number | null>(null);
+  const [doubleTapSide, setDoubleTapSide] = useState<'left' | 'right' | null>(null);
+  const [visibleLimit, setVisibleLimit] = useState<number>(100);
+
+  // --- 2. ALL REF HOOKS ---
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const hlsRef = useRef<Hls | null>(null);
+  const controlsTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const savedTimeRef = useRef<number>(initialTime);
+  const lastReportedTimeRef = useRef<number>(initialTime);
+  const onProgressUpdateRef = useRef(onProgressUpdate);
+  const activeEpisodeRef = useRef<HTMLButtonElement>(null);
+  const lastTapRef = useRef<{ time: number; x: number }>({ time: 0, x: 0 });
+
+  onProgressUpdateRef.current = onProgressUpdate;
+
+  // --- 3. MEMOIZED DATA ---
   const allEpisodes = React.useMemo(() => {
-    const eps = [...anime.episodes];
-    if (eps.length < anime.episodesCount) {
+    const eps = [...(currentAnime.episodes || [])];
+    if (eps.length < currentAnime.episodesCount) {
       const existingNumbers = new Set(eps.map(e => e.number));
-      for (let i = 1; i <= anime.episodesCount; i++) {
+      for (let i = 1; i <= currentAnime.episodesCount; i++) {
         if (!existingNumbers.has(i)) {
           eps.push({
-            id: `${anime.id}-ep-${i}`,
+            id: `${currentAnime.id}-ep-${i}`,
             number: i,
             title: `Серия ${i}`,
             duration: 1440,
-            videoUrl: anime.episodes[0]?.videoUrl || '',
-            thumbnail: anime.episodes[0]?.thumbnail || anime.poster,
-            hls_1080: anime.episodes[0]?.hls_1080,
-            hls_720: anime.episodes[0]?.hls_720,
-            hls_480: anime.episodes[0]?.hls_480,
+            videoUrl: currentAnime.episodes[0]?.videoUrl || '',
+            thumbnail: currentAnime.episodes[0]?.thumbnail || currentAnime.poster,
+            hls_1080: currentAnime.episodes[0]?.hls_1080,
+            hls_720: currentAnime.episodes[0]?.hls_720,
+            hls_480: currentAnime.episodes[0]?.hls_480,
           });
         }
       }
     }
     return eps.sort((a, b) => a.number - b.number);
-  }, [anime.episodes, anime.episodesCount, anime.id, anime.poster]);
+  }, [currentAnime]);
 
-  const [currentEpisodeIndex, setCurrentEpisodeIndex] = useState(() => {
+  // Sync initial episode index when allEpisodes updates
+  useEffect(() => {
     const idx = allEpisodes.findIndex((e) => e.number === initialEpisodeNumber);
-    return idx !== -1 ? idx : 0;
-  });
+    if (idx !== -1) {
+      setCurrentEpisodeIndex(idx);
+    }
+  }, [allEpisodes, initialEpisodeNumber]);
 
   const currentEpisode: Episode = allEpisodes[currentEpisodeIndex] || allEpisodes[0];
 
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const hlsRef = useRef<Hls | null>(null);
+  // Sync anime prop
+  useEffect(() => {
+    let active = true;
+    setCurrentAnime(anime);
+    ensureAnimeEpisodes(anime).then((resolved) => {
+      if (active && resolved) {
+        setCurrentAnime(resolved);
+      }
+    });
+    return () => {
+      active = false;
+    };
+  }, [anime]);
 
   // Auto-fullscreen and landscape orientation on mobile mount
   useEffect(() => {
@@ -89,33 +145,6 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
       }).catch((e) => console.log('Auto-fullscreen error:', e));
     }
   }, []);
-  const controlsTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const savedTimeRef = useRef<number>(initialTime);
-  const lastReportedTimeRef = useRef<number>(initialTime);
-  const onProgressUpdateRef = useRef(onProgressUpdate);
-  onProgressUpdateRef.current = onProgressUpdate;
-
-  const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [currentTime, setCurrentTime] = useState<number>(initialTime);
-  const [duration, setDuration] = useState<number>(currentEpisode?.duration || 1440);
-  const [volume, setVolume] = useState<number>(0.9);
-  const [isMuted, setIsMuted] = useState<boolean>(false);
-  const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
-  const [playbackSpeed, setPlaybackSpeed] = useState<number>(1);
-  const [selectedQuality, setSelectedQuality] = useState<string>('720p HD');
-  const [selectedVoiceover, setSelectedVoiceover] = useState<string>(anime.voiceovers[0] || 'AniLibria');
-  const [showControls, setShowControls] = useState<boolean>(true);
-  const [showSettingsMenu, setShowSettingsMenu] = useState<boolean>(false);
-  const [showEpisodesDrawer, setShowEpisodesDrawer] = useState<boolean>(false);
-  const [autoNextEpisode, setAutoNextEpisode] = useState<boolean>(true);
-  const [autoSkipIntro, setAutoSkipIntro] = useState<boolean>(false);
-  const [hoverTime, setHoverTime] = useState<number | null>(null);
-  const [hoverPosition, setHoverPosition] = useState<number>(0);
-  const [feedbackNotice, setFeedbackNotice] = useState<string | null>(null);
-  const [showNextCountdown, setShowNextCountdown] = useState<number | null>(null);
-  const [doubleTapSide, setDoubleTapSide] = useState<'left' | 'right' | null>(null);
-  const lastTapRef = useRef<{ time: number; x: number }>({ time: 0, x: 0 });
 
   // Format seconds to mm:ss or hh:mm:ss
   const formatTime = (seconds: number) => {
@@ -256,8 +285,6 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
     showFeedback(`Качество: ${q}`);
   };
 
-  const activeEpisodeRef = useRef<HTMLButtonElement>(null);
-
   useEffect(() => {
     if (showEpisodesDrawer && activeEpisodeRef.current) {
       activeEpisodeRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -347,13 +374,32 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
 
   // Stream loading with HLS.js
   useEffect(() => {
+    if (playerMode === 'mirror') {
+      setIsLoading(false);
+      setStreamError(false);
+      return;
+    }
+
     const video = videoRef.current;
     if (!video || !currentEpisode) return;
 
     const streamUrl = getActiveStreamUrl();
-    if (!streamUrl) return;
+    if (!streamUrl) {
+      setPlayerMode('mirror');
+      setStreamError(false);
+      setIsLoading(false);
+      return;
+    }
 
+    setStreamError(false);
     setIsLoading(true);
+
+    let loadTimeout: NodeJS.Timeout | null = setTimeout(() => {
+      if (isLoading) {
+        setIsLoading(false);
+        setStreamError(true);
+      }
+    }, 7000);
 
     if (hlsRef.current) {
       hlsRef.current.destroy();
@@ -380,7 +426,9 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
       hls.attachMedia(video);
 
       hls.on(Hls.Events.MANIFEST_PARSED, () => {
+        if (loadTimeout) clearTimeout(loadTimeout);
         setIsLoading(false);
+        setStreamError(false);
         applyRestoreTime();
         video.play().then(() => setIsPlaying(true)).catch(() => setIsPlaying(false));
       });
@@ -395,6 +443,9 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
               hls.recoverMediaError();
               break;
             default:
+              if (loadTimeout) clearTimeout(loadTimeout);
+              setIsLoading(false);
+              setStreamError(true);
               hls.destroy();
               break;
           }
@@ -404,7 +455,9 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
       // Native HLS (Safari/iOS) or MP4 fallback
       video.src = streamUrl;
       const onLoaded = () => {
+        if (loadTimeout) clearTimeout(loadTimeout);
         setIsLoading(false);
+        setStreamError(false);
         applyRestoreTime();
         video.play().then(() => setIsPlaying(true)).catch(() => setIsPlaying(false));
       };
@@ -412,12 +465,13 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
     }
 
     return () => {
+      if (loadTimeout) clearTimeout(loadTimeout);
       if (hlsRef.current) {
         hlsRef.current.destroy();
         hlsRef.current = null;
       }
     };
-  }, [currentEpisode.id, selectedQuality, getActiveStreamUrl]);
+  }, [currentEpisode.id, selectedQuality, getActiveStreamUrl, playerMode]);
 
   // Video playback listeners
   useEffect(() => {
@@ -599,17 +653,129 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
       onClick={handleUserActivity}
       className="fixed inset-0 z-50 bg-black flex flex-col justify-between select-none overflow-hidden"
     >
-      {/* HTML5 Video */}
-      <video
-        ref={videoRef}
-        id="anicrash-native-video"
-        playsInline
-        preload="auto"
-        className="w-full h-full object-contain cursor-pointer"
-        onClick={togglePlay}
-        onDoubleClick={toggleFullscreen}
-        onTouchEnd={handleVideoTouchEnd}
-      />
+      {/* Video / Mirror Player Rendering */}
+      {playerMode === 'mirror' ? (
+        <div className="w-full h-full relative bg-zinc-950">
+          <iframe
+            id="anicrash-mirror-iframe"
+            src={activeMirrorDomain.includes('vidsrc') 
+              ? `https://vidsrc.me/embed/anime/shikimori/${anime.id}/${currentEpisode.number}`
+              : `https://${activeMirrorDomain}/find-player?shikimoriID=${anime.id}&title=${encodeURIComponent(anime.title)}&episode=${currentEpisode.number}`
+            }
+            className="w-full h-full border-0 relative z-10"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowFullScreen
+          />
+
+          {/* Sandbox Warning Overlay */}
+          {window !== window.parent && (
+            <div className="absolute inset-0 z-20 flex flex-col items-center justify-center p-6 text-center bg-zinc-950/80 backdrop-blur-sm text-white space-y-4">
+              <div className="w-16 h-16 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-500 mb-2">
+                <Tv className="w-8 h-8" />
+              </div>
+              <div className="max-w-md space-y-2">
+                <h3 className="text-lg font-bold">Ограничения предпросмотра</h3>
+                <p className="text-sm text-zinc-300">
+                  Вы находитесь в режиме песочницы (sandbox). Сторонние плееры блокируют воспроизведение внутри таких окон.
+                </p>
+                <p className="text-xs text-zinc-400 font-medium">
+                  Пожалуйста, откройте приложение в новой вкладке (кнопка ↗ в верхнем меню).
+                </p>
+              </div>
+              <div className="pt-4">
+                <a 
+                  href={window.location.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-3 bg-amber-600 hover:bg-amber-500 text-white text-sm font-bold rounded-xl transition-colors cursor-pointer inline-flex items-center gap-2"
+                >
+                  Открыть в новой вкладке ↗
+                </a>
+              </div>
+            </div>
+          )}
+
+          {/* Mirror Domain Switcher (visible on hover/activity) */}
+          <div className={`absolute top-20 left-0 right-0 z-40 flex justify-center transition-opacity duration-300 pointer-events-none ${showControls ? 'opacity-100' : 'opacity-0'}`}>
+            <div className="flex flex-wrap justify-center items-center gap-2 p-2 bg-zinc-900/90 backdrop-blur-md border border-zinc-700/50 rounded-2xl pointer-events-auto shadow-2xl">
+              <span className="text-xs text-zinc-400 font-medium px-2">Если не работает, смените сервер:</span>
+              {[
+                { id: 'kodik.cc', name: 'Kodik CC' },
+                { id: 'kodik.biz', name: 'Kodik Biz' },
+                { id: 'aniqit.com', name: 'Aniqit CDN' },
+                { id: 'vidsrc.me', name: 'VidSrc (Резерв)' }
+              ].map(domain => (
+                <button
+                  key={domain.id}
+                  onClick={() => {
+                    setActiveMirrorDomain(domain.id);
+                    showFeedback(`Выбран сервер ${domain.name}`);
+                  }}
+                  className={`px-3 py-1.5 text-xs font-semibold rounded-xl transition-all cursor-pointer ${
+                    activeMirrorDomain === domain.id 
+                      ? 'bg-rose-600 text-white shadow-lg shadow-rose-600/20' 
+                      : 'bg-zinc-800 text-zinc-300 hover:bg-zinc-700 hover:text-white'
+                  }`}
+                >
+                  {domain.name}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      ) : (
+        <video
+          ref={videoRef}
+          id="anicrash-native-video"
+          playsInline
+          preload="auto"
+          className="w-full h-full object-contain cursor-pointer"
+          onClick={togglePlay}
+          onDoubleClick={toggleFullscreen}
+          onTouchEnd={handleVideoTouchEnd}
+        />
+      )}
+
+      {/* Stream Error / Missing Source Fallback Card */}
+      {streamError && playerMode === 'hls' && (
+        <div className="absolute inset-0 flex items-center justify-center z-30 bg-black/80 backdrop-blur-md p-4">
+          <div className="max-w-md w-full p-6 rounded-3xl bg-zinc-900 border border-zinc-800 shadow-2xl text-center space-y-4 animate-scale-up">
+            <div className="w-12 h-12 rounded-2xl bg-rose-500/10 border border-rose-500/20 text-rose-500 flex items-center justify-center mx-auto">
+              <Tv className="w-6 h-6" />
+            </div>
+            <div>
+              <h3 className="text-base sm:text-lg font-bold text-white">Основной сервер недоступен</h3>
+              <p className="text-xs sm:text-sm text-zinc-400 mt-1">
+                Для аниме «{anime.title}» рекомендуется включить резервный плеер (Kodik Mirror).
+              </p>
+            </div>
+            <div className="flex flex-col gap-2 pt-2">
+              <button
+                onClick={() => {
+                  setPlayerMode('mirror');
+                  setStreamError(false);
+                  showFeedback('Включен резервный плеер');
+                }}
+                className="w-full py-3 px-4 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-medium text-sm transition-all shadow-lg shadow-rose-600/30 active:scale-98 cursor-pointer"
+              >
+                Включить Резервный Плеер (Kodik)
+              </button>
+              <button
+                onClick={() => {
+                  setStreamError(false);
+                  setIsLoading(true);
+                  // Retry loading
+                  const v = videoRef.current;
+                  if (v) v.load();
+                }}
+                className="w-full py-2.5 px-4 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-medium text-xs transition-all cursor-pointer"
+              >
+                Повторить загрузку
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Double Tap Visual Indicators for Mobile */}
       {doubleTapSide === 'left' && (
@@ -721,6 +887,24 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
             )}
 
             <button
+              id="player-mode-toggle-btn"
+              onClick={() => {
+                const newMode = playerMode === 'hls' ? 'mirror' : 'hls';
+                setPlayerMode(newMode);
+                showFeedback(newMode === 'mirror' ? 'Включен резервный плеер' : 'Включен основной HLS');
+              }}
+              className={`px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl backdrop-blur border transition-all text-xs md:text-sm font-medium flex items-center gap-1.5 cursor-pointer ${
+                playerMode === 'mirror'
+                  ? 'bg-indigo-600/30 text-indigo-300 border-indigo-500/40'
+                  : 'bg-zinc-900/80 hover:bg-zinc-800 text-zinc-200 border-white/10'
+              }`}
+              title="Переключить плеер (Основной / Резервный)"
+            >
+              <Tv className="w-4 h-4 text-indigo-400" />
+              <span className="hidden sm:inline">{playerMode === 'mirror' ? 'Зеркало' : 'HLS Сервер'}</span>
+            </button>
+
+            <button
               id="player-episodes-toggle-btn"
               onClick={() => setShowEpisodesDrawer(!showEpisodesDrawer)}
               className="px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl bg-zinc-900/80 hover:bg-zinc-800 text-zinc-200 hover:text-white backdrop-blur border border-white/10 transition-all text-xs md:text-sm font-medium flex items-center gap-1.5 cursor-pointer"
@@ -775,7 +959,6 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
             <div className="space-y-1.5 sm:space-y-2 overflow-y-auto max-h-[70vh] pr-1 scrollbar-none">
               {(() => {
                 // Windowing optimization for 1000+ episodes
-                const [visibleLimit, setVisibleLimit] = useState(100);
                 const currentChunk = Math.floor(currentEpisodeIndex / 100);
                 const startIdx = Math.max(0, currentChunk * 100 - 20);
                 const endIdx = Math.min(allEpisodes.length, startIdx + visibleLimit);
