@@ -211,6 +211,15 @@ export default function App() {
   const [quickSearchOpen, setQuickSearchOpen] = useState<boolean>(false);
   const [rouletteOpen, setRouletteOpen] = useState<boolean>(false);
 
+  useEffect(() => {
+    // Custom database logic removed per user request
+  }, []);
+
+  // Combined anime database (ANIME_DATABASE)
+  const completeAnimeDatabase = useMemo(() => {
+    return ANIME_DATABASE;
+  }, []);
+
   // Filters
   const [searchQuery, setSearchQuery] = useState('');
   const [debouncedSearchQuery, setDebouncedSearchQuery] = useState('');
@@ -238,9 +247,9 @@ export default function App() {
 
   // Featured Anime for banner
   const featuredAnime = useMemo(() => {
-    const featured = ANIME_DATABASE.filter((a) => a.featured);
-    return featured.length > 0 ? featured : ANIME_DATABASE.slice(0, 4);
-  }, []);
+    const featured = completeAnimeDatabase.filter((a) => a.featured);
+    return featured.length > 0 ? featured : completeAnimeDatabase.slice(0, 4);
+  }, [completeAnimeDatabase]);
 
   // Recommendations calculated dynamically based on history and favorites
   const recommendations = useMemo(() => {
@@ -249,7 +258,7 @@ export default function App() {
 
   // Filtered Anime List for Catalog
   const filteredCatalog = useMemo(() => {
-    return ANIME_DATABASE.filter((anime) => {
+    return completeAnimeDatabase.filter((anime) => {
       // Search
       if (debouncedSearchQuery.trim()) {
         const q = debouncedSearchQuery.toLowerCase();
@@ -320,7 +329,7 @@ export default function App() {
 
     return genresConfig
       .map((item) => {
-        const realCount = ANIME_DATABASE.filter((a) =>
+        const realCount = completeAnimeDatabase.filter((a) =>
           a.genres?.some((g) => g.toLowerCase() === item.name.toLowerCase())
         ).length;
 
@@ -333,7 +342,7 @@ export default function App() {
       })
       .filter((item) => item.realCount > 0)
       .slice(0, 6);
-  }, []);
+  }, [completeAnimeDatabase]);
 
   // Favorite helpers
   const isFavorite = useCallback((animeId: string) => {
@@ -442,6 +451,7 @@ export default function App() {
             historyCount={watchHistory.length}
             onOpenSearch={() => setQuickSearchOpen(true)}
             onOpenRoulette={() => setRouletteOpen(true)}
+            onOpenCustomModal={() => {}}
             currentUser={userProfile}
             isAuthenticated={!!currentAccount}
             onOpenAuth={handleOpenAuth}
@@ -521,7 +531,7 @@ export default function App() {
 
                 <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
                   {watchHistory.slice(0, 3).map((prog) => {
-                    const anime = ANIME_DATABASE.find((a) => a.id === prog.animeId);
+                    const anime = completeAnimeDatabase.find((a) => a.id === prog.animeId);
                     if (!anime) return null;
                     const percent =
                       prog.duration > 0
@@ -789,7 +799,7 @@ export default function App() {
         {currentView === 'favorites' && (
           <FavoritesView
             favorites={favorites}
-            allAnime={ANIME_DATABASE}
+            allAnime={completeAnimeDatabase}
             watchHistory={watchHistory}
             onSelectAnime={(anime) => setSelectedAnimeModal(anime)}
             onPlayAnime={(anime) => handlePlayAnime(anime)}
@@ -802,7 +812,7 @@ export default function App() {
         {currentView === 'history' && (
           <HistoryView
             watchHistory={watchHistory}
-            allAnime={ANIME_DATABASE}
+            allAnime={completeAnimeDatabase}
             onPlayAnime={handlePlayAnime}
             onSelectAnime={(anime) => setSelectedAnimeModal(anime)}
             onClearHistory={handleClearHistory}
@@ -813,7 +823,7 @@ export default function App() {
         {/* VIEW: WATCH PARTY (С ДРУЗЬЯМИ) */}
         {currentView === 'watch-party' && (
           <WatchPartyView
-            allAnime={ANIME_DATABASE}
+            allAnime={completeAnimeDatabase}
             currentUser={userProfile}
             initialAnimeId={watchPartyTarget.animeId}
             initialEpisode={watchPartyTarget.episode}
@@ -829,7 +839,7 @@ export default function App() {
           <ProfileView
             profile={userProfile}
             onUpdateProfile={handleUpdateProfile}
-            allAnime={ANIME_DATABASE}
+            allAnime={completeAnimeDatabase}
             watchHistory={watchHistory}
             favorites={favorites}
             onPlayAnime={(anime) => handlePlayAnime(anime)}
@@ -904,7 +914,7 @@ export default function App() {
       <AnimeRouletteModal
         isOpen={rouletteOpen}
         onClose={() => setRouletteOpen(false)}
-        animeList={ANIME_DATABASE}
+        animeList={completeAnimeDatabase}
         onSelect={(anime) => setSelectedAnimeModal(anime)}
       />
 

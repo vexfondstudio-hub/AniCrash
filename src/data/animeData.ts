@@ -77,42 +77,7 @@ const BASE_ANIME_DATABASE: Anime[] = [
       "DreamCast",
       "Оригинал (JP)"
     ],
-    "episodes": [
-      {
-        "id": "gl-ep-1",
-        "number": 1,
-        "title": "Твоим буром пронзи небеса!",
-        "duration": 1440,
-        "videoUrl": "https://cache.libria.fun/videos/media/ts/2001/1/720/19f3967208f4be19910f319fdcf1a2f0.m3u8",
-        "voiceoverUrls": {
-          "Reanimedia (Легендарная)": "https://cache.libria.fun/videos/media/ts/2001/1/720/19f3967208f4be19910f319fdcf1a2f0.m3u8",
-          "AniLibria": "https://cache.libria.fun/videos/media/ts/2001/1/720/19f3967208f4be19910f319fdcf1a2f0.m3u8",
-          "Studio Band": "https://cache.libria.fun/videos/media/ts/2001/1/720/19f3967208f4be19910f319fdcf1a2f0.m3u8",
-          "DreamCast": "https://cache.libria.fun/videos/media/ts/2001/1/720/19f3967208f4be19910f319fdcf1a2f0.m3u8"
-        },
-        "thumbnail": "https://shikimori.one/system/animes/original/2001.jpg",
-        "introStart": 100,
-        "introEnd": 190,
-        "outroStart": 1350
-      },
-      {
-        "id": "gl-ep-2",
-        "number": 2,
-        "title": "Я сказал, что поеду на этом!",
-        "duration": 1440,
-        "videoUrl": "https://cache.libria.fun/videos/media/ts/2001/2/720/386687445422896f60032c5780a846c9.m3u8",
-        "voiceoverUrls": {
-          "Reanimedia (Легендарная)": "https://cache.libria.fun/videos/media/ts/2001/2/720/386687445422896f60032c5780a846c9.m3u8",
-          "AniLibria": "https://cache.libria.fun/videos/media/ts/2001/2/720/386687445422896f60032c5780a846c9.m3u8",
-          "Studio Band": "https://cache.libria.fun/videos/media/ts/2001/2/720/386687445422896f60032c5780a846c9.m3u8",
-          "DreamCast": "https://cache.libria.fun/videos/media/ts/2001/2/720/386687445422896f60032c5780a846c9.m3u8"
-        },
-        "thumbnail": "https://shikimori.one/system/animes/original/2001.jpg",
-        "introStart": 120,
-        "introEnd": 210,
-        "outroStart": 1350
-      }
-    ]
+    "episodes": []
   },
   {
     "id": "gurren-lagann-movie-2",

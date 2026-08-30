@@ -1,10 +1,16 @@
 import { Anime, Episode } from '../types';
+import { ANILIBRIA_ID_MAP } from '../data/animeIds';
 
 function cleanHlsUrl(url?: string | null): string {
   if (!url) return '';
-  return url
+  let cleaned = url
     .replace(/isWithVideoAds=1/g, 'isWithVideoAds=0')
     .replace(/isWithVideoAdsAlways=1/g, 'isWithVideoAdsAlways=0');
+  
+  if (cleaned.startsWith('/')) {
+    cleaned = `https://cache.libria.fun${cleaned}`;
+  }
+  return cleaned;
 }
 
 export function parseAniLibriaRelease(d: any): Anime {
@@ -80,7 +86,6 @@ export async function searchOnlineAnime(query: string): Promise<Anime[]> {
     const list = await res.json();
     if (!Array.isArray(list)) return [];
 
-    // Fetch top 5 releases with episodes
     const fullPromises = list.slice(0, 5).map(async (item: any) => {
       try {
         const detailRes = await fetch(`https://anilibria.top/api/v1/anime/releases/${item.id}`);
@@ -101,39 +106,51 @@ export async function searchOnlineAnime(query: string): Promise<Anime[]> {
   }
 }
 
-const KNOWN_ANILIBRIA_MAP: Record<string, number> = {
-  'gurren-lagann': 2001,
-  '9600': 9600, // Поднятие уровня в одиночку (12 eps)
-  '8789': 8789, // Магическая битва (24 eps)
-  '9542': 9542, // Фрирен (28 eps)
-  '9406': 9406, // Деревня кузнецов (11 eps)
-  '9307': 9307, // Киберпанк (10 eps)
-  '9161': 9161, // Семья шпиона (12 eps)
-  '9420': 9420, // Звёздное дитя (11 eps)
-  '8424': 8424, // Сага о Винланде (24 eps)
-  '8674': 8674, // Врата Штейна (25 eps)
-  '9293': 9293, // Одинокий рокер! (12 eps)
-  '9663': 9663, // Кайдзю №8 (12 eps)
-  '10290': 10290, // Ван-Пис
-  '6826': 6826, // Твоё имя (Фильм)
-  '4': 5255, // Чёрный клевер (170 eps)
-  '5114': 9528, // Стальной алхимик: Братство (64 eps)
-  '1735': 413, // Наруто Ураганные хроники (131 eps)
-  '41467': 8452, // Блич (352 eps)
-  '22319': 432, // Токийский гуль (12 eps)
-  '30276': 1210, // Ванпанчмен (12 eps)
-  '37991': 7438, // ДжоДжо Золотой ветер (39 eps)
-  '31964': 2114, // Моя геройская академия (13 eps)
-  '20507': 485, // Бездомный бог (12 eps)
-  '38691': 8398, // Доктор Стоун (24 eps)
-  '11757': 4857, // САО (25 eps)
-  '37999': 8041, // Госпожа Кагуя (12 eps)
-  '37520': 8034, // Дороро (24 eps)
-  '34599': 4644, // Созданный в Бездне (13 eps)
-  '38000': 8325, // Клинок расск. демонов С1 (26 eps)
-  '32182': 2622, // Моб Психо 100 (12 eps)
-  '20583': 1337, // Волейбол!! (25 eps)
-};
+export async function fetchConsumetAnimeSearch(query: string): Promise<any[]> {
+  try {
+    const res = await fetch(`/api/consumet/search?query=${encodeURIComponent(query)}`);
+    if (!res.ok) return [];
+    const data = await res.json();
+    return data.results || [];
+  } catch (err) {
+    console.error('Consumet search failed:', err);
+    return [];
+  }
+}
+
+export async function fetchConsumetAnimeInfo(id: string): Promise<any> {
+  try {
+    const res = await fetch(`/api/consumet/info?id=${encodeURIComponent(id)}`);
+    if (!res.ok) return null;
+    return await res.json();
+  } catch (err) {
+    console.error('Consumet info failed:', err);
+    return null;
+  }
+}
+
+export async function fetchConsumetEpisodeSources(episodeId: string): Promise<any> {
+  try {
+    const res = await fetch(`/api/consumet/sources?episodeId=${encodeURIComponent(episodeId)}`);
+    if (!res.ok) return null;
+    return await res.json();
+  } catch (err) {
+    console.error('Consumet sources failed:', err);
+    return null;
+  }
+}
+
+export async function resolveAnimeEpisodeWithPython(query: string, episode: number = 1): Promise<any> {
+  try {
+    const res = await fetch(`/api/python-resolve?query=${encodeURIComponent(query)}&episode=${episode}`);
+    if (!res.ok) return null;
+    const data = await res.json();
+    return data.results || [];
+  } catch (err) {
+    console.error('Python resolve failed:', err);
+    return null;
+  }
+}
 
 function cleanTitleString(s: string): string {
   return (s || '')
@@ -239,8 +256,15 @@ function isValidReleaseForAnime(parsed: Anime, targetAnime: Anime): boolean {
 }
 
 export async function fetchRealEpisodesForAnime(anime: Anime): Promise<Episode[] | null> {
+  // 0. Skip AniLibria for known problematic IDs
+  const SKIP_ANILIBRIA_IDS = ['2001', '4565'];
+  if (SKIP_ANILIBRIA_IDS.includes(anime.id)) {
+    console.log(`Skipping AniLibria for known problematic ID: ${anime.id}`);
+    return null;
+  }
+
   // 1. Check direct known AniLibria ID mapping
-  const knownId = KNOWN_ANILIBRIA_MAP[anime.id];
+  const knownId = ANILIBRIA_ID_MAP[anime.id] || ANILIBRIA_ID_MAP[anime.slug];
   if (knownId) {
     try {
       const res = await fetch(`https://anilibria.top/api/v1/anime/releases/${knownId}`);
@@ -383,7 +407,8 @@ export const ANIME_API_PROVIDERS = [
   { id: 'jikan', name: 'MyAnimeList (Jikan v4)', type: 'Global Catalog', status: 'online', desc: 'Международная база данных и трейлеры' },
   { id: 'aniqit', name: 'Aniqit CDN Mirror', type: 'Embedded Player', status: 'online', desc: 'Надёжный CDN сервер для любых устройств' },
   { id: 'kodik', name: 'Kodik CC Mirror', type: 'Embedded Player', status: 'degraded', desc: 'Альтернативный плеер с множеством озвучек' },
-  { id: 'vidsrc', name: 'VidSrc Global Embed', type: 'Global Player', status: 'online', desc: 'Резервный плеер с англ/рус субтитрами' }
+  { id: 'vidsrc', name: 'VidSrc Global Embed', type: 'Global Player', status: 'online', desc: 'Резервный плеер с англ/рус субтитрами' },
+  { id: 'consumet', name: 'Consumet API', type: 'Global Aggregator', status: 'online', desc: 'Агрегатор аниме из Gogoanime, Zoro и других источников' }
 ] as const;
 
 export async function fetchShikimoriAnimeData(title: string): Promise<{ id: number; russian: string; english: string; episodes: number } | null> {
@@ -427,83 +452,93 @@ export async function fetchJikanAnimeData(title: string): Promise<{ mal_id: numb
   return null;
 }
 
-export async function fetchAiAnimeData(query: string): Promise<{ shikimoriId: number; russian: string; english: string } | null> {
+export async function searchMultiApiAnime(query: string): Promise<Anime[]> {
+  if (!query.trim()) return [];
+
+  try {
+    const res = await fetch(`/api/search?query=${encodeURIComponent(query)}`);
+    if (!res.ok) throw new Error('Search failed');
+    const data = await res.json();
+
+    return data.map((item: any) => ({
+      id: item.id,
+      title: item.title,
+      englishTitle: item.englishTitle || item.title,
+      originalTitle: item.englishTitle || item.title,
+      slug: item.id,
+      description: item.source === 'local' ? 'Найдено в локальной базе.' : `Источник: ${item.source}`,
+      poster: item.poster || 'https://shikimori.one/assets/globals/missing_original.png',
+      banner: item.poster || '',
+      rating: item.score || 8.0,
+      votesCount: 1000,
+      year: item.year || 2024,
+      season: 'Неизвестно',
+      type: 'Аниме',
+      status: 'Завершён',
+      genres: ['Аниме'],
+      episodesCount: 12,
+      currentEpisodes: 12,
+      durationPerEp: '24 мин.',
+      studio: 'Unknown',
+      ageRating: '16+',
+      voiceovers: ['Русская', 'Оригинал'],
+      episodes: [],
+      characters: [],
+      tags: [item.source],
+      trendingRank: 0
+    }));
+  } catch (err) {
+    console.error('Unified search failed:', err);
+    return [];
+  }
+}
+
+// Internal helper for AI search
+export async function fetchAiAnimeData(query: string): Promise<Anime | null> {
   try {
     const res = await fetch('/api/ai-search', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ query })
     });
-    if (res.ok) {
-      return await res.json();
+    if (!res.ok) return null;
+    const aiResult = await res.json();
+    
+    if (aiResult && aiResult.shikimoriId) {
+      const shikiRes = await fetch(`https://shikimori.one/api/animes/${aiResult.shikimoriId}`);
+      if (shikiRes.ok) {
+        const sData = await shikiRes.json();
+        return {
+          id: String(sData.id),
+          title: sData.russian || sData.name,
+          englishTitle: sData.name,
+          originalTitle: sData.name,
+          slug: String(sData.id),
+          description: sData.description || 'Найдено с помощью нейросети.',
+          poster: `https://shikimori.one${sData.image?.original}`,
+          banner: `https://shikimori.one${sData.image?.original}`,
+          rating: parseFloat(sData.score) || 0,
+          votesCount: 0,
+          year: new Date(sData.aired_on).getFullYear() || new Date().getFullYear(),
+          season: 'Неизвестно',
+          type: sData.kind || 'ТВ',
+          status: sData.status === 'released' ? 'Завершён' : 'Онгоинг',
+          genres: (sData.genres || []).map((g: any) => g.russian || g.name),
+          episodesCount: sData.episodes || 0,
+          currentEpisodes: sData.episodes_aired || 0,
+          durationPerEp: `${sData.duration || 24} мин.`,
+          studio: 'AI Match',
+          ageRating: '16+',
+          voiceovers: ['AniLibria', 'Kodik'],
+          episodes: [],
+          characters: [],
+          tags: ['AI'],
+          trendingRank: 0
+        };
+      }
     }
   } catch (e) {
-    console.warn('AI search failed:', e);
+    console.error('AI search helper failed:', e);
   }
   return null;
-}
-
-export async function searchMultiApiAnime(query: string): Promise<Anime[]> {
-  if (!query.trim()) return [];
-
-  const [aniLibriaRes, shikimoriRes] = await Promise.allSettled([
-    searchOnlineAnime(query),
-    fetchShikimoriAnimeData(query),
-  ]);
-
-  const combined: Anime[] = [];
-
-  if (aniLibriaRes.status === 'fulfilled' && aniLibriaRes.value.length > 0) {
-    for (const item of aniLibriaRes.value) {
-      if (!combined.some((a) => a.id === item.id || a.title.toLowerCase() === item.title.toLowerCase())) {
-        combined.push(item);
-      }
-    }
-  }
-
-  // If we couldn't find anything via standard search, use AI to find the right ID
-  if (combined.length === 0) {
-    const aiResult = await fetchAiAnimeData(query);
-    if (aiResult && aiResult.shikimoriId) {
-      // Try to fetch specific anime by ID from Shikimori to get standard structure
-      try {
-        const shikiRes = await fetch(`https://shikimori.one/api/animes/${aiResult.shikimoriId}`);
-        if (shikiRes.ok) {
-          const sData = await shikiRes.json();
-          combined.push({
-            id: String(sData.id),
-            title: sData.russian || sData.name,
-            englishTitle: sData.name,
-            originalTitle: sData.name,
-            slug: String(sData.id),
-            description: sData.description || 'Найдено с помощью нейросети.',
-            poster: `https://shikimori.one${sData.image?.original}`,
-            banner: `https://shikimori.one${sData.image?.original}`,
-            rating: parseFloat(sData.score) || 0,
-            votesCount: 0,
-            year: new Date(sData.aired_on).getFullYear() || new Date().getFullYear(),
-            season: 'Неизвестно',
-            type: sData.kind || 'ТВ',
-            status: sData.status === 'released' ? 'Завершён' : 'Онгоинг',
-            genres: (sData.genres || []).map((g: any) => g.russian || g.name),
-            episodesCount: sData.episodes || 12,
-            currentEpisodes: sData.episodes_aired || sData.episodes || 0,
-            durationPerEp: `${sData.duration || 24} мин.`,
-            studio: 'AI Match',
-            ageRating: '16+',
-            voiceovers: ['AniLibria', 'Kodik', 'Студийная Банда'],
-            episodes: [],
-            characters: [],
-            tags: ['AI Match', 'HD 1080p'],
-            featured: false,
-            trendingRank: 0
-          });
-        }
-      } catch (e) {
-        console.warn('AI fallback Shikimori fetch failed', e);
-      }
-    }
-  }
-
-  return combined;
 }

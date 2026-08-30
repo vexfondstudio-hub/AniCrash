@@ -48,25 +48,28 @@ const TITLES = [
   { ru: 'Волейбол!!', en: 'Haikyuu!!' },
 ];
 
-const BASE = 'https://anilibria.top/api/v1';
+const ANILIBRIA_BASE = 'https://anilibria.top/api/v1';
+const SHIKIMORI_BASE = 'https://shikimori.one/api';
+const JIKAN_BASE = 'https://api.jikan.moe/v4';
+const ANILIST_BASE = 'https://graphql.anilist.co';
 
-async function searchOne(query) {
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+async function safeJson(url, opts) {
   try {
-    const res = await fetch(`${BASE}/app/search/releases?query=${encodeURIComponent(query)}`);
-    if (!res.ok) return [];
-    const list = await res.json();
-    return Array.isArray(list) ? list : [];
-  } catch (err) {
-    return [];
+    const res = await fetch(url, opts);
+    if (!res.ok) return null;
+    return await res.json();
+  } catch {
+    return null;
   }
 }
 
-async function resolveTitle({ ru, en }) {
-  // сперва по русскому названию, если пусто - по английскому
-  let list = await searchOne(ru);
-  if (list.length === 0) list = await searchOne(en);
-
-  const candidates = list.slice(0, 3).map((item) => ({
+// ---------- AniLibria ----------
+async function searchAniLibria(query) {
+  const list = await safeJson(`${ANILIBRIA_BASE}/app/search/releases?query=${encodeURIComponent(query)}`);
+  if (!Array.isArray(list)) return [];
+  return list.slice(0, 3).map((item) => ({
     id: item.id,
     alias: item.alias,
     name_main: item.name?.main,
@@ -74,8 +77,79 @@ async function resolveTitle({ ru, en }) {
     episodes_total: item.episodes_total,
     type: item.type?.description,
   }));
+}
 
-  return { query_ru: ru, query_en: en, candidates };
+// ---------- Shikimori ----------
+async function searchShikimori(query) {
+  const list = await safeJson(`${SHIKIMORI_BASE}/animes?search=${encodeURIComponent(query)}&limit=3`);
+  if (!Array.isArray(list)) return [];
+  return list.map((item) => ({
+    id: item.id,
+    russian: item.russian,
+    name: item.name,
+    episodes: item.episodes,
+    kind: item.kind,
+    url: `https://shikimori.one${item.url}`,
+  }));
+}
+
+// ---------- Jikan (MyAnimeList) ----------
+async function searchJikan(query) {
+  const json = await safeJson(`${JIKAN_BASE}/anime?q=${encodeURIComponent(query)}&limit=3`);
+  const list = json?.data;
+  if (!Array.isArray(list)) return [];
+  return list.map((item) => ({
+    mal_id: item.mal_id,
+    title: item.title,
+    title_english: item.title_english,
+    episodes: item.episodes,
+    score: item.score,
+    url: item.url,
+  }));
+}
+
+// ---------- AniList (GraphQL) ----------
+async function searchAniList(query) {
+  const gqlQuery = `
+    query ($search: String) {
+      Page(perPage: 3) {
+        media(search: $search, type: ANIME) {
+          id
+          title { romaji english native }
+          episodes
+          format
+          siteUrl
+        }
+      }
+    }
+  `;
+  const json = await safeJson(ANILIST_BASE, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ query: gqlQuery, variables: { search: query } }),
+  });
+  const list = json?.data?.Page?.media;
+  if (!Array.isArray(list)) return [];
+  return list.map((item) => ({
+    id: item.id,
+    title_romaji: item.title?.romaji,
+    title_english: item.title?.english,
+    episodes: item.episodes,
+    format: item.format,
+    url: item.siteUrl,
+  }));
+}
+
+async function resolveTitle({ ru, en }) {
+  const anilibria = (await searchAniLibria(ru)).length ? await searchAniLibria(ru) : await searchAniLibria(en);
+  await sleep(150);
+  const shikimori = (await searchShikimori(ru)).length ? await searchShikimori(ru) : await searchShikimori(en);
+  await sleep(150);
+  const jikan = await searchJikan(en);
+  await sleep(400); // jikan просит не чаще ~1 запроса/сек без ключа
+  const anilist = await searchAniList(en);
+
+  return { query_ru: ru, query_en: en, sources: { anilibria, shikimori, jikan, anilist } };
 }
 
 async function main() {
@@ -83,19 +157,19 @@ async function main() {
   for (const title of TITLES) {
     try {
       const r = await resolveTitle(title);
+      const total = Object.values(r.sources).reduce((n, arr) => n + arr.length, 0);
       results.push(r);
-      console.log(`✓ ${title.ru} -> ${r.candidates.length} candidate(s)`);
+      console.log(`✓ ${title.ru} -> ${total} candidate(s) across sources`);
     } catch (e) {
       console.warn(`✗ ${title.ru}:`, e.message);
-      results.push({ query_ru: title.ru, query_en: title.en, candidates: [], error: String(e) });
+      results.push({ query_ru: title.ru, query_en: title.en, sources: {}, error: String(e) });
     }
-    // небольшая пауза, чтобы не долбить API слишком быстро
-    await new Promise((r) => setTimeout(r, 300));
+    await sleep(300);
   }
 
   const fs = await import('node:fs/promises');
-  await fs.writeFile('anilibria-ids.json', JSON.stringify(results, null, 2), 'utf-8');
-  console.log('\nГотово. Результат в anilibria-ids.json');
+  await fs.writeFile('anime-ids.json', JSON.stringify(results, null, 2), 'utf-8');
+  console.log('\nГотово. Результат в anime-ids.json');
 }
 
 main();

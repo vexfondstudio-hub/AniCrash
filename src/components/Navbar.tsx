@@ -27,6 +27,7 @@ interface NavbarProps {
   historyCount: number;
   onOpenSearch: () => void;
   onOpenRoulette: () => void;
+  onOpenCustomModal: () => void;
   currentUser: UserProfile;
   isAuthenticated: boolean;
   onOpenAuth: (mode?: 'login' | 'register') => void;
@@ -40,6 +41,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   historyCount,
   onOpenSearch,
   onOpenRoulette,
+  onOpenCustomModal,
   currentUser,
   isAuthenticated,
   onOpenAuth,
@@ -151,15 +153,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               </kbd>
             </button>
 
-            {/* Roulette Trigger Button */}
-            <button
-              onClick={onOpenRoulette}
-              type="button"
-              className="group h-9 w-9 flex items-center justify-center rounded-xl bg-gradient-to-br from-rose-600/20 to-orange-500/20 hover:from-rose-500/30 hover:to-orange-500/30 text-rose-400 hover:text-rose-300 border border-rose-500/30 hover:border-rose-500/50 transition-all cursor-pointer shadow-xs active:scale-95 select-none"
-              title="Аниме Рулетка (Случайное аниме)"
-            >
-              <Dices className="w-4 h-4 group-hover:rotate-12 transition-transform" />
-            </button>
+
 
             {/* Quick Access: Favorites Icon */}
             <button

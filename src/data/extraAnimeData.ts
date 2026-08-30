@@ -61,48 +61,6 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
     trendingRank: 1
   },
   {
-    id: "1535",
-    title: "Тетрадь смерти",
-    englishTitle: "Death Note",
-    originalTitle: "Death Note",
-    slug: "death-note",
-    description: "Гениальный старшеклассник Лайт Ягами находит странную тетрадь, оброненную богом смерти Рюком. Человек, чьё имя будет записано в эту тетрадь, умирает. Лайт решает очистить мир от преступности и построить идеальное общество, где он станет богом, но против него начинает расследование лучший детектив мира — L.",
-    poster: "https://shikimori.io/system/animes/original/1535.jpg",
-    banner: "https://shikimori.io/system/animes/original/1535.jpg",
-    rating: 9.8,
-    votesCount: 112000,
-    year: 2006,
-    season: "Осень",
-    type: "ТВ",
-    status: "Завершён",
-    genres: ["Триллер", "Мистика", "Сверхъестественное", "Сёнен", "Психологическое"],
-    episodesCount: 37,
-    currentEpisodes: 37,
-    durationPerEp: "23 мин.",
-    studio: "Madhouse",
-    ageRating: "16+",
-    voiceovers: ["AniLibria (Официальная)", "AniDUB", "Оригинал (JP)"],
-    episodes: [
-      {
-        id: "dn-ep-1",
-        number: 1,
-        title: "Возрождение",
-        duration: 1400,
-        videoUrl: "",
-        thumbnail: "https://shikimori.io/system/animes/original/1535.jpg",
-        introStart: 70,
-        introEnd: 155
-      }
-    ],
-    characters: [
-      { name: "Лайт Ягами (Кира)", role: "Главный герой", avatar: "https://shikimori.io/system/characters/original/80.jpg" },
-      { name: "L (Эл Лоулайт)", role: "Главный детектив", avatar: "https://shikimori.io/system/characters/original/71.jpg" }
-    ],
-    tags: ["Детектив", "Битва умов", "Боги смерти", "Культ", "HD 1080p"],
-    featured: true,
-    trendingRank: 2
-  },
-  {
     id: "5114",
     title: "Стальной алхимик: Братство",
     englishTitle: "Fullmetal Alchemist: Brotherhood",

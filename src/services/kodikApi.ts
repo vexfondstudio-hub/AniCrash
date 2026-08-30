@@ -147,14 +147,69 @@ export function getKodikPlayerEmbedUrl(options: KodikPlayerOptions): string {
 /**
  * Popular Kodik translation IDs based on Kodik API specs
  */
-export const POPULAR_KODIK_TRANSLATIONS = [
+export const POPULAR_KODIK_TRANSLATIONS: KodikTranslation[] = [
+  { id: 612, title: 'AniLibria (Официальная HD)', type: 'voice' },
   { id: 610, title: 'Студийная Банда (Studio Band)', type: 'voice' },
   { id: 609, title: 'AniDUB', type: 'voice' },
   { id: 643, title: 'DreamCast', type: 'voice' },
   { id: 615, title: 'SHIZA Project', type: 'voice' },
-  { id: 612, title: 'AniLibria', type: 'voice' },
   { id: 617, title: 'Reanimedia', type: 'voice' },
   { id: 622, title: 'AniStar', type: 'voice' },
-  { id: 1845, title: 'Дубляж (FlixBik)', type: 'voice' },
-  { id: 1, title: 'Оригинал (Японский) + Субтитры', type: 'subtitles' },
+  { id: 624, title: 'Persona99', type: 'voice' },
+  { id: 1845, title: 'Дубляж (DEEP / FlixBik)', type: 'voice' },
+  { id: 628, title: 'JAM CLUB', type: 'voice' },
+  { id: 620, title: 'Kansai Studio', type: 'voice' },
+  { id: 1, title: 'Оригинал (Японский) + Русские Субтитры', type: 'subtitles' },
 ];
+
+/**
+ * Fetch available translations for anime from Kodik API via backend proxy
+ */
+export async function getAvailableTranslations(
+  shikimoriId?: number | string | null,
+  title?: string
+): Promise<Array<KodikTranslation & { isHlsNative?: boolean }>> {
+  const result: Array<KodikTranslation & { isHlsNative?: boolean }> = [
+    { id: 612, title: 'AniLibria (Официальная HD)', type: 'voice', isHlsNative: true }
+  ];
+
+  try {
+    const params = new URLSearchParams();
+    if (shikimoriId) params.set('shikimori_id', String(shikimoriId));
+    if (title) params.set('title', title);
+
+    const res = await fetch(`/api/kodik/search?${params.toString()}`);
+    if (res.ok) {
+      const data: KodikApiResponse = await res.json();
+      if (data.results && data.results.length > 0) {
+        const seenIds = new Set<number>([612]);
+        
+        for (const item of data.results) {
+          if (item.translation && !seenIds.has(item.translation.id)) {
+            seenIds.add(item.translation.id);
+            result.push({
+              id: item.translation.id,
+              title: item.translation.title,
+              type: item.translation.type,
+              isHlsNative: false
+            });
+          }
+        }
+      }
+    }
+  } catch (err) {
+    console.warn('Failed to load dynamic Kodik translations, using fallback:', err);
+  }
+
+  // If only AniLibria in list, append popular translations as reliable options
+  if (result.length <= 1) {
+    for (const trans of POPULAR_KODIK_TRANSLATIONS) {
+      if (trans.id !== 612) {
+        result.push({ ...trans, isHlsNative: false });
+      }
+    }
+  }
+
+  return result;
+}
+
