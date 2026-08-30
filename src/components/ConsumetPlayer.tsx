@@ -8,11 +8,15 @@ interface ConsumetPlayerProps {
   anime: Anime;
   currentEpisode: Episode;
   onEpisodeChange?: (episode: Episode) => void;
+  onSwitchMirror?: (domain: string) => void;
+  onSwitchPlayerMode?: (mode: 'hls' | 'mirror') => void;
 }
 
 export const ConsumetPlayer: React.FC<ConsumetPlayerProps> = ({
   anime,
   currentEpisode,
+  onSwitchMirror,
+  onSwitchPlayerMode,
 }) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [hasError, setHasError] = useState<boolean>(false);
@@ -23,18 +27,71 @@ export const ConsumetPlayer: React.FC<ConsumetPlayerProps> = ({
 
   useEffect(() => {
     let isMounted = true;
+    
+    const isMostlyLatin = (str: string) => {
+      if (!str) return false;
+      const latinCount = (str.match(/[a-zA-Z0-9]/g) || []).length;
+      const totalCount = str.replace(/\s/g, '').length;
+      if (totalCount === 0) return false;
+      return (latinCount / totalCount) > 0.7;
+    };
+
     const loadStream = async () => {
       setIsLoading(true);
       setHasError(false);
       setStatus('Поиск аниме в глобальной базе...');
 
       try {
-        // 1. Search for anime
-        const searchResults = await fetchConsumetAnimeSearch(anime.englishTitle || anime.title);
-        if (!isMounted) return;
+        // 1. Gather all potential search terms
+        const searchTerms: string[] = [];
         
+        if (anime.englishTitle) {
+          searchTerms.push(anime.englishTitle);
+          
+          // Clean English Title (remove season descriptors, TV specifiers, movie specifiers)
+          const cleaned = anime.englishTitle
+            .replace(/:\s*season\s*\d+/i, '')
+            .replace(/season\s*\d+/i, '')
+            .replace(/\s*\(tv\)/i, '')
+            .replace(/:\s*part\s*\d+/i, '')
+            .replace(/:\s*movies?/i, '')
+            .trim();
+          if (cleaned && cleaned !== anime.englishTitle) {
+            searchTerms.push(cleaned);
+          }
+        }
+        
+        if (anime.originalTitle && isMostlyLatin(anime.originalTitle)) {
+          searchTerms.push(anime.originalTitle);
+        }
+        
+        if (anime.title && isMostlyLatin(anime.title)) {
+          searchTerms.push(anime.title);
+        }
+
+        // Deduplicate
+        const uniqueTerms = Array.from(new Set(searchTerms.filter(Boolean)));
+        if (uniqueTerms.length === 0) {
+          throw new Error('No valid search terms generated for this title');
+        }
+
+        let searchResults: any[] = [];
+        for (const term of uniqueTerms) {
+          if (!isMounted) return;
+          setStatus(`Поиск по названию "${term}"...`);
+          try {
+            const results = await fetchConsumetAnimeSearch(term);
+            if (results && results.length > 0) {
+              searchResults = results;
+              break;
+            }
+          } catch (e) {
+            console.warn(`Search for term "${term}" did not yield results:`, e);
+          }
+        }
+
         if (searchResults.length === 0) {
-          throw new Error('Anime not found in Consumet database');
+          throw new Error('No matching title found in the public index');
         }
 
         // Use first match
@@ -65,11 +122,18 @@ export const ConsumetPlayer: React.FC<ConsumetPlayerProps> = ({
         const defaultSource = sourceData.sources.find((s: any) => s.quality === 'default') || sourceData.sources[0];
         setActiveSource(defaultSource.url);
         setIsLoading(false);
-      } catch (err) {
-        console.error('Consumet player error:', err);
+      } catch (err: any) {
+        console.warn('Stream processing notice:', err?.message || err);
         if (isMounted) {
-          setHasError(true);
-          setIsLoading(false);
+          // If fallback callback is present, perform seamless switch automatically
+          if (onSwitchMirror && onSwitchPlayerMode) {
+            console.log('Consumet failed, auto-switching to Kodik mirror...');
+            onSwitchMirror('kodik.cc');
+            onSwitchPlayerMode('mirror');
+          } else {
+            setHasError(true);
+            setIsLoading(false);
+          }
         }
       }
     };
@@ -121,21 +185,47 @@ export const ConsumetPlayer: React.FC<ConsumetPlayerProps> = ({
       )}
 
       {hasError && (
-        <div className="absolute inset-0 z-20 flex flex-col items-center justify-center p-6 text-center bg-zinc-950 text-white gap-4">
-          <div className="w-16 h-16 rounded-full bg-amber-500/10 flex items-center justify-center border border-amber-500/20">
-            <AlertCircle className="w-8 h-8 text-amber-500" />
+        <div className="absolute inset-0 z-20 flex flex-col items-center justify-center p-6 text-center bg-zinc-950 text-white gap-5">
+          <div className="w-14 h-14 rounded-full bg-rose-500/10 flex items-center justify-center border border-rose-500/20">
+            <AlertCircle className="w-7 h-7 text-rose-500" />
           </div>
-          <div>
-            <h3 className="text-lg font-bold">Источник недоступен</h3>
-            <p className="text-sm text-zinc-400 max-w-md mt-1">
-              Не удалось найти работающий поток в глобальной базе Gogoanime. Попробуйте другой плеер (Kinobox или Kodik).
+          <div className="max-w-md">
+            <h3 className="text-lg font-bold">Глобальный поток недоступен</h3>
+            <p className="text-xs text-zinc-400 mt-1.5 leading-relaxed">
+              Не удалось загрузить видео-поток из базы Gogoanime (ошибка 451 или лимит запросов). Рекомендуем переключиться на российские зеркала с дубляжом.
             </p>
           </div>
+          
+          <div className="flex flex-col sm:flex-row gap-3 w-full max-w-sm mt-2">
+            <button
+              onClick={() => {
+                if (onSwitchMirror && onSwitchPlayerMode) {
+                  onSwitchMirror('kodik.cc');
+                  onSwitchPlayerMode('mirror');
+                }
+              }}
+              className="flex-1 px-4 py-2.5 bg-zinc-800 hover:bg-zinc-700 active:bg-zinc-900 border border-zinc-700 rounded-xl text-xs font-bold text-zinc-100 transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+            >
+              🚀 Включить Kodik
+            </button>
+            <button
+              onClick={() => {
+                if (onSwitchMirror && onSwitchPlayerMode) {
+                  onSwitchMirror('kinobox');
+                  onSwitchPlayerMode('mirror');
+                }
+              }}
+              className="flex-1 px-4 py-2.5 bg-zinc-800 hover:bg-zinc-700 active:bg-zinc-900 border border-zinc-700 rounded-xl text-xs font-bold text-zinc-100 transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+            >
+              🎬 Включить Kinobox
+            </button>
+          </div>
+
           <button
             onClick={() => window.location.reload()}
-            className="px-6 py-2.5 bg-rose-600 hover:bg-rose-500 rounded-xl text-sm font-bold transition-all flex items-center gap-2 cursor-pointer shadow-lg shadow-rose-600/30"
+            className="mt-2 text-xs text-zinc-500 hover:text-zinc-400 transition-colors flex items-center gap-1 cursor-pointer"
           >
-            <RefreshCw className="w-4 h-4" />
+            <RefreshCw className="w-3 h-3" />
             <span>Обновить попытку</span>
           </button>
         </div>

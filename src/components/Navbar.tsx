@@ -14,6 +14,7 @@ import {
   LogOut,
   ChevronDown,
   Dices,
+  Database,
 } from 'lucide-react';
 import { ViewMode, UserProfile } from '../types';
 import { AURA_PRESETS } from '../data/profilePresets';
@@ -277,6 +278,17 @@ export const Navbar: React.FC<NavbarProps> = ({
                     >
                       <User className="w-3.5 h-3.5 text-rose-500 shrink-0" />
                       <span className="truncate">Кастомизация профиля</span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        onNavigate('api-manager');
+                        setDropdownOpen(false);
+                      }}
+                      className="w-full px-3 py-2 rounded-xl text-left text-xs text-zinc-300 hover:text-white hover:bg-zinc-900 flex items-center gap-2 transition-colors cursor-pointer"
+                    >
+                      <Database className="w-3.5 h-3.5 text-rose-400 shrink-0" />
+                      <span className="truncate">Панель управления API</span>
                     </button>
                     <button
                       type="button"

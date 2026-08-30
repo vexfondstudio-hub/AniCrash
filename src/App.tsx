@@ -48,6 +48,7 @@ import { AuthModal } from './components/AuthModal';
 import { Footer } from './components/Footer';
 import { EnhancedImage } from './components/EnhancedImage';
 import { SiteAssemblyLoader } from './components/SiteAssemblyLoader';
+import { ApiManagerView } from './components/ApiManagerView';
 import {
   getCurrentUserAccount,
   logoutUserAccount,
@@ -211,13 +212,23 @@ export default function App() {
   const [quickSearchOpen, setQuickSearchOpen] = useState<boolean>(false);
   const [rouletteOpen, setRouletteOpen] = useState<boolean>(false);
 
-  useEffect(() => {
-    // Custom database logic removed per user request
-  }, []);
+  const [completeAnimeDatabase, setCompleteAnimeDatabase] = useState<Anime[]>(ANIME_DATABASE);
 
-  // Combined anime database (ANIME_DATABASE)
-  const completeAnimeDatabase = useMemo(() => {
-    return ANIME_DATABASE;
+  useEffect(() => {
+    const fetchCustomAnimeList = async () => {
+      try {
+        const res = await fetch('/api/custom-anime');
+        if (res.ok) {
+          const data = await res.json();
+          if (data.success && Array.isArray(data.anime) && data.anime.length > 0) {
+            setCompleteAnimeDatabase(data.anime);
+          }
+        }
+      } catch (err) {
+        console.error('Failed to load custom anime database:', err);
+      }
+    };
+    fetchCustomAnimeList();
   }, []);
 
   // Filters
@@ -847,6 +858,18 @@ export default function App() {
             isAuthenticated={!!currentAccount}
             onOpenAuth={handleOpenAuth}
             onLogout={handleLogout}
+          />
+        )}
+
+        {/* VIEW: API DATABASE & CUSTOM RELEASES MANAGER */}
+        {currentView === 'api-manager' && (
+          <ApiManagerView
+            onBackToHome={() => {
+              setCurrentView('home');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            animeDatabase={completeAnimeDatabase}
+            onUpdateDatabase={(updated) => setCompleteAnimeDatabase(updated)}
           />
         )}
       </main>

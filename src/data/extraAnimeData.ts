@@ -2,65 +2,6 @@ import { Anime } from '../types';
 
 export const EXTRA_ANIME_DATABASE: Anime[] = [
   {
-    id: "16498",
-    title: "Атака титанов",
-    englishTitle: "Attack on Titan",
-    originalTitle: "Shingeki no Kyojin",
-    slug: "attack-on-titan",
-    description: "Многие годы человечество вело войну с гигантскими гуманоидами — титанами. Чтобы защититься от беспощадных монстров, люди возвели три колоссальные стены: Марию, Розу и Сину. Однако столетний покой рушится, когда Колоссальный титан пробивает внешнюю стену. Юный Эрен Йегер клянётся истребить каждого титана до единого.",
-    poster: "https://shikimori.io/system/animes/original/16498.jpg",
-    banner: "https://shikimori.io/system/animes/original/16498.jpg",
-    rating: 9.9,
-    votesCount: 98450,
-    year: 2013,
-    season: "Весна",
-    type: "ТВ",
-    status: "Завершён",
-    genres: ["Экшен", "Драма", "Фэнтези", "Сёнен", "Военное"],
-    episodesCount: 25,
-    currentEpisodes: 25,
-    durationPerEp: "24 мин.",
-    studio: "Wit Studio",
-    ageRating: "18+",
-    voiceovers: ["AniLibria (Официальная)", "Studio Band", "DreamCast", "Оригинал (JP)"],
-    episodes: [
-      {
-        id: "aot-ep-1",
-        number: 1,
-        title: "К тебе, спустя 2000 лет: Падение Сигансины, часть 1",
-        duration: 1440,
-        videoUrl: "",
-        hls_1080: "",
-        hls_720: "",
-        hls_480: "",
-        thumbnail: "https://shikimori.io/system/animes/original/16498.jpg",
-        introStart: 90,
-        introEnd: 180
-      },
-      {
-        id: "aot-ep-2",
-        number: 2,
-        title: "Тот день: Падение Сигансины, часть 2",
-        duration: 1440,
-        videoUrl: "",
-        hls_1080: "",
-        hls_720: "",
-        hls_480: "",
-        thumbnail: "https://shikimori.io/system/animes/original/16498.jpg",
-        introStart: 90,
-        introEnd: 180
-      }
-    ],
-    characters: [
-      { name: "Эрен Йегер", role: "Главный герой", avatar: "https://shikimori.io/system/characters/original/40882.jpg" },
-      { name: "Микаса Аккерман", role: "Главный герой", avatar: "https://shikimori.io/system/characters/original/40881.jpg" },
-      { name: "Леви Аккерман", role: "Капитан Разведкорпуса", avatar: "https://shikimori.io/system/characters/original/45627.jpg" }
-    ],
-    tags: ["Титаны", "Война", "Выживание", "Шедевр", "HD 1080p"],
-    featured: true,
-    trendingRank: 1
-  },
-  {
     id: "5114",
     title: "Стальной алхимик: Братство",
     englishTitle: "Fullmetal Alchemist: Brotherhood",
@@ -81,7 +22,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
     durationPerEp: "24 мин.",
     studio: "Bones",
     ageRating: "16+",
-    voiceovers: ["AniLibria (Официальная)", "Studio Band", "AniDUB", "Оригинал (JP)"],
+    voiceovers: ["AniLibria (Официальная)"],
     episodes: [
       {
         id: "fma-ep-1",
@@ -124,7 +65,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
     durationPerEp: "23 мин.",
     studio: "Madhouse",
     ageRating: "16+",
-    voiceovers: ["AniLibria (Официальная)", "AniDUB", "Оригинал (JP)"],
+    voiceovers: ["AniLibria (Официальная)"],
     episodes: [
       {
         id: "hxh-ep-1",
@@ -166,7 +107,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
     durationPerEp: "23 мин.",
     studio: "Studio Pierrot",
     ageRating: "16+",
-    voiceovers: ["AniLibria (Официальная)", "AniDUB", "2x2", "Оригинал (JP)"],
+    voiceovers: ["AniLibria (Официальная)"],
     episodes: [
       {
         id: "naruto-ep-1",
@@ -209,7 +150,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
     durationPerEp: "24 мин.",
     studio: "Sunrise",
     ageRating: "18+",
-    voiceovers: ["AniLibria (Официальная)", "AniDUB", "Оригинал (JP)"],
+    voiceovers: ["AniLibria (Официальная)"],
     episodes: [
       {
         id: "cg-ep-1",
@@ -251,7 +192,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
     durationPerEp: "24 мин.",
     studio: "Studio Pierrot",
     ageRating: "18+",
-    voiceovers: ["AniLibria (Официальная)", "DreamCast", "Studio Band", "Оригинал (JP)"],
+    voiceovers: ["AniLibria (Официальная)"],
     episodes: [
       {
         id: "bleach-ep-1",
@@ -292,7 +233,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
     durationPerEp: "24 мин.",
     studio: "Studio Pierrot",
     ageRating: "18+",
-    voiceovers: ["AniLibria (Официальная)", "AniDUB", "Оригинал (JP)"],
+    voiceovers: ["AniLibria (Официальная)"],
     episodes: [
       {
         id: "tg-ep-1",
@@ -334,7 +275,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
     durationPerEp: "24 мин.",
     studio: "Madhouse",
     ageRating: "16+",
-    voiceovers: ["AniLibria (Официальная)", "AniDUB", "Studio Band", "Оригинал (JP)"],
+    voiceovers: ["AniLibria (Официальная)"],
     episodes: [
       {
         id: "opm-ep-1",
@@ -376,7 +317,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
     durationPerEp: "23 мин.",
     studio: "David Production",
     ageRating: "18+",
-    voiceovers: ["AniLibria (Официальная)", "AniDUB", "Оригинал (JP)"],
+    voiceovers: ["AniLibria (Официальная)"],
     episodes: [
       {
         id: "jojo-ep-1",
@@ -418,7 +359,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
     durationPerEp: "24 мин.",
     studio: "Bones",
     ageRating: "16+",
-    voiceovers: ["AniLibria (Официальная)", "DreamCast", "Studio Band", "Оригинал (JP)"],
+    voiceovers: ["AniLibria (Официальная)"],
     episodes: [
       {
         id: "mha-ep-1",
@@ -461,7 +402,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
     durationPerEp: "24 мин.",
     studio: "Bones",
     ageRating: "16+",
-    voiceovers: ["AniLibria (Официальная)", "AniDUB", "Оригинал (JP)"],
+    voiceovers: ["AniLibria (Официальная)"],
     episodes: [
       {
         id: "noragami-ep-1",
@@ -504,7 +445,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
     durationPerEp: "24 мин.",
     studio: "TMS Entertainment",
     ageRating: "16+",
-    voiceovers: ["AniLibria (Официальная)", "DreamCast", "Studio Band", "Оригинал (JP)"],
+    voiceovers: ["AniLibria (Официальная)"],
     episodes: [
       {
         id: "stone-ep-1",
@@ -545,7 +486,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
     durationPerEp: "24 мин.",
     studio: "Studio Bind",
     ageRating: "18+",
-    voiceovers: ["AniLibria (Официальная)", "Studio Band", "DreamCast", "Оригинал (JP)"],
+    voiceovers: ["AniLibria (Официальная)"],
     episodes: [
       {
         id: "mushoku-ep-1",
@@ -588,7 +529,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
     durationPerEp: "24 мин.",
     studio: "A-1 Pictures",
     ageRating: "16+",
-    voiceovers: ["AniLibria (Официальная)", "AniDUB", "Оригинал (JP)"],
+    voiceovers: ["AniLibria (Официальная)"],
     episodes: [
       {
         id: "sao-ep-1",
@@ -630,7 +571,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
     durationPerEp: "25 мин.",
     studio: "White Fox",
     ageRating: "18+",
-    voiceovers: ["AniLibria (Официальная)", "DreamCast", "Studio Band", "Оригинал (JP)"],
+    voiceovers: ["AniLibria (Официальная)"],
     episodes: [
       {
         id: "rez-ep-1",
@@ -673,7 +614,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
     durationPerEp: "24 мин.",
     studio: "A-1 Pictures",
     ageRating: "16+",
-    voiceovers: ["AniLibria (Официальная)", "Studio Band", "DreamCast", "Оригинал (JP)"],
+    voiceovers: ["AniLibria (Официальная)"],
     episodes: [
       {
         id: "kaguya-ep-1",
@@ -716,7 +657,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
     durationPerEp: "24 мин.",
     studio: "MAPPA",
     ageRating: "18+",
-    voiceovers: ["AniLibria (Официальная)", "AniDUB", "Оригинал (JP)"],
+    voiceovers: ["AniLibria (Официальная)"],
     episodes: [
       {
         id: "dororo-ep-1",
@@ -758,7 +699,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
     durationPerEp: "25 мин.",
     studio: "Kinema Citrus",
     ageRating: "18+",
-    voiceovers: ["AniLibria (Официальная)", "Studio Band", "DreamCast", "Оригинал (JP)"],
+    voiceovers: ["AniLibria (Официальная)"],
     episodes: [
       {
         id: "abyss-ep-1",
@@ -801,7 +742,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
     durationPerEp: "24 мин.",
     studio: "ufotable",
     ageRating: "16+",
-    voiceovers: ["AniLibria (Официальная)", "Studio Band", "DreamCast", "Оригинал (JP)"],
+    voiceovers: ["AniLibria (Официальная)"],
     episodes: [
       {
         id: "ds1-ep-1",
@@ -844,7 +785,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
     durationPerEp: "24 мин.",
     studio: "Bones",
     ageRating: "16+",
-    voiceovers: ["AniLibria (Официальная)", "AniDUB", "Studio Band", "Оригинал (JP)"],
+    voiceovers: ["AniLibria (Официальная)"],
     episodes: [
       {
         id: "mob-ep-1",
@@ -886,7 +827,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
     durationPerEp: "24 мин.",
     studio: "8bit",
     ageRating: "16+",
-    voiceovers: ["AniLibria (Официальная)", "DreamCast", "Studio Band", "Оригинал (JP)"],
+    voiceovers: ["AniLibria (Официальная)"],
     episodes: [
       {
         id: "bl-ep-1",
@@ -928,7 +869,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
     durationPerEp: "24 мин.",
     studio: "Production I.G",
     ageRating: "12+",
-    voiceovers: ["AniLibria (Официальная)", "AniDUB", "Оригинал (JP)"],
+    voiceovers: ["AniLibria (Официальная)"],
     episodes: [
       {
         id: "hq-ep-1",
@@ -970,7 +911,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
     durationPerEp: "130 мин.",
     studio: "Kyoto Animation",
     ageRating: "16+",
-    voiceovers: ["AniLibria (Официальная)", "Reanimedia", "Оригинал (JP)"],
+    voiceovers: ["AniLibria (Официальная)"],
     episodes: [
       {
         id: "knk-ep-1",
@@ -1010,7 +951,7 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
     durationPerEp: "24 мин.",
     studio: "Gainax",
     ageRating: "18+",
-    voiceovers: ["AniLibria (Официальная)", "MC Entertainment", "Оригинал (JP)"],
+    voiceovers: ["AniLibria (Официальная)"],
     episodes: [
       {
         id: "eva-ep-1",
@@ -1031,5 +972,407 @@ export const EXTRA_ANIME_DATABASE: Anime[] = [
     tags: ["Ева", "Ангелы", "Классика", "Психология", "Меха", "HD 1080p"],
     featured: false,
     trendingRank: 25
+  },
+  {
+    id: "35790",
+    title: "Восхождение героя щита",
+    englishTitle: "The Rising of the Shield Hero",
+    originalTitle: "盾の勇者の成り上がり",
+    slug: "tate-no-yuusha-no-nariagari",
+    description: "Иватани Наофуми, заурядный отаку, призван в параллельный мир вместе с тремя другими парнями, чтобы стать Четырьмя Священными Героями. Ему достаётся звание Героя Щита, считающегося самым слабым. Вскоре Наофуми предают, лишают всех денег и ложно обвиняют в преступлении. Оставшись один, презираемый всеми, он решает отомстить обидчикам и защитить мир.",
+    poster: "https://shikimori.io/system/animes/original/35790.jpg",
+    banner: "https://shikimori.io/system/animes/original/35790.jpg",
+    rating: 8.2,
+    votesCount: 55000,
+    year: 2019,
+    season: "Зима",
+    type: "ТВ",
+    status: "Завершён",
+    genres: ["Экшен", "Приключения", "Драма", "Фэнтези"],
+    episodesCount: 25,
+    currentEpisodes: 25,
+    durationPerEp: "24 мин.",
+    studio: "Kinema Citrus",
+    ageRating: "16+",
+    voiceovers: ["AniLibria (Официальная)"],
+    episodes: [
+      {
+        id: "tate-ep-1",
+        number: 1,
+        title: "Герой щита",
+        duration: 2880,
+        videoUrl: "",
+        thumbnail: "https://shikimori.io/system/animes/original/35790.jpg"
+      }
+    ],
+    characters: [
+      { name: "Наофуми Иватани", role: "Герой Щита", avatar: "https://shikimori.io/system/characters/original/145453.jpg" },
+      { name: "Рафталия", role: "Главная героиня", avatar: "https://shikimori.io/system/characters/original/154567.jpg" }
+    ],
+    tags: ["Исекай", "Предательство", "Рафталия", "Герой щита", "HD 1080p"],
+    featured: false,
+    trendingRank: 26
+  },
+  {
+    id: "37450",
+    title: "Этот глупый свинья не понимает мечту девочки-зайки",
+    englishTitle: "Rascal Does Not Dream of Bunny Girl Senpai",
+    originalTitle: "青春ブタ野郎はバニーガール先輩の夢を見ない",
+    slug: "seishun-buta-yarou-wa-bunny-girl-senpai-no-yume-wo-minai",
+    description: "В библиотеке Сакута Адзусагава случайно встречает прекрасную Маи Сакурадзиму, одетую в вызывающий костюм девочки-зайки. Выясняется, что никто, кроме Сакуты, её не видит. Это странное явление Маи называет «пубертатным синдромом». Сакута решает помочь Маи разобраться в причинах этого недуга.",
+    poster: "https://shikimori.io/system/animes/original/37450.jpg",
+    banner: "https://shikimori.io/system/animes/original/37450.jpg",
+    rating: 8.5,
+    votesCount: 62000,
+    year: 2018,
+    season: "Осень",
+    type: "ТВ",
+    status: "Завершён",
+    genres: ["Комедия", "Драма", "Романтика", "Сверхъестественное", "Школа"],
+    episodesCount: 13,
+    currentEpisodes: 13,
+    durationPerEp: "24 мин.",
+    studio: "CloverWorks",
+    ageRating: "16+",
+    voiceovers: ["AniLibria (Официальная)"],
+    episodes: [
+      {
+        id: "bunny-ep-1",
+        number: 1,
+        title: "Мой парень не понимает меня",
+        duration: 1440,
+        videoUrl: "",
+        thumbnail: "https://shikimori.io/system/animes/original/37450.jpg"
+      }
+    ],
+    characters: [
+      { name: "Сакута Адзусагава", role: "Главный герой", avatar: "https://shikimori.io/system/characters/original/118731.jpg" },
+      { name: "Маи Сакурадзима", role: "Главная героиня", avatar: "https://shikimori.io/system/characters/original/118733.jpg" }
+    ],
+    tags: ["Психология", "Зайка", "Романтика", "Шедевр", "HD 1080p"],
+    featured: false,
+    trendingRank: 27
+  },
+  {
+    id: "37779",
+    title: "Обещанный Неверленд",
+    englishTitle: "The Promised Neverland",
+    originalTitle: "約束のネバーランド",
+    slug: "yakusoku-no-neverland",
+    description: "Окруженные любовью и заботой сироты живут в приюте «Благодатный дом» под присмотром доброй «Мамы». Они вкусно едят, сладко спят и играют на свежем воздухе. Однако за безупречным фасадом скрывается ужасная тайна: дети — это выращенный деликатес для чудовищных демонов.",
+    poster: "https://shikimori.io/system/animes/original/37779.jpg",
+    banner: "https://shikimori.io/system/animes/original/37779.jpg",
+    rating: 8.9,
+    votesCount: 74000,
+    year: 2019,
+    season: "Зима",
+    type: "ТВ",
+    status: "Завершён",
+    genres: ["Детектив", "Психологическое", "Триллер", "Сёнен"],
+    episodesCount: 12,
+    currentEpisodes: 12,
+    durationPerEp: "24 мин.",
+    studio: "CloverWorks",
+    ageRating: "16+",
+    voiceovers: ["AniLibria (Официальная)"],
+    episodes: [
+      {
+        id: "never-ep-1",
+        number: 1,
+        title: "121045",
+        duration: 1440,
+        videoUrl: "",
+        thumbnail: "https://shikimori.io/system/animes/original/37779.jpg"
+      }
+    ],
+    characters: [
+      { name: "Эмма", role: "Главная героиня", avatar: "https://shikimori.io/system/characters/original/142385.jpg" },
+      { name: "Норман", role: "Главный герой", avatar: "https://shikimori.io/system/characters/original/142386.jpg" },
+      { name: "Рей", role: "Главный герой", avatar: "https://shikimori.io/system/characters/original/142387.jpg" }
+    ],
+    tags: ["Триллер", "Побег", "Ужасы", "Интрига", "HD 1080p"],
+    featured: false,
+    trendingRank: 28
+  },
+  {
+    id: "31478",
+    title: "Великий из бродячих псов",
+    englishTitle: "Bungou Stray Dogs",
+    originalTitle: "文豪ストレイドッグス",
+    slug: "bungou-stray-dogs",
+    description: "Ацуси Накадзиму выгоняют из сиротского приюта. Оказавшись на грани голодной смерти, он спасает тонущего человека, который оказывается Осаму Дадзаем — эксцентричным детективом из «Вооруженного Детективного Агентства», расследующего дела с применением сверхспособностей.",
+    poster: "https://shikimori.io/system/animes/original/31478.jpg",
+    banner: "https://shikimori.io/system/animes/original/31478.jpg",
+    rating: 8.3,
+    votesCount: 48000,
+    year: 2016,
+    season: "Весна",
+    type: "ТВ",
+    status: "Завершён",
+    genres: ["Экшен", "Детектив", "Комедия", "Сверхъестественное"],
+    episodesCount: 12,
+    currentEpisodes: 12,
+    durationPerEp: "24 мин.",
+    studio: "Bones",
+    ageRating: "16+",
+    voiceovers: ["AniLibria (Официальная)"],
+    episodes: [
+      {
+        id: "bsd-ep-1",
+        number: 1,
+        title: "Судьба человека полна взлётов и падений",
+        duration: 1440,
+        videoUrl: "",
+        thumbnail: "https://shikimori.io/system/animes/original/31478.jpg"
+      }
+    ],
+    characters: [
+      { name: "Ацуси Накадзима", role: "Главный герой", avatar: "https://shikimori.io/system/characters/original/112675.jpg" },
+      { name: "Осаму Дадзай", role: "Детектив", avatar: "https://shikimori.io/system/characters/original/112677.jpg" }
+    ],
+    tags: ["Детективы", "Способности", "Дадзай", "Мафия", "HD 1080p"],
+    featured: false,
+    trendingRank: 29
+  },
+  {
+    id: "35849",
+    title: "Милый во Франксе",
+    englishTitle: "Darling in the FranXX",
+    originalTitle: "ダーリン・イン・ザ・フランキス",
+    slug: "darling-in-the-franxx",
+    description: "В далеком будущем Земля опустошена, а человечество живет в защищенных мобильных городах — Плантациях. Для борьбы с загадочными монстрами «рёвозаврами» созданы боевые мехи «Франкс», пилотируемые парами детей. Хиро, бывший гениальный пилот, встречает загадочную девушку с рожками по имени Ноль Два.",
+    poster: "https://shikimori.io/system/animes/original/35849.jpg",
+    banner: "https://shikimori.io/system/animes/original/35849.jpg",
+    rating: 7.9,
+    votesCount: 81000,
+    year: 2018,
+    season: "Зима",
+    type: "ТВ",
+    status: "Завершён",
+    genres: ["Экшен", "Меха", "Романтика", "Фантастика", "Драма"],
+    episodesCount: 24,
+    currentEpisodes: 24,
+    durationPerEp: "24 мин.",
+    studio: "Trigger",
+    ageRating: "16+",
+    voiceovers: ["AniLibria (Официальная)"],
+    episodes: [
+      {
+        id: "franxx-ep-1",
+        number: 1,
+        title: "Одиночество и марионетка",
+        duration: 1440,
+        videoUrl: "",
+        thumbnail: "https://shikimori.io/system/animes/original/35849.jpg"
+      }
+    ],
+    characters: [
+      { name: "Код 016 (Хиро)", role: "Главный герой", avatar: "https://shikimori.io/system/characters/original/153215.jpg" },
+      { name: "Код 002 (Ноль Два)", role: "Главная героиня", avatar: "https://shikimori.io/system/characters/original/152834.jpg" }
+    ],
+    tags: ["Меха", "Романтика", "02", "Пост-апокалипсис", "HD 1080p"],
+    featured: false,
+    trendingRank: 30
+  },
+  {
+    id: "13601",
+    title: "Психопаспорт",
+    englishTitle: "Psycho-Pass",
+    originalTitle: "PSYCHO-PASS サイкоパス",
+    slug: "psycho-pass",
+    description: "В будущем Япония внедрила систему «Сивилла», определяющую уровень преступных намерений каждого гражданина — его «психопаспорт». Людей с высоким показателем задерживают или уничтожают на месте. Молодой детектив Аканэ Цунэмори начинает службу в Бюро Общественной Безопасности.",
+    poster: "https://shikimori.io/system/animes/original/13601.jpg",
+    banner: "https://shikimori.io/system/animes/original/13601.jpg",
+    rating: 8.6,
+    votesCount: 52000,
+    year: 2012,
+    season: "Осень",
+    type: "ТВ",
+    status: "Завершён",
+    genres: ["Экшен", "Детектив", "Фантастика", "Киберпанк", "Психологическое"],
+    episodesCount: 22,
+    currentEpisodes: 22,
+    durationPerEp: "24 мин.",
+    studio: "Production I.G",
+    ageRating: "18+",
+    voiceovers: ["AniLibria (Официальная)"],
+    episodes: [
+      {
+        id: "psycho-ep-1",
+        number: 1,
+        title: "Психопаспорт",
+        duration: 1440,
+        videoUrl: "",
+        thumbnail: "https://shikimori.io/system/animes/original/13601.jpg"
+      }
+    ],
+    characters: [
+      { name: "Синъя Когами", role: "Главный герой", avatar: "https://shikimori.io/system/characters/original/61793.jpg" },
+      { name: "Аканэ Цунэмори", role: "Главная героиня", avatar: "https://shikimori.io/system/characters/original/61795.jpg" }
+    ],
+    tags: ["Киберпанк", "Детектив", "Антиутопия", "Сивилла", "HD 1080p"],
+    featured: false,
+    trendingRank: 31
+  },
+  {
+    id: "23273",
+    title: "Твоя апрельская ложь",
+    englishTitle: "Your Lie in April",
+    originalTitle: "四月は君の嘘",
+    slug: "shigatsu-wa-kimi-no-uso",
+    description: "Косэй Арима — гениальный пианист, завоевавший множество детских музыкальных наград. После внезапной смерти матери он теряет способность слышать собственную музыку и бросает сцену. Его жизнь меняется, когда он встречает Каори Миядзоно — эксцентричную скрипачку с яркой душой.",
+    poster: "https://shikimori.io/system/animes/original/23273.jpg",
+    banner: "https://shikimori.io/system/animes/original/23273.jpg",
+    rating: 8.8,
+    votesCount: 46000,
+    year: 2014,
+    season: "Осень",
+    type: "ТВ",
+    status: "Завершён",
+    genres: ["Драма", "Мелодрама", "Музыка", "Романтика", "Сёнен"],
+    episodesCount: 22,
+    currentEpisodes: 22,
+    durationPerEp: "24 мин.",
+    studio: "A-1 Pictures",
+    ageRating: "12+",
+    voiceovers: ["AniLibria (Официальная)"],
+    episodes: [
+      {
+        id: "kimi-uso-ep-1",
+        number: 1,
+        title: "Монохромный мир",
+        duration: 1440,
+        videoUrl: "",
+        thumbnail: "https://shikimori.io/system/animes/original/23273.jpg"
+      }
+    ],
+    characters: [
+      { name: "Косэй Арима", role: "Пианист", avatar: "https://shikimori.io/system/characters/original/102377.jpg" },
+      { name: "Каори Миядзоно", role: "Скрипачка", avatar: "https://shikimori.io/system/characters/original/102379.jpg" }
+    ],
+    tags: ["Музыка", "Слезы", "Пианино", "Любовь", "HD 1080p"],
+    featured: false,
+    trendingRank: 32
+  },
+  {
+    id: "50709",
+    title: "Судзумэ, закрывающая двери",
+    englishTitle: "Suzume",
+    originalTitle: "すずめの戸締まり",
+    slug: "suzume-no-tojimari",
+    description: "Семнадцатилетняя Судзумэ встречает молодого человека, ищущего загадочную дверь. Следуя за ним, она находит старую дверь посреди заброшенных руин. Стоит Судзумэ открыть её, как по всей Японии начинают распахиваться другие двери, высвобождая разрушительные катаклизмы.",
+    poster: "https://shikimori.io/system/animes/original/50709.jpg",
+    banner: "https://shikimori.io/system/animes/original/50709.jpg",
+    rating: 8.4,
+    votesCount: 33000,
+    year: 2022,
+    season: "Осень",
+    type: "Фильм",
+    status: "Завершён",
+    genres: ["Фэнтези", "Приключения", "Драма"],
+    episodesCount: 1,
+    currentEpisodes: 1,
+    durationPerEp: "122 мин.",
+    studio: "CoMix Wave Films",
+    ageRating: "12+",
+    voiceovers: ["AniLibria (Официальная)"],
+    episodes: [
+      {
+        id: "suzume-ep-1",
+        number: 1,
+        title: "Фильм",
+        duration: 7320,
+        videoUrl: "",
+        thumbnail: "https://shikimori.io/system/animes/original/50709.jpg"
+      }
+    ],
+    characters: [
+      { name: "Судзумэ Ивато", role: "Главная героиня", avatar: "https://shikimori.io/system/characters/original/212623.jpg" },
+      { name: "Сота Мунаката", role: "Главный герой", avatar: "https://shikimori.io/system/characters/original/212625.jpg" }
+    ],
+    tags: ["Синкай", "Фильм", "Катаклизм", "Шедевр", "HD 1080p"],
+    featured: false,
+    trendingRank: 33
+  },
+  {
+    id: "38826",
+    title: "Дитя погоды",
+    englishTitle: "Weathering with You",
+    originalTitle: "天気の子",
+    slug: "tenki-no-ko",
+    description: "Старшеклассник Ходака Морисима сбегает из дома в Токио, где сразу сталкивается с финансовыми трудностями. Наконец он устраивается автором в сомнительный журнал, пишущий о паранормальных явлениях. В дождливом Токио Ходака встречает Хину Амано — девушку со способностью разгонять тучи.",
+    poster: "https://shikimori.io/system/animes/original/38826.jpg",
+    banner: "https://shikimori.io/system/animes/original/38826.jpg",
+    rating: 8.3,
+    votesCount: 39000,
+    year: 2019,
+    season: "Лето",
+    type: "Фильм",
+    status: "Завершён",
+    genres: ["Фэнтези", "Романтика", "Драма", "Повседневность"],
+    episodesCount: 1,
+    currentEpisodes: 1,
+    durationPerEp: "112 мин.",
+    studio: "CoMix Wave Films",
+    ageRating: "12+",
+    voiceovers: ["AniLibria (Официальная)"],
+    episodes: [
+      {
+        id: "weathering-ep-1",
+        number: 1,
+        title: "Фильм",
+        duration: 6720,
+        videoUrl: "",
+        thumbnail: "https://shikimori.io/system/animes/original/38826.jpg"
+      }
+    ],
+    characters: [
+      { name: "Ходака Морисима", role: "Главный герой", avatar: "https://shikimori.io/system/characters/original/171563.jpg" },
+      { name: "Хина Амано", role: "Главная героиня", avatar: "https://shikimori.io/system/characters/original/171565.jpg" }
+    ],
+    tags: ["Синкай", "Фильм", "Дождь", "Романтика", "HD 1080p"],
+    featured: false,
+    trendingRank: 34
+  },
+  {
+    id: "42897",
+    title: "Хоримия",
+    englishTitle: "Horimiya",
+    originalTitle: "ホリミヤ",
+    slug: "horimiya",
+    description: "Кёко Хори — популярная и прилежная ученица, а её одноклассник Идзуми Миямура кажется мрачным и замкнутым отаку. Однако вне школы Хори — домашняя девушка, занятая заботой о младшем брате, а Миямура — дружелюбный парень с пирсингом и татуировками. Столкнувшись за пределами класса, они находят общий язык.",
+    poster: "https://shikimori.io/system/animes/original/42897.jpg",
+    banner: "https://shikimori.io/system/animes/original/42897.jpg",
+    rating: 8.5,
+    votesCount: 44000,
+    year: 2021,
+    season: "Зима",
+    type: "ТВ",
+    status: "Завершён",
+    genres: ["Комедия", "Романтика", "Школа", "Повседневность"],
+    episodesCount: 13,
+    currentEpisodes: 13,
+    durationPerEp: "24 мин.",
+    studio: "CloverWorks",
+    ageRating: "16+",
+    voiceovers: ["AniLibria (Официальная)"],
+    episodes: [
+      {
+        id: "horimiya-ep-1",
+        number: 1,
+        title: "Крошечный инцидент накладывает отпечаток",
+        duration: 1440,
+        videoUrl: "",
+        thumbnail: "https://shikimori.io/system/animes/original/42897.jpg"
+      }
+    ],
+    characters: [
+      { name: "Кёко Хори", role: "Главная героиня", avatar: "https://shikimori.io/system/characters/original/35017.jpg" },
+      { name: "Идзуми Миямура", role: "Главный герой", avatar: "https://shikimori.io/system/characters/original/35016.jpg" }
+    ],
+    tags: ["Романтика", "Школа", "Повседневность", "Милота", "HD 1080p"],
+    featured: false,
+    trendingRank: 35
   }
 ];
+

@@ -96,7 +96,8 @@ export type ViewMode =
   | 'history'
   | 'recommendations'
   | 'watch-party'
-  | 'profile';
+  | 'profile'
+  | 'api-manager';
 
 export type ProfileAura =
   | 'none'

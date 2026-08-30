@@ -119,9 +119,11 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
   const [selectedTranslationId, setSelectedTranslationId] = useState<number>(612);
   const [translationsList, setTranslationsList] = useState<Array<KodikTranslation & { isHlsNative?: boolean }>>([]);
   const [playerMode, setPlayerMode] = useState<'hls' | 'mirror'>(
-    anime.id === '2001' || anime.id === '4565' ? 'mirror' : 'hls'
+    anime.id === '2001' || anime.id === '4565' || anime.id === 'gurren-lagann' || anime.id === 'gurren-lagann-movie-2' ? 'mirror' : 'hls'
   );
-  const [activeMirrorDomain, setActiveMirrorDomain] = useState<string>('kinobox');
+  const [activeMirrorDomain, setActiveMirrorDomain] = useState<string>(
+    anime.id === 'gurren-lagann' || anime.id === 'gurren-lagann-movie-2' || anime.id === '2001' || anime.id === '4565' ? 'kodik.cc' : 'kinobox'
+  );
   const [streamError, setStreamError] = useState<boolean>(false);
   const [showControls, setShowControls] = useState<boolean>(true);
 
@@ -277,6 +279,12 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
       ensureAnimeEpisodes(anime).then((resolved) => {
         if (active && resolved) {
           setCurrentAnime(resolved);
+          // Auto-fallback to mirror if no HLS streams exist in resolved episodes
+          const hasHls = resolved.episodes?.some(ep => ep.videoUrl && ep.videoUrl.trim() !== '');
+          if (!hasHls) {
+            setPlayerMode('mirror');
+            setActiveMirrorDomain('kodik.cc');
+          }
         }
       });
       return () => {
@@ -1235,6 +1243,8 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
               <ConsumetPlayer
                 anime={anime}
                 currentEpisode={currentEpisode}
+                onSwitchMirror={(domain) => setActiveMirrorDomain(domain)}
+                onSwitchPlayerMode={(mode) => setPlayerMode(mode)}
               />
             ) : (
               <iframe

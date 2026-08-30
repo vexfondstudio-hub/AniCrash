@@ -43,98 +43,6 @@ export const VOICE_STUDIOS = [
 
 const BASE_ANIME_DATABASE: Anime[] = [
   {
-    "id": "gurren-lagann",
-    "title": "Гуррен-Лаганн, пронзающий небеса",
-    "englishTitle": "Tengen Toppa Gurren Lagann",
-    "originalTitle": "天元突破グレンラガン",
-    "slug": "tengen-toppa-gurren-lagann",
-    "description": "Сотни лет люди живут в глубоких пещерах, в постоянном страхе перед землетрясениями и обвалами. В одной из таких подземных деревень живет мальчик Симон и его духовный наставник — бунтарь Камина. Камина верит, что наверху есть другой мир, без стен и потолков, и мечтает выбраться туда.\r\nЖизнь в деревне меняется навсегда, когда Симон находит странный сверлящий ключ и маленького робота. В этот же момент потолок пещеры рушится, и на деревню падает гигантский робот — Ганмен. Вместе с появившейся с поверхности девушкой Йоко, Камина и Симон дают отпор захватчику и выбираются на поверхность, где их ждут бескрайние просторы и бесконечные сражения за свободу человечества.",
-    "poster": "https://shikimori.io/system/animes/original/2001.jpg",
-    "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/2001-q53Gk20J3t8A.jpg",
-    "rating": 9.9,
-    "votesCount": 45000,
-    "year": 2007,
-    "season": "Весна",
-    "type": "ТВ",
-    "status": "Завершён",
-    "genres": [
-      "Экшен",
-      "Меха",
-      "Приключения",
-      "Фантастика"
-    ],
-    "episodesCount": 27,
-    "currentEpisodes": 27,
-    "durationPerEp": "24 мин.",
-    "studio": "Gainax",
-    "ageRating": "16+",
-    "tags": ["Меха", "Шедевр", "Эпик", "Дрель"],
-    "characters": [],
-    "voiceovers": [
-      "Reanimedia (Легендарная)",
-      "AniLibria",
-      "Studio Band",
-      "DreamCast",
-      "Оригинал (JP)"
-    ],
-    "episodes": []
-  },
-  {
-    "id": "gurren-lagann-movie-2",
-    "title": "Гуррен-Лаганн, Фильм 2: Огненные лучи",
-    "englishTitle": "Tengen Toppa Gurren Lagann Movie 2: Lagann-hen",
-    "originalTitle": "劇場版 天元突破グレンラガン 螺巌篇",
-    "slug": "gurren-lagann-movie-2",
-    "description": "Второй полнометражный анимационный фильм, завершающий эпическую сагу «Гуррен-Лаганн». Человечество вышло на поверхность и дало бой силам Антиспиральщиков. Симон и выжившие товарищи ведут отчаянную борьбу за судьбу всей Вселенной. Фильм включает полностью перерисованные ключевые сражения, расширенный финал и грандиозную финальную битву в масштабах галактик с появлением Супер Тенген Топпа Гуррен-Лаганна.",
-    "poster": "https://shikimori.io/system/animes/original/4565.jpg",
-    "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/4565-xLhB8Lh0808J.jpg",
-    "rating": 9.8,
-    "votesCount": 28000,
-    "year": 2009,
-    "season": "Весна",
-    "type": "Фильм",
-    "status": "Завершён",
-    "genres": [
-      "Экшен",
-      "Меха",
-      "Приключения",
-      "Фантастика"
-    ],
-    "episodesCount": 1,
-    "currentEpisodes": 1,
-    "durationPerEp": "115 мин.",
-    "studio": "Gainax",
-    "ageRating": "16+",
-    "tags": ["Фильм", "Меха", "Шедевр", "Эпик", "Космос"],
-    "characters": [],
-    "voiceovers": [
-      "Reanimedia (Легендарная)",
-      "AniLibria",
-      "Studio Band",
-      "DreamCast",
-      "Оригинал (JP)"
-    ],
-    "episodes": [
-      {
-        "id": "gl-movie-2-ep-1",
-        "number": 1,
-        "title": "Фильм 2: Огненные лучи (Lagann-hen)",
-        "duration": 6900,
-        "videoUrl": "https://cache.libria.fun/videos/media/ts/2001/27/720/5a58d36874c1d918ee35369d244dadb9.m3u8",
-        "voiceoverUrls": {
-          "Reanimedia (Легендарная)": "https://cache.libria.fun/videos/media/ts/2001/27/720/5a58d36874c1d918ee35369d244dadb9.m3u8",
-          "AniLibria": "https://cache.libria.fun/videos/media/ts/2001/27/720/5a58d36874c1d918ee35369d244dadb9.m3u8",
-          "Studio Band": "https://cache.libria.fun/videos/media/ts/2001/27/720/5a58d36874c1d918ee35369d244dadb9.m3u8",
-          "DreamCast": "https://cache.libria.fun/videos/media/ts/2001/27/720/5a58d36874c1d918ee35369d244dadb9.m3u8"
-        },
-        "thumbnail": "https://shikimori.io/system/animes/original/4565.jpg",
-        "introStart": 300,
-        "introEnd": 450,
-        "outroStart": 6700
-      }
-    ]
-  },
-  {
     "id": "9600",
     "title": "Поднятие уровня в одиночку",
     "englishTitle": "Ore dake Level Up na Ken",
@@ -160,10 +68,7 @@ const BASE_ANIME_DATABASE: Anime[] = [
     "studio": "AniLibria",
     "ageRating": "16+",
     "voiceovers": [
-      "AniLibria (Официальная)",
-      "DreamCast",
-      "Studio Band",
-      "Оригинал (JP)"
+      "AniLibria (Официальная)"
     ],
     "episodes": [
       {
@@ -2976,11 +2881,7 @@ const BASE_ANIME_DATABASE: Anime[] = [
     "studio": "Toei Animation",
     "ageRating": "16+",
     "voiceovers": [
-      "AniLibria (Официальная)",
-      "DreamCast",
-      "AniDUB",
-      "Studio Band",
-      "Субтитры"
+      "AniLibria (Официальная)"
     ],
     "episodes": [
       {
@@ -3213,11 +3114,7 @@ const BASE_ANIME_DATABASE: Anime[] = [
     "studio": "MAPPA",
     "ageRating": "18+",
     "voiceovers": [
-      "AniLibria (Официальная)",
-      "DreamCast",
-      "AniDUB",
-      "AniStar",
-      "Оригинал (JP)"
+      "AniLibria (Официальная)"
     ],
     "episodes": [
       {
@@ -3272,9 +3169,7 @@ const BASE_ANIME_DATABASE: Anime[] = [
     "studio": "Pierrot",
     "ageRating": "16+",
     "voiceovers": [
-      "AniLibria",
-      "AniDUB",
-      "Студийная Банда"
+      "AniLibria (Официальная)"
     ],
     "episodes": [
       {
@@ -3299,60 +3194,6 @@ const BASE_ANIME_DATABASE: Anime[] = [
     ],
     "featured": true,
     "trendingRank": 17
-  },
-  {
-    "id": "38671",
-    "title": "Пламенная бригада пожарных",
-    "englishTitle": "Fire Force",
-    "originalTitle": "Enen no Shouboutai",
-    "slug": "fire-force",
-    "description": "Токио, солнечная эра, 198 год. Люди в ужасе от загадочного явления: самовозгорания, при котором человек превращается в пылающего монстра — инфернала. Для борьбы с ними созданы специальные отряды пламенной бригады пожарных.",
-    "poster": "https://shikimori.io/system/animes/original/38671.jpg",
-    "banner": "https://shikimori.io/system/animes/original/38671.jpg",
-    "rating": 8,
-    "votesCount": 43210,
-    "year": 2019,
-    "season": "Лето",
-    "type": "ТВ",
-    "status": "Завершён",
-    "genres": [
-      "Экшен",
-      "Фантастика",
-      "Сёнен",
-      "Сверхъестественное"
-    ],
-    "episodesCount": 24,
-    "currentEpisodes": 24,
-    "durationPerEp": "24 мин.",
-    "studio": "David Production",
-    "ageRating": "16+",
-    "voiceovers": [
-      "AniLibria (Официальная)"
-    ],
-    "episodes": [
-      {
-        "id": "ff-ep-1",
-        "number": 1,
-        "title": "Синра Кусакабэ записывается",
-        "duration": 1420,
-        "videoUrl": "",
-        "hls_1080": "",
-        "hls_720": "",
-        "hls_480": "",
-        "thumbnail": "https://shikimori.io/system/animes/original/38671.jpg",
-        "introStart": 85,
-        "introEnd": 175
-      }
-    ],
-    "characters": [],
-    "tags": [
-      "Экшен",
-      "Пожарные",
-      "AniLibria",
-      "HD 1080p"
-    ],
-    "featured": false,
-    "trendingRank": 18
   },
   {
     "id": "37430",
@@ -3381,9 +3222,7 @@ const BASE_ANIME_DATABASE: Anime[] = [
     "studio": "8bit",
     "ageRating": "16+",
     "voiceovers": [
-      "AniLibria (Официальная)",
-      "AniDUB",
-      "StudioBand"
+      "AniLibria (Официальная)"
     ],
     "episodes": [
       {

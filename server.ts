@@ -6,6 +6,7 @@ import { createServer as createViteServer } from 'vite';
 import dotenv from 'dotenv';
 import { exec } from 'child_process';
 import compression from 'compression';
+import { ANIME_DATABASE } from './src/data/animeData';
 
 dotenv.config();
 
@@ -26,8 +27,24 @@ if (postgresUrl) {
         data JSONB NOT NULL,
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       )
-    `).then(() => {
+    `).then(async () => {
       console.log('PostgreSQL custom anime table initialized successfully.');
+      try {
+        const checkRes = await pgPool!.query('SELECT COUNT(*) FROM custom_anime_store');
+        const count = parseInt(checkRes.rows[0].count, 10);
+        if (count === 0) {
+          console.log(`Pre-populating PostgreSQL custom_anime_store with ${ANIME_DATABASE.length} entries...`);
+          for (const item of ANIME_DATABASE) {
+            await pgPool!.query(
+              'INSERT INTO custom_anime_store (id, slug, data, updated_at) VALUES ($1, $2, $3, NOW()) ON CONFLICT (id) DO NOTHING',
+              [item.id, item.slug, JSON.stringify(item)]
+            );
+          }
+          console.log('PostgreSQL table pre-populated successfully.');
+        }
+      } catch (dbErr: any) {
+        console.error('PostgreSQL pre-population error:', dbErr.message);
+      }
     }).catch(err => {
       console.error('Failed to initialize PostgreSQL table:', err.message);
     });
@@ -93,7 +110,7 @@ async function startServer() {
 
     try {
       // 1. Search Local Database first (Fastest)
-      const localDataRaw = await fs.readFile(path.join(process.cwd(), 'anime-ids.json'), 'utf-8');
+      const localDataRaw = await fs.promises.readFile(path.join(process.cwd(), 'anime-ids.json'), 'utf-8');
       const localData = JSON.parse(localDataRaw);
       const localMatches = localData.filter((item: any) => 
         item.query_ru.toLowerCase().includes(query.toLowerCase()) || 
@@ -325,13 +342,25 @@ async function startServer() {
 
   function loadCustomDb(): any[] {
     if (!fs.existsSync(CUSTOM_DB_FILE)) {
-      return [];
+      try {
+        fs.writeFileSync(CUSTOM_DB_FILE, JSON.stringify(ANIME_DATABASE, null, 2), 'utf-8');
+        console.log(`Initialized custom_anime_db.json with ${ANIME_DATABASE.length} static anime entries.`);
+        return ANIME_DATABASE;
+      } catch (err) {
+        console.error('Failed to pre-populate custom anime DB:', err);
+        return [];
+      }
     }
     try {
       const data = fs.readFileSync(CUSTOM_DB_FILE, 'utf-8');
-      return JSON.parse(data);
+      const parsed = JSON.parse(data);
+      if (!Array.isArray(parsed) || parsed.length === 0) {
+        fs.writeFileSync(CUSTOM_DB_FILE, JSON.stringify(ANIME_DATABASE, null, 2), 'utf-8');
+        return ANIME_DATABASE;
+      }
+      return parsed;
     } catch (err) {
-      return [];
+      return ANIME_DATABASE;
     }
   }
 
@@ -615,6 +644,40 @@ async function startServer() {
   });
 
   // Consumet API Proxy Routes for Global Anime Database (Fallback for AniLibria/Kodik)
+  async function fetchConsumetWithFallback(endpointPath: string) {
+    const baseUrls = [
+      'https://api.consumet.org',
+      'https://consumet-api-two.vercel.app',
+      'https://consumet-api-clone.vercel.app',
+      'https://api-consumet-org.onrender.com'
+    ];
+
+    let lastError: any = null;
+    for (const baseUrl of baseUrls) {
+      const url = `${baseUrl}${endpointPath}`;
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 4000);
+
+      try {
+        const response = await fetch(url, {
+          headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36' },
+          signal: controller.signal
+        });
+        clearTimeout(timeoutId);
+
+        if (response.ok) {
+          const data = await response.json();
+          return data;
+        }
+        lastError = new Error(`Consumet error: ${response.status} from ${baseUrl}`);
+      } catch (err: any) {
+        clearTimeout(timeoutId);
+        lastError = err;
+      }
+    }
+    throw lastError || new Error('All Consumet endpoints failed');
+  }
+
   app.get('/api/consumet/search', async (req, res) => {
     const { query } = req.query;
     if (!query) return res.status(400).json({ error: 'Query is required' });
@@ -624,9 +687,7 @@ async function startServer() {
     if (cached) return res.json(cached);
 
     try {
-      const response = await fetch(`https://api.consumet.org/anime/gogoanime/${encodeURIComponent(query as string)}`);
-      if (!response.ok) throw new Error(`Consumet search error: ${response.status}`);
-      const data = await response.json();
+      const data = await fetchConsumetWithFallback(`/anime/gogoanime/${encodeURIComponent(query as string)}`);
       setCache(cacheKey, data);
       res.json(data);
     } catch (error: any) {
@@ -644,9 +705,7 @@ async function startServer() {
     if (cached) return res.json(cached);
 
     try {
-      const response = await fetch(`https://api.consumet.org/anime/gogoanime/info/${id}`);
-      if (!response.ok) throw new Error(`Consumet info error: ${response.status}`);
-      const data = await response.json();
+      const data = await fetchConsumetWithFallback(`/anime/gogoanime/info/${id}`);
       setCache(cacheKey, data);
       res.json(data);
     } catch (error: any) {
@@ -664,9 +723,7 @@ async function startServer() {
     if (cached) return res.json(cached);
 
     try {
-      const response = await fetch(`https://api.consumet.org/anime/gogoanime/watch/${episodeId}`);
-      if (!response.ok) throw new Error(`Consumet sources error: ${response.status}`);
-      const data = await response.json();
+      const data = await fetchConsumetWithFallback(`/anime/gogoanime/watch/${episodeId}`);
       setCache(cacheKey, data);
       res.json(data);
     } catch (error: any) {
@@ -691,6 +748,13 @@ async function startServer() {
   }
 
   app.listen(Number(PORT), '0.0.0.0', () => {
+    // Force pre-populate and check database initialization immediately on boot
+    try {
+      loadCustomDb();
+    } catch (e: any) {
+      console.error('Error pre-populating database on startup:', e.message);
+    }
+
     console.log(`
     🚀 Сервер AniCrash запущен!
     -----------------------------------
