@@ -986,7 +986,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({
           <div className="space-y-3">
             <div className="flex items-center justify-between">
               <label className="block text-xs font-bold uppercase tracking-wider text-zinc-400">
-                Выберите тайтл из базы данных AniLibria ({allAnime.length} релизов)
+                Выберите тайтл из каталога аниме ({allAnime.length} релизов)
               </label>
             </div>
 

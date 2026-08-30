@@ -1,0 +1,1629 @@
+[
+  {
+    "query_ru": "Гуррен-Лаганн, пронзающий небеса",
+    "query_en": "Tengen Toppa Gurren Lagann",
+    "query_jp": "Tengen Toppa Gurren Lagann",
+    "bestMatch": {
+      "shikimori_id": 2001,
+      "shikimori_title": "Гуррен-Лаганн, пронзающий небеса",
+      "mal_id": null,
+      "mal_title": null,
+      "anilist_id": 2001,
+      "anilibria_id": null,
+      "anilibria_alias": null,
+      "anilibria_title": null,
+      "note": "На AniLibria отсутствует оригинальный релиз (используются плееры Kodik/Shikimori)"
+    },
+    "sources": {
+      "shikimori": {
+        "id": 2001,
+        "russian": "Гуррен-Лаганн, пронзающий небеса",
+        "name": "Tengen Toppa Gurren Lagann",
+        "episodes": 27,
+        "kind": "tv",
+        "url": "https://shikimori.one/animes/z2001-tengen-toppa-gurren-lagann"
+      },
+      "jikan": null,
+      "anilist": {
+        "id": 2001,
+        "title_romaji": "Tengen Toppa Gurren Lagann",
+        "title_english": "Gurren Lagann",
+        "episodes": 27,
+        "format": "TV",
+        "url": "https://anilist.co/anime/2001"
+      },
+      "anilibria": null
+    }
+  },
+  {
+    "query_ru": "Гуррен-Лаганн, Фильм 2: Огненные лучи",
+    "query_en": "Gurren Lagann Movie 2: Lagann-hen",
+    "query_jp": "Tengen Toppa Gurren Lagann: Lagann-hen",
+    "bestMatch": {
+      "shikimori_id": 4565,
+      "shikimori_title": "Гуррен-Лаганн: Звёздный свет",
+      "mal_id": null,
+      "mal_title": null,
+      "anilist_id": 4565,
+      "anilibria_id": null,
+      "anilibria_alias": null,
+      "anilibria_title": null,
+      "note": "На AniLibria отсутствует оригинальный релиз (используются плееры Kodik/Shikimori)"
+    },
+    "sources": {
+      "shikimori": {
+        "id": 4565,
+        "russian": "Гуррен-Лаганн: Звёздный свет",
+        "name": "Tengen Toppa Gurren Lagann Movie 2: Lagann-hen",
+        "episodes": 1,
+        "kind": "movie",
+        "url": "https://shikimori.one/animes/z4565-tengen-toppa-gurren-lagann-movie-2-lagann-hen"
+      },
+      "jikan": null,
+      "anilist": {
+        "id": 4565,
+        "title_romaji": "Tengen Toppa Gurren Lagann: Lagann-hen",
+        "title_english": "Gurren Lagann The Movie: The Lights in the Sky are Stars",
+        "episodes": 1,
+        "format": "MOVIE",
+        "url": "https://anilist.co/anime/4565"
+      },
+      "anilibria": null
+    }
+  },
+  {
+    "query_ru": "Поднятие уровня в одиночку",
+    "query_en": "Solo Leveling",
+    "query_jp": "Ore dake Level Up na Ken",
+    "bestMatch": {
+      "shikimori_id": 52299,
+      "shikimori_title": "Поднятие уровня в одиночку",
+      "mal_id": null,
+      "mal_title": null,
+      "anilist_id": 151807,
+      "anilibria_id": 9600,
+      "anilibria_alias": "ore-dake-level-up-na-ken",
+      "anilibria_title": "Поднятие уровня в одиночку",
+      "note": "Доступен HLS на AniLibria"
+    },
+    "sources": {
+      "shikimori": {
+        "id": 52299,
+        "russian": "Поднятие уровня в одиночку",
+        "name": "Ore dake Level Up na Ken",
+        "episodes": 12,
+        "kind": "tv",
+        "url": "https://shikimori.one/animes/52299-ore-dake-level-up-na-ken"
+      },
+      "jikan": null,
+      "anilist": {
+        "id": 151807,
+        "title_romaji": "Ore dake Level Up na Ken",
+        "title_english": "Solo Leveling",
+        "episodes": 12,
+        "format": "TV",
+        "url": "https://anilist.co/anime/151807"
+      },
+      "anilibria": {
+        "id": 9600,
+        "alias": "ore-dake-level-up-na-ken",
+        "name_main": "Поднятие уровня в одиночку",
+        "name_english": "Ore dake Level Up na Ken",
+        "episodes_total": 12,
+        "type": "ТВ"
+      }
+    }
+  },
+  {
+    "query_ru": "Магическая битва",
+    "query_en": "Jujutsu Kaisen",
+    "query_jp": "Jujutsu Kaisen",
+    "bestMatch": {
+      "shikimori_id": 40748,
+      "shikimori_title": "Магическая битва",
+      "mal_id": null,
+      "mal_title": null,
+      "anilist_id": 113415,
+      "anilibria_id": 8789,
+      "anilibria_alias": "jujutsu-kaisen",
+      "anilibria_title": "Магическая битва",
+      "note": "Доступен HLS на AniLibria"
+    },
+    "sources": {
+      "shikimori": {
+        "id": 40748,
+        "russian": "Магическая битва",
+        "name": "Jujutsu Kaisen",
+        "episodes": 24,
+        "kind": "tv",
+        "url": "https://shikimori.one/animes/40748-jujutsu-kaisen"
+      },
+      "jikan": null,
+      "anilist": {
+        "id": 113415,
+        "title_romaji": "Jujutsu Kaisen",
+        "title_english": "JUJUTSU KAISEN",
+        "episodes": 24,
+        "format": "TV",
+        "url": "https://anilist.co/anime/113415"
+      },
+      "anilibria": {
+        "id": 8789,
+        "alias": "jujutsu-kaisen",
+        "name_main": "Магическая битва",
+        "name_english": "Jujutsu Kaisen",
+        "episodes_total": 24,
+        "type": "ТВ"
+      }
+    }
+  },
+  {
+    "query_ru": "Провожающая в последний путь Фрирен",
+    "query_en": "Frieren: Beyond Journey's End",
+    "query_jp": "Sousou no Frieren",
+    "bestMatch": {
+      "shikimori_id": 52991,
+      "shikimori_title": "Провожающая в последний путь Фрирен",
+      "mal_id": null,
+      "mal_title": null,
+      "anilist_id": 170068,
+      "anilibria_id": 9542,
+      "anilibria_alias": "sousou-no-frieren",
+      "anilibria_title": "Провожающая в последний путь Фрирен",
+      "note": "Доступен HLS на AniLibria"
+    },
+    "sources": {
+      "shikimori": {
+        "id": 52991,
+        "russian": "Провожающая в последний путь Фрирен",
+        "name": "Sousou no Frieren",
+        "episodes": 28,
+        "kind": "tv",
+        "url": "https://shikimori.one/animes/52991-sousou-no-frieren"
+      },
+      "jikan": null,
+      "anilist": {
+        "id": 170068,
+        "title_romaji": "Sousou no Frieren: ●● no Mahou",
+        "title_english": "",
+        "episodes": 12,
+        "format": "ONA",
+        "url": "https://anilist.co/anime/170068"
+      },
+      "anilibria": {
+        "id": 9542,
+        "alias": "sousou-no-frieren",
+        "name_main": "Провожающая в последний путь Фрирен",
+        "name_english": "Sousou no Frieren",
+        "episodes_total": 28,
+        "type": "ТВ"
+      }
+    }
+  },
+  {
+    "query_ru": "Клинок, Рассекающий Демонов: Деревня Кузнецов",
+    "query_en": "Demon Slayer: Swordsmith Village Arc",
+    "query_jp": "Kimetsu no Yaiba: Katanakaji no Sato-hen",
+    "bestMatch": {
+      "shikimori_id": 51019,
+      "shikimori_title": "Клинок, рассекающий демонов: Деревня кузнецов",
+      "mal_id": null,
+      "mal_title": null,
+      "anilist_id": 145139,
+      "anilibria_id": 9406,
+      "anilibria_alias": "kimetsu-no-yaiba-katanakaji-no-sato-hen",
+      "anilibria_title": "Клинок, Рассекающий Демонов: Деревня Кузнецов",
+      "note": "Доступен HLS на AniLibria"
+    },
+    "sources": {
+      "shikimori": {
+        "id": 51019,
+        "russian": "Клинок, рассекающий демонов: Деревня кузнецов",
+        "name": "Kimetsu no Yaiba: Katanakaji no Sato-hen",
+        "episodes": 11,
+        "kind": "tv",
+        "url": "https://shikimori.one/animes/51019-kimetsu-no-yaiba-katanakaji-no-sato-hen"
+      },
+      "jikan": null,
+      "anilist": {
+        "id": 145139,
+        "title_romaji": "Kimetsu no Yaiba: Katanakaji no Sato-hen",
+        "title_english": "Demon Slayer: Kimetsu no Yaiba Swordsmith Village Arc",
+        "episodes": 11,
+        "format": "TV",
+        "url": "https://anilist.co/anime/145139"
+      },
+      "anilibria": {
+        "id": 9406,
+        "alias": "kimetsu-no-yaiba-katanakaji-no-sato-hen",
+        "name_main": "Клинок, Рассекающий Демонов: Деревня Кузнецов",
+        "name_english": "Kimetsu no Yaiba: Katanakaji no Sato-hen",
+        "episodes_total": 11,
+        "type": "ТВ"
+      }
+    }
+  },
+  {
+    "query_ru": "Клинок, рассекающий демонов: Сезон 1",
+    "query_en": "Demon Slayer: Kimetsu no Yaiba",
+    "query_jp": "Kimetsu no Yaiba",
+    "bestMatch": {
+      "shikimori_id": 38000,
+      "shikimori_title": "Клинок, рассекающий демонов x Главная лига бейсбола",
+      "mal_id": null,
+      "mal_title": null,
+      "anilist_id": 101922,
+      "anilibria_id": 9406,
+      "anilibria_alias": "kimetsu-no-yaiba-katanakaji-no-sato-hen",
+      "anilibria_title": "Клинок, Рассекающий Демонов: Деревня Кузнецов",
+      "note": "Доступен HLS на AniLibria"
+    },
+    "sources": {
+      "shikimori": {
+        "id": 61179,
+        "russian": "Клинок, рассекающий демонов x Главная лига бейсбола",
+        "name": "Kimetsu no Yaiba x MLB",
+        "episodes": 1,
+        "kind": "ona",
+        "url": "https://shikimori.one/animes/61179-kimetsu-no-yaiba-x-mlb"
+      },
+      "jikan": null,
+      "anilist": {
+        "id": 101922,
+        "title_romaji": "Kimetsu no Yaiba",
+        "title_english": "Demon Slayer: Kimetsu no Yaiba",
+        "episodes": 26,
+        "format": "TV",
+        "url": "https://anilist.co/anime/101922"
+      },
+      "anilibria": {
+        "id": 9406,
+        "alias": "kimetsu-no-yaiba-katanakaji-no-sato-hen",
+        "name_main": "Клинок, Рассекающий Демонов: Деревня Кузнецов",
+        "name_english": "Kimetsu no Yaiba: Katanakaji no Sato-hen",
+        "episodes_total": 11,
+        "type": "ТВ"
+      }
+    }
+  },
+  {
+    "query_ru": "Киберпанк: Бегущие по краю",
+    "query_en": "Cyberpunk: Edgerunners",
+    "query_jp": "Cyberpunk: Edgerunners",
+    "bestMatch": {
+      "shikimori_id": 42310,
+      "shikimori_title": "Киберпанк: Бегущие по краю",
+      "mal_id": null,
+      "mal_title": null,
+      "anilist_id": 120377,
+      "anilibria_id": 9307,
+      "anilibria_alias": "cyberpunk-edgerunners",
+      "anilibria_title": "Киберпанк: Бегущие по краю",
+      "note": "Доступен HLS на AniLibria"
+    },
+    "sources": {
+      "shikimori": {
+        "id": 42310,
+        "russian": "Киберпанк: Бегущие по краю",
+        "name": "Cyberpunk: Edgerunners",
+        "episodes": 10,
+        "kind": "ona",
+        "url": "https://shikimori.one/animes/42310-cyberpunk-edgerunners"
+      },
+      "jikan": null,
+      "anilist": {
+        "id": 120377,
+        "title_romaji": "Cyberpunk: Edgerunners",
+        "title_english": "Cyberpunk: Edgerunners",
+        "episodes": 10,
+        "format": "ONA",
+        "url": "https://anilist.co/anime/120377"
+      },
+      "anilibria": {
+        "id": 9307,
+        "alias": "cyberpunk-edgerunners",
+        "name_main": "Киберпанк: Бегущие по краю",
+        "name_english": "Cyberpunk: Edgerunners",
+        "episodes_total": 10,
+        "type": "ТВ"
+      }
+    }
+  },
+  {
+    "query_ru": "Семья шпиона",
+    "query_en": "SPY x FAMILY",
+    "query_jp": "SPY x FAMILY",
+    "bestMatch": {
+      "shikimori_id": 50265,
+      "shikimori_title": "Семья шпиона",
+      "mal_id": null,
+      "mal_title": null,
+      "anilist_id": null,
+      "anilibria_id": 9161,
+      "anilibria_alias": "spy-x-family",
+      "anilibria_title": "Семья шпиона",
+      "note": "Доступен HLS на AniLibria"
+    },
+    "sources": {
+      "shikimori": {
+        "id": 50265,
+        "russian": "Семья шпиона",
+        "name": "Spy x Family",
+        "episodes": 12,
+        "kind": "tv",
+        "url": "https://shikimori.one/animes/50265-spy-x-family"
+      },
+      "jikan": null,
+      "anilist": null,
+      "anilibria": {
+        "id": 9161,
+        "alias": "spy-x-family",
+        "name_main": "Семья шпиона",
+        "name_english": "SPY x FAMILY",
+        "episodes_total": 12,
+        "type": "ТВ"
+      }
+    }
+  },
+  {
+    "query_ru": "Звёздное дитя",
+    "query_en": "Oshi No Ko",
+    "query_jp": "【OSHI NO KO】",
+    "bestMatch": {
+      "shikimori_id": 52034,
+      "shikimori_title": "Ребёнок идола",
+      "mal_id": null,
+      "mal_title": null,
+      "anilist_id": 150672,
+      "anilibria_id": 9420,
+      "anilibria_alias": "oshi-no-ko",
+      "anilibria_title": "Звёздное дитя",
+      "note": "Доступен HLS на AniLibria"
+    },
+    "sources": {
+      "shikimori": {
+        "id": 52034,
+        "russian": "Ребёнок идола",
+        "name": "[Oshi no Ko]",
+        "episodes": 11,
+        "kind": "tv",
+        "url": "https://shikimori.one/animes/52034-oshi-no-ko"
+      },
+      "jikan": null,
+      "anilist": {
+        "id": 150672,
+        "title_romaji": "[Oshi no Ko]",
+        "title_english": "OSHI NO KO",
+        "episodes": 11,
+        "format": "TV",
+        "url": "https://anilist.co/anime/150672"
+      },
+      "anilibria": {
+        "id": 9420,
+        "alias": "oshi-no-ko",
+        "name_main": "Звёздное дитя",
+        "name_english": "Oshi No Ko",
+        "episodes_total": 11,
+        "type": "ТВ"
+      }
+    }
+  },
+  {
+    "query_ru": "Человек-бензопила",
+    "query_en": "Chainsaw Man",
+    "query_jp": "Chainsaw Man",
+    "bestMatch": {
+      "shikimori_id": 44511,
+      "shikimori_title": "Человек-бензопила",
+      "mal_id": null,
+      "mal_title": null,
+      "anilist_id": 127230,
+      "anilibria_id": null,
+      "anilibria_alias": null,
+      "anilibria_title": null,
+      "note": "На AniLibria отсутствует оригинальный релиз (используются плееры Kodik/Shikimori)"
+    },
+    "sources": {
+      "shikimori": {
+        "id": 44511,
+        "russian": "Человек-бензопила",
+        "name": "Chainsaw Man",
+        "episodes": 12,
+        "kind": "tv",
+        "url": "https://shikimori.one/animes/44511-chainsaw-man"
+      },
+      "jikan": null,
+      "anilist": {
+        "id": 127230,
+        "title_romaji": "Chainsaw Man",
+        "title_english": "Chainsaw Man",
+        "episodes": 12,
+        "format": "TV",
+        "url": "https://anilist.co/anime/127230"
+      },
+      "anilibria": null
+    }
+  },
+  {
+    "query_ru": "Кайдзю номер восемь",
+    "query_en": "Kaiju No. 8",
+    "query_jp": "Kaijuu 8-gou",
+    "bestMatch": {
+      "shikimori_id": 52588,
+      "shikimori_title": "Кайдзю номер восемь",
+      "mal_id": null,
+      "mal_title": null,
+      "anilist_id": 153288,
+      "anilibria_id": 9663,
+      "anilibria_alias": "kaijuu-8-gou",
+      "anilibria_title": "Кайдзю номер восемь",
+      "note": "Доступен HLS на AniLibria"
+    },
+    "sources": {
+      "shikimori": {
+        "id": 52588,
+        "russian": "Кайдзю номер восемь",
+        "name": "Kaijuu 8-gou",
+        "episodes": 12,
+        "kind": "tv",
+        "url": "https://shikimori.one/animes/52588-kaijuu-8-gou"
+      },
+      "jikan": null,
+      "anilist": {
+        "id": 153288,
+        "title_romaji": "Kaijuu 8-gou",
+        "title_english": "Kaiju No. 8",
+        "episodes": 12,
+        "format": "TV",
+        "url": "https://anilist.co/anime/153288"
+      },
+      "anilibria": {
+        "id": 9663,
+        "alias": "kaijuu-8-gou",
+        "name_main": "Кайдзю номер восемь",
+        "name_english": "Kaijuu 8-gou",
+        "episodes_total": 12,
+        "type": "ТВ"
+      }
+    }
+  },
+  {
+    "query_ru": "Одинокий рокер!",
+    "query_en": "BOCCHI THE ROCK!",
+    "query_jp": "Bocchi the Rock!",
+    "bestMatch": {
+      "shikimori_id": 47917,
+      "shikimori_title": "Одинокий рокер!",
+      "mal_id": null,
+      "mal_title": null,
+      "anilist_id": 130003,
+      "anilibria_id": 9293,
+      "anilibria_alias": "bocchi-the-rock",
+      "anilibria_title": "Одинокий рокер!",
+      "note": "Доступен HLS на AniLibria"
+    },
+    "sources": {
+      "shikimori": {
+        "id": 47917,
+        "russian": "Одинокий рокер!",
+        "name": "Bocchi the Rock!",
+        "episodes": 12,
+        "kind": "tv",
+        "url": "https://shikimori.one/animes/47917-bocchi-the-rock"
+      },
+      "jikan": null,
+      "anilist": {
+        "id": 130003,
+        "title_romaji": "Bocchi the Rock!",
+        "title_english": "BOCCHI THE ROCK!",
+        "episodes": 12,
+        "format": "TV",
+        "url": "https://anilist.co/anime/130003"
+      },
+      "anilibria": {
+        "id": 9293,
+        "alias": "bocchi-the-rock",
+        "name_main": "Одинокий рокер!",
+        "name_english": "BOCCHI THE ROCK!",
+        "episodes_total": 12,
+        "type": "ТВ"
+      }
+    }
+  },
+  {
+    "query_ru": "Синяя тюрьма: Блю Лок",
+    "query_en": "Blue Lock",
+    "query_jp": "Blue Lock",
+    "bestMatch": {
+      "shikimori_id": 49596,
+      "shikimori_title": "Синяя тюрьма: Блю Лок",
+      "mal_id": null,
+      "mal_title": null,
+      "anilist_id": 137822,
+      "anilibria_id": null,
+      "anilibria_alias": null,
+      "anilibria_title": null,
+      "note": "На AniLibria отсутствует оригинальный релиз (используются плееры Kodik/Shikimori)"
+    },
+    "sources": {
+      "shikimori": {
+        "id": 49596,
+        "russian": "Синяя тюрьма: Блю Лок",
+        "name": "Blue Lock",
+        "episodes": 24,
+        "kind": "tv",
+        "url": "https://shikimori.one/animes/49596-blue-lock"
+      },
+      "jikan": null,
+      "anilist": {
+        "id": 137822,
+        "title_romaji": "Blue Lock",
+        "title_english": "BLUE LOCK",
+        "episodes": 24,
+        "format": "TV",
+        "url": "https://anilist.co/anime/137822"
+      },
+      "anilibria": null
+    }
+  },
+  {
+    "query_ru": "Атака титанов",
+    "query_en": "Attack on Titan",
+    "query_jp": "Shingeki no Kyojin",
+    "bestMatch": {
+      "shikimori_id": 16498,
+      "shikimori_title": "Атака титанов",
+      "mal_id": null,
+      "mal_title": null,
+      "anilist_id": 16498,
+      "anilibria_id": null,
+      "anilibria_alias": null,
+      "anilibria_title": null,
+      "note": "На AniLibria отсутствует оригинальный релиз (используются плееры Kodik/Shikimori)"
+    },
+    "sources": {
+      "shikimori": {
+        "id": 16498,
+        "russian": "Атака титанов",
+        "name": "Shingeki no Kyojin",
+        "episodes": 25,
+        "kind": "tv",
+        "url": "https://shikimori.one/animes/16498-shingeki-no-kyojin"
+      },
+      "jikan": null,
+      "anilist": {
+        "id": 16498,
+        "title_romaji": "Shingeki no Kyojin",
+        "title_english": "Attack on Titan",
+        "episodes": 25,
+        "format": "TV",
+        "url": "https://anilist.co/anime/16498"
+      },
+      "anilibria": null
+    }
+  },
+  {
+    "query_ru": "Тетрадь смерти",
+    "query_en": "Death Note",
+    "query_jp": "Death Note",
+    "bestMatch": {
+      "shikimori_id": 1535,
+      "shikimori_title": "Тетрадь смерти",
+      "mal_id": null,
+      "mal_title": null,
+      "anilist_id": 1535,
+      "anilibria_id": null,
+      "anilibria_alias": null,
+      "anilibria_title": null,
+      "note": "Доступен HLS на AniLibria",
+      "player_source": "Kodik / Shikimori / Jut.su / Allvideo (на AniLibria релиз отсутствует/не лицензирован)"
+    },
+    "sources": {
+      "shikimori": {
+        "id": 1535,
+        "russian": "Тетрадь смерти",
+        "name": "Death Note",
+        "episodes": 37,
+        "kind": "tv",
+        "url": "https://shikimori.one/animes/1535-death-note"
+      },
+      "jikan": null,
+      "anilist": {
+        "id": 1535,
+        "title_romaji": "DEATH NOTE",
+        "title_english": "Death Note",
+        "episodes": 37,
+        "format": "TV",
+        "url": "https://anilist.co/anime/1535"
+      },
+      "anilibria": {
+        "id": 5158,
+        "alias": "death-note-netflix",
+        "name_main": "Тетрадь смерти",
+        "name_english": "Death Note",
+        "episodes_total": null,
+        "type": "Фильм"
+      }
+    }
+  },
+  {
+    "query_ru": "Стальной алхимик: Братство",
+    "query_en": "Fullmetal Alchemist: Brotherhood",
+    "query_jp": "Hagane no Renkinjutsushi: Fullmetal Alchemist",
+    "bestMatch": {
+      "shikimori_id": 5114,
+      "shikimori_title": "Стальной алхимик: Братство",
+      "mal_id": null,
+      "mal_title": null,
+      "anilist_id": 5114,
+      "anilibria_id": 9528,
+      "anilibria_alias": "fullmetal-alchemist-brotherhood",
+      "anilibria_title": "Стальной алхимик: Братство",
+      "note": "Доступен HLS на AniLibria"
+    },
+    "sources": {
+      "shikimori": {
+        "id": 5114,
+        "russian": "Стальной алхимик: Братство",
+        "name": "Fullmetal Alchemist: Brotherhood",
+        "episodes": 64,
+        "kind": "tv",
+        "url": "https://shikimori.one/animes/z5114-fullmetal-alchemist-brotherhood"
+      },
+      "jikan": null,
+      "anilist": {
+        "id": 5114,
+        "title_romaji": "Hagane no Renkinjutsushi: FULLMETAL ALCHEMIST",
+        "title_english": "Fullmetal Alchemist: Brotherhood",
+        "episodes": 64,
+        "format": "TV",
+        "url": "https://anilist.co/anime/5114"
+      },
+      "anilibria": {
+        "id": 9528,
+        "alias": "fullmetal-alchemist-brotherhood",
+        "name_main": "Стальной алхимик: Братство",
+        "name_english": "Fullmetal Alchemist: Brotherhood",
+        "episodes_total": 64,
+        "type": "ТВ"
+      }
+    }
+  },
+  {
+    "query_ru": "Хантер х Хантер",
+    "query_en": "Hunter x Hunter",
+    "query_jp": "Hunter x Hunter (2011)",
+    "bestMatch": {
+      "shikimori_id": 11061,
+      "shikimori_title": "Охотник х Охотник (2011)",
+      "mal_id": null,
+      "mal_title": null,
+      "anilist_id": null,
+      "anilibria_id": 10294,
+      "anilibria_alias": "hunter-x-hunter",
+      "anilibria_title": "Хантер х Хантер",
+      "note": "Доступен HLS на AniLibria"
+    },
+    "sources": {
+      "shikimori": {
+        "id": 11061,
+        "russian": "Охотник х Охотник (2011)",
+        "name": "Hunter x Hunter (2011)",
+        "episodes": 148,
+        "kind": "tv",
+        "url": "https://shikimori.one/animes/z11061-hunter-x-hunter-2011"
+      },
+      "jikan": null,
+      "anilist": null,
+      "anilibria": {
+        "id": 10294,
+        "alias": "hunter-x-hunter",
+        "name_main": "Хантер х Хантер",
+        "name_english": "Hunter x Hunter",
+        "episodes_total": 148,
+        "type": "ТВ"
+      }
+    }
+  },
+  {
+    "query_ru": "Наруто: Ураганные хроники",
+    "query_en": "Naruto: Shippuuden",
+    "query_jp": "Naruto: Shippuuden",
+    "bestMatch": {
+      "shikimori_id": 1735,
+      "shikimori_title": "Наруто: Ураганные хроники",
+      "mal_id": null,
+      "mal_title": null,
+      "anilist_id": 1735,
+      "anilibria_id": 413,
+      "anilibria_alias": "naruto-shippuuden-naruto-uragannye-khroniki",
+      "anilibria_title": "Наруто Ураганные хроники",
+      "note": "Доступен HLS на AniLibria"
+    },
+    "sources": {
+      "shikimori": {
+        "id": 1735,
+        "russian": "Наруто: Ураганные хроники",
+        "name": "Naruto: Shippuuden",
+        "episodes": 500,
+        "kind": "tv",
+        "url": "https://shikimori.one/animes/z1735-naruto-shippuuden"
+      },
+      "jikan": null,
+      "anilist": {
+        "id": 1735,
+        "title_romaji": "NARUTO: Shippuuden",
+        "title_english": "Naruto: Shippuden",
+        "episodes": 500,
+        "format": "TV",
+        "url": "https://anilist.co/anime/1735"
+      },
+      "anilibria": {
+        "id": 413,
+        "alias": "naruto-shippuuden-naruto-uragannye-khroniki",
+        "name_main": "Наруто Ураганные хроники",
+        "name_english": "Naruto: Shippuuden",
+        "episodes_total": 450,
+        "type": "ТВ"
+      }
+    }
+  },
+  {
+    "query_ru": "Ван-Пис",
+    "query_en": "One Piece",
+    "query_jp": "One Piece",
+    "bestMatch": {
+      "shikimori_id": 21,
+      "shikimori_title": "Ван-Пис",
+      "mal_id": null,
+      "mal_title": null,
+      "anilist_id": null,
+      "anilibria_id": 10290,
+      "anilibria_alias": "one-piece",
+      "anilibria_title": "Ван-Пис",
+      "note": "Доступен HLS на AniLibria"
+    },
+    "sources": {
+      "shikimori": {
+        "id": 21,
+        "russian": "Ван-Пис",
+        "name": "One Piece",
+        "episodes": 0,
+        "kind": "tv",
+        "url": "https://shikimori.one/animes/21-one-piece"
+      },
+      "jikan": null,
+      "anilist": null,
+      "anilibria": {
+        "id": 10290,
+        "alias": "one-piece",
+        "name_main": "Ван-Пис",
+        "name_english": "One Piece",
+        "episodes_total": null,
+        "type": "ТВ"
+      }
+    }
+  },
+  {
+    "query_ru": "Блич: Тысячелетняя кровавая война",
+    "query_en": "Bleach: Thousand-Year Blood War",
+    "query_jp": "BLEACH: Sennen Kessen-hen",
+    "bestMatch": {
+      "shikimori_id": 41467,
+      "shikimori_title": null,
+      "mal_id": null,
+      "mal_title": null,
+      "anilist_id": null,
+      "anilibria_id": 8452,
+      "anilibria_alias": "bleach",
+      "anilibria_title": "Блич",
+      "note": "Доступен HLS на AniLibria"
+    },
+    "sources": {
+      "shikimori": null,
+      "jikan": null,
+      "anilist": null,
+      "anilibria": {
+        "id": 8452,
+        "alias": "bleach",
+        "name_main": "Блич",
+        "name_english": "Bleach",
+        "episodes_total": 366,
+        "type": "ТВ"
+      }
+    }
+  },
+  {
+    "query_ru": "Код Гиас: Восставший Лелуш",
+    "query_en": "Code Geass: Lelouch of the Rebellion",
+    "query_jp": "Code Geass: Hangyaku no Lelouch",
+    "bestMatch": {
+      "shikimori_id": 1575,
+      "shikimori_title": null,
+      "mal_id": null,
+      "mal_title": null,
+      "anilist_id": null,
+      "anilibria_id": 7019,
+      "anilibria_alias": "kod-gias-vosstanie-lelusha-probuzhdenie-code-geass-hangyaku-no-lelouch-i-koudou",
+      "anilibria_title": "Код Гиасс: Восстание Лелуша - Пробуждение",
+      "note": "Доступен HLS на AniLibria"
+    },
+    "sources": {
+      "shikimori": null,
+      "jikan": null,
+      "anilist": null,
+      "anilibria": {
+        "id": 7019,
+        "alias": "kod-gias-vosstanie-lelusha-probuzhdenie-code-geass-hangyaku-no-lelouch-i-koudou",
+        "name_main": "Код Гиасс: Восстание Лелуша - Пробуждение",
+        "name_english": "Code Geass: Hangyaku no Lelouch I - Koudou",
+        "episodes_total": null,
+        "type": "Фильм"
+      }
+    }
+  },
+  {
+    "query_ru": "Врата Штейна",
+    "query_en": "Steins;Gate",
+    "query_jp": "Steins;Gate",
+    "bestMatch": {
+      "shikimori_id": 9253,
+      "shikimori_title": null,
+      "mal_id": null,
+      "mal_title": null,
+      "anilist_id": null,
+      "anilibria_id": 8674,
+      "anilibria_alias": "steinsgate",
+      "anilibria_title": "Врата Штейна",
+      "note": "Доступен HLS на AniLibria"
+    },
+    "sources": {
+      "shikimori": null,
+      "jikan": null,
+      "anilist": null,
+      "anilibria": {
+        "id": 8674,
+        "alias": "steinsgate",
+        "name_main": "Врата Штейна",
+        "name_english": "Steins;Gate",
+        "episodes_total": 25,
+        "type": "ТВ"
+      }
+    }
+  },
+  {
+    "query_ru": "Сага о Винланде",
+    "query_en": "Vinland Saga",
+    "query_jp": "Vinland Saga",
+    "bestMatch": {
+      "shikimori_id": 37521,
+      "shikimori_title": null,
+      "mal_id": null,
+      "mal_title": null,
+      "anilist_id": null,
+      "anilibria_id": 8424,
+      "anilibria_alias": "vinland-saga",
+      "anilibria_title": "Сага о Винланде",
+      "note": "Доступен HLS на AniLibria"
+    },
+    "sources": {
+      "shikimori": null,
+      "jikan": null,
+      "anilist": null,
+      "anilibria": {
+        "id": 8424,
+        "alias": "vinland-saga",
+        "name_main": "Сага о Винланде",
+        "name_english": "Vinland Saga",
+        "episodes_total": 24,
+        "type": "ТВ"
+      }
+    }
+  },
+  {
+    "query_ru": "Евангелион нового поколения",
+    "query_en": "Neon Genesis Evangelion",
+    "query_jp": "Shinseiki Evangelion",
+    "bestMatch": {
+      "shikimori_id": 30,
+      "shikimori_title": "Евангелион нового поколения",
+      "mal_id": null,
+      "mal_title": null,
+      "anilist_id": 30,
+      "anilibria_id": null,
+      "anilibria_alias": null,
+      "anilibria_title": null,
+      "note": "На AniLibria отсутствует оригинальный релиз (используются плееры Kodik/Shikimori)"
+    },
+    "sources": {
+      "shikimori": {
+        "id": 30,
+        "russian": "Евангелион нового поколения",
+        "name": "Shinseiki Evangelion",
+        "episodes": 26,
+        "kind": "tv",
+        "url": "https://shikimori.one/animes/30-shinseiki-evangelion"
+      },
+      "jikan": null,
+      "anilist": {
+        "id": 30,
+        "title_romaji": "Shin Seiki Evangelion",
+        "title_english": "Neon Genesis Evangelion",
+        "episodes": 26,
+        "format": "TV",
+        "url": "https://anilist.co/anime/30"
+      },
+      "anilibria": null
+    }
+  },
+  {
+    "query_ru": "Токийский гуль",
+    "query_en": "Tokyo Ghoul",
+    "query_jp": "Tokyo Ghoul",
+    "bestMatch": {
+      "shikimori_id": 22319,
+      "shikimori_title": "Токийский гуль",
+      "mal_id": null,
+      "mal_title": null,
+      "anilist_id": 20605,
+      "anilibria_id": 432,
+      "anilibria_alias": "tokyo-ghoul",
+      "anilibria_title": "Токийский Гуль",
+      "note": "Доступен HLS на AniLibria"
+    },
+    "sources": {
+      "shikimori": {
+        "id": 22319,
+        "russian": "Токийский гуль",
+        "name": "Tokyo Ghoul",
+        "episodes": 12,
+        "kind": "tv",
+        "url": "https://shikimori.one/animes/22319-tokyo-ghoul"
+      },
+      "jikan": null,
+      "anilist": {
+        "id": 20605,
+        "title_romaji": "Tokyo Ghoul",
+        "title_english": "Tokyo Ghoul",
+        "episodes": 12,
+        "format": "TV",
+        "url": "https://anilist.co/anime/20605"
+      },
+      "anilibria": {
+        "id": 432,
+        "alias": "tokyo-ghoul",
+        "name_main": "Токийский Гуль",
+        "name_english": "Tokyo Ghoul",
+        "episodes_total": 12,
+        "type": "ТВ"
+      }
+    }
+  },
+  {
+    "query_ru": "Ванпанчмен",
+    "query_en": "One Punch Man",
+    "query_jp": "One Punch Man",
+    "bestMatch": {
+      "shikimori_id": 30276,
+      "shikimori_title": "Ванпанчмен",
+      "mal_id": null,
+      "mal_title": null,
+      "anilist_id": 21087,
+      "anilibria_id": 1210,
+      "anilibria_alias": "one-punch-man",
+      "anilibria_title": "Ванпанчмен",
+      "note": "Доступен HLS на AniLibria"
+    },
+    "sources": {
+      "shikimori": {
+        "id": 30276,
+        "russian": "Ванпанчмен",
+        "name": "One Punch Man",
+        "episodes": 12,
+        "kind": "tv",
+        "url": "https://shikimori.one/animes/z30276-one-punch-man"
+      },
+      "jikan": null,
+      "anilist": {
+        "id": 21087,
+        "title_romaji": "One Punch Man",
+        "title_english": "One-Punch Man",
+        "episodes": 12,
+        "format": "TV",
+        "url": "https://anilist.co/anime/21087"
+      },
+      "anilibria": {
+        "id": 1210,
+        "alias": "one-punch-man",
+        "name_main": "Ванпанчмен",
+        "name_english": "One Punch Man",
+        "episodes_total": 12,
+        "type": "ТВ"
+      }
+    }
+  },
+  {
+    "query_ru": "Моб Психо 100",
+    "query_en": "Mob Psycho 100",
+    "query_jp": "Mob Psycho 100",
+    "bestMatch": {
+      "shikimori_id": 32182,
+      "shikimori_title": "Моб Психо 100",
+      "mal_id": null,
+      "mal_title": null,
+      "anilist_id": null,
+      "anilibria_id": 2622,
+      "anilibria_alias": "mob-psycho-100",
+      "anilibria_title": "Моб Психо 100",
+      "note": "Доступен HLS на AniLibria"
+    },
+    "sources": {
+      "shikimori": {
+        "id": 32182,
+        "russian": "Моб Психо 100",
+        "name": "Mob Psycho 100",
+        "episodes": 12,
+        "kind": "tv",
+        "url": "https://shikimori.one/animes/z32182-mob-psycho-100"
+      },
+      "jikan": null,
+      "anilist": null,
+      "anilibria": {
+        "id": 2622,
+        "alias": "mob-psycho-100",
+        "name_main": "Моб Психо 100",
+        "name_english": "Mob Psycho 100",
+        "episodes_total": 12,
+        "type": "ТВ"
+      }
+    }
+  },
+  {
+    "query_ru": "Невероятные приключения ДжоДжо: Золотой ветер",
+    "query_en": "JoJo's Bizarre Adventure: Golden Wind",
+    "query_jp": "JoJo no Kimyou na Bouken: Ougon no Kaze",
+    "bestMatch": {
+      "shikimori_id": 37991,
+      "shikimori_title": "Невероятное приключение ДжоДжо OVA",
+      "mal_id": null,
+      "mal_title": null,
+      "anilist_id": null,
+      "anilibria_id": 7438,
+      "anilibria_alias": "jojo-no-kimyou-na-bouken-ougon-no-kaze",
+      "anilibria_title": "Невероятные приключения ДжоДжо: Золотой ветер",
+      "note": "Доступен HLS на AniLibria"
+    },
+    "sources": {
+      "shikimori": {
+        "id": 666,
+        "russian": "Невероятное приключение ДжоДжо OVA",
+        "name": "JoJo no Kimyou na Bouken",
+        "episodes": 6,
+        "kind": "ova",
+        "url": "https://shikimori.one/animes/666-jojo-no-kimyou-na-bouken"
+      },
+      "jikan": null,
+      "anilist": null,
+      "anilibria": {
+        "id": 7438,
+        "alias": "jojo-no-kimyou-na-bouken-ougon-no-kaze",
+        "name_main": "Невероятные приключения ДжоДжо: Золотой ветер",
+        "name_english": "JoJo no Kimyou na Bouken: Ougon no Kaze",
+        "episodes_total": 39,
+        "type": "ТВ"
+      }
+    }
+  },
+  {
+    "query_ru": "О моём перерождении в слизь",
+    "query_en": "That Time I Got Reincarnated as a Slime",
+    "query_jp": "Tensei shitara Slime Datta Ken",
+    "bestMatch": {
+      "shikimori_id": 37430,
+      "shikimori_title": "О моём перерождении в слизь",
+      "mal_id": null,
+      "mal_title": null,
+      "anilist_id": null,
+      "anilibria_id": 8950,
+      "anilibria_alias": "tensura-nikki-tensei-shitara-slime-datta-ken",
+      "anilibria_title": "О моём перерождении в слизь. Дневник слизи-попаданца",
+      "note": "Доступен HLS на AniLibria"
+    },
+    "sources": {
+      "shikimori": {
+        "id": 37430,
+        "russian": "О моём перерождении в слизь",
+        "name": "Tensei shitara Slime Datta Ken",
+        "episodes": 24,
+        "kind": "tv",
+        "url": "https://shikimori.one/animes/z37430-tensei-shitara-slime-datta-ken"
+      },
+      "jikan": null,
+      "anilist": null,
+      "anilibria": {
+        "id": 8950,
+        "alias": "tensura-nikki-tensei-shitara-slime-datta-ken",
+        "name_main": "О моём перерождении в слизь. Дневник слизи-попаданца",
+        "name_english": "Tensura Nikki: Tensei Shitara Slime Datta Ken",
+        "episodes_total": 12,
+        "type": "ТВ"
+      }
+    }
+  },
+  {
+    "query_ru": "Реинкарнация безработного",
+    "query_en": "Mushoku Tensei: Jobless Reincarnation",
+    "query_jp": "Mushoku Tensei: Isekai Ittara Honki Dasu",
+    "bestMatch": {
+      "shikimori_id": 39535,
+      "shikimori_title": "Реинкарнация безработного: История о приключениях в другом мире",
+      "mal_id": null,
+      "mal_title": null,
+      "anilist_id": null,
+      "anilibria_id": null,
+      "anilibria_alias": null,
+      "anilibria_title": null,
+      "note": "На AniLibria отсутствует оригинальный релиз (используются плееры Kodik/Shikimori)"
+    },
+    "sources": {
+      "shikimori": {
+        "id": 39535,
+        "russian": "Реинкарнация безработного: История о приключениях в другом мире",
+        "name": "Mushoku Tensei: Isekai Ittara Honki Dasu",
+        "episodes": 11,
+        "kind": "tv",
+        "url": "https://shikimori.one/animes/39535-mushoku-tensei-isekai-ittara-honki-dasu"
+      },
+      "jikan": null,
+      "anilist": null,
+      "anilibria": null
+    }
+  },
+  {
+    "query_ru": "Re:Zero. Жизнь с нуля в другом мире",
+    "query_en": "Re:Zero",
+    "query_jp": "Re:Zero kara Hajimeru Isekai Seikatsu",
+    "bestMatch": {
+      "shikimori_id": 31240,
+      "shikimori_title": "Re:Zero. Жизнь с нуля в альтернативном мире 2. Часть 2",
+      "mal_id": null,
+      "mal_title": null,
+      "anilist_id": null,
+      "anilibria_id": null,
+      "anilibria_alias": null,
+      "anilibria_title": null,
+      "note": "На AniLibria отсутствует оригинальный релиз (используются плееры Kodik/Shikimori)"
+    },
+    "sources": {
+      "shikimori": {
+        "id": 42203,
+        "russian": "Re:Zero. Жизнь с нуля в альтернативном мире 2. Часть 2",
+        "name": "Re:Zero kara Hajimeru Isekai Seikatsu 2nd Season Part 2",
+        "episodes": 12,
+        "kind": "tv",
+        "url": "https://shikimori.one/animes/42203-re-zero-kara-hajimeru-isekai-seikatsu-2nd-season-part-2"
+      },
+      "jikan": null,
+      "anilist": null,
+      "anilibria": null
+    }
+  },
+  {
+    "query_ru": "Мастера Меча Онлайн",
+    "query_en": "Sword Art Online",
+    "query_jp": "Sword Art Online",
+    "bestMatch": {
+      "shikimori_id": 11757,
+      "shikimori_title": "Мастера Меча Онлайн",
+      "mal_id": null,
+      "mal_title": null,
+      "anilist_id": null,
+      "anilibria_id": 4857,
+      "anilibria_alias": "sword-art-online-i",
+      "anilibria_title": "Мастера меча онлайн",
+      "note": "Доступен HLS на AniLibria"
+    },
+    "sources": {
+      "shikimori": {
+        "id": 11757,
+        "russian": "Мастера Меча Онлайн",
+        "name": "Sword Art Online",
+        "episodes": 25,
+        "kind": "tv",
+        "url": "https://shikimori.one/animes/z11757-sword-art-online"
+      },
+      "jikan": null,
+      "anilist": null,
+      "anilibria": {
+        "id": 4857,
+        "alias": "sword-art-online-i",
+        "name_main": "Мастера меча онлайн",
+        "name_english": "Sword Art Online",
+        "episodes_total": 25,
+        "type": "ТВ"
+      }
+    }
+  },
+  {
+    "query_ru": "Чёрный клевер",
+    "query_en": "Black Clover",
+    "query_jp": "Black Clover",
+    "bestMatch": {
+      "shikimori_id": 34572,
+      "shikimori_title": "Чёрный клевер",
+      "mal_id": null,
+      "mal_title": null,
+      "anilist_id": null,
+      "anilibria_id": 5255,
+      "anilibria_alias": "black-clover",
+      "anilibria_title": "Чёрный Клевер",
+      "note": "Доступен HLS на AniLibria"
+    },
+    "sources": {
+      "shikimori": {
+        "id": 34572,
+        "russian": "Чёрный клевер",
+        "name": "Black Clover",
+        "episodes": 170,
+        "kind": "tv",
+        "url": "https://shikimori.one/animes/z34572-black-clover"
+      },
+      "jikan": null,
+      "anilist": null,
+      "anilibria": {
+        "id": 5255,
+        "alias": "black-clover",
+        "name_main": "Чёрный Клевер",
+        "name_english": "Black Clover",
+        "episodes_total": 170,
+        "type": "ТВ"
+      }
+    }
+  },
+  {
+    "query_ru": "Пламенная бригада пожарных",
+    "query_en": "Fire Force",
+    "query_jp": "Enen no Shouboutai",
+    "bestMatch": {
+      "shikimori_id": 38671,
+      "shikimori_title": "Пламенная бригада пожарных",
+      "mal_id": null,
+      "mal_title": null,
+      "anilist_id": null,
+      "anilibria_id": null,
+      "anilibria_alias": null,
+      "anilibria_title": null,
+      "note": "На AniLibria отсутствует оригинальный релиз (используются плееры Kodik/Shikimori)"
+    },
+    "sources": {
+      "shikimori": {
+        "id": 38671,
+        "russian": "Пламенная бригада пожарных",
+        "name": "Enen no Shouboutai",
+        "episodes": 24,
+        "kind": "tv",
+        "url": "https://shikimori.one/animes/38671-enen-no-shouboutai"
+      },
+      "jikan": null,
+      "anilist": null,
+      "anilibria": null
+    }
+  },
+  {
+    "query_ru": "Доктор Стоун",
+    "query_en": "Dr. STONE",
+    "query_jp": "Dr. STONE",
+    "bestMatch": {
+      "shikimori_id": 38691,
+      "shikimori_title": "Доктор Стоун",
+      "mal_id": null,
+      "mal_title": null,
+      "anilist_id": null,
+      "anilibria_id": 8398,
+      "anilibria_alias": "dr-stone",
+      "anilibria_title": "Доктор Стоун",
+      "note": "Доступен HLS на AniLibria"
+    },
+    "sources": {
+      "shikimori": {
+        "id": 38691,
+        "russian": "Доктор Стоун",
+        "name": "Dr. Stone",
+        "episodes": 24,
+        "kind": "tv",
+        "url": "https://shikimori.one/animes/z38691-dr-stone"
+      },
+      "jikan": null,
+      "anilist": null,
+      "anilibria": {
+        "id": 8398,
+        "alias": "dr-stone",
+        "name_main": "Доктор Стоун",
+        "name_english": "Dr. Stone",
+        "episodes_total": 24,
+        "type": "ТВ"
+      }
+    }
+  },
+  {
+    "query_ru": "Бездомный бог",
+    "query_en": "Noragami",
+    "query_jp": "Noragami",
+    "bestMatch": {
+      "shikimori_id": 20507,
+      "shikimori_title": "Бездомный бог",
+      "mal_id": null,
+      "mal_title": null,
+      "anilist_id": null,
+      "anilibria_id": 485,
+      "anilibria_alias": "noragami-bezdomnyy-bog",
+      "anilibria_title": "Бездомный бог",
+      "note": "Доступен HLS на AniLibria"
+    },
+    "sources": {
+      "shikimori": {
+        "id": 20507,
+        "russian": "Бездомный бог",
+        "name": "Noragami",
+        "episodes": 12,
+        "kind": "tv",
+        "url": "https://shikimori.one/animes/20507-noragami"
+      },
+      "jikan": null,
+      "anilist": null,
+      "anilibria": {
+        "id": 485,
+        "alias": "noragami-bezdomnyy-bog",
+        "name_main": "Бездомный бог",
+        "name_english": "Noragami",
+        "episodes_total": 12,
+        "type": "ТВ"
+      }
+    }
+  },
+  {
+    "query_ru": "Дороро",
+    "query_en": "Dororo",
+    "query_jp": "Dororo",
+    "bestMatch": {
+      "shikimori_id": 37520,
+      "shikimori_title": "Дороро",
+      "mal_id": null,
+      "mal_title": null,
+      "anilist_id": null,
+      "anilibria_id": 8034,
+      "anilibria_alias": "dororo",
+      "anilibria_title": "Дороро",
+      "note": "Доступен HLS на AniLibria"
+    },
+    "sources": {
+      "shikimori": {
+        "id": 37520,
+        "russian": "Дороро",
+        "name": "Dororo",
+        "episodes": 24,
+        "kind": "tv",
+        "url": "https://shikimori.one/animes/37520-dororo"
+      },
+      "jikan": null,
+      "anilist": null,
+      "anilibria": {
+        "id": 8034,
+        "alias": "dororo",
+        "name_main": "Дороро",
+        "name_english": "Dororo ",
+        "episodes_total": 24,
+        "type": "ТВ"
+      }
+    }
+  },
+  {
+    "query_ru": "Созданный в Бездне",
+    "query_en": "Made in Abyss",
+    "query_jp": "Made in Abyss",
+    "bestMatch": {
+      "shikimori_id": 34599,
+      "shikimori_title": "Созданный в Бездне",
+      "mal_id": null,
+      "mal_title": null,
+      "anilist_id": null,
+      "anilibria_id": 4644,
+      "anilibria_alias": "made-in-abyss",
+      "anilibria_title": "Созданный в Бездне",
+      "note": "Доступен HLS на AniLibria"
+    },
+    "sources": {
+      "shikimori": {
+        "id": 34599,
+        "russian": "Созданный в Бездне",
+        "name": "Made in Abyss",
+        "episodes": 13,
+        "kind": "tv",
+        "url": "https://shikimori.one/animes/z34599-made-in-abyss"
+      },
+      "jikan": null,
+      "anilist": null,
+      "anilibria": {
+        "id": 4644,
+        "alias": "made-in-abyss",
+        "name_main": "Созданный в Бездне",
+        "name_english": "Made in Abyss",
+        "episodes_total": 13,
+        "type": "ТВ"
+      }
+    }
+  },
+  {
+    "query_ru": "Моя геройская академия",
+    "query_en": "My Hero Academia",
+    "query_jp": "Boku no Hero Academia",
+    "bestMatch": {
+      "shikimori_id": 31964,
+      "shikimori_title": "Моя геройская академия",
+      "mal_id": null,
+      "mal_title": null,
+      "anilist_id": null,
+      "anilibria_id": 2114,
+      "anilibria_alias": "boku-no-hero-academia",
+      "anilibria_title": "Моя геройская академия",
+      "note": "Доступен HLS на AniLibria"
+    },
+    "sources": {
+      "shikimori": {
+        "id": 31964,
+        "russian": "Моя геройская академия",
+        "name": "Boku no Hero Academia",
+        "episodes": 13,
+        "kind": "tv",
+        "url": "https://shikimori.one/animes/31964-boku-no-hero-academia"
+      },
+      "jikan": null,
+      "anilist": null,
+      "anilibria": {
+        "id": 2114,
+        "alias": "boku-no-hero-academia",
+        "name_main": "Моя геройская академия",
+        "name_english": "Boku no Hero Academia",
+        "episodes_total": 13,
+        "type": "ТВ"
+      }
+    }
+  },
+  {
+    "query_ru": "Твоё имя",
+    "query_en": "Kimi no Na wa",
+    "query_jp": "Kimi no Na wa.",
+    "bestMatch": {
+      "shikimori_id": 32281,
+      "shikimori_title": "Твоё имя",
+      "mal_id": null,
+      "mal_title": null,
+      "anilist_id": null,
+      "anilibria_id": 6826,
+      "anilibria_alias": "kimi-no-na-wa-tvoye-imya",
+      "anilibria_title": "Твоё имя",
+      "note": "Доступен HLS на AniLibria"
+    },
+    "sources": {
+      "shikimori": {
+        "id": 32281,
+        "russian": "Твоё имя",
+        "name": "Kimi no Na wa.",
+        "episodes": 1,
+        "kind": "movie",
+        "url": "https://shikimori.one/animes/32281-kimi-no-na-wa"
+      },
+      "jikan": null,
+      "anilist": null,
+      "anilibria": {
+        "id": 6826,
+        "alias": "kimi-no-na-wa-tvoye-imya",
+        "name_main": "Твоё имя",
+        "name_english": "Kimi no Na wa",
+        "episodes_total": null,
+        "type": "Фильм"
+      }
+    }
+  },
+  {
+    "query_ru": "Форма голоса",
+    "query_en": "A Silent Voice",
+    "query_jp": "Koe no Katachi",
+    "bestMatch": {
+      "shikimori_id": 28851,
+      "shikimori_title": "Форма голоса",
+      "mal_id": null,
+      "mal_title": null,
+      "anilist_id": null,
+      "anilibria_id": null,
+      "anilibria_alias": null,
+      "anilibria_title": null,
+      "note": "На AniLibria отсутствует оригинальный релиз (используются плееры Kodik/Shikimori)"
+    },
+    "sources": {
+      "shikimori": {
+        "id": 28851,
+        "russian": "Форма голоса",
+        "name": "Koe no Katachi",
+        "episodes": 1,
+        "kind": "movie",
+        "url": "https://shikimori.one/animes/y28851-koe-no-katachi"
+      },
+      "jikan": null,
+      "anilist": null,
+      "anilibria": null
+    }
+  },
+  {
+    "query_ru": "Госпожа Кагуя: В любви как на войне",
+    "query_en": "Kaguya-sama: Love is War",
+    "query_jp": "Kaguya-sama wa Kokurasetai: Tensai-tachi no Renai Zunousen",
+    "bestMatch": {
+      "shikimori_id": 37999,
+      "shikimori_title": "Госпожа Кагуя: в любви как на войне",
+      "mal_id": null,
+      "mal_title": null,
+      "anilist_id": null,
+      "anilibria_id": 8604,
+      "anilibria_alias": "kaguya-sama-wa-kokurasetai-tensai-tachi-no-renai-zunousen-2nd-season",
+      "anilibria_title": "Кагуя хочет, чтобы ей признались: война любви и разума гениев 2",
+      "note": "Доступен HLS на AniLibria"
+    },
+    "sources": {
+      "shikimori": {
+        "id": 37999,
+        "russian": "Госпожа Кагуя: в любви как на войне",
+        "name": "Kaguya-sama wa Kokurasetai: Tensai-tachi no Renai Zunousen",
+        "episodes": 12,
+        "kind": "tv",
+        "url": "https://shikimori.one/animes/37999-kaguya-sama-wa-kokurasetai-tensai-tachi-no-renai-zunousen"
+      },
+      "jikan": null,
+      "anilist": null,
+      "anilibria": {
+        "id": 8604,
+        "alias": "kaguya-sama-wa-kokurasetai-tensai-tachi-no-renai-zunousen-2nd-season",
+        "name_main": "Кагуя хочет, чтобы ей признались: война любви и разума гениев 2",
+        "name_english": "Kaguya-sama wa Kokurasetai? Tensai-tachi no Renai Zunousen 2nd Season",
+        "episodes_total": 12,
+        "type": "ТВ"
+      }
+    }
+  },
+  {
+    "query_ru": "Волейбол!!",
+    "query_en": "Haikyuu!!",
+    "query_jp": "Haikyuu!!",
+    "bestMatch": {
+      "shikimori_id": 20583,
+      "shikimori_title": "Волейбол!!",
+      "mal_id": null,
+      "mal_title": null,
+      "anilist_id": null,
+      "anilibria_id": 1337,
+      "anilibria_alias": "haikyuu",
+      "anilibria_title": "Волейбол!!",
+      "note": "Доступен HLS на AniLibria"
+    },
+    "sources": {
+      "shikimori": {
+        "id": 20583,
+        "russian": "Волейбол!!",
+        "name": "Haikyuu!!",
+        "episodes": 25,
+        "kind": "tv",
+        "url": "https://shikimori.one/animes/z20583-haikyuu"
+      },
+      "jikan": null,
+      "anilist": null,
+      "anilibria": {
+        "id": 1337,
+        "alias": "haikyuu",
+        "name_main": "Волейбол!!",
+        "name_english": "Haikyuu!!",
+        "episodes_total": 25,
+        "type": "ТВ"
+      }
+    }
+  }
+]

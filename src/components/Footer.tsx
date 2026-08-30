@@ -141,7 +141,7 @@ export const Footer: React.FC<FooterProps> = ({
         </div>
 
         <div className="pt-8 border-t border-zinc-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-zinc-500 text-[11px]">
-          <p>© {new Date().getFullYear()} AniCrash. Создано для ценителей качественного аниме без рекламы.</p>
+          <p>© {new Date().getFullYear()} AniCrash v0.0.1v. Создано для ценителей качественного аниме без рекламы.</p>
           <p className="flex items-center gap-1">
             Плеер без рекламы • AniLibria HLS • Мгновенная перемотка
           </p>

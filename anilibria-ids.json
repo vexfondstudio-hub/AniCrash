@@ -1,0 +1,1088 @@
+[
+  {
+    "query_ru": "Гуррен-Лаганн, пронзающий небеса",
+    "query_en": "Tengen Toppa Gurren Lagann",
+    "candidates": [
+      {
+        "id": 9094,
+        "alias": "gensou-sangokushi-tengen-reishinki",
+        "name_main": "Фантазия о Троецарствии: Духовность небес",
+        "name_english": "Gensou Sangokushi: Tengen Reishinki",
+        "episodes_total": 12,
+        "type": "ТВ"
+      }
+    ]
+  },
+  {
+    "query_ru": "Гуррен-Лаганн, Фильм 2: Огненные лучи",
+    "query_en": "Gurren Lagann Movie 2: Lagann-hen",
+    "candidates": [
+      {
+        "id": 1274,
+        "alias": "garo-guren-no-tsuki",
+        "name_main": "Гаро: Багровая луна",
+        "name_english": "Garo: Guren no Tsuki",
+        "episodes_total": 23,
+        "type": "ТВ"
+      },
+      {
+        "id": 6688,
+        "alias": "lord-of-vermilion-guren-no-ou",
+        "name_main": "Владыка Вермилиона: Король алого лотоса",
+        "name_english": "Lord of Vermilion: Guren no Ou",
+        "episodes_total": 12,
+        "type": "ТВ"
+      }
+    ]
+  },
+  {
+    "query_ru": "Поднятие уровня в одиночку",
+    "query_en": "Solo Leveling",
+    "candidates": [
+      {
+        "id": 9600,
+        "alias": "ore-dake-level-up-na-ken",
+        "name_main": "Поднятие уровня в одиночку",
+        "name_english": "Ore dake Level Up na Ken",
+        "episodes_total": 12,
+        "type": "ТВ"
+      },
+      {
+        "id": 9839,
+        "alias": "ore-dake-level-up-na-ken-season-2-arise-from-the-shadow",
+        "name_main": "Поднятие уровня в одиночку 2: Восстаньте из тени",
+        "name_english": "Ore dake Level Up na Ken Season 2: Arise from the Shadow",
+        "episodes_total": 13,
+        "type": "ТВ"
+      }
+    ]
+  },
+  {
+    "query_ru": "Магическая битва",
+    "query_en": "Jujutsu Kaisen",
+    "candidates": [
+      {
+        "id": 8789,
+        "alias": "jujutsu-kaisen",
+        "name_main": "Магическая битва",
+        "name_english": "Jujutsu Kaisen",
+        "episodes_total": 24,
+        "type": "ТВ"
+      },
+      {
+        "id": 9313,
+        "alias": "jujutsu-kaisen-0-movie",
+        "name_main": "Магическая битва 0 Фильм",
+        "name_english": "Jujutsu Kaisen 0 Movie",
+        "episodes_total": 1,
+        "type": "Фильм"
+      },
+      {
+        "id": 9470,
+        "alias": "jujutsu-kaisen-season-2",
+        "name_main": "Магическая битва 2",
+        "name_english": "JUJUTSU KAISEN Season 2",
+        "episodes_total": 23,
+        "type": "ТВ"
+      }
+    ]
+  },
+  {
+    "query_ru": "Провожающая в последний путь Фрирен",
+    "query_en": "Frieren: Beyond Journey's End",
+    "candidates": [
+      {
+        "id": 9542,
+        "alias": "sousou-no-frieren",
+        "name_main": "Провожающая в последний путь Фрирен",
+        "name_english": "Sousou no Frieren",
+        "episodes_total": 28,
+        "type": "ТВ"
+      },
+      {
+        "id": 10085,
+        "alias": "sousou-no-frieren-2nd-season",
+        "name_main": "Провожающая в последний путь Фрирен 2",
+        "name_english": "Sousou no Frieren 2nd Season",
+        "episodes_total": 10,
+        "type": "ТВ"
+      }
+    ]
+  },
+  {
+    "query_ru": "Клинок, Рассекающий Демонов: Деревня Кузнецов",
+    "query_en": "Demon Slayer: Swordsmith Village",
+    "candidates": [
+      {
+        "id": 9406,
+        "alias": "kimetsu-no-yaiba-katanakaji-no-sato-hen",
+        "name_main": "Клинок, Рассекающий Демонов: Деревня Кузнецов",
+        "name_english": "Kimetsu no Yaiba: Katanakaji no Sato-hen",
+        "episodes_total": 11,
+        "type": "ТВ"
+      },
+      {
+        "id": 9660,
+        "alias": "kimetsu-no-yaiba-hashira-geiko-hen",
+        "name_main": "Клинок, Рассекающий Демонов: Тренировка Хашира",
+        "name_english": "Kimetsu no Yaiba: Hashira Geiko-hen",
+        "episodes_total": 8,
+        "type": "ТВ"
+      },
+      {
+        "id": 8325,
+        "alias": "kimetsu-no-yaiba",
+        "name_main": "Клинок, рассекающий демонов",
+        "name_english": "Kimetsu no Yaiba",
+        "episodes_total": 26,
+        "type": "ТВ"
+      }
+    ]
+  },
+  {
+    "query_ru": "Клинок, рассекающий демонов: Сезон 1",
+    "query_en": "Demon Slayer: Kimetsu no Yaiba",
+    "candidates": [
+      {
+        "id": 9406,
+        "alias": "kimetsu-no-yaiba-katanakaji-no-sato-hen",
+        "name_main": "Клинок, Рассекающий Демонов: Деревня Кузнецов",
+        "name_english": "Kimetsu no Yaiba: Katanakaji no Sato-hen",
+        "episodes_total": 11,
+        "type": "ТВ"
+      },
+      {
+        "id": 9660,
+        "alias": "kimetsu-no-yaiba-hashira-geiko-hen",
+        "name_main": "Клинок, Рассекающий Демонов: Тренировка Хашира",
+        "name_english": "Kimetsu no Yaiba: Hashira Geiko-hen",
+        "episodes_total": 8,
+        "type": "ТВ"
+      },
+      {
+        "id": 10144,
+        "alias": "kimetsu-no-yaiba-movie-1-mugenjou-hen-akaza-sairai",
+        "name_main": "Клинок, Рассекающий Демонов: Бесконечный Замок — Возвращение Аказы",
+        "name_english": "Kimetsu no Yaiba Movie 1: Mugenjou-hen - Akaza Sairai",
+        "episodes_total": 1,
+        "type": "Фильм"
+      }
+    ]
+  },
+  {
+    "query_ru": "Киберпанк: Бегущие по краю",
+    "query_en": "Cyberpunk: Edgerunners",
+    "candidates": [
+      {
+        "id": 9307,
+        "alias": "cyberpunk-edgerunners",
+        "name_main": "Киберпанк: Бегущие по краю",
+        "name_english": "Cyberpunk: Edgerunners",
+        "episodes_total": 10,
+        "type": "ТВ"
+      }
+    ]
+  },
+  {
+    "query_ru": "Семья шпиона",
+    "query_en": "SPY x FAMILY",
+    "candidates": [
+      {
+        "id": 9161,
+        "alias": "spy-x-family",
+        "name_main": "Семья шпиона",
+        "name_english": "SPY x FAMILY",
+        "episodes_total": 12,
+        "type": "ТВ"
+      },
+      {
+        "id": 9259,
+        "alias": "spy-x-family-2nd-cour",
+        "name_main": "Семья шпиона. Часть 2",
+        "name_english": "SPY x FAMILY 2nd Cour",
+        "episodes_total": 13,
+        "type": "ТВ"
+      },
+      {
+        "id": 9535,
+        "alias": "spy-x-family-season-2",
+        "name_main": "Семья шпиона 2",
+        "name_english": "Spy x Family Season 2",
+        "episodes_total": 12,
+        "type": "ТВ"
+      }
+    ]
+  },
+  {
+    "query_ru": "Звёздное дитя",
+    "query_en": "Oshi No Ko",
+    "candidates": [
+      {
+        "id": 9420,
+        "alias": "oshi-no-ko",
+        "name_main": "Звёздное дитя",
+        "name_english": "Oshi No Ko",
+        "episodes_total": 11,
+        "type": "ТВ"
+      },
+      {
+        "id": 9724,
+        "alias": "oshi-no-ko-2",
+        "name_main": "Звёздное дитя 2",
+        "name_english": "OSHI NO KO 2",
+        "episodes_total": 13,
+        "type": "ТВ"
+      },
+      {
+        "id": 10089,
+        "alias": "oshi-no-ko-3rd-season",
+        "name_main": "Звёздное дитя 3",
+        "name_english": "[Oshi no Ko] 3rd Season",
+        "episodes_total": 11,
+        "type": "ТВ"
+      }
+    ]
+  },
+  {
+    "query_ru": "Человек-бензопила",
+    "query_en": "Chainsaw Man",
+    "candidates": [
+      {
+        "id": 8791,
+        "alias": "kami-tachi-ni-hirowareta-otoko",
+        "name_main": "Человек, выбранный богами",
+        "name_english": "Kami-tachi ni Hirowareta Otoko",
+        "episodes_total": 12,
+        "type": "ТВ"
+      },
+      {
+        "id": 9328,
+        "alias": "kami-tachi-ni-hirowareta-otoko-2",
+        "name_main": "Человек, выбранный богами 2",
+        "name_english": "Kami-tachi ni Hirowareta Otoko 2",
+        "episodes_total": 12,
+        "type": "ТВ"
+      },
+      {
+        "id": 9800,
+        "alias": "sayounara-ryuusei-konnichiwa-jinsei",
+        "name_main": "Прощай, жизнь дракона. Здравствуй, жизнь человека",
+        "name_english": "Sayounara Ryuusei, Konnichiwa Jinsei",
+        "episodes_total": 12,
+        "type": "ТВ"
+      }
+    ]
+  },
+  {
+    "query_ru": "Кайдзю номер восемь",
+    "query_en": "Kaiju No. 8",
+    "candidates": [
+      {
+        "id": 9663,
+        "alias": "kaijuu-8-gou",
+        "name_main": "Кайдзю номер восемь",
+        "name_english": "Kaijuu 8-gou",
+        "episodes_total": 12,
+        "type": "ТВ"
+      },
+      {
+        "id": 9963,
+        "alias": "kaijuu-8-gou-2nd-season",
+        "name_main": "Кайдзю номер восемь 2",
+        "name_english": "Kaijuu 8-gou 2nd Season",
+        "episodes_total": 11,
+        "type": "ТВ"
+      }
+    ]
+  },
+  {
+    "query_ru": "Одинокий рокер!",
+    "query_en": "BOCCHI THE ROCK!",
+    "candidates": [
+      {
+        "id": 9293,
+        "alias": "bocchi-the-rock",
+        "name_main": "Одинокий рокер!",
+        "name_english": "BOCCHI THE ROCK!",
+        "episodes_total": 12,
+        "type": "ТВ"
+      },
+      {
+        "id": 9521,
+        "alias": "kagami-no-kojou",
+        "name_main": "Одинокий замок в Зазеркалье",
+        "name_english": "Kagami no Kojou",
+        "episodes_total": 1,
+        "type": "Фильм"
+      },
+      {
+        "id": 10214,
+        "alias": "kobayashi-san-chi-no-maid-dragon-samishigariya-no-ryuu",
+        "name_main": "Дракон-горничная госпожи Кобаяши: Одинокий дракон",
+        "name_english": "Kobayashi-san Chi no Maid Dragon: Samishigariya no Ryuu",
+        "episodes_total": 1,
+        "type": "Фильм"
+      }
+    ]
+  },
+  {
+    "query_ru": "Синяя тюрьма: Блю Лок",
+    "query_en": "Blue Lock",
+    "candidates": [
+      {
+        "id": 783,
+        "alias": "aoharu-x-kikanjuu-sinyaya-vesna-i-mekhanicheskaya-pushka",
+        "name_main": "Синяя весна и Механическая пушка",
+        "name_english": "Aoharu x Kikanjuu",
+        "episodes_total": 12,
+        "type": "ТВ"
+      },
+      {
+        "id": 8377,
+        "alias": "liz-to-aoi-tori",
+        "name_main": "Лиз и синяя птица",
+        "name_english": "Liz to Aoi Tori",
+        "episodes_total": null,
+        "type": "Фильм"
+      }
+    ]
+  },
+  {
+    "query_ru": "Атака титанов",
+    "query_en": "Attack on Titan",
+    "candidates": [
+      {
+        "id": 9329,
+        "alias": "ijiranaide-nagatoro-san-2nd-attack",
+        "name_main": "Не издевайся, Нагаторо: Вторая атака",
+        "name_english": "Ijiranaide, Nagatoro-san 2nd Attack",
+        "episodes_total": 12,
+        "type": "ТВ"
+      }
+    ]
+  },
+  {
+    "query_ru": "Тетрадь смерти",
+    "query_en": "Death Note",
+    "candidates": [
+      {
+        "id": 5158,
+        "alias": "death-note-netflix",
+        "name_main": "Тетрадь смерти",
+        "name_english": "Death Note",
+        "episodes_total": null,
+        "type": "Фильм"
+      },
+      {
+        "id": 4057,
+        "alias": "natsume-yuujinchou-roku",
+        "name_main": "Тетрадь дружбы Нацумэ 6",
+        "name_english": "Natsume Yuujinchou Roku",
+        "episodes_total": 11,
+        "type": "ТВ"
+      },
+      {
+        "id": 4064,
+        "alias": "hinako-note",
+        "name_main": "Тетрадь Хинако",
+        "name_english": "Hinako Note",
+        "episodes_total": 12,
+        "type": "ТВ"
+      }
+    ]
+  },
+  {
+    "query_ru": "Стальной алхимик: Братство",
+    "query_en": "Fullmetal Alchemist: Brotherhood",
+    "candidates": [
+      {
+        "id": 9528,
+        "alias": "fullmetal-alchemist-brotherhood",
+        "name_main": "Стальной алхимик: Братство",
+        "name_english": "Fullmetal Alchemist: Brotherhood",
+        "episodes_total": 64,
+        "type": "ТВ"
+      },
+      {
+        "id": 10172,
+        "alias": "steel-ball-run-jojo-no-kimyou-na-bouken",
+        "name_main": "Невероятные приключения ДжоДжо: Гонка «Стальной шар»",
+        "name_english": "Steel Ball Run: JoJo no Kimyou na Bouken",
+        "episodes_total": null,
+        "type": "ОNA"
+      },
+      {
+        "id": 2112,
+        "alias": "koutetsujou-no-kabaneri",
+        "name_main": "Кабанэри железной крепости",
+        "name_english": "Koutetsujou no Kabaneri",
+        "episodes_total": 12,
+        "type": "ТВ"
+      }
+    ]
+  },
+  {
+    "query_ru": "Хантер х Хантер",
+    "query_en": "Hunter x Hunter",
+    "candidates": [
+      {
+        "id": 10294,
+        "alias": "hunter-x-hunter",
+        "name_main": "Хантер х Хантер",
+        "name_english": "Hunter x Hunter",
+        "episodes_total": 148,
+        "type": "ТВ"
+      }
+    ]
+  },
+  {
+    "query_ru": "Наруто: Ураганные хроники",
+    "query_en": "Naruto: Shippuuden",
+    "candidates": [
+      {
+        "id": 413,
+        "alias": "naruto-shippuuden-naruto-uragannye-khroniki",
+        "name_main": "Наруто Ураганные хроники",
+        "name_english": "Naruto: Shippuuden",
+        "episodes_total": 450,
+        "type": "ТВ"
+      },
+      {
+        "id": 3996,
+        "alias": "boruto-naruto-next-generations",
+        "name_main": "Боруто: Новое поколение Наруто",
+        "name_english": "Boruto: Naruto Next Generations",
+        "episodes_total": null,
+        "type": "ТВ"
+      }
+    ]
+  },
+  {
+    "query_ru": "Ван-Пис",
+    "query_en": "One Piece",
+    "candidates": [
+      {
+        "id": 10290,
+        "alias": "one-piece",
+        "name_main": "Ван-Пис",
+        "name_english": "One Piece",
+        "episodes_total": null,
+        "type": "ТВ"
+      },
+      {
+        "id": 10291,
+        "alias": "one-piece-heroines",
+        "name_main": "Ван-Пис: Героини",
+        "name_english": "One Piece: Heroines",
+        "episodes_total": 1,
+        "type": "OVA"
+      }
+    ]
+  },
+  {
+    "query_ru": "Блич: Тысячелетняя кровавая война",
+    "query_en": "Bleach: Thousand-Year Blood War",
+    "candidates": [
+      {
+        "id": 8452,
+        "alias": "bleach",
+        "name_main": "Блич",
+        "name_english": "Bleach",
+        "episodes_total": 366,
+        "type": "ТВ"
+      }
+    ]
+  },
+  {
+    "query_ru": "Код Гиас: Восставший Лелуш",
+    "query_en": "Code Geass: Lelouch of the Rebellion",
+    "candidates": [
+      {
+        "id": 7019,
+        "alias": "kod-gias-vosstanie-lelusha-probuzhdenie-code-geass-hangyaku-no-lelouch-i-koudou",
+        "name_main": "Код Гиасс: Восстание Лелуша - Пробуждение",
+        "name_english": "Code Geass: Hangyaku no Lelouch I - Koudou",
+        "episodes_total": null,
+        "type": "Фильм"
+      },
+      {
+        "id": 9782,
+        "alias": "codegeass1",
+        "name_main": "Код Гиасс: Восстание Лелуша R1 — новый дубляж",
+        "name_english": "Code Geass: Hangyaku no Lelouch R1",
+        "episodes_total": 25,
+        "type": "ТВ"
+      },
+      {
+        "id": 406,
+        "alias": "codegeass-r1",
+        "name_main": "Код Гиасс: Восставший Лелуш R1",
+        "name_english": "Code Geass: Hangyaku no Lelouch R1",
+        "episodes_total": 25,
+        "type": "ТВ"
+      }
+    ]
+  },
+  {
+    "query_ru": "Врата Штейна",
+    "query_en": "Steins;Gate",
+    "candidates": [
+      {
+        "id": 8674,
+        "alias": "steinsgate",
+        "name_main": "Врата Штейна",
+        "name_english": "Steins;Gate",
+        "episodes_total": 25,
+        "type": "ТВ"
+      },
+      {
+        "id": 543,
+        "alias": "gekijouban-steins-gate-fuka-ryouiki-no-deja-vu-vrata-shteyna-film",
+        "name_main": "Врата Штейна: Зона загрузки дежавю",
+        "name_english": "Gekijouban Steins;Gate: Fuka Ryouiki no Deja vu",
+        "episodes_total": null,
+        "type": "Фильм"
+      },
+      {
+        "id": 6140,
+        "alias": "steins-gate-zero",
+        "name_main": "Врата Штейна 0",
+        "name_english": "Steins;Gate 0",
+        "episodes_total": 24,
+        "type": "ТВ"
+      }
+    ]
+  },
+  {
+    "query_ru": "Сага о Винланде",
+    "query_en": "Vinland Saga",
+    "candidates": [
+      {
+        "id": 8424,
+        "alias": "vinland-saga",
+        "name_main": "Сага о Винланде",
+        "name_english": "Vinland Saga",
+        "episodes_total": 24,
+        "type": "ТВ"
+      },
+      {
+        "id": 9327,
+        "alias": "vinland-saga-2",
+        "name_main": "Сага о Винланде 2",
+        "name_english": "Vinland Saga 2",
+        "episodes_total": 24,
+        "type": "ТВ"
+      },
+      {
+        "id": 8863,
+        "alias": "hortensia-saga",
+        "name_main": "Сага Гортэнзии",
+        "name_english": "Hortensia Saga",
+        "episodes_total": 12,
+        "type": "ТВ"
+      }
+    ]
+  },
+  {
+    "query_ru": "Евангелион нового поколения",
+    "query_en": "Neon Genesis Evangelion",
+    "candidates": [
+      {
+        "id": 5009,
+        "alias": "evangelion-2-22-you-can-not-advance",
+        "name_main": "Евангелион: 2.22 Ты (не) пройдёшь",
+        "name_english": "Evangelion: 2.22 You Can (Not) Advance",
+        "episodes_total": null,
+        "type": "Фильм"
+      },
+      {
+        "id": 9148,
+        "alias": "evangelion-3010-thrice-upon-a-time",
+        "name_main": "Евангелион 3.0+1.01: Как-то раз",
+        "name_english": "Evangelion 3.0+1.01: Thrice Upon a Time",
+        "episodes_total": 1,
+        "type": "Фильм"
+      }
+    ]
+  },
+  {
+    "query_ru": "Токийский гуль",
+    "query_en": "Tokyo Ghoul",
+    "candidates": [
+      {
+        "id": 432,
+        "alias": "tokyo-ghoul",
+        "name_main": "Токийский Гуль",
+        "name_english": "Tokyo Ghoul",
+        "episodes_total": 12,
+        "type": "ТВ"
+      },
+      {
+        "id": 433,
+        "alias": "tokyo-ghoul-a",
+        "name_main": "Токийский Гуль √A (ТВ-2)",
+        "name_english": "Tokyo Ghoul √A",
+        "episodes_total": 12,
+        "type": "ТВ"
+      },
+      {
+        "id": 1531,
+        "alias": "tokyo-ghoul-jack",
+        "name_main": "Токийский Гуль: Джек",
+        "name_english": "Tokyo Ghoul: Jack [OVA]",
+        "episodes_total": 2,
+        "type": "OVA"
+      }
+    ]
+  },
+  {
+    "query_ru": "Ванпанчмен",
+    "query_en": "One Punch Man",
+    "candidates": [
+      {
+        "id": 1210,
+        "alias": "one-punch-man",
+        "name_main": "Ванпанчмен",
+        "name_english": "One Punch Man",
+        "episodes_total": 12,
+        "type": "ТВ"
+      },
+      {
+        "id": 8335,
+        "alias": "one-punch-man-2nd-season",
+        "name_main": "Ванпанчмен 2",
+        "name_english": "One Punch Man 2nd Season",
+        "episodes_total": 12,
+        "type": "ТВ"
+      },
+      {
+        "id": 8350,
+        "alias": "one-punch-man-2nd-season-episode-zero",
+        "name_main": "Ванпанчмен 2. Нулевая серия",
+        "name_english": "One Punch Man 2nd Season. Episode Zero",
+        "episodes_total": 1,
+        "type": "ТВ"
+      }
+    ]
+  },
+  {
+    "query_ru": "Моб Психо 100",
+    "query_en": "Mob Psycho 100",
+    "candidates": [
+      {
+        "id": 2622,
+        "alias": "mob-psycho-100",
+        "name_main": "Моб Психо 100",
+        "name_english": "Mob Psycho 100",
+        "episodes_total": 12,
+        "type": "ТВ"
+      },
+      {
+        "id": 8033,
+        "alias": "mob-psycho-100-2",
+        "name_main": "Моб Психо 100 2",
+        "name_english": "Mob Psycho 100 2",
+        "episodes_total": 13,
+        "type": "ТВ"
+      },
+      {
+        "id": 9262,
+        "alias": "mob-psycho-100-iii",
+        "name_main": "Моб Психо 100 3",
+        "name_english": "Mob Psycho 100 III",
+        "episodes_total": 12,
+        "type": "ТВ"
+      }
+    ]
+  },
+  {
+    "query_ru": "Невероятные приключения ДжоДжо: Золотой ветер",
+    "query_en": "JoJo's Bizarre Adventure: Golden Wind",
+    "candidates": [
+      {
+        "id": 7438,
+        "alias": "jojo-no-kimyou-na-bouken-ougon-no-kaze",
+        "name_main": "Невероятные приключения ДжоДжо: Золотой ветер",
+        "name_english": "JoJo no Kimyou na Bouken: Ougon no Kaze",
+        "episodes_total": 39,
+        "type": "ТВ"
+      },
+      {
+        "id": 8586,
+        "alias": "jojo-no-kimyou-na-bouken-tv",
+        "name_main": "Невероятные приключения ДжоДжо ",
+        "name_english": "JoJo no Kimyou na Bouken [TV-1]",
+        "episodes_total": 26,
+        "type": "ТВ"
+      },
+      {
+        "id": 8682,
+        "alias": "jojo-no-kimyou-na-bouken-part-3-stardust-crusaders",
+        "name_main": "Невероятные приключения ДжоДжо: Рыцари звёздной пыли [ТВ-2]",
+        "name_english": "JoJo no Kimyou na Bouken Part 3: Stardust Crusaders [TV-2]",
+        "episodes_total": 24,
+        "type": "ТВ"
+      }
+    ]
+  },
+  {
+    "query_ru": "О моём перерождении в слизь",
+    "query_en": "That Time I Got Reincarnated as a Slime",
+    "candidates": [
+      {
+        "id": 8950,
+        "alias": "tensura-nikki-tensei-shitara-slime-datta-ken",
+        "name_main": "О моём перерождении в слизь. Дневник слизи-попаданца",
+        "name_english": "Tensura Nikki: Tensei Shitara Slime Datta Ken",
+        "episodes_total": 12,
+        "type": "ТВ"
+      },
+      {
+        "id": 9276,
+        "alias": "tensei-shitara-ken-deshita",
+        "name_main": "О моём перерождении в меч",
+        "name_english": "Tensei Shitara Ken Deshita",
+        "episodes_total": 12,
+        "type": "ТВ"
+      },
+      {
+        "id": 10297,
+        "alias": "tensei-shitara-ken-deshita-2nd-season",
+        "name_main": "О моём перерождении в меч 2",
+        "name_english": "Tensei Shitara Ken Deshita 2nd Season",
+        "episodes_total": null,
+        "type": "ТВ"
+      }
+    ]
+  },
+  {
+    "query_ru": "Реинкарнация безработного",
+    "query_en": "Mushoku Tensei: Jobless Reincarnation",
+    "candidates": [
+      {
+        "id": 10095,
+        "alias": "kizoku-tensei-megumareta-umare-kara-saikyou-no-chikara-wo-eru",
+        "name_main": "Реинкарнация аристократа: Благословенный с рождения величайшей силой",
+        "name_english": "Kizoku Tensei: Megumareta Umare kara Saikyou no Chikara wo Eru",
+        "episodes_total": 12,
+        "type": "ТВ"
+      },
+      {
+        "id": 8614,
+        "alias": "otome-game-no-hametsu-flag-shika-nai-akuyaku-reijou-ni-tensei-shite-shimatta",
+        "name_main": "Моя реинкарнация в отомэ-игру в качестве главной злодейки",
+        "name_english": "Otome Game no Hametsu Flag shika Nai Akuyaku Reijou ni Tensei shite Shimatta…",
+        "episodes_total": 12,
+        "type": "ТВ"
+      },
+      {
+        "id": 9007,
+        "alias": "otome-game-no-hametsu-flag-shika-nai-akuyaku-reijou-ni-tensei-shite-shimatta-x",
+        "name_main": "Моя реинкарнация в отомэ-игре в качестве главной злодейки X",
+        "name_english": "Otome Game no Hametsu Flag shika Nai Akuyaku Reijou ni Tensei shite Shimatta X",
+        "episodes_total": 12,
+        "type": "ТВ"
+      }
+    ]
+  },
+  {
+    "query_ru": "Re:Zero. Жизнь с нуля в другом мире",
+    "query_en": "Re:Zero",
+    "candidates": []
+  },
+  {
+    "query_ru": "Мастера Меча Онлайн",
+    "query_en": "Sword Art Online",
+    "candidates": [
+      {
+        "id": 4857,
+        "alias": "sword-art-online-i",
+        "name_main": "Мастера меча онлайн",
+        "name_english": "Sword Art Online",
+        "episodes_total": 25,
+        "type": "ТВ"
+      },
+      {
+        "id": 1807,
+        "alias": "sword-art-online-extra-edition",
+        "name_main": "Мастера меча онлайн: Дополнительное издание",
+        "name_english": "Sword Art Online: Extra Edition",
+        "episodes_total": null,
+        "type": "ТВ"
+      },
+      {
+        "id": 5162,
+        "alias": "sword-art-online-movie-ordinal-scale",
+        "name_main": "Мастера Меча Онлайн: Порядковый ранг",
+        "name_english": "Sword Art Online Movie: Ordinal Scale",
+        "episodes_total": null,
+        "type": "Фильм"
+      }
+    ]
+  },
+  {
+    "query_ru": "Чёрный клевер",
+    "query_en": "Black Clover",
+    "candidates": [
+      {
+        "id": 5255,
+        "alias": "black-clover",
+        "name_main": "Чёрный Клевер",
+        "name_english": "Black Clover",
+        "episodes_total": 170,
+        "type": "ТВ"
+      },
+      {
+        "id": 5152,
+        "alias": "black-clover-special",
+        "name_main": "Чёрный Клевер (Спэшл)",
+        "name_english": "Black Clover Special",
+        "episodes_total": null,
+        "type": null
+      },
+      {
+        "id": 9518,
+        "alias": "black-clover-mahou-mikado-no-ken",
+        "name_main": "Чёрный клевер: Меч короля магов",
+        "name_english": "Black Clover: Mahou Mikado no Ken",
+        "episodes_total": 1,
+        "type": "Фильм"
+      }
+    ]
+  },
+  {
+    "query_ru": "Пламенная бригада пожарных",
+    "query_en": "Fire Force",
+    "candidates": []
+  },
+  {
+    "query_ru": "Доктор Стоун",
+    "query_en": "Dr. STONE",
+    "candidates": [
+      {
+        "id": 8398,
+        "alias": "dr-stone",
+        "name_main": "Доктор Стоун",
+        "name_english": "Dr. Stone",
+        "episodes_total": 24,
+        "type": "ТВ"
+      },
+      {
+        "id": 8856,
+        "alias": "dr-stone-stone-wars",
+        "name_main": "Доктор Стоун: Каменные Войны",
+        "name_english": "Dr. Stone: Stone Wars",
+        "episodes_total": 11,
+        "type": "ТВ"
+      },
+      {
+        "id": 9407,
+        "alias": "dr-stone-3rd-season",
+        "name_main": "Доктор Стоун: Новый мир",
+        "name_english": "Dr. Stone: New World",
+        "episodes_total": 22,
+        "type": "ТВ"
+      }
+    ]
+  },
+  {
+    "query_ru": "Бездомный бог",
+    "query_en": "Noragami",
+    "candidates": [
+      {
+        "id": 485,
+        "alias": "noragami-bezdomnyy-bog",
+        "name_main": "Бездомный бог",
+        "name_english": "Noragami",
+        "episodes_total": 12,
+        "type": "ТВ"
+      },
+      {
+        "id": 834,
+        "alias": "noragami-aragoto",
+        "name_main": "Бездомный бог: Арагото",
+        "name_english": "Noragami Aragoto",
+        "episodes_total": 13,
+        "type": "ТВ"
+      },
+      {
+        "id": 882,
+        "alias": "noragami-ova-bezdomnyy-bog-ova",
+        "name_main": "Бездомный бог ОВА",
+        "name_english": "Noragami OVA",
+        "episodes_total": 4,
+        "type": "OVA"
+      }
+    ]
+  },
+  {
+    "query_ru": "Дороро",
+    "query_en": "Dororo",
+    "candidates": [
+      {
+        "id": 8034,
+        "alias": "dororo",
+        "name_main": "Дороро",
+        "name_english": "Dororo ",
+        "episodes_total": 24,
+        "type": "ТВ"
+      }
+    ]
+  },
+  {
+    "query_ru": "Созданный в Бездне",
+    "query_en": "Made in Abyss",
+    "candidates": [
+      {
+        "id": 4644,
+        "alias": "made-in-abyss",
+        "name_main": "Созданный в Бездне",
+        "name_english": "Made in Abyss",
+        "episodes_total": 13,
+        "type": "ТВ"
+      },
+      {
+        "id": 8926,
+        "alias": "made-in-abyss-movie-3-fukaki-tamashii-no-reimei",
+        "name_main": "Созданный в Бездне: Рассвет глубокой души",
+        "name_english": "Made in Abyss: Fukaki Tamashii no Reimei",
+        "episodes_total": null,
+        "type": "Фильм"
+      },
+      {
+        "id": 9215,
+        "alias": "made-in-abyss-retsujitsu-no-ougonkyou",
+        "name_main": "Созданный в Бездне: Солнце, вспыхнувшее в Золотом городе",
+        "name_english": "Made in Abyss: Retsujitsu no Ougonkyou",
+        "episodes_total": 12,
+        "type": "ТВ"
+      }
+    ]
+  },
+  {
+    "query_ru": "Моя геройская академия",
+    "query_en": "My Hero Academia",
+    "candidates": [
+      {
+        "id": 2114,
+        "alias": "boku-no-hero-academia",
+        "name_main": "Моя геройская академия",
+        "name_english": "Boku no Hero Academia",
+        "episodes_total": 13,
+        "type": "ТВ"
+      },
+      {
+        "id": 3950,
+        "alias": "boku-no-hero-academia-2",
+        "name_main": "Моя геройская академия 2",
+        "name_english": "Boku no Hero Academia 2nd Season",
+        "episodes_total": 25,
+        "type": "ТВ"
+      },
+      {
+        "id": 6191,
+        "alias": "boku-no-hero-academia-3",
+        "name_main": "Моя геройская академия 3",
+        "name_english": "Boku no Hero Academia  3",
+        "episodes_total": 25,
+        "type": "ТВ"
+      }
+    ]
+  },
+  {
+    "query_ru": "Твоё имя",
+    "query_en": "Kimi no Na wa",
+    "candidates": [
+      {
+        "id": 6826,
+        "alias": "kimi-no-na-wa-tvoye-imya",
+        "name_main": "Твоё имя",
+        "name_english": "Kimi no Na wa",
+        "episodes_total": null,
+        "type": "Фильм"
+      }
+    ]
+  },
+  {
+    "query_ru": "Форма голоса",
+    "query_en": "A Silent Voice",
+    "candidates": [
+      {
+        "id": 9137,
+        "alias": "akebi-chan-no-sailor-fuku",
+        "name_main": "Школьная форма Акэби",
+        "name_english": "Akebi-chan no Sailor-fuku",
+        "episodes_total": 12,
+        "type": "ТВ"
+      },
+      {
+        "id": 9894,
+        "alias": "watashi-no-shiawase-na-kekkon-watashi-no-shiawase-na-katachi",
+        "name_main": "Мой счастливый брак: Форма моего счастья",
+        "name_english": "Watashi no Shiawase na Kekkon: Watashi no Shiawase na Katachi",
+        "episodes_total": 1,
+        "type": "OVA"
+      }
+    ]
+  },
+  {
+    "query_ru": "Госпожа Кагуя: В любви как на войне",
+    "query_en": "Kaguya-sama: Love is War",
+    "candidates": [
+      {
+        "id": 8604,
+        "alias": "kaguya-sama-wa-kokurasetai-tensai-tachi-no-renai-zunousen-2nd-season",
+        "name_main": "Кагуя хочет, чтобы ей признались: война любви и разума гениев 2",
+        "name_english": "Kaguya-sama wa Kokurasetai? Tensai-tachi no Renai Zunousen 2nd Season",
+        "episodes_total": 12,
+        "type": "ТВ"
+      },
+      {
+        "id": 8448,
+        "alias": "sarusuberi-miss-hokusai",
+        "name_main": "Госпожа Хокусай",
+        "name_english": "Sarusuberi: Miss Hokusai",
+        "episodes_total": null,
+        "type": "Фильм"
+      },
+      {
+        "id": 7446,
+        "alias": "beelzebub-jou-no-okinimesu-mama",
+        "name_main": "Как госпожа Вельзевул пожелает",
+        "name_english": "Beelzebub-jou no Okinimesu mama",
+        "episodes_total": 12,
+        "type": "ТВ"
+      }
+    ]
+  },
+  {
+    "query_ru": "Волейбол!!",
+    "query_en": "Haikyuu!!",
+    "candidates": [
+      {
+        "id": 1337,
+        "alias": "haikyuu",
+        "name_main": "Волейбол!!",
+        "name_english": "Haikyuu!!",
+        "episodes_total": 25,
+        "type": "ТВ"
+      },
+      {
+        "id": 1217,
+        "alias": "haikyuu-second-season",
+        "name_main": "Волейбол!! 2",
+        "name_english": "Haikyuu!! Second Season",
+        "episodes_total": 25,
+        "type": "ТВ"
+      },
+      {
+        "id": 3024,
+        "alias": "haikyuu-special",
+        "name_main": "Волейбол!! — Спешл",
+        "name_english": "Haikyuu!!: Special",
+        "episodes_total": 2,
+        "type": "ТВ"
+      }
+    ]
+  }
+]

@@ -163,8 +163,22 @@ function isMatchingReleaseTitle(targetAnime: Anime, parsedRelease: Anime): boole
   if (fullTarget.includes('бензопила') || fullTarget.includes('chainsaw')) {
     return fullRelease.includes('бензопила') || fullRelease.includes('chainsaw');
   }
+  if (fullTarget.includes('тетрадь смерти') || fullTarget.includes('death note')) {
+    if (fullRelease.includes('netflix') || fullRelease.includes('нацумэ') || fullRelease.includes('natsume') || fullRelease.includes('хинако')) {
+      return false;
+    }
+    return fullRelease.includes('тетрадь смерти') || fullRelease.includes('death note');
+  }
+  if (fullTarget.includes('форма голоса') || fullTarget.includes('silent voice') || fullTarget.includes('koe no katachi')) {
+    if (fullRelease.includes('акэби') || fullRelease.includes('akebi')) return false;
+    return fullRelease.includes('форма голоса') || fullRelease.includes('silent voice') || fullRelease.includes('koe no katachi');
+  }
+  if (fullTarget.includes('гуррен') || fullTarget.includes('gurren')) {
+    if (fullRelease.includes('троецарств') || fullRelease.includes('sangokushi')) return false;
+    return fullRelease.includes('гуррен') || fullRelease.includes('gurren');
+  }
   if (fullTarget.includes('титан') || fullTarget.includes('titan') || fullTarget.includes('kyojin')) {
-    if (fullRelease.includes('chuugakkou') || fullRelease.includes('средняя школа') || fullRelease.includes('junior high')) {
+    if (fullRelease.includes('нагаторо') || fullRelease.includes('nagatoro') || fullRelease.includes('chuugakkou') || fullRelease.includes('средняя школа') || fullRelease.includes('junior high') || fullRelease.includes('bahamut')) {
       return false;
     }
     return fullRelease.includes('титан') || fullRelease.includes('titan') || (fullRelease.includes('shingeki') && !fullRelease.includes('bahamut'));
@@ -308,8 +322,11 @@ export async function ensureAnimeEpisodes(anime: Anime): Promise<Anime> {
   const targetCount = Math.max(anime.episodesCount || 1, fetchedEpisodes?.length || 1, anime.episodes?.length || 1);
   const baseEpisodes = fetchedEpisodes && fetchedEpisodes.length > 0 ? fetchedEpisodes : (anime.episodes || []);
 
-  // Find any valid working video URL as fallback
-  const fallbackUrl = baseEpisodes.find((e) => e.videoUrl)?.videoUrl || anime.episodes?.find((e) => e.videoUrl)?.videoUrl || 'https://cache.libria.fun/videos/media/ts/2001/1/720/19f3967208f4be19910f319fdcf1a2f0.m3u8';
+  // Find any valid working video URL if exists
+  const fallbackUrl =
+    baseEpisodes.find((e) => e.videoUrl)?.videoUrl ||
+    anime.episodes?.find((e) => e.videoUrl)?.videoUrl ||
+    '';
 
   // Build complete list of episodes from 1 to targetCount
   const completeEpisodes: Episode[] = [];
@@ -319,12 +336,14 @@ export async function ensureAnimeEpisodes(anime: Anime): Promise<Anime> {
     if (existing && (existing.videoUrl || existing.hls_720 || existing.hls_1080)) {
       completeEpisodes.push({
         ...existing,
-        videoUrl: existing.videoUrl || existing.hls_720 || existing.hls_1080 || fallbackUrl,
+        videoUrl: existing.videoUrl || existing.hls_720 || existing.hls_1080 || '',
         voiceoverUrls: existing.voiceoverUrls && Object.keys(existing.voiceoverUrls).length > 0 ? existing.voiceoverUrls : {
-          "Reanimedia (Легендарная)": existing.videoUrl || fallbackUrl,
-          "AniLibria": existing.videoUrl || fallbackUrl,
-          "Studio Band": existing.videoUrl || fallbackUrl,
-          "DreamCast": existing.videoUrl || fallbackUrl
+          "Студийная Банда (Studio Band)": existing.videoUrl || '',
+          "AniDUB": existing.videoUrl || '',
+          "Reanimedia (Дубляж)": existing.videoUrl || '',
+          "DreamCast": existing.videoUrl || '',
+          "SHIZA Project": existing.videoUrl || '',
+          "AniLibria": existing.videoUrl || '',
         }
       });
     } else {
@@ -335,10 +354,12 @@ export async function ensureAnimeEpisodes(anime: Anime): Promise<Anime> {
         duration: existing?.duration || 1440,
         videoUrl: fallbackUrl,
         voiceoverUrls: {
-          "Reanimedia (Легендарная)": fallbackUrl,
+          "Студийная Банда (Studio Band)": fallbackUrl,
+          "AniDUB": fallbackUrl,
+          "Reanimedia (Дубляж)": fallbackUrl,
+          "DreamCast": fallbackUrl,
+          "SHIZA Project": fallbackUrl,
           "AniLibria": fallbackUrl,
-          "Studio Band": fallbackUrl,
-          "DreamCast": fallbackUrl
         },
         thumbnail: existing?.thumbnail || anime.poster,
         introStart: existing?.introStart,
@@ -406,6 +427,22 @@ export async function fetchJikanAnimeData(title: string): Promise<{ mal_id: numb
   return null;
 }
 
+export async function fetchAiAnimeData(query: string): Promise<{ shikimoriId: number; russian: string; english: string } | null> {
+  try {
+    const res = await fetch('/api/ai-search', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query })
+    });
+    if (res.ok) {
+      return await res.json();
+    }
+  } catch (e) {
+    console.warn('AI search failed:', e);
+  }
+  return null;
+}
+
 export async function searchMultiApiAnime(query: string): Promise<Anime[]> {
   if (!query.trim()) return [];
 
@@ -420,6 +457,50 @@ export async function searchMultiApiAnime(query: string): Promise<Anime[]> {
     for (const item of aniLibriaRes.value) {
       if (!combined.some((a) => a.id === item.id || a.title.toLowerCase() === item.title.toLowerCase())) {
         combined.push(item);
+      }
+    }
+  }
+
+  // If we couldn't find anything via standard search, use AI to find the right ID
+  if (combined.length === 0) {
+    const aiResult = await fetchAiAnimeData(query);
+    if (aiResult && aiResult.shikimoriId) {
+      // Try to fetch specific anime by ID from Shikimori to get standard structure
+      try {
+        const shikiRes = await fetch(`https://shikimori.one/api/animes/${aiResult.shikimoriId}`);
+        if (shikiRes.ok) {
+          const sData = await shikiRes.json();
+          combined.push({
+            id: String(sData.id),
+            title: sData.russian || sData.name,
+            englishTitle: sData.name,
+            originalTitle: sData.name,
+            slug: String(sData.id),
+            description: sData.description || 'Найдено с помощью нейросети.',
+            poster: `https://shikimori.one${sData.image?.original}`,
+            banner: `https://shikimori.one${sData.image?.original}`,
+            rating: parseFloat(sData.score) || 0,
+            votesCount: 0,
+            year: new Date(sData.aired_on).getFullYear() || new Date().getFullYear(),
+            season: 'Неизвестно',
+            type: sData.kind || 'ТВ',
+            status: sData.status === 'released' ? 'Завершён' : 'Онгоинг',
+            genres: (sData.genres || []).map((g: any) => g.russian || g.name),
+            episodesCount: sData.episodes || 12,
+            currentEpisodes: sData.episodes_aired || sData.episodes || 0,
+            durationPerEp: `${sData.duration || 24} мин.`,
+            studio: 'AI Match',
+            ageRating: '16+',
+            voiceovers: ['AniLibria', 'Kodik', 'Студийная Банда'],
+            episodes: [],
+            characters: [],
+            tags: ['AI Match', 'HD 1080p'],
+            featured: false,
+            trendingRank: 0
+          });
+        }
+      } catch (e) {
+        console.warn('AI fallback Shikimori fetch failed', e);
       }
     }
   }

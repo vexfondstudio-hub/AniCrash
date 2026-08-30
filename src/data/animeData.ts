@@ -30,15 +30,15 @@ export const GENRES_LIST = [
 ];
 
 export const VOICE_STUDIOS = [
-  "AniLibria (Официальная)",
-  "Reanimedia (Легендарная)",
-  "Deep",
+  "Студийная Банда (Studio Band)",
+  "AniDUB (Дубляж / Закадр)",
+  "Reanimedia (Дубляж)",
   "DreamCast",
-  "AniDUB",
+  "SHIZA Project",
+  "AniLibria",
   "AniStar",
-  "Studio Band",
-  "Оригинал (JP)",
-  "Субтитры"
+  "Persona99",
+  "Оригинал (JP) + Субтитры"
 ];
 
 const BASE_ANIME_DATABASE: Anime[] = [
@@ -3222,7 +3222,7 @@ const BASE_ANIME_DATABASE: Anime[] = [
     "trendingRank": 13
   },
   {
-    "id": "1",
+    "id": "44511",
     "title": "Человек-бензопила",
     "englishTitle": "Chainsaw Man",
     "originalTitle": "Chainsaw Man",
@@ -3280,7 +3280,7 @@ const BASE_ANIME_DATABASE: Anime[] = [
     "trendingRank": 14
   },
   {
-    "id": "4",
+    "id": "34572",
     "title": "Чёрный клевер",
     "englishTitle": "Black Clover",
     "originalTitle": "Black Clover",
@@ -3336,7 +3336,7 @@ const BASE_ANIME_DATABASE: Anime[] = [
     "trendingRank": 17
   },
   {
-    "id": "5",
+    "id": "38671",
     "title": "Пламенная бригада пожарных",
     "englishTitle": "Fire Force",
     "originalTitle": "Enen no Shouboutai",
@@ -3390,7 +3390,7 @@ const BASE_ANIME_DATABASE: Anime[] = [
     "trendingRank": 18
   },
   {
-    "id": "6",
+    "id": "37430",
     "title": "О моём перерождении в слизь",
     "englishTitle": "That Time I Got Reincarnated as a Slime",
     "originalTitle": "Tensei shitara Slime Datta Ken",

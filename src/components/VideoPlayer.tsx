@@ -21,9 +21,14 @@ import {
   Info,
   Loader2,
   Radio,
+  Zap,
+  X,
 } from 'lucide-react';
 import { Anime, Episode, WatchProgress } from '../types';
 import { ensureAnimeEpisodes } from '../services/animeApi';
+import { getShikimoriId } from '../data/animeIds';
+import { getKodikPlayerEmbedUrl, KODIK_DOMAINS } from '../services/kodikApi';
+import { KinoboxPlayer } from './KinoboxPlayer';
 
 interface VideoPlayerProps {
   anime: Anime;
@@ -55,9 +60,9 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [playbackSpeed, setPlaybackSpeed] = useState<number>(1);
   const [selectedQuality, setSelectedQuality] = useState<string>('720p HD');
-  const [selectedVoiceover, setSelectedVoiceover] = useState<string>(anime.voiceovers[0] || 'AniLibria');
+  const [selectedVoiceover, setSelectedVoiceover] = useState<string>(anime.voiceovers[0] || 'Студийная Банда');
   const [playerMode, setPlayerMode] = useState<'hls' | 'mirror'>('mirror');
-  const [activeMirrorDomain, setActiveMirrorDomain] = useState<string>('kodik.biz');
+  const [activeMirrorDomain, setActiveMirrorDomain] = useState<string>('kinobox');
   const [streamError, setStreamError] = useState<boolean>(false);
   const [showControls, setShowControls] = useState<boolean>(true);
   const [showSettingsMenu, setShowSettingsMenu] = useState<boolean>(false);
@@ -398,8 +403,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
 
     const streamUrl = getActiveStreamUrl();
     if (!streamUrl) {
-      setPlayerMode('mirror');
-      setStreamError(false);
+      setStreamError(true);
       setIsLoading(false);
       return;
     }
@@ -446,11 +450,19 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
         video.play().then(() => setIsPlaying(true)).catch(() => setIsPlaying(false));
       });
 
+      let retryCount = 0;
       hls.on(Hls.Events.ERROR, (_event, data) => {
         if (data.fatal) {
           switch (data.type) {
             case Hls.ErrorTypes.NETWORK_ERROR:
-              hls.startLoad();
+              if (retryCount < 2) {
+                retryCount++;
+                hls.startLoad();
+              } else {
+                if (loadTimeout) clearTimeout(loadTimeout);
+                setIsLoading(false);
+                setStreamError(true);
+              }
               break;
             case Hls.ErrorTypes.MEDIA_ERROR:
               hls.recoverMediaError();
@@ -680,76 +692,61 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
       {/* Video / Mirror Player Rendering */}
       {playerMode === 'mirror' ? (
         <div className="w-full h-full relative bg-zinc-950">
-          <iframe
-            id="anicrash-mirror-iframe"
-            src={activeMirrorDomain.includes('vidsrc') 
-              ? `https://vidsrc.me/embed/anime/shikimori/${anime.id}/${currentEpisode.number}`
-              : `https://${activeMirrorDomain}/find-player?shikimoriID=${anime.id}&title=${encodeURIComponent(anime.title)}&episode=${currentEpisode.number}`
-            }
-            className="w-full h-full border-0 relative z-10"
-            allow="autoplay; fullscreen; picture-in-picture"
-            allowFullScreen
-          />
+          {activeMirrorDomain === 'kinobox' ? (
+            <KinoboxPlayer
+              anime={anime}
+              currentEpisode={currentEpisode}
+              onEpisodeChange={(ep) => {
+                const idx = allEpisodes.findIndex((e) => e.number === ep.number);
+                if (idx !== -1) {
+                  setCurrentEpisodeIndex(idx);
+                }
+              }}
+            />
+          ) : (
+            <iframe
+              id="anicrash-mirror-iframe"
+              key={`${activeMirrorDomain}-${anime.id}-${currentEpisode.number}`}
+              src={getKodikPlayerEmbedUrl({
+                domain: activeMirrorDomain,
+                shikimoriId: getShikimoriId(anime.title, anime.englishTitle, anime.poster) || (anime.id && /^\d+$/.test(anime.id) ? anime.id : undefined),
+                title: anime.title,
+                englishTitle: anime.englishTitle,
+                poster: anime.poster,
+                episode: currentEpisode.number,
+              })}
+              className="w-full h-full border-0 relative z-10"
+              allow="autoplay; fullscreen; picture-in-picture; encrypted-media; clipboard-write"
+              allowFullScreen
+            />
+          )}
 
           {/* Mouse interceptor overlay for mirror mode when controls are hidden */}
           {!showControls && (
             <div 
-              className="absolute inset-0 z-30" 
+              className="absolute inset-0 z-30 pointer-events-none" 
               onMouseMove={handleUserActivity}
               onClick={handleUserActivity}
             />
           )}
 
-          {/* Sandbox Warning Overlay */}
-          {window !== window.parent && (
-            <div className="absolute inset-0 z-20 flex flex-col items-center justify-center p-6 text-center bg-zinc-950/80 backdrop-blur-sm text-white space-y-4">
-              <div className="w-16 h-16 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-500 mb-2">
-                <Tv className="w-8 h-8" />
-              </div>
-              <div className="max-w-md space-y-2">
-                <h3 className="text-lg font-bold">Ограничения предпросмотра</h3>
-                <p className="text-sm text-zinc-300">
-                  Вы находитесь в режиме песочницы (sandbox). Сторонние плееры блокируют воспроизведение внутри таких окон.
-                </p>
-                <p className="text-xs text-zinc-400 font-medium">
-                  Пожалуйста, откройте приложение в новой вкладке (кнопка ↗ в верхнем меню).
-                </p>
-              </div>
-              <div className="pt-4">
-                <a 
-                  href={window.location.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-6 py-3 bg-amber-600 hover:bg-amber-500 text-white text-sm font-bold rounded-xl transition-colors cursor-pointer inline-flex items-center gap-2"
-                >
-                  Открыть в новой вкладке ↗
-                </a>
-              </div>
-            </div>
-          )}
-
           {/* Mirror Domain Switcher (visible on hover/activity) */}
-          <div className={`absolute top-20 left-0 right-0 z-40 flex justify-center transition-opacity duration-300 pointer-events-none ${showControls ? 'opacity-100' : 'opacity-0'}`}>
-            <div className="flex flex-wrap justify-center items-center gap-2 p-2 bg-zinc-900/90 backdrop-blur-md border border-zinc-700/50 rounded-2xl pointer-events-auto shadow-2xl">
-              <span className="text-xs text-zinc-400 font-medium px-2">Если не работает, смените сервер:</span>
-              {[
-                { id: 'kodik.cc', name: 'Kodik CC' },
-                { id: 'kodik.biz', name: 'Kodik Biz' },
-                { id: 'kodik.info', name: 'Kodik Info' },
-                { id: 'aniqit.com', name: 'Aniqit CDN' },
-                { id: 'vidsrc.me', name: 'VidSrc' }
-              ].map(domain => (
+          <div className={`absolute top-18 sm:top-20 left-0 right-0 z-40 flex flex-col items-center gap-2 px-3 transition-opacity duration-300 pointer-events-none ${showControls ? 'opacity-100' : 'opacity-0'}`}>
+            <div className="flex flex-wrap justify-center items-center gap-2 p-2 bg-zinc-900/95 backdrop-blur-md border border-zinc-700/50 rounded-2xl pointer-events-auto shadow-2xl">
+              <span className="text-xs text-zinc-400 font-medium px-1 hidden md:inline">Сервер:</span>
+              {KODIK_DOMAINS.map(domain => (
                 <button
                   key={domain.id}
                   onClick={() => {
                     setActiveMirrorDomain(domain.id);
-                    showFeedback(`Выбран сервер ${domain.name}`);
+                    showFeedback(`Выбран источник: ${domain.name}`);
                   }}
-                  className={`px-3 py-1.5 text-xs font-semibold rounded-xl transition-all cursor-pointer ${
+                  className={`px-2.5 sm:px-3 py-1.5 text-xs font-semibold rounded-xl transition-all cursor-pointer ${
                     activeMirrorDomain === domain.id 
-                      ? 'bg-rose-600 text-white shadow-lg shadow-rose-600/20' 
+                      ? 'bg-rose-600 text-white shadow-lg shadow-rose-600/30' 
                       : 'bg-zinc-800 text-zinc-300 hover:bg-zinc-700 hover:text-white'
                   }`}
+                  title={domain.desc}
                 >
                   {domain.name}
                 </button>
@@ -920,23 +917,44 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
               </button>
             )}
 
-            <button
-              id="player-mode-toggle-btn"
-              onClick={() => {
-                const newMode = playerMode === 'hls' ? 'mirror' : 'hls';
-                setPlayerMode(newMode);
-                showFeedback(newMode === 'mirror' ? 'Включен резервный плеер' : 'Включен основной HLS');
-              }}
-              className={`px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl backdrop-blur border transition-all text-xs md:text-sm font-medium flex items-center gap-1.5 cursor-pointer ${
-                playerMode === 'mirror'
-                  ? 'bg-indigo-600/30 text-indigo-300 border-indigo-500/40'
-                  : 'bg-zinc-900/80 hover:bg-zinc-800 text-zinc-200 border-white/10'
-              }`}
-              title="Переключить плеер (Основной / Резервный)"
-            >
-              <Tv className="w-4 h-4 text-indigo-400" />
-              <span className="hidden sm:inline">{playerMode === 'mirror' ? 'Зеркало' : 'HLS Сервер'}</span>
-            </button>
+            {/* Player Mode Switcher Segmented Control */}
+            <div className="flex items-center p-0.5 sm:p-1 rounded-xl bg-zinc-900/90 backdrop-blur border border-white/10 shadow-lg">
+              <button
+                id="player-mode-mirror-tab-btn"
+                onClick={() => {
+                  setPlayerMode('mirror');
+                  setStreamError(false);
+                  showFeedback('Включен Kodik HD (Все студии озвучки)');
+                }}
+                className={`px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer ${
+                  playerMode === 'mirror'
+                    ? 'bg-rose-600 text-white shadow-md shadow-rose-600/30'
+                    : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/50'
+                }`}
+                title="Kodik HD: все студии озвучки, субтитры и качество 1080p"
+              >
+                <Tv className="w-3.5 h-3.5" />
+                <span>Kodik HD</span>
+              </button>
+
+              <button
+                id="player-mode-hls-tab-btn"
+                onClick={() => {
+                  setPlayerMode('hls');
+                  setStreamError(false);
+                  showFeedback('Включен Прямой HLS поток');
+                }}
+                className={`px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer ${
+                  playerMode === 'hls'
+                    ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
+                    : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/50'
+                }`}
+                title="Прямой встроенный HLS плеер"
+              >
+                <Zap className="w-3.5 h-3.5" />
+                <span className="hidden sm:inline">HLS</span>
+              </button>
+            </div>
 
             <button
               id="player-episodes-toggle-btn"

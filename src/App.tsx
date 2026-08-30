@@ -745,7 +745,7 @@ export default function App() {
                 <Disc3 className="w-10 h-10 sm:w-12 sm:h-12 text-zinc-600 mx-auto mb-3" />
                 <h3 className="text-base sm:text-lg font-bold text-white mb-1">Ничего не найдено</h3>
                 <p className="text-xs text-zinc-400 mb-5 sm:mb-6 leading-relaxed">
-                  Попробуйте изменить параметры поиска или найти тайтл через онлайн-поиск AniLibria.
+                  Попробуйте изменить параметры поиска или найти тайтл через глобальный поиск по каталогу.
                 </p>
                 <div className="flex justify-center gap-2.5 sm:gap-3">
                   <button

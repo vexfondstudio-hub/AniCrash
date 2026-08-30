@@ -107,7 +107,7 @@ export const SiteAssemblyLoader: React.FC<SiteAssemblyLoaderProps> = ({ onComple
               className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-mono uppercase tracking-widest mb-3"
             >
               <span className="w-2 h-2 rounded-full bg-red-500 animate-ping" />
-              Сборка системы [ANICRASH v3.0]
+              Сборка системы [ANICRASH 0.0.1v]
             </motion.div>
             
             <h1 className="text-2xl md:text-3xl font-black tracking-tight mb-2 bg-gradient-to-r from-white via-zinc-200 to-zinc-400 bg-clip-text text-transparent">
