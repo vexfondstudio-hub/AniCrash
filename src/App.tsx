@@ -43,9 +43,11 @@ import { HistoryView } from './components/HistoryView';
 import { WatchPartyView } from './components/WatchPartyView';
 import { ProfileView } from './components/ProfileView';
 import { QuickSearchModal } from './components/QuickSearchModal';
+import { AnimeRouletteModal } from './components/AnimeRouletteModal';
 import { AuthModal } from './components/AuthModal';
 import { Footer } from './components/Footer';
 import { EnhancedImage } from './components/EnhancedImage';
+import { SiteAssemblyLoader } from './components/SiteAssemblyLoader';
 import {
   getCurrentUserAccount,
   logoutUserAccount,
@@ -59,6 +61,8 @@ const STORAGE_HISTORY = 'anicrash_history_v2';
 const STORAGE_PROFILE = 'anicrash_profile_v2';
 
 export default function App() {
+  const [isLoadingAssembly, setIsLoadingAssembly] = useState<boolean>(true);
+
   // Authentication session state
   const [currentAccount, setCurrentAccount] = useState<UserAccount | null>(() => {
     return getCurrentUserAccount();
@@ -205,6 +209,7 @@ export default function App() {
   // Modals
   const [selectedAnimeModal, setSelectedAnimeModal] = useState<Anime | null>(null);
   const [quickSearchOpen, setQuickSearchOpen] = useState<boolean>(false);
+  const [rouletteOpen, setRouletteOpen] = useState<boolean>(false);
 
   // Filters
   const [searchQuery, setSearchQuery] = useState('');
@@ -414,6 +419,10 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-zinc-950 text-zinc-100 flex flex-col selection:bg-rose-600 selection:text-white relative">
+      {isLoadingAssembly && (
+        <SiteAssemblyLoader onComplete={() => setIsLoadingAssembly(false)} />
+      )}
+
       {/* Background Mesh Gradients */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-rose-600/10 blur-[120px] rounded-full animate-pulse" />
@@ -432,6 +441,7 @@ export default function App() {
             favoritesCount={favorites.length}
             historyCount={watchHistory.length}
             onOpenSearch={() => setQuickSearchOpen(true)}
+            onOpenRoulette={() => setRouletteOpen(true)}
             currentUser={userProfile}
             isAuthenticated={!!currentAccount}
             onOpenAuth={handleOpenAuth}
@@ -889,6 +899,14 @@ export default function App() {
           }}
         />
       )}
+
+      {/* Anime Roulette Modal */}
+      <AnimeRouletteModal
+        isOpen={rouletteOpen}
+        onClose={() => setRouletteOpen(false)}
+        animeList={ANIME_DATABASE}
+        onSelect={(anime) => setSelectedAnimeModal(anime)}
+      />
 
       {/* User Authentication Modal */}
       {authModalOpen && (

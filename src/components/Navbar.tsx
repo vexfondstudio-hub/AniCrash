@@ -13,6 +13,7 @@ import {
   UserPlus,
   LogOut,
   ChevronDown,
+  Dices,
 } from 'lucide-react';
 import { ViewMode, UserProfile } from '../types';
 import { AURA_PRESETS } from '../data/profilePresets';
@@ -25,6 +26,7 @@ interface NavbarProps {
   favoritesCount: number;
   historyCount: number;
   onOpenSearch: () => void;
+  onOpenRoulette: () => void;
   currentUser: UserProfile;
   isAuthenticated: boolean;
   onOpenAuth: (mode?: 'login' | 'register') => void;
@@ -37,6 +39,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   favoritesCount,
   historyCount,
   onOpenSearch,
+  onOpenRoulette,
   currentUser,
   isAuthenticated,
   onOpenAuth,
@@ -146,6 +149,16 @@ export const Navbar: React.FC<NavbarProps> = ({
               <kbd className="hidden md:inline-flex items-center text-[9px] px-1 py-0.5 rounded bg-zinc-800 text-zinc-400 border border-zinc-700 font-mono tracking-tight whitespace-nowrap">
                 ⌘K
               </kbd>
+            </button>
+
+            {/* Roulette Trigger Button */}
+            <button
+              onClick={onOpenRoulette}
+              type="button"
+              className="group h-9 w-9 flex items-center justify-center rounded-xl bg-gradient-to-br from-rose-600/20 to-orange-500/20 hover:from-rose-500/30 hover:to-orange-500/30 text-rose-400 hover:text-rose-300 border border-rose-500/30 hover:border-rose-500/50 transition-all cursor-pointer shadow-xs active:scale-95 select-none"
+              title="Аниме Рулетка (Случайное аниме)"
+            >
+              <Dices className="w-4 h-4 group-hover:rotate-12 transition-transform" />
             </button>
 
             {/* Quick Access: Favorites Icon */}
